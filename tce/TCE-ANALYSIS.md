@@ -65,7 +65,7 @@ tce horizon-assess examples/cases/enterprise-identity --offline
 
 The candidate signal changed nothing: the review gate worked. Once accepted, intelligence pressure rose 17% and the path moved from H2 to H1. That is the expected behavior: intelligence adjusts priority without dominating the other six dimensions.
 
-**Bridge limits.** Victimology comes from MISP Galaxy and the spreadsheet, which cover the US, Europe and Asia well and Brazil poorly (only 7 actors with recorded Brazilian victims). For Brazil, the profile must be complemented with local sources (CERT.br, reports from banks and vendors operating in the country). That is why the signal ships with `confidence: low` and `source_reliability: C`.
+**Bridge limits.** Victimology comes from MISP Galaxy and the spreadsheet, which cover the US, Europe and Asia well and Brazil poorly (only 10 actors with recorded Brazilian victims, counting the sheet's target text). For Brazil, the profile must be complemented with local sources (CERT.br, reports from banks and vendors operating in the country). That is why the signal ships with `confidence: low` and `source_reliability: C`.
 
 ## 4. Materials with academic value
 

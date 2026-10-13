@@ -16,14 +16,14 @@ ROT = {
            "intro": "Lista curada, bilíngue e verificada automaticamente. ★ = comece por aqui. Gerada de `recursos/recursos.json`; para sugerir um recurso, edite o JSON e abra um PR.",
            "cols": ("Recurso", "Para que serve", "Acesso"), "outro": "English version: [RESOURCES.md](RESOURCES.md)",
            "aviso_amostras": "> ⚠️ **Malware real.** Baixe e abra só em laboratório isolado (VM sem rede ou com rede simulada). Nunca no seu computador de trabalho.",
-           "total": "recursos"},
+           "total": "recursos", "legenda": "★ comece por aqui · 🔹 da lista original do mantenedor"},
     "en": {"tipo": {"gratuito": "free", "pago": "paid", "registro": "sign-up", "freemium": "freemium"},
            "status": {"legado": "legacy", "arquivado": "archived"}, "morto": "link down",
            "titulo": "CTI, APT and malware resources", "sumario": "Contents",
            "intro": "Curated, bilingual, automatically checked list. ★ = start here. Generated from `recursos/recursos.json`; to suggest a resource, edit the JSON and open a PR.",
            "cols": ("Resource", "What it is for", "Access"), "outro": "Versão em português: [RECURSOS.md](RECURSOS.md)",
            "aviso_amostras": "> ⚠️ **Live malware.** Download and open only in an isolated lab (VM with no network or simulated network). Never on your work machine.",
-           "total": "resources"},
+           "total": "resources", "legenda": "★ start here · 🔹 from the maintainer's original list"},
 }
 
 
@@ -37,7 +37,7 @@ def gera(lang, dados, links):
     cats = dados["categorias"]
     linhas = [f"# {R['titulo']}", "", R["outro"], "", R["intro"], "",
               f"**{len(dados['recursos'])} {R['total']}** · " + " · ".join(
-                  f"[{cats[c][lang]}](#{ancora(cats[c][lang])})" for c in cats), ""]
+                  f"[{cats[c][lang]}](#{ancora(cats[c][lang])})" for c in cats), "", R["legenda"], ""]
     for c, meta in cats.items():
         itens = [r for r in dados["recursos"] if r["cat"] == c]
         if not itens:
@@ -54,6 +54,8 @@ def gera(lang, dados, links):
             info = links.get(r["url"])
             if info and info.get("codigo") in (404, 410):
                 acesso += " · ⚠️ " + R["morto"]
+            if r.get("origem") == "lista do usuário":
+                nome += " 🔹"
             desc = r["desc_" + lang].replace("|", "\\|")
             linhas.append(f"| {nome} | {desc} | {acesso} |")
         linhas.append("")

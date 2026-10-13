@@ -29,6 +29,11 @@ references:
       - name: "MISP Project"
     license: CC0-1.0
   - type: dataset
+    title: "Ransomware Tool Matrix"
+    authors:
+      - name: "Will Thomas (BushidoUK)"
+    license: CC-BY-4.0
+  - type: dataset
     title: "MITRE ATT&CK"
     authors:
       - name: "The MITRE Corporation"

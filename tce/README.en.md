@@ -11,7 +11,7 @@ Português: [README.md](README.md)
 ## Do this now (just one thing)
 
 ```bash
-python3 ferramentas/tce/perfil_ameaca.py --pais Brazil --setor finance --saida out/br-finance
+python3 ferramentas/tce/perfil_ameaca.py --pais BR --setor finance --saida out/br-finance
 ```
 
 Open `out/br-finance/perfil.md`. You now have the actor list and the techniques to cover first.

@@ -11,7 +11,7 @@ O [TCE](https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling) modela
 ## Faça agora (uma coisa só)
 
 ```bash
-python3 ferramentas/tce/perfil_ameaca.py --pais Brazil --setor finance --saida saida/br-financas
+python3 ferramentas/tce/perfil_ameaca.py --pais BR --setor finance --saida saida/br-financas
 ```
 
 Abra `saida/br-financas/perfil.md`. Pronto: você tem a lista de atores e as técnicas a cobrir primeiro.

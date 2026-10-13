@@ -66,6 +66,12 @@
    "desc_pt": "Ferramentas de triagem, engenharia reversa e desofuscação.",
    "desc_en": "Triage, reverse engineering and deobfuscation tools."
   },
+  "ransomware": {
+   "pt": "Ransomware",
+   "en": "Ransomware",
+   "desc_pt": "Quem extorque quem, com quais ferramentas, e como testar a sua defesa contra isso.",
+   "desc_en": "Who extorts whom, with which tools, and how to test your defenses against it."
+  },
   "sandbox": {
    "pt": "Sandboxes",
    "en": "Sandboxes",
@@ -1980,6 +1986,193 @@
    "status": "ativo",
    "destaque": false,
    "origem": "planilha Malware IR"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "Ransomware Tool Matrix (BushidoUK)",
+   "url": "https://github.com/BushidoUK/Ransomware-Tool-Matrix",
+   "desc_pt": "Quais ferramentas cada gangue de ransomware usa (RMM, exfiltração, credenciais, evasão). Base dos fluxos e da rede de ransomware do Atlas. CC BY 4.0.",
+   "desc_en": "Which tools each ransomware gang uses (RMM, exfiltration, credentials, evasion). Feeds the Atlas ransomware flows and network. CC BY 4.0.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": true,
+   "origem": "lista do usuário"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "Simulating the RansomHub ransomware (Sebastian Kandler)",
+   "url": "https://medium.com/@sebastian.kandler/simulating-the-ransomhub-ransomware-a-vital-exercise-for-strengthening-detection-and-response-b8ecdee0f2bc",
+   "desc_pt": "Exercício de purple team (set/2024) que reproduz comportamentos do RansomHub com Atomic Red Team para achar lacunas de detecção no SIEM e no EDR.",
+   "desc_en": "Purple team exercise (Sep 2024) reproducing RansomHub behaviors with Atomic Red Team to find SIEM and EDR detection gaps.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "lista do usuário"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "skandler/ransomhub-simulation",
+   "url": "https://github.com/skandler/ransomhub-simulation",
+   "desc_pt": "Script do artigo acima. Rode só em laboratório autorizado e isolado.",
+   "desc_en": "Script from the article above. Run only in an authorized, isolated lab.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "Ransomware Vulnerability Matrix",
+   "url": "https://github.com/BushidoUK/Ransomware-Vulnerability-Matrix",
+   "desc_pt": "Vulnerabilidades exploradas por gangues de ransomware, para priorizar correção.",
+   "desc_en": "Vulnerabilities exploited by ransomware gangs, to prioritize patching.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "BushidoToken: atualizações do Ransomware Tool Matrix (jun/2026)",
+   "url": "https://blog.bushidotoken.net/2026/06/ransomware-tool-matrix-project-updates.html",
+   "desc_pt": "O que entrou na matriz e três grupos para acompanhar, pelo autor do projeto.",
+   "desc_en": "What was added to the matrix and three groups to track, by the project's author.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "ransomware.live",
+   "url": "https://www.ransomware.live/",
+   "desc_pt": "Acompanha em quase tempo real as vítimas publicadas nos sites de vazamento, com API e perfis de grupos.",
+   "desc_en": "Near-real-time tracking of victims posted on leak sites, with an API and group profiles.",
+   "tipo": "freemium",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "RansomLook",
+   "url": "https://www.ransomlook.io/",
+   "desc_pt": "Agregador aberto de sites de vazamento de ransomware, com código no GitHub.",
+   "desc_en": "Open aggregator of ransomware leak sites, with code on GitHub.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "eCrime.ch",
+   "url": "https://ecrime.ch/",
+   "desc_pt": "Monitoramento de ransomware e extorsão, com estatísticas por grupo e setor.",
+   "desc_en": "Ransomware and extortion monitoring, with statistics by group and sector.",
+   "tipo": "freemium",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "CISA #StopRansomware",
+   "url": "https://www.cisa.gov/stopransomware",
+   "desc_pt": "Alertas conjuntos com TTPs, indicadores e mitigação por grupo.",
+   "desc_en": "Joint advisories with TTPs, indicators and mitigations per group.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "No More Ransom",
+   "url": "https://www.nomoreransom.org/",
+   "desc_pt": "Decifradores gratuitos de polícias e empresas. Primeira parada de quem foi atingido.",
+   "desc_en": "Free decryptors from law enforcement and vendors. First stop for victims.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "ID Ransomware",
+   "url": "https://id-ransomware.malwarehunterteam.com/",
+   "desc_pt": "Identifica a família pela nota de resgate ou por um arquivo cifrado.",
+   "desc_en": "Identifies the family from the ransom note or an encrypted file.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "ransomware",
+   "nome": "Ransomwhere",
+   "url": "https://ransomwhe.re/",
+   "desc_pt": "Base aberta de pagamentos de resgate em bitcoin, para pesquisa.",
+   "desc_en": "Open dataset of bitcoin ransom payments, for research.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "dfir",
+   "nome": "The DFIR Report",
+   "url": "https://thedfirreport.com/",
+   "desc_pt": "Intrusões reais do acesso inicial ao ransomware, com linha do tempo e ATT&CK.",
+   "desc_en": "Real intrusions from initial access to ransomware, with timelines and ATT&CK.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": true,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "deteccao",
+   "nome": "DeTT&CT",
+   "url": "https://github.com/rabobank-cdc/DeTTECT",
+   "desc_pt": "Mede visibilidade e cobertura de detecção por técnica e cruza com grupos de ameaça.",
+   "desc_en": "Scores visibility and detection coverage per technique and maps them to threat groups.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
+  },
+  {
+   "cat": "deteccao",
+   "nome": "YARA",
+   "url": "https://github.com/VirusTotal/yara",
+   "desc_pt": "Ferramenta clássica de padrões para classificar malware. Para regras novas, veja também o YARA-X.",
+   "desc_en": "Classic pattern tool to classify malware. For new rules, see YARA-X too.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "lista do usuário"
+  },
+  {
+   "cat": "ttps",
+   "nome": "MITRE ATT&CK no GitHub",
+   "url": "https://github.com/mitre-attack",
+   "desc_pt": "Organização oficial: dados STIX, Navigator, bibliotecas e o próprio site.",
+   "desc_en": "Official organization: STIX data, Navigator, libraries and the website itself.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "lista do usuário"
+  },
+  {
+   "cat": "feeds",
+   "nome": "ThreatFox (abuse.ch)",
+   "url": "https://threatfox.abuse.ch/",
+   "desc_pt": "IOCs de malware compartilhados pela comunidade, com API gratuita.",
+   "desc_en": "Community-shared malware IOCs, with a free API.",
+   "tipo": "gratuito",
+   "status": "ativo",
+   "destaque": false,
+   "origem": "pesquisa complementar"
   }
  ]
 }

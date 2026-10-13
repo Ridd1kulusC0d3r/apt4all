@@ -25,6 +25,7 @@ jobs:
         run: |
           python ferramentas/atlas/construir_dados.py --baixar
           python ferramentas/atlas/mapa_hex.py
+          python ferramentas/ransomware/construir_matriz.py --baixar
           python ferramentas/recursos/gerar_listas.py
       - name: Testes
         run: python -m unittest discover -s testes -v
@@ -37,7 +38,7 @@ jobs:
           commit-message: "dados: atualização semanal das fontes"
           title: "Dados: atualização semanal das fontes"
           body: |
-            Atualização automática de MISP Galaxy, MITRE ATT&CK, planilha APT Groups and Operations, EternalLiberty e APTnotes.
+            Atualização automática de MISP Galaxy, MITRE ATT&CK, planilha APT Groups and Operations, EternalLiberty, APTnotes e Ransomware Tool Matrix.
             Os testes passaram. Revise `dados/gerados/resumo.md` (contagem por país) antes de aceitar.
           labels: dados
           delete-branch: true

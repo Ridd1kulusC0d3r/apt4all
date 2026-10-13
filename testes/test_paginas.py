@@ -6,7 +6,8 @@ DOCS = os.path.join(RAIZ, "docs")
 
 
 def ler(*p):
-    return open(os.path.join(DOCS, *p), encoding="utf-8").read()
+    with open(os.path.join(DOCS, *p), encoding="utf-8") as f:
+        return f.read()
 
 
 def chaves(bloco):

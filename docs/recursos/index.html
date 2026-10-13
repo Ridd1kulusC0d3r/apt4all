@@ -44,6 +44,7 @@ h1{font:700 44px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;
 .tag{font:11px var(--mono);border:1px solid var(--borda);padding:1px 6px;color:var(--apagado)}
 .tag.leg{border-color:var(--ambar);color:var(--ambar)}
 .tag.usr{border-color:var(--menta);color:var(--menta)}
+.tag.nov{border-color:var(--coral);color:var(--coral)}
 .vazio{padding:40px;text-align:center;color:var(--apagado);font:13px var(--mono)}
 footer{margin-top:40px;border-top:1px solid var(--borda);padding-top:18px;font:13px var(--mono);color:var(--apagado)}
 </style>
@@ -63,10 +64,10 @@ footer{margin-top:40px;border-top:1px solid var(--borda);padding-top:18px;font:1
 </div>
 <script>
 "use strict";
-const UI={pt:{rec:"RECURSOS",tit:"Recursos",sub:"Curadoria bilíngue de CTI, APT e malware. Links legados aparecem marcados, com o substituto ao lado. Para sugerir um recurso, edite recursos/recursos.json no GitHub e abra um PR.",ph:"Buscar por nome ou descrição…",todos:"todos",dest:"★ comece por aqui",ativos:"só ativos",gratis:"só gratuitos",usuario:"lista original",vazio:"Nada encontrado com esses filtros.",tipo:{gratuito:"gratuito",pago:"pago",registro:"com cadastro",freemium:"freemium"},legado:"legado",aviso:"Malware real. Baixe e abra só em laboratório isolado."},
- en:{rec:"RESOURCES",tit:"Resources",sub:"Bilingual curation of CTI, APT and malware resources. Legacy links are flagged, with the replacement alongside. To suggest a resource, edit recursos/recursos.json on GitHub and open a PR.",ph:"Search by name or description…",todos:"all",dest:"★ start here",ativos:"active only",gratis:"free only",usuario:"original list",vazio:"Nothing matches these filters.",tipo:{gratuito:"free",pago:"paid",registro:"sign-up",freemium:"freemium"},legado:"legacy",aviso:"Live malware. Download and open only in an isolated lab."}};
+const UI={pt:{rec:"RECURSOS",tit:"Recursos",sub:"Curadoria bilíngue de CTI, APT e malware. Links legados aparecem marcados, com o substituto ao lado. Para sugerir um recurso, edite recursos/recursos.json no GitHub e abra um PR.",ph:"Buscar por nome ou descrição…",todos:"todos",dest:"★ comece por aqui",ativos:"só ativos",gratis:"só gratuitos",usuario:"lista original",fUsuario:"só da lista original",fNovo:"só os novos",novo:"novo",vazio:"Nada encontrado com esses filtros.",tipo:{gratuito:"gratuito",pago:"pago",registro:"com cadastro",freemium:"freemium"},legado:"legado",aviso:"Malware real. Baixe e abra só em laboratório isolado."},
+ en:{rec:"RESOURCES",tit:"Resources",sub:"Bilingual curation of CTI, APT and malware resources. Legacy links are flagged, with the replacement alongside. To suggest a resource, edit recursos/recursos.json on GitHub and open a PR.",ph:"Search by name or description…",todos:"all",dest:"★ start here",ativos:"active only",gratis:"free only",usuario:"original list",fUsuario:"original list only",fNovo:"new only",novo:"new",vazio:"Nothing matches these filters.",tipo:{gratuito:"free",pago:"paid",registro:"sign-up",freemium:"freemium"},legado:"legacy",aviso:"Live malware. Download and open only in an isolated lab."}};
 let L="pt";try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
-let D=null,cat="",fx={dest:false,ativos:false,gratis:false};
+let D=null,cat="",fx={dest:false,ativos:false,gratis:false,usuario:false,novo:false};
 const $=s=>document.querySelector(s);
 function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
 function render(){
@@ -77,16 +78,16 @@ function render(){
   const cnt={};D.recursos.forEach(r=>cnt[r.cat]=(cnt[r.cat]||0)+1);
   $("#cats").replaceChildren(el("button",{class:"chip","aria-pressed":cat===""?"true":"false",onclick:()=>{cat="";render()}},u.todos+" ",el("b",{},String(D.recursos.length))),
     ...Object.entries(D.categorias).map(([k,c])=>el("button",{class:"chip","aria-pressed":cat===k?"true":"false",onclick:()=>{cat=cat===k?"":k;render()}},c[L]+" ",el("b",{},String(cnt[k]||0)))));
-  $("#extra").replaceChildren(...[["dest",u.dest],["ativos",u.ativos],["gratis",u.gratis]].map(([k,r])=>el("button",{class:"chip","aria-pressed":fx[k]?"true":"false",onclick:()=>{fx[k]=!fx[k];render()}},r)));
+  $("#extra").replaceChildren(...[["dest",u.dest],["ativos",u.ativos],["gratis",u.gratis],["usuario",u.fUsuario,D.recursos.filter(r=>r.origem==="lista do usuário").length],["novo",u.fNovo,D.recursos.filter(r=>r.origem==="pesquisa complementar").length]].map(([k,r,n])=>el("button",{class:"chip","aria-pressed":fx[k]?"true":"false",onclick:()=>{fx[k]=!fx[k];render()}},r,n!=null?el("b",{}," "+n):null)));
   const q=$("#q").value.trim().toLowerCase();
-  const ok=r=>(!cat||r.cat===cat)&&(!fx.dest||r.destaque)&&(!fx.ativos||r.status==="ativo")&&(!fx.gratis||r.tipo==="gratuito")&&(!q||(r.nome+" "+r["desc_"+L]+" "+r.url).toLowerCase().includes(q));
+  const ok=r=>(!cat||r.cat===cat)&&(!fx.dest||r.destaque)&&(!fx.ativos||r.status==="ativo")&&(!fx.gratis||r.tipo==="gratuito")&&(!fx.usuario||r.origem==="lista do usuário")&&(!fx.novo||r.origem==="pesquisa complementar")&&(!q||(r.nome+" "+r["desc_"+L]+" "+r.url).toLowerCase().includes(q));
   const blocos=[];
   for(const[k,c]of Object.entries(D.categorias)){
     const itens=D.recursos.filter(r=>r.cat===k&&ok(r)).sort((a,b)=>(b.destaque-a.destaque)||((a.status!=="ativo")-(b.status!=="ativo"))||a.nome.localeCompare(b.nome));
     if(!itens.length)continue;
     blocos.push(el("section",{class:"grupo"},el("h2",{},c[L]),el("p",{class:"d"},c["desc_"+L]),k==="amostras"?el("div",{class:"aviso"},"⚠️ "+u.aviso):null,
       el("div",{class:"cards"},itens.map(r=>el("article",{class:"card"+(r.destaque?" dest":"")},el("a",{class:"n",href:r.url,target:"_blank",rel:"noopener"},(r.destaque?"★ ":"")+r.nome),el("p",{},r["desc_"+L]),
-        el("div",{class:"tags"},el("span",{class:"tag"},u.tipo[r.tipo]||r.tipo),r.status!=="ativo"?el("span",{class:"tag leg"},u.legado):null,r.origem==="lista do usuário"?el("span",{class:"tag usr"},u.usuario):null))))));
+        el("div",{class:"tags"},el("span",{class:"tag"},u.tipo[r.tipo]||r.tipo),r.status!=="ativo"?el("span",{class:"tag leg"},u.legado):null,r.origem==="lista do usuário"?el("span",{class:"tag usr"},u.usuario):null,r.origem==="pesquisa complementar"?el("span",{class:"tag nov"},u.novo):null))))));
   }
   $("#lista").replaceChildren(...(blocos.length?blocos:[el("div",{class:"vazio"},u.vazio)]));
 }

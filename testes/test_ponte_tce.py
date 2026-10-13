@@ -36,6 +36,12 @@ class TestCalcula(unittest.TestCase):
         res, _ = pa.calcula(SINT, "", "finance", "estado")
         self.assertEqual([x["ator"]["nome"] for x in res], ["Alfa"])
 
+    def test_iso_e_nome_dao_o_mesmo_resultado(self):
+        d = json_de("docs", "atlas", "atores.json")["atores"]
+        r1, _ = pa.calcula(d, "BR", "finance")
+        r2, _ = pa.calcula(d, "Brazil", "finance")
+        self.assertEqual([x["ator"]["id"] for x in r1], [x["ator"]["id"] for x in r2])
+
     def test_sem_filtro_inclui_todos(self):
         res, _ = pa.calcula(SINT)
         self.assertEqual(len(res), 3)

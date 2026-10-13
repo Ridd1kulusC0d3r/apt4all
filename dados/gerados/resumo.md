@@ -8,7 +8,7 @@
 | País | Atores | Com ATT&CK | Aliases |
 |---|---|---|---|
 | Sem país atribuído (??) | 638 | 41 | 364 |
-| China (CN) | 289 | 57 | 779 |
+| China (CN) | 288 | 56 | 775 |
 | Rússia (RU) | 156 | 31 | 583 |
 | Irã (IR) | 82 | 21 | 327 |
 | Coreia do Norte (KP) | 25 | 7 | 206 |
@@ -49,6 +49,7 @@
 | México (MX) | 1 | 0 | 0 |
 | Líbia (LY) | 1 | 0 | 0 |
 | Arábia Saudita (SA) | 1 | 0 | 1 |
+| SG (SG) | 1 | 1 | 4 |
 | Uzbequistão (UZ) | 1 | 0 | 1 |
 | Armênia (AM) | 1 | 0 | 1 |
 | Egito (EG) | 1 | 0 | 2 |

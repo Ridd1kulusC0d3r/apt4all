@@ -13,6 +13,7 @@ Tudo o que o Atlas mostra vem de fontes abertas. Esta página diz de onde veio c
 | [MITRE ATT&CK Enterprise (STIX)](https://github.com/mitre-attack/attack-stix-data) | Grupos, técnicas e softwares ligados por relação | [Termos de Uso do ATT&CK](https://attack.mitre.org/resources/terms-of-use/) (uso livre com atribuição) | `raw.githubusercontent.com` (52 MB, não versionado) |
 | [EternalLiberty](https://github.com/StrangerealIntel/EternalLiberty) | Tabela de equivalência de nomes | Sem licença declarada; usamos só nomes e relações, com crédito | `raw.githubusercontent.com` |
 | [APTnotes](https://github.com/aptnotes/data) | Título, data e link de relatórios públicos ligados a cada ator | Sem licença declarada; usamos só metadados e links | `raw.githubusercontent.com` |
+| [Ransomware Tool Matrix](https://github.com/BushidoUK/Ransomware-Tool-Matrix) (Will Thomas / BushidoUK) | Ferramentas usadas por cada gangue de ransomware, por categoria | CC BY 4.0 | `raw.githubusercontent.com`; cópia em `dados/brutos/ransomware-tool-matrix/` |
 | [Natural Earth 1:110m](https://www.naturalearthdata.com/) | Centroides e nomes de países para o mapa hexagonal | Domínio público | cópia versionada em `dados/brutos/` (origem: `nvkelso/natural-earth-vector`) |
 
 "® MITRE ATT&CK e ATT&CK são marcas registradas da The MITRE Corporation." O APT4ALL não tem relação com a MITRE.
@@ -24,11 +25,13 @@ Tudo o que o Atlas mostra vem de fontes abertas. Esta página diz de onde veio c
 3. Um registro novo só entra num ator existente se compartilhar um nome com ele. Nome usado por dois atores diferentes vira **ambíguo** e não une nada. Isso evita a "bola de neve" em que Lazarus, Andariel e BlueNoroff viram um ator só.
 4. País: ATT&CK e planilha valem mais que o MISP. Sem país claro, o ator fica em **??**.
 
+Gangues do Ransomware Tool Matrix se ligam a um ator do Atlas pelo nome principal; por apelido só quando o ator não traz três ou mais nomes de outras gangues entre os apelidos (sinal de lista de famílias misturada na fonte, como acontece com BlackByte).
+
 O resultado de cada rodada fica em [`dados/gerados/resumo.md`](dados/gerados/resumo.md).
 
 ## Recursos curados
 
-Os 169 links de [RECURSOS.md](RECURSOS.md) apontam para sites de terceiros. As descrições são nossas (CC BY 4.0); cada site mantém sua própria licença. Os itens marcados como **lista original** vieram da curadoria inicial do mantenedor.
+Os 186 links de [RECURSOS.md](RECURSOS.md) apontam para sites de terceiros. As descrições são nossas (CC BY 4.0); cada site mantém sua própria licença. Os itens marcados como **lista original** vieram da curadoria inicial do mantenedor.
 
 ## Aviso sobre atribuição
 

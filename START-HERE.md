@@ -24,7 +24,7 @@ One thing at a time. Each step takes about 5 minutes and ends with something in 
 
 ## Step 4 · Build your organization's threat profile
 
-- [ ] In the Atlas, open the **Threat profile** tab, choose the country and sector you work in. The result appears right away.
+- [ ] In the Atlas, open the **Threat profile** tab, click the country and sector you work in (filters are buttons; click again to clear). The result appears right away.
 - [ ] Click **Download Navigator layer**.
 
 **Done when:** `navigator.json` is in your downloads folder.

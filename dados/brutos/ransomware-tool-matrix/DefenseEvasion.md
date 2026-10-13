@@ -1,0 +1,59 @@
+## Defense Evasion Tools
+
+> [!TIP]
+> Various freely available malware detection tools specialize in identifying and removing stealthy threats like rootkits. They offer capabilities such as scanning for hidden processes, files, and drivers, analyzing system memory for malicious modules, and monitoring system hooks for unauthorized modifications. These tools provide detailed insights into system internals, helping to uncover deeply embedded malware that standard antivirus programs might miss.
+
+> [!IMPORTANT]
+> Malicious actors can abuse these rootkit detection tools to interfere with security tools, file and registry tampering to disrupt tool functionality, and memory corruption to prevent detection. By using these tools for privilege escalation, an adversary can disable or alter the operation of security software, removing the method systems use to detect or prevent threats.
+
+| Tool Name | Threat Group Usage |
+|---|---|
+| ADVobfuscator | DragonForce |
+| Antiy System In-Depth Analysis Toolkit driver (BYOVD) | Warlock |
+| Avast Anti-Rootkit driver | Cuba, AvosLocker, MONTI |
+| Backstab/Process Explorer driver (BYOVD) | Black Basta, LockBit | 
+| BadRentdrv2 | RansomHub |
+| Bedevil | Scattered Spider* |
+| BEST_uninstallTool | BabLock |
+| Bluetooth Stack for Windows by Toshiba (toshdpdb.exe) | RA World |
+| Darkside/TrueSight driver (BYOVD) | CosmicBeetle*, DragonForce |
+| Defender Control | LockBit, Zola |
+| Dell Client driver (BYOVD) | BlackByte |
+| EDRSandBlast | Cicada3301, Qilin, Medusa |
+| EDRStartupHinder | TheGentlemen |
+| EMCO UnLock IT | Zola | 
+| Eraser | BlackSuit, Royal |
+| FileShredder | BlackCat |
+| GIGABYTE Motherboard driver (BYOVD) | RobbinHood, BlackByte |
+| GMER | BlackSuit, Royal, PLAY, LockBit, Bassterlord*, Conti, 8BASE, TargetCompany, Hive, Avaddon, MONTI |
+| HRSword | Medusa Locker, Helldown |
+| Hangzhou Shunwang Technology driver (BYOVD) | DragonForce |
+| Inno Setup | BlackSuit |
+| IOBit | PLAY |
+| Intel Ethernet driver (BYOVD) | Scattered Spider* |
+| KAV Removal Tool | LokiLocker/BlackBit |
+| KillAV | Medusa |
+| KslDump | TheGentlemen |
+| McAfee OEM Info Copy Files (mcoemcpy.exe) | NailaoLocker | 
+| MSI Afterburner driver (BYOVD) | BlackByte |
+| NsecSoft driver (BYOVD) | Warlock | 
+| NSudo | Royal |
+| PCHunter | LockBit, Conti, 8BASE, TargetCompany, Hive, Qilin, FiveHands, Medusa Locker, DragonForce |
+| PowerTool | BlackSuit, Royal, Akira, Phobos, PLAY, LockBit, Qilin, Avaddon |
+| PowerRun | TheGentlemen |
+| ProcessHacker | Phobos, LockBit, 8BASE, Zola, Medusa Locker, Interlock, DragonForce |
+| RealBlindingEDR | CosmicBeetle* |
+| Reaper | CosmicBeetle* |
+| RedSun | TheGentlemen |
+| Rising Antivirus driver (BYOVD) | Warlock | 
+| s4killer (Minifilter Driver) | Embargo |
+| TDSSKiller | LockBit, Avaddon |
+| ThreatFire System Monitor driver (BYOVD) | RansomHub, Interlock |
+| ThrottleStop driver (BYOVD) | Medusa, TheGentlemen |
+| Toshiba power management driver (BYOVD) | Qilin |
+| Universal Virus Sniffer | Phobos |
+| Updater for Carbon Black’s Cloud Sensor AV (upd.exe) | Qilin | 
+| VirtualBox | RagnarLocker |
+| VMTools AV Killer (BYOVD) | Warlock |
+| YDArk | Qilin |
+| Zemana Anti-Rootkit driver | Qilin, Akira, BlackByte, CrazyHunter |

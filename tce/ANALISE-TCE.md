@@ -65,7 +65,7 @@ tce horizon-assess examples/cases/enterprise-identity --offline
 
 O sinal candidato não mudou nada: a trava de revisão funcionou. Depois de aceito, a pressão de inteligência subiu 17% e o caminho passou de H2 para H1. É o comportamento esperado: a inteligência ajusta a prioridade, mas não domina as outras seis dimensões.
 
-**Limites da ponte.** A vitimologia vem de MISP Galaxy e da planilha, que cobrem bem Estados Unidos, Europa e Ásia e mal o Brasil (só 7 atores com vítimas brasileiras registradas). Para o Brasil, o perfil precisa ser complementado com fontes locais (CERT.br, relatórios de bancos e fornecedores com operação no país). Por isso o sinal sai com `confidence: low` e `source_reliability: C`.
+**Limites da ponte.** A vitimologia vem de MISP Galaxy e da planilha, que cobrem bem Estados Unidos, Europa e Ásia e mal o Brasil (só 10 atores com vítimas brasileiras registradas, contando o texto de alvos da planilha). Para o Brasil, o perfil precisa ser complementado com fontes locais (CERT.br, relatórios de bancos e fornecedores com operação no país). Por isso o sinal sai com `confidence: low` e `source_reliability: C`.
 
 ## 4. Materiais com valor acadêmico
 

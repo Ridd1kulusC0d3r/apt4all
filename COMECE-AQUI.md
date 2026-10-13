@@ -24,7 +24,7 @@ Uma coisa de cada vez. Cada passo leva uns 5 minutos e termina com algo na mão.
 
 ## Passo 4 · Montar o perfil de ameaça da sua empresa
 
-- [ ] No Atlas, abra a aba **Perfil de ameaça**, escolha o país e o setor de onde você trabalha. O resultado aparece na hora.
+- [ ] No Atlas, abra a aba **Perfil de ameaça**, clique no país e no setor de onde você trabalha (os filtros são botões; clicar de novo desmarca). O resultado aparece na hora.
 - [ ] Clique em **Baixar camada do Navigator**.
 
 **Pronto quando:** você tem o arquivo `navigator.json` na pasta de downloads.

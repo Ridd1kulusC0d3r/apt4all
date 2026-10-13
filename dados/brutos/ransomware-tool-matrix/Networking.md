@@ -1,0 +1,48 @@
+## Networking Tools
+
+> [!TIP]
+> There are a number of network tunneling tools available online for managing and interacting with systems across different environments. They allow users to securely connect to remote servers or services through encrypted channels that can bypass network restrictions and firewalls. These tools may also expose local development servers to the internet for testing and sharing. They are widely used for tasks like remote administration and development workflows, offering flexibility in network management.
+
+> [!IMPORTANT]
+> Cybercriminals can utilize network tunneling tools to create encrypted tunnels, evade detection, and access restricted networks. These tools essentially facilitate command and control for an adversary, helping them to maintain a foothold and orchestrate further malicious activities.
+
+| Tool Name | Threat Group Usage |
+|---|---|
+| Amnezia VPN | TheGentlemen |
+| Azure Blog Storage | Warlock |
+| Catbox[.]moe | Warlock |
+| Chisel | BlackSuit, Royal, AvosLocker, Cactus, Yanluowang, QWCrypt, Scattered Spider*, TheGentlemen |
+| Cloudflared | BlackSuit, Royal, Akira, Scattered Spider*, Medusa, Warlock, TheGentlemen |
+| FRP | Medusa |
+| GOST | Cicada3301 |
+| IOX | Ghost/Cring |
+| Klink | Beast |
+| OpenSSH | BlackSuit, Royal, Akira, Scattered Spider*, DarkBit+, Warlock, Beast |
+| OpenVPN | TheGentlemen |
+| Ligolo | AvosLocker, LockBit, *Br0k3r, DarkBit+, Medusa |
+| Ngrok | Akira, BlackCat, Karakurt, Scattered Spider*, LockBit, *Br0k3r |
+| NPS | RA World |
+| NSOCKS | Scattered Spider* |
+| MinIO | Warlock |
+| Pinggy | Scattered Spider* |
+| Plink | BlackCat, PLAY, LockBit, Scattered Spider*, DarkSide, Cicada3301 |
+| Powercat | Fog |
+| Proxychains | Vice Society, Qilin, Fog, TheGentlemen |
+| Proxifier | Scattered Spider*, Proxifier |
+| PuTTY | Medusa, Interlock, TheGentlemen |
+| Rsocks | Scattered Spider* |
+| RevSocks | Medusa |
+| Socat | Scattered Spider* |
+| Sshimpanzee | Scattered Spider* |
+| Stowaway | RansomHub |
+| Supabase | Warlock |
+| Tailscale | Scattered Spider* |
+| Teleport | Scattered Spider* |
+| Termite | Cuba |
+| TrueSocks | Scattered Spider* |
+| TryCloudflare | Scattered Spider* |
+| Twingate | Scattered Spider* |
+| VS Code Tunnel | Warlock |
+| Windscribe (Wstunnel) | Scattered Spider* |
+| Wireguard VPN | TheGentlemen |
+| Yuze | Warlock | 

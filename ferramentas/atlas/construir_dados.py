@@ -41,7 +41,12 @@ SINONIMOS_PAIS = {
     "tunisia": "TN", "morocco": "MA", "egypt": "EG", "romania": "RO", "indonesia": "ID", "taiwan": "TW", "japan": "JP",
     "colombia": "CO", "mexico": "MX", "argentina": "AR", "chile": "CL", "peru": "PE", "venezuela": "VE",
     "saudi arabia": "SA", "qatar": "QA", "kuwait": "KW", "yemen": "YE", "iraq": "IQ", "algeria": "DZ",
+    "czech republic": "CZ", "czechia": "CZ", "ivory coast": "CI", "the philippines": "PH", "lebonon": "LB",
+    "hong kong": "HK", "singapore": "SG", "macao": "MO", "macau": "MO", "bahrain": "BH",
 }
+# países que não existem no mapa 1:110m mas aparecem como vítimas
+NOMES_EXTRA = {"HK": ("Hong Kong", "Hong Kong"), "SG": ("Singapura", "Singapore"), "MO": ("Macau", "Macao"),
+               "BH": ("Barein", "Bahrain")}
 
 
 def baixar():
@@ -269,6 +274,14 @@ def ler_mitre(reg):
                 softwares[r["source_ref"]].add(alvo["name"])
     versao = next((o.get("x_mitre_version") for o in objs if o["type"] == "x-mitre-collection"), None)
     NOMES_TECNICAS.update({ext(o): o["name"] for o in objs if o["type"] == "attack-pattern" and not o.get("revoked")})
+    matriz = next((o for o in objs if o["type"] == "x-mitre-matrix" and not o.get("revoked")), None)
+    if matriz:
+        TATICAS[:] = [(por_id[t]["x_mitre_shortname"], TATICAS_PT.get(por_id[t]["x_mitre_shortname"], por_id[t]["name"]), por_id[t]["name"])
+                      for t in matriz["tactic_refs"] if t in por_id]
+    for o in objs:
+        if o["type"] == "attack-pattern" and not o.get("revoked"):
+            fases = [k["phase_name"] for k in o.get("kill_chain_phases", []) if k.get("kill_chain_name") == "mitre-attack"]
+            TATICAS_TECNICAS[ext(o)] = sorted(fases, key=lambda f: [t[0] for t in TATICAS].index(f) if f in [t[0] for t in TATICAS] else 99)
     for gid, g in grupos.items():
         desc = re.sub(r"\(Citation:[^)]*\)", "", g.get("description", "")).strip()
         reg.add(fonte="mitre", nome=g["name"], aliases=g.get("aliases", []), mitre=ext(g),
@@ -278,6 +291,14 @@ def ler_mitre(reg):
 
 
 NOMES_TECNICAS = {}
+TATICAS_TECNICAS = {}
+TATICAS = []   # preenchida de x-mitre-matrix (ordem oficial da versão baixada)
+TATICAS_PT = {"reconnaissance": "Reconhecimento", "resource-development": "Preparação de recursos",
+              "initial-access": "Acesso inicial", "execution": "Execução", "persistence": "Persistência",
+              "privilege-escalation": "Escalada de privilégio", "defense-evasion": "Evasão de defesa",
+              "stealth": "Furtividade", "defense-impairment": "Neutralização de defesas",
+              "credential-access": "Acesso a credenciais", "discovery": "Descoberta", "lateral-movement": "Movimento lateral",
+              "collection": "Coleta", "command-and-control": "Comando e controle", "exfiltration": "Exfiltração", "impact": "Impacto"}
 
 
 def ler_eternal(reg, nomes):
@@ -531,6 +552,8 @@ def main():
     clusters = unir(reg)
     atores = consolida(clusters, None, ler_microsoft())
     nrel = liga_aptnotes(atores)
+    for x in atores:   # vítimas normalizadas para ISO (só correspondência exata de nome)
+        x["vitimas_iso"] = sorted({nomes[v.lower()] for v in x["vitimas"] if v.lower() in nomes} - {None})
     atores.sort(key=lambda x: x["nome"].lower())
     agg = agrega_paises(atores, paises)
     os.makedirs(a.saida, exist_ok=True)
@@ -539,7 +562,7 @@ def main():
     json.dump({"meta": meta, "atores": atores}, open(os.path.join(a.saida, "atores.json"), "w", encoding="utf-8"),
               ensure_ascii=False, separators=(",", ":"))
     usadas = {t for x in atores if x["mitre"] for t in x["mitre"]["tecnicas"]}
-    json.dump({"meta": meta, "setores": {k: {"pt": pt, "en": en} for k, pt, en, _ in SETORES}, "tecnicas": {t: NOMES_TECNICAS.get(t, t) for t in sorted(usadas)}, "paises": agg, "geo": {k: {"x": v["x"], "y": v["y"], "nome_pt": v["nome_pt"],
+    json.dump({"meta": meta, "setores": {k: {"pt": pt, "en": en} for k, pt, en, _ in SETORES}, "tecnicas": {t: NOMES_TECNICAS.get(t, t) for t in sorted(usadas)}, "tecnica_taticas": {t: TATICAS_TECNICAS.get(t, []) for t in sorted(usadas)}, "taticas": [{"id": k, "pt": pt, "en": en} for k, pt, en in TATICAS], "paises": agg, "nomes_extra": {k: {"nome_pt": pt, "nome_en": en} for k, (pt, en) in NOMES_EXTRA.items()}, "geo": {k: {"x": v["x"], "y": v["y"], "nome_pt": v["nome_pt"],
               "nome_en": v["nome_en"]} for k, v in paises.items()}},
               open(os.path.join(a.saida, "paises.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     os.makedirs(os.path.join(RAIZ, "dados", "gerados"), exist_ok=True)

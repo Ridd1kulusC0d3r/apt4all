@@ -28,14 +28,36 @@ def carrega(caminho=None):
         return json.load(f)
 
 
+def bate_pais(a, pais, nomes_pais=()):
+    """pais pode ser ISO (BR) ou nome em inglês (Brazil). Texto livre de alvos só conta por nome completo."""
+    if pais in a.get("vitimas_iso", []) or pais in a.get("vitimas", []):
+        return True
+    alvos = (a.get("alvos") or "").lower()
+    return any(len(n) > 3 and n.lower() in alvos for n in (pais, *nomes_pais))
+
+
+def nomes_do_iso(iso):
+    if not (len(iso) == 2 or "-" in iso) or not iso.isupper():
+        return ()
+    try:
+        with open(os.path.join(RAIZ, "docs", "atlas", "paises.json"), encoding="utf-8") as f:
+            p = json.load(f)
+    except OSError:
+        return ()
+    g = p.get("geo", {}).get(iso) or p.get("nomes_extra", {}).get(iso) or {}
+    extra = {"US": ("United States",), "GB": ("United Kingdom",), "KR": ("South Korea",)}.get(iso, ())
+    return tuple(x for x in (g.get("nome_en"),) + extra if x)
+
+
 def calcula(atores, pais="", setor="", origem="todos"):
     """Mesma regra do Atlas (docs/atlas/index.html, função calculaPerfil)."""
     out = []
+    nomes_pais = nomes_do_iso(pais) if pais else ()
     for a in atores:
         if origem == "estado" and not a.get("pais"):
             continue
         s, por = 0, []
-        if pais and (pais in a.get("vitimas", []) or pais.lower() in (a.get("alvos") or "").lower()):
+        if pais and bate_pais(a, pais, nomes_pais):
             s += 2
             por.append("vítimas no país")
         if setor and setor in a.get("setores", []):
@@ -113,7 +135,7 @@ def exporta(res, tec, meta, pais, setor, saida, top=60):
 
 def main():
     ap = argparse.ArgumentParser(description="Perfil de ameaça APT4ALL para o TCE")
-    ap.add_argument("--pais", default="", help="país da organização, como aparece em vítimas (ex.: Brazil)")
+    ap.add_argument("--pais", default="", help="país da organização: código ISO (BR) ou nome em inglês (Brazil)")
     ap.add_argument("--setor", default="", help="setor, como aparece no atlas (ex.: Financial, Government)")
     ap.add_argument("--origem", choices=["todos", "estado"], default="todos")
     ap.add_argument("--saida", default="saida/perfil")
@@ -122,7 +144,7 @@ def main():
     a = ap.parse_args()
     d = carrega(a.dados)
     if a.listar:
-        c = Counter(v for x in d["atores"] for v in x.get("vitimas" if a.listar == "paises" else "setores", []))
+        c = Counter(v for x in d["atores"] for v in x.get("vitimas_iso" if a.listar == "paises" else "setores", []))
         for k, n in sorted(c.items()):
             print(f"{n:4}  {k}")
         return 0

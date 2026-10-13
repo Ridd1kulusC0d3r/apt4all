@@ -61,7 +61,6 @@ main{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 60px}
 .pais.sel .hex{stroke:var(--menta);stroke-width:1.4}
 .grat{pointer-events:none}.grat line{stroke:var(--grade);stroke-width:.6}
 .grat text{fill:var(--fraco);font:9px var(--mono)}
-.rotulo{fill:var(--tinta);font:600 11px var(--mono);pointer-events:none;paint-order:stroke;stroke:var(--mesa);stroke-width:3px}
 .legenda{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--linha);flex-wrap:wrap;font:12px var(--mono);color:var(--apagado)}
 .escala{display:flex}
 .escala i{width:28px;height:10px;display:block}
@@ -118,8 +117,51 @@ tbody tr:hover{background:var(--painel2)}
 .carregando{padding:60px;text-align:center;font:13px var(--mono);color:var(--apagado)}
 @media (prefers-reduced-motion:reduce){.mapa .varredura{animation:none;display:none}*{transition:none!important}}
 @media (max-width:980px){.grade2{grid-template-columns:minmax(0,1fr)}.topo .in{grid-template-columns:minmax(0,1fr) auto}.meta{grid-column:1/-1;grid-row:2}}
-@media (max-width:560px){.topo .in{grid-template-columns:minmax(0,1fr) auto}.ctrl{grid-column:1/-1;grid-row:3}.busca{flex:1}.busca input{width:100%}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.marca small{display:none}}
+@media (max-width:560px){nav.modos{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav.modos button{flex:none;font-size:14px;padding:8px 10px}.topo .in{grid-template-columns:minmax(0,1fr) auto}.ctrl{grid-column:1/-1;grid-row:3}.busca{flex:1}.busca input{width:100%}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.marca small{display:none}}
 .forn{border-collapse:collapse;width:100%;font-size:13px}.forn th{text-align:left;font:600 11px var(--mono);color:var(--apagado);padding:4px 10px 4px 0;white-space:nowrap;vertical-align:top;letter-spacing:.04em}.forn td{padding:4px 0;color:var(--tinta)}.forn tr+tr{border-top:1px solid var(--borda)}
+.chip b{color:var(--apagado);font-weight:400}
+.chip[aria-pressed="true"] b{color:inherit}
+.chip.fant{border-style:dashed;color:var(--apagado)}
+.chips.rolo{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.chips.rolo .chip{white-space:nowrap;flex:none}
+.bol{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.filtros{display:grid;gap:10px;padding:12px 14px;border-bottom:1px solid var(--linha)}
+.filtros .grupo{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:start}
+.filtros .grupo>.rot{padding-top:5px}
+.filtros .mais{display:inline-flex;gap:6px;align-items:center}
+.filtro.mini{width:150px;padding:4px 8px;font:12px var(--mono)}
+@media (max-width:640px){.filtros .grupo{grid-template-columns:minmax(0,1fr)}}
+.filtrado{font:11px var(--mono);color:var(--menta);margin-top:4px}
+.barra .v b{color:var(--tinta);font-weight:600}.barra .v small{color:var(--fraco)}
+.barra{grid-template-columns:minmax(0,1fr) 58px}
+.resumo{padding:12px 14px 4px;font-size:14px;display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+.resumo small{flex-basis:100%;font:11px var(--mono);color:var(--apagado)}
+.nota{font-size:12.5px;color:var(--apagado);margin:8px 0 0;max-width:80ch}
+.nota.pad{padding:0 14px 14px}
+.sub2{font:12px var(--mono);color:var(--apagado)}
+.rotulo{fill:var(--tinta);font-family:var(--mono);font-weight:600;pointer-events:none;paint-order:stroke;stroke:#06090Bdd;stroke-width:3.5px;stroke-linejoin:round}
+.rotulo .n{fill:var(--ambar)}
+.rotulo.sel{fill:var(--menta)}
+.rolagem{overflow-x:auto}
+svg.sankey{display:block;width:100%;min-width:860px;height:auto}
+.sankey .coltit{fill:var(--apagado);font:600 11px var(--mono);letter-spacing:.14em}
+.sankey .lk{opacity:.34;transition:opacity .2s}
+.sankey.foco .lk{opacity:.07}.sankey.foco .lk.on{opacity:.72}
+.sankey .nolab{fill:var(--tinta);font:12.5px var(--corpo);paint-order:stroke;stroke:#0F171Acc;stroke-width:3px;stroke-linejoin:round}
+.sankey .nolab .n{fill:var(--apagado);font:11px var(--mono)}
+.sankey .no{cursor:default}
+svg.grafo{display:block;width:100%;min-width:760px;height:auto;background:radial-gradient(ellipse at 50% 45%,#0E1B1E 0%,var(--mesa) 75%)}
+.grafo .ar{fill:none;stroke-width:1.1;opacity:.26;transition:opacity .2s}
+.grafo .nd{cursor:pointer;transition:opacity .2s}
+.grafo .halo{fill:none;stroke:#FF7A6355;stroke-width:1}
+.grafo .lbA{fill:var(--claro,#F2F7F6);font:600 12.5px var(--corpo);paint-order:stroke;stroke:#06090B;stroke-width:3px}
+.grafo .lbT{fill:var(--apagado);font:10.5px var(--mono);paint-order:stroke;stroke:#06090B;stroke-width:3px}
+.grafo .tec .bola{stroke:#06090B;stroke-width:1.5}
+.grafo.foco .nd{opacity:.14}.grafo.foco .nd.on{opacity:1}.grafo.foco .nd.on .bola{filter:url(#brilho)}.grafo.foco .nd.on .lbT{fill:var(--tinta)}
+.grafo.foco .ar{opacity:.04}.grafo.foco .ar.on{opacity:.9;stroke-width:1.6}
+.legrede{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 14px;font:12px var(--mono);color:var(--apagado);border-top:1px solid var(--linha)}
+.legrede .lg{display:inline-flex;align-items:center}
+@media (prefers-reduced-motion:reduce){.sankey .lk,.grafo .ar,.grafo .nd{transition:none}}
 </style>
 </head>
 <body>
@@ -138,6 +180,8 @@ tbody tr:hover{background:var(--painel2)}
   <nav class="modos" role="tablist">
     <button role="tab" data-m="mapa" aria-selected="true" data-t="mMapa">Mapa</button>
     <button role="tab" data-m="perfil" aria-selected="false" data-t="mPerfil">Perfil de ameaça</button>
+    <button role="tab" data-m="fluxos" aria-selected="false" data-t="mFluxos">Fluxos</button>
+    <button role="tab" data-m="rede" aria-selected="false" data-t="mRede">Rede</button>
     <button role="tab" data-m="ranking" aria-selected="false" data-t="mRanking">Ranking</button>
     <button role="tab" data-m="sobre" aria-selected="false" data-t="mSobre">Sobre os dados</button>
   </nav>
@@ -168,12 +212,28 @@ tbody tr:hover{background:var(--painel2)}
     <div class="painel">
       <div class="cab"><span class="rot" data-t="perfilTit">Quem mira gente como você?</span></div>
       <p class="texto" style="padding-bottom:0" data-t="perfilIntro">Escolha o país e o setor da sua organização. O atlas ranqueia os atores que já tiveram vítimas assim e soma as técnicas ATT&CK que eles usam. O resultado é um ponto de partida para modelagem de ameaças, não uma previsão.</p>
-      <div class="form">
-        <label><span data-t="paisVitima">País da organização</span><select id="pPais"></select></label>
-        <label><span data-t="setor">Setor</span><select id="pSetor"></select></label>
-        <label><span data-t="incluirOrigem">Incluir atores</span><select id="pOrigem"><option value="todos" data-t="todos">todos</option><option value="estado" data-t="estatais">com país atribuído</option></select></label>
-      </div>
+      <div class="filtros" id="perfilForm"></div>
       <div id="perfilRes"></div>
+    </div>
+  </section>
+
+  <section id="v-fluxos" hidden>
+    <div class="painel">
+      <div class="cab"><span class="rot" data-t="fluxTit">Fluxos de técnicas</span><span class="sub2" id="fluxoSub"></span></div>
+      <div class="filtros" id="fluxoFiltros"></div>
+      <div id="sankey"></div>
+      <p class="nota pad" id="notaFluxo" data-t="notaFluxo">Cada fio é um uso de técnica por um ator. A tática é a primeira listada no ATT&amp;CK para a técnica. Passe o mouse num bloco para destacar os fluxos dele.</p>
+    </div>
+  </section>
+
+  <section id="v-rede" hidden>
+    <div class="painel">
+      <div class="cab"><span class="rot" data-t="redeTit">Rede de técnicas compartilhadas</span><span class="sub2" id="redeSub"></span></div>
+      <div class="filtros" id="redeFiltros"></div>
+      <div class="filtros"><div class="grupo"><div class="rot" data-t="tamanho">Tamanho</div><div class="chips" id="redeTam"></div></div></div>
+      <div id="grafo"></div>
+      <div class="legrede" id="redeLeg"></div>
+      <p class="nota pad" data-t="notaRede">Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.</p>
     </div>
   </section>
 
@@ -188,7 +248,16 @@ tbody tr:hover{background:var(--painel2)}
 <script>
 "use strict";
 const T={
- pt:{sub:"Atlas de sala de guerra",buscaPh:"Buscar ator ou alias…",mMapa:"Mapa",mPerfil:"Perfil de ameaça",mRanking:"Ranking",mSobre:"Sobre os dados",motivos:"Motivação",soAttack:"só com ATT&CK",carregando:"Carregando o atlas…",atoresPorPais:"atores por país",
+ pt:{de:"de",nAtores:"nº de atores",nAtoresAtt:"nº de atores (de {n} com ATT&CK)",filtrado:"filtro ativo",outroPais:"outro país…",menos:"menos",verTodos:"ver todos ({n})",
+  rPais:"{n} com vítimas em {p}",rSetor:"{n} miram {s}",rAmbos:"{n} nos dois",regraPontos:"Pontos: vítima no país +2 · setor-alvo +2 · perfil ATT&CK +1",pontos:"pontos",peso:"peso",atAbrev:"at.",
+  notaTec:"Número = quantos atores do perfil usam a técnica. A barra mostra o peso (soma dos pontos desses atores).",verFluxo:"Ver em fluxos",
+  mFluxos:"Fluxos",mRede:"Rede",fluxTit:"Fluxos de técnicas",notaFluxo:"Cada fio é um uso de técnica por um ator. A tática é a primeira listada no ATT&CK para a técnica. Passe o mouse num bloco para destacar os fluxos dele.",
+  notaFluxoRw:"Cada fio é uma ferramenta observada em intrusões de um grupo, pela categoria do Ransomware Tool Matrix. Use como lista de caça e de bloqueio, checando antes o uso legítimo da ferramenta na sua empresa.",rwTit:"Ferramentas em intrusões de ransomware",verRede:"Ver na rede",redeTit:"Rede de técnicas compartilhadas",tamanho:"Tamanho",notaRede:"Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.",
+  fonte:"Base",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · ferramentas",origem:"País de origem",vitimaFiltro:"Vítimas em",tGangue:"gangues",tAfiliado:"afiliados",tIab:"brokers de acesso",tEstado:"ligados a Estado",
+  tipoGrupo:"Tipo de grupo",categoria:"Categoria",todas:"todas",grupo:"Grupo",grupos:"grupos",outrosAtores:"outros atores",outrosPaises:"outros países",outrasTec:"outras técnicas",ator:"Ator",tatica:"Tática",tecnica:"Técnica",
+  subApt:"{a} atores com ATT&CK · {u} usos das 18 técnicas mais comuns ({p}% de todos os usos)",semRw:"A base de ransomware não carregou.",outrosGrupos:"outros grupos",outrasFerr:"outras ferramentas",ferramenta:"Ferramenta",subRw:"{g} grupos · {u} usos das 18 ferramentas mais comuns ({p}% de todos os usos) · Ransomware Tool Matrix, CC BY 4.0",
+  subRedeApt:"{a} atores · {t} técnicas compartilhadas",subRedeRw:"{g} grupos · {f} ferramentas compartilhadas",
+  sub:"Atlas de sala de guerra",buscaPh:"Buscar ator ou alias…",mMapa:"Mapa",mPerfil:"Perfil de ameaça",mRanking:"Ranking",mSobre:"Sobre os dados",motivos:"Motivação",soAttack:"só com ATT&CK",carregando:"Carregando o atlas…",atoresPorPais:"atores por país",
   todosMot:"todos",espionagem:"espionagem",financeiro:"financeiro",sabotagem:"sabotagem",hacktivismo:"hacktivismo","influência":"influência",indefinido:"indefinido",
   atores:"atores",comAttack:"com ATT&CK",aliases:"aliases",relatorios:"relatórios",topTec:"Técnicas mais usadas",topSet:"Setores-alvo",topVit:"Países vitimados",motTit:"Motivação",listaAt:"Atores",filtrar:"Filtrar atores deste país…",
   escolha:"Clique num país do mapa ou use a busca.",escolhaPais:"Escolher país",nenhum:"Nenhum dado.",fechar:"Fechar",descricao:"Descrição (fonte original em inglês)",alias:"Nomes conhecidos",forn:"Nomes por fornecedor",tec:"Técnicas ATT&CK",ferr:"Ferramentas e malware",ops:"Operações",alvos:"Alvos (planilha)",vit:"Países vitimados",set:"Setores",rels:"Relatórios (APTnotes)",refs:"Referências",fontes:"Fontes",conf:"Confiança de atribuição",verMitre:"Ver no ATT&CK",
@@ -196,9 +265,18 @@ const T={
   perfilTit:"Quem mira gente como você?",perfilIntro:"Escolha o país e o setor da sua organização. O atlas ranqueia os atores que já tiveram vítimas assim e soma as técnicas ATT&CK que eles usam. O resultado é um ponto de partida para modelagem de ameaças, não uma previsão.",paisVitima:"País da organização",setor:"Setor",incluirOrigem:"Incluir atores",todos:"todos",estatais:"com país atribuído",qualquer:"qualquer",
   resAtores:"Atores relevantes",resTec:"Técnicas a cobrir primeiro",porque:"por quê",vitimaPais:"vítimas no país",vitimaSetor:"setor-alvo",temAttack:"perfil ATT&CK",baixarNav:"Baixar camada do Navigator",baixarTce:"Baixar sinais para o TCE",semRes:"Nenhum ator com esse recorte. Tente 'qualquer' em um dos campos.",
   rankTit:"Países por número de atores",pais:"País",
-  meta:(m)=>`${m.n_atores.toLocaleString("pt-BR")} atores · ${Object.keys(m.fontes).length} fontes · ATT&CK v${m.attack_versao} · atualizado ${m.gerado_em}`,
+  meta:(m)=>`${m.n_atores.toLocaleString("pt-BR")} atores · ${Object.keys(m.fontes).length+1} fontes · ATT&CK v${m.attack_versao} · atualizado ${m.gerado_em}`,
   semPais:"Sem país atribuído",nato:"OTAN / Five Eyes"},
- en:{sub:"War room atlas",buscaPh:"Search actor or alias…",mMapa:"Map",mPerfil:"Threat profile",mRanking:"Ranking",mSobre:"About the data",motivos:"Motive",soAttack:"ATT&CK only",carregando:"Loading the atlas…",atoresPorPais:"actors per country",
+ en:{de:"of",nAtores:"no. of actors",nAtoresAtt:"no. of actors (of {n} with ATT&CK)",filtrado:"active filter",outroPais:"another country…",menos:"fewer",verTodos:"show all ({n})",
+  rPais:"{n} with victims in {p}",rSetor:"{n} target {s}",rAmbos:"{n} both",regraPontos:"Points: victim in country +2 · target sector +2 · ATT&CK profile +1",pontos:"points",peso:"weight",atAbrev:"act.",
+  notaTec:"Number = how many profile actors use the technique. The bar shows the weight (sum of those actors' points).",verFluxo:"See in flows",
+  mFluxos:"Flows",mRede:"Network",fluxTit:"Technique flows",notaFluxo:"Each ribbon is one technique use by one actor. The tactic is the first one ATT&CK lists for the technique. Hover a block to highlight its flows.",
+  notaFluxoRw:"Each ribbon is a tool observed in a group's intrusions, by Ransomware Tool Matrix category. Use it as a hunting and blocking list, checking first for legitimate use of the tool in your organization.",rwTit:"Tools seen in ransomware intrusions",verRede:"See in the network",redeTit:"Shared technique network",tamanho:"Size",notaRede:"Only techniques used by at least two of the actors shown appear. Hover to see the links; click an actor to open its card.",
+  fonte:"Dataset",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · tools",origem:"Country of origin",vitimaFiltro:"Victims in",tGangue:"gangs",tAfiliado:"affiliates",tIab:"access brokers",tEstado:"state-linked",
+  tipoGrupo:"Group type",categoria:"Category",todas:"all",grupo:"Group",grupos:"groups",outrosAtores:"other actors",outrosPaises:"other countries",outrasTec:"other techniques",ator:"Actor",tatica:"Tactic",tecnica:"Technique",
+  subApt:"{a} actors with ATT&CK · {u} uses of the 18 most common techniques ({p}% of all uses)",semRw:"The ransomware dataset did not load.",outrosGrupos:"other groups",outrasFerr:"other tools",ferramenta:"Tool",subRw:"{g} groups · {u} uses of the 18 most common tools ({p}% of all uses) · Ransomware Tool Matrix, CC BY 4.0",
+  subRedeApt:"{a} actors · {t} shared techniques",subRedeRw:"{g} groups · {f} shared tools",
+  sub:"War room atlas",buscaPh:"Search actor or alias…",mMapa:"Map",mPerfil:"Threat profile",mRanking:"Ranking",mSobre:"About the data",motivos:"Motive",soAttack:"ATT&CK only",carregando:"Loading the atlas…",atoresPorPais:"actors per country",
   todosMot:"all",espionagem:"espionage",financeiro:"financial",sabotagem:"sabotage",hacktivismo:"hacktivism","influência":"influence",indefinido:"undefined",
   atores:"actors",comAttack:"with ATT&CK",aliases:"aliases",relatorios:"reports",topTec:"Most used techniques",topSet:"Target sectors",topVit:"Victim countries",motTit:"Motive",listaAt:"Actors",filtrar:"Filter this country's actors…",
   escolha:"Click a country on the map or use search.",escolhaPais:"Pick a country",nenhum:"No data.",fechar:"Close",descricao:"Description (original source in English)",alias:"Known names",forn:"Names by vendor",tec:"ATT&CK techniques",ferr:"Tools and malware",ops:"Operations",alvos:"Targets (spreadsheet)",vit:"Victim countries",set:"Sectors",rels:"Reports (APTnotes)",refs:"References",fontes:"Sources",conf:"Attribution confidence",verMitre:"View on ATT&CK",
@@ -206,25 +284,27 @@ const T={
   perfilTit:"Who targets organizations like yours?",perfilIntro:"Pick your organization's country and sector. The atlas ranks actors with past victims like that and sums the ATT&CK techniques they use. It is a threat modeling starting point, not a forecast.",paisVitima:"Organization country",setor:"Sector",incluirOrigem:"Include actors",todos:"all",estatais:"with attributed country",qualquer:"any",
   resAtores:"Relevant actors",resTec:"Techniques to cover first",porque:"why",vitimaPais:"victims in country",vitimaSetor:"target sector",temAttack:"ATT&CK profile",baixarNav:"Download Navigator layer",baixarTce:"Download TCE signals",semRes:"No actor matches. Try 'any' in one field.",
   rankTit:"Countries by number of actors",pais:"Country",
-  meta:(m)=>`${m.n_atores.toLocaleString("en-US")} actors · ${Object.keys(m.fontes).length} sources · ATT&CK v${m.attack_versao} · updated ${m.gerado_em}`,
+  meta:(m)=>`${m.n_atores.toLocaleString("en-US")} actors · ${Object.keys(m.fontes).length+1} sources · ATT&CK v${m.attack_versao} · updated ${m.gerado_em}`,
   semPais:"No attributed country",nato:"NATO / Five Eyes"}
 };
 let L=(()=>{try{return localStorage.getItem("apt4all-lang")||(navigator.language||"pt").slice(0,2)}catch(e){return"pt"}})();if(!T[L])L="pt";
 const t=k=>T[L][k]??k;
-let A=[],P={},G={},TEC={},SET={},MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
+let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
 const $=s=>document.querySelector(s);
 function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
 const NS="http://www.w3.org/2000/svg";
 function sv(tag,a={}){const e=document.createElementNS(NS,tag);for(const[x,v]of Object.entries(a))e.setAttribute(x,v);return e}
 const nomeSetor=k=>SET[k]?SET[k][L]:k;
-const nomePais=iso=>iso==="??"?t("semPais"):iso==="NATO"?t("nato"):(G[iso]?(L==="pt"?G[iso].nome_pt:G[iso].nome_en):(P[iso]?(L==="pt"?P[iso].nome_pt:P[iso].nome_en):iso));
+const nomePais=iso=>{if(iso==="??")return t("semPais");if(iso==="NATO")return t("nato");const g=G[iso]||NX[iso]||P[iso];return g?(L==="pt"?g.nome_pt:g.nome_en):iso};
 
 async function carrega(){
   const [a,p,m]=await Promise.all(["atores.json","paises.json","mapa.json"].map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.json()})));
-  A=a.atores;META=a.meta;P=p.paises;G=p.geo;TEC=p.tecnicas;SET=p.setores||{};MAPA=m;A.forEach(x=>porId[x.id]=x);
+  A=a.atores;META=a.meta;P=p.paises;G=p.geo;NX=p.nomes_extra||{};TEC=p.tecnicas;SET=p.setores||{};TT=p.tecnica_taticas||{};TAT=p.taticas||[];MAPA=m;A.forEach(x=>porId[x.id]=x);
+  try{RW=await fetch("ransomware.json").then(r=>r.ok?r.json():null)}catch(e){RW=null}
   aplicaIdioma();desenhaMapa();montaPerfil();ranking();sobre();
+  if(window.ResizeObserver)new ResizeObserver(()=>rotulos()).observe($("#mapa"));
   const h=decodeURIComponent(location.hash.slice(1));
-  const MODOS=["mapa","perfil","ranking","sobre"];
+  const MODOS=["mapa","perfil","fluxos","rede","ranking","sobre"];
   if(MODOS.includes(h)){escolhe("CN",true);vai(h)}else if(h&&porId[h])abreAtor(h);else if(h&&P[h.toUpperCase()])escolhe(h.toUpperCase());else escolhe("CN",true);
 }
 
@@ -239,14 +319,32 @@ function contagem(){
 }
 function cor(n,max){if(!n)return"var(--terra2)";const f=Math.log(n+1)/Math.log(max+1);return["var(--e1)","var(--e2)","var(--e3)","var(--e4)","var(--e5)"][Math.min(4,Math.floor(f*5))]}
 
+/* rótulos do mapa: tamanho fixo em pixels e sem sobreposição */
+let LARG=1,MAPA_W=10;
+function rotulos(){
+  const svg=$("#mapa svg");if(!svg)return;const esc=svg.getBoundingClientRect().width/LARG;if(!esc)return;
+  const g=svg.querySelector(".rotulos");g.replaceChildren();
+  const c=contagem(),fs=(window.innerWidth<600?10:12)/esc,passo=MAPA.passo,ocup=[];
+  const cand=Object.keys(c).filter(k=>G[k]&&c[k]>=2).sort((a,b)=>(b===sel)-(a===sel)||c[b]-c[a]);
+  for(const iso of cand){
+    const x=(G[iso].x+180)/passo*MAPA_W,y=(80-G[iso].y)/passo*MAPA_W;
+    const cod=iso.split("-").pop(),n=String(c[iso]);const w=(cod.length+n.length+1)*fs*0.64+fs*0.6,h=fs*1.25;
+    const b=[x-w/2,y-h*0.8,x+w/2,y+h*0.45];
+    if(ocup.some(o=>!(b[2]<o[0]||b[0]>o[2]||b[3]<o[1]||b[1]>o[3])))continue;
+    ocup.push(b);
+    const tx=sv("text",{x,y,class:"rotulo"+(iso===sel?" sel":""),"text-anchor":"middle","font-size":fs.toFixed(2)});
+    const a1=sv("tspan",{});a1.textContent=cod+" ";const a2=sv("tspan",{class:"n"});a2.textContent=n;tx.append(a1,a2);g.append(tx);
+  }
+}
+
 function desenhaMapa(){
   const W=10,H=W*Math.sqrt(3)/2,R=W/Math.sqrt(3)*0.94,passo=MAPA.passo;
   const cols=Math.max(...MAPA.hex.map(h=>h[0]))+1,rows=Math.max(...MAPA.hex.map(h=>h[1]))+1;
   const largura=cols*W+W,altura=rows*H+W;
   const svg=sv("svg",{viewBox:`0 0 ${largura} ${altura}`,role:"img","aria-label":"Mapa-múndi de atores de ameaça por país"});
   const gr=sv("g",{class:"grat"});
-  for(let lon=-150;lon<=150;lon+=30){const x=(lon+180)/passo*W;gr.append(sv("line",{x1:x,y1:0,x2:x,y2:altura}));const tx=sv("text",{x:x+3,y:altura-4});tx.textContent=(lon<0?-lon+"W":lon+"E");gr.append(tx)}
-  for(let lat=60;lat>=-40;lat-=20){const y=(80-lat)/passo*W;gr.append(sv("line",{x1:0,y1:y,x2:largura,y2:y}));const ty=sv("text",{x:3,y:y-3});ty.textContent=(lat<0?-lat+"S":lat+"N");gr.append(ty)}
+  for(let lon=-150;lon<=150;lon+=30){const x=(lon+180)/passo*W;gr.append(sv("line",{x1:x,y1:0,x2:x,y2:altura}))}
+  for(let lat=60;lat>=-40;lat-=20){const y=(80-lat)/passo*W;gr.append(sv("line",{x1:0,y1:y,x2:largura,y2:y}))}
   svg.append(gr);
   const grupos={};
   for(const[c,r,iso]of MAPA.hex){
@@ -256,16 +354,14 @@ function desenhaMapa(){
     grupos[iso].append(sv("polygon",{points:pts,class:"hex"}));
   }
   for(const g of Object.values(grupos)){g.addEventListener("click",()=>escolhe(g.dataset.iso));svg.append(g)}
-  const rot=sv("g");
-  for(const iso of Object.keys(P)){if(!G[iso]||P[iso].atores<5)continue;const x=(G[iso].x+180)/passo*W,y=(80-G[iso].y)/passo*W;const tx=sv("text",{x,y,class:"rotulo","text-anchor":"middle","data-iso":iso});tx.textContent=iso;rot.append(tx)}
-  svg.append(rot);
+  svg.append(sv("g",{class:"rotulos"}));LARG=largura;MAPA_W=W;
   const box=$("#mapa");box.replaceChildren(svg,el("div",{class:"varredura"}));
   pintaMapa();
 }
 function pintaMapa(){
   const c=contagem(),max=Math.max(1,...Object.entries(c).filter(([k])=>k!=="??"&&k!=="NATO").map(([,v])=>v));
   document.querySelectorAll("#mapa .pais").forEach(g=>{const iso=g.dataset.iso,n=c[iso]||0,f=cor(n,max);g.querySelectorAll("polygon").forEach(p=>p.setAttribute("fill",f));g.querySelector("title").textContent=`${nomePais(iso)}: ${n} ${t("atores")}`;g.classList.toggle("sel",iso===sel)});
-  $("#escalaTxt").textContent=`0 → ${max}`;
+  $("#escalaTxt").textContent=`0 → ${max}`;rotulos();
   $("#regioes").replaceChildren(...["NATO","??"].map(k=>el("button",{class:"reg",onclick:()=>escolhe(k)},nomePais(k)+" ",el("b",{},String(c[k]||0)))));
   $("#fmot").replaceChildren(...["todos","espionagem","financeiro","sabotagem","hacktivismo"].map(m=>el("button",{class:"chip","aria-pressed":motivo===m?"true":"false",onclick:()=>{motivo=m;pintaMapa();if(sel)dossie(sel)}},m==="todos"?t("todosMot"):t(m))));
 }
@@ -277,24 +373,39 @@ function escolhe(iso,silencioso){
   sel=iso;pintaMapa();dossie(iso);
   if(!silencioso)history.replaceState(null,"","#"+iso);
 }
+/* estatísticas sempre calculadas da lista filtrada, para os números baterem entre si */
+function conta(lista,f){const o={};lista.forEach(a=>f(a).forEach(k=>o[k]=(o[k]||0)+1));return Object.entries(o).sort((x,y)=>y[1]-x[1]||String(x[0]).localeCompare(String(y[0])))}
+function barrasDe(pares,rotulo,total,unidade){
+  return el("div",{class:"barras"},pares.map(([k,v])=>el("div",{class:"barra",title:`${rotulo(k)}: ${v} ${t("de")} ${total} ${unidade}`},
+    el("div",{class:"t"},el("i",{style:`width:${Math.max(2,100*v/Math.max(1,total)).toFixed(0)}%`}),el("span",{},rotulo(k))),
+    el("span",{class:"v"},el("b",{},String(v)),el("small",{},`/${total}`)))))
+}
+function chipsPaises(iso){
+  const c=contagem();const ks=Object.keys(c).filter(k=>c[k]>0).sort((a,b)=>c[b]-c[a]||nomePais(a).localeCompare(nomePais(b)));
+  if(iso&&!ks.includes(iso))ks.unshift(iso);
+  return el("div",{class:"chips rolo",role:"group","aria-label":t("escolhaPais")},ks.map(k=>el("button",{class:"chip","aria-pressed":k===iso?"true":"false",onclick:()=>escolhe(k)},nomePais(k)+" ",el("b",{},String(c[k]||0)))));
+}
 function dossie(iso){
   const p=P[iso];const box=$("#dossie");
-  const seletor=el("select",{class:"filtro","aria-label":t("escolhaPais"),onchange:e=>escolhe(e.target.value)},
-    Object.keys(P).sort((a,b)=>nomePais(a).localeCompare(nomePais(b))).map(k=>el("option",{value:k,selected:k===iso},`${nomePais(k)} (${P[k].atores})`)));
+  const seletor=chipsPaises(iso);
   if(!p){box.replaceChildren(el("div",{class:"dossie"},seletor,el("p",{},t("escolha"))));return}
   const lista=filtraAtores(iso).sort((a,b)=>(b.mitre?b.mitre.tecnicas.length:0)-(a.mitre?a.mitre.tecnicas.length:0)||a.nome.localeCompare(b.nome));
+  const comAtt=lista.filter(a=>a.mitre&&a.mitre.tecnicas.length);
+  const mot=conta(lista,a=>a.motivos),tec=conta(comAtt,a=>a.mitre.tecnicas),set=conta(lista,a=>a.setores),vit=conta(lista,a=>a.vitimas_iso||[]);
   const ul=el("div",{class:"lista",id:"listaAt"});
-  const pinta=f=>{ul.replaceChildren(...lista.filter(a=>!f||(a.nome+" "+a.aliases.join(" ")).toLowerCase().includes(f)).slice(0,400).map(a=>el("button",{class:"ator",onclick:()=>abreAtor(a.id)},el("span",{},el("b",{},a.nome),el("small",{},a.aliases.slice(0,6).join(" · "))),a.mitre?el("span",{class:"tag at"},`${a.mitre.id} · ${a.mitre.tecnicas.length}`):el("span",{class:"tag"},a.motivos.map(t).join(", ")))))};
+  const pinta=f=>{ul.replaceChildren(...lista.filter(a=>!f||(a.nome+" "+a.aliases.join(" ")).toLowerCase().includes(f)).map(a=>el("button",{class:"ator",onclick:()=>abreAtor(a.id)},el("span",{},el("b",{},a.nome),el("small",{},a.aliases.slice(0,6).join(" · "))),a.mitre?el("span",{class:"tag at"},`${a.mitre.id} · ${a.mitre.tecnicas.length}`):el("span",{class:"tag"},a.motivos.map(t).join(", ")))))};
   pinta("");
+  const bloco=(tit,conteudo)=>el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},tit),conteudo);
+  const filtroAtivo=motivo!=="todos"||soAtt;
   box.replaceChildren(el("div",{class:"dossie"},
     seletor,
-    el("div",{},el("div",{class:"iso"},iso==="??"||iso==="NATO"?"":"ISO "+iso),el("h2",{},nomePais(iso))),
-    el("div",{class:"nums"},[[lista.length,t("atores")],[lista.filter(a=>a.mitre).length,t("comAttack")],[lista.reduce((s,a)=>s+a.n_aliases,0),t("aliases")],[lista.reduce((s,a)=>s+a.relatorios.length,0),t("relatorios")]].map(([v,r])=>el("div",{},el("b",{},String(v)),el("span",{},r)))),
-    p.motivos.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("motTit")),barras(p.motivos,k=>t(k))):null,
-    p.top_tecnicas.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topTec")),barras(p.top_tecnicas.slice(0,8),k=>`${k} ${TEC[k]||""}`)):null,
-    p.top_setores.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topSet")),barras(p.top_setores.slice(0,6),nomeSetor)):null,
-    p.top_vitimas.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topVit")),barras(p.top_vitimas.slice(0,6),k=>k)):null,
-    el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},`${t("listaAt")} (${lista.length})`),el("input",{class:"filtro",type:"search",placeholder:t("filtrar"),oninput:e=>pinta(e.target.value.toLowerCase())}),ul)));
+    el("div",{},el("div",{class:"iso"},iso==="??"||iso==="NATO"?"":"ISO "+iso),el("h2",{},nomePais(iso)),filtroAtivo?el("div",{class:"filtrado"},t("filtrado")+": "+[motivo!=="todos"?t(motivo):null,soAtt?t("soAttack"):null].filter(Boolean).join(" · ")):null),
+    el("div",{class:"nums"},[[lista.length,t("atores")],[comAtt.length,t("comAttack")],[lista.reduce((s,a)=>s+a.n_aliases,0),t("aliases")],[lista.reduce((s,a)=>s+a.relatorios.length,0),t("relatorios")]].map(([v,r])=>el("div",{},el("b",{},v.toLocaleString(L==="pt"?"pt-BR":"en-US")),el("span",{},r)))),
+    mot.length?bloco(t("motTit")+" · "+t("nAtores"),barrasDe(mot,k=>t(k),lista.length,t("atores"))):null,
+    tec.length?bloco(t("topTec")+" · "+t("nAtoresAtt").replace("{n}",comAtt.length),barrasDe(tec.slice(0,8),k=>`${k} ${TEC[k]||""}`,comAtt.length,t("atores"))):null,
+    set.length?bloco(t("topSet"),barrasDe(set.slice(0,6),nomeSetor,lista.length,t("atores"))):null,
+    vit.length?bloco(t("topVit"),barrasDe(vit.slice(0,6),nomePais,lista.length,t("atores"))):null,
+    bloco(`${t("listaAt")} (${lista.length})`,el("div",{},el("input",{class:"filtro",type:"search",placeholder:t("filtrar"),"aria-label":t("filtrar"),oninput:e=>pinta(e.target.value.toLowerCase())}),ul))));
 }
 
 function abreAtor(id){
@@ -312,6 +423,8 @@ function abreAtor(id){
     sec(t("descricao"),a.descricao?el("p",{style:"margin:0"},a.descricao):null),
     sec(t("tec"),a.mitre&&a.mitre.tecnicas.length?el("div",{},el("div",{class:"nuvem"},a.mitre.tecnicas.map(x=>el("a",{href:`https://attack.mitre.org/techniques/${x.replace(".","/")}/`,target:"_blank",rel:"noopener",title:TEC[x]||x},x))),el("p",{style:"margin:8px 0 0"},el("a",{href:a.mitre.url,target:"_blank",rel:"noopener"},t("verMitre")+" ↗"))):null),
     sec(t("ferr"),a.ferramentas.length?el("div",{class:"nuvem"},a.ferramentas.map(x=>el("span",{},x))):null),
+    (()=>{const g=RW&&RW.grupos.find(x=>x.ator===a.id);if(!g)return null;const catDe={};RW.ferramentas.forEach(f=>catDe[f.nome]=f.cat);
+      return sec(t("rwTit")+` (${g.ferramentas.length})`,el("div",{},el("div",{class:"nuvem"},g.ferramentas.map(f=>el("span",{title:nomeCat(catDe[f])},el("i",{class:"bol",style:`background:${CORES_CAT[catDe[f]]||"#7C8A87"}`}),f))),el("p",{class:"nota"},el("a",{href:"#",onclick:e=>{e.preventDefault();fechaAtor();fx.fonte="rw";fx.tipo="";fx.grupo=g.nome;vai("rede")}},t("verRede")+" →"))))})(),
     sec(t("ops"),a.operacoes.length?el("div",{class:"nuvem"},a.operacoes.map(x=>el("span",{},x))):null),
     sec(t("alvos"),a.alvos?el("p",{style:"margin:0;font-size:14px"},a.alvos):null),
     sec(t("vit"),a.vitimas.length?el("div",{class:"nuvem"},a.vitimas.map(x=>el("span",{},x))):null),
@@ -334,43 +447,260 @@ busca.addEventListener("input",()=>{
 });
 document.addEventListener("click",e=>{if(!e.target.closest(".busca"))sug.hidden=true});
 
-/* perfil de ameaça */
-function montaPerfil(){
-  const vit={},set={};
-  A.forEach(a=>{a.vitimas.forEach(v=>vit[v]=(vit[v]||0)+1);a.setores.forEach(s=>set[s]=(set[s]||0)+1)});
-  const opt=(o,qual,rotulo)=>[el("option",{value:""},t("qualquer")),...Object.entries(o).filter(([,n])=>n>=2).sort((x,y)=>x[0].localeCompare(y[0])).map(([k,n])=>el("option",{value:k,selected:k===qual},`${rotulo?rotulo(k):k} (${n})`))];
-  $("#pPais").replaceChildren(...opt(vit,"Brazil"));$("#pSetor").replaceChildren(...opt(set,"",nomeSetor));
-  ["#pPais","#pSetor","#pOrigem"].forEach(s=>$(s).onchange=perfil);perfil();
+/* perfil de ameaça: filtros clicáveis */
+const pf={pais:"BR",setor:"",origem:"todos",q:"",todos:false};let VIT_CONTA=null;
+function grupoChips(id,rotulo,itens,valor,aoEscolher,extra){
+  return el("div",{class:"grupo"},el("div",{class:"rot"},rotulo),
+    el("div",{class:"chips",id,role:"group","aria-label":rotulo},itens.map(([v,txt,n])=>el("button",{class:"chip","data-v":v,"aria-pressed":v===valor?"true":"false",onclick:()=>aoEscolher(v===valor&&v!==""?"":v)},txt,n!=null?el("b",{}," "+n):null)),extra||null));
+}
+function montaPerfil(){desenhaFiltrosPerfil();perfil()}
+function desenhaFiltrosPerfil(){
+  const set={};A.forEach(a=>a.setores.forEach(s=>set[s]=(set[s]||0)+1));
+  if(!VIT_CONTA){VIT_CONTA={};const isos=new Set();A.forEach(a=>(a.vitimas_iso||[]).forEach(v=>isos.add(v)));isos.forEach(iso=>{VIT_CONTA[iso]=A.filter(a=>batePais(a,iso)).length})}
+  const vit=VIT_CONTA;
+  const q=pf.q.trim().toLowerCase();
+  let paises=Object.entries(vit).filter(([,n])=>n>=2).sort((x,y)=>y[1]-x[1]||nomePais(x[0]).localeCompare(nomePais(y[0])));
+  const total=paises.length;
+  if(q)paises=paises.filter(([k])=>nomePais(k).toLowerCase().includes(q)||k.toLowerCase()===q);
+  else if(!pf.todos)paises=paises.slice(0,18);
+  if(pf.pais&&!paises.some(([k])=>k===pf.pais))paises.unshift([pf.pais,vit[pf.pais]||0]);
+  const busca=el("span",{class:"mais"},
+    el("input",{class:"filtro mini",type:"search",id:"pBusca",value:pf.q,placeholder:t("outroPais"),"aria-label":t("outroPais"),oninput:e=>{pf.q=e.target.value;desenhaFiltrosPerfil();const i=$("#pBusca");i.focus();i.setSelectionRange(i.value.length,i.value.length)}}),
+    q?null:el("button",{class:"chip fant",onclick:()=>{pf.todos=!pf.todos;desenhaFiltrosPerfil()}},pf.todos?t("menos"):t("verTodos").replace("{n}",total)));
+  $("#perfilForm").replaceChildren(
+    grupoChips("pPais",t("paisVitima"),[["",t("qualquer"),null],...paises.map(([k,n])=>[k,nomePais(k),n])],pf.pais,v=>{pf.pais=v;desenhaFiltrosPerfil();perfil()},busca),
+    grupoChips("pSetor",t("setor"),[["",t("qualquer"),null],...Object.entries(set).filter(([,n])=>n>=2).sort((x,y)=>y[1]-x[1]).map(([k,n])=>[k,nomeSetor(k),n])],pf.setor,v=>{pf.setor=v;desenhaFiltrosPerfil();perfil()}),
+    grupoChips("pOrigem",t("incluirOrigem"),[["todos",t("todos"),null],["estado",t("estatais"),null]],pf.origem,v=>{pf.origem=v||"todos";desenhaFiltrosPerfil();perfil()}));
+}
+function batePais(a,iso){
+  if(!iso)return false;
+  if((a.vitimas_iso||[]).includes(iso))return true;
+  const g=G[iso]||NX[iso];const nomes=[g&&g.nome_en,iso==="US"?"United States":null,iso==="GB"?"United Kingdom":null,iso==="KR"?"South Korea":null].filter(n=>n&&n.length>3);
+  const alvos=(a.alvos||"").toLowerCase();return nomes.some(n=>alvos.includes(n.toLowerCase()));
 }
 function calculaPerfil(pais,setor,origem){
   const out=[];
   for(const a of A){
     if(origem==="estado"&&!a.pais)continue;
     let s=0;const por=[];
-    if(pais&&(a.vitimas.includes(pais)||(a.alvos||"").toLowerCase().includes(pais.toLowerCase()))){s+=2;por.push(t("vitimaPais"))}
-    if(setor&&a.setores.includes(setor)){s+=2;por.push(t("vitimaSetor"))}
+    if(pais&&batePais(a,pais)){s+=2;por.push("pais")}
+    if(setor&&a.setores.includes(setor)){s+=2;por.push("setor")}
     if((pais||setor)&&!s)continue;
-    if(a.mitre&&a.mitre.tecnicas.length){s+=1;por.push(t("temAttack"))}
+    if(a.mitre&&a.mitre.tecnicas.length){s+=1;por.push("att")}
     out.push({a,s,por});
   }
-  out.sort((x,y)=>y.s-x.s||(y.a.mitre?y.a.mitre.tecnicas.length:0)-(x.a.mitre?x.a.mitre.tecnicas.length:0));
-  const tec={};out.forEach(({a,s})=>{if(a.mitre)a.mitre.tecnicas.forEach(x=>tec[x]=(tec[x]||0)+s)});
-  return{atores:out,tecnicas:Object.entries(tec).sort((x,y)=>y[1]-x[1])};
+  out.sort((x,y)=>y.s-x.s||(y.a.mitre?y.a.mitre.tecnicas.length:0)-(x.a.mitre?x.a.mitre.tecnicas.length:0)||x.a.nome.localeCompare(y.a.nome));
+  const tec={},usam={};out.forEach(({a,s})=>{if(a.mitre)a.mitre.tecnicas.forEach(x=>{tec[x]=(tec[x]||0)+s;usam[x]=(usam[x]||0)+1})});
+  return{atores:out,tecnicas:Object.entries(tec).sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])),usam};
 }
 function baixa(nome,obj){const b=new Blob([JSON.stringify(obj,null,1)],{type:"application/json"});const u=URL.createObjectURL(b);const a=el("a",{href:u,download:nome});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}
 function perfil(){
-  const pais=$("#pPais").value,setor=$("#pSetor").value,origem=$("#pOrigem").value;
+  const {pais,setor,origem}=pf;
   const r=calculaPerfil(pais,setor,origem);const box=$("#perfilRes");
   if(!r.atores.length){box.replaceChildren(el("p",{class:"texto"},t("semRes")));return}
   const max=r.tecnicas.length?r.tecnicas[0][1]:1;
+  const nP=r.atores.filter(x=>x.por.includes("pais")).length,nS=r.atores.filter(x=>x.por.includes("setor")).length,nA=r.atores.filter(x=>x.por.includes("pais")&&x.por.includes("setor")).length;
+  const resumo=[pais?t("rPais").replace("{n}",nP).replace("{p}",nomePais(pais)):null,setor?t("rSetor").replace("{n}",nS).replace("{s}",nomeSetor(setor)):null,pais&&setor?t("rAmbos").replace("{n}",nA):null].filter(Boolean).join(" · ");
+  const sid="SIG-APT4ALL-"+(pais||"ALL").replace(/\W/g,"").toUpperCase()+"-"+(setor||"ALL").replace(/\W/g,"").toUpperCase();
   const nav=()=>({name:`apt4all · ${pais||"*"} · ${setor||"*"}`,versions:{attack:String(META.attack_versao||"19").split(".")[0],navigator:"5.1.0",layer:"4.5"},domain:"enterprise-attack",description:"Gerado pelo APT4ALL Atlas. Ponto de partida para modelagem de ameaças; revise antes de usar.",
-    techniques:r.tecnicas.slice(0,150).map(([id,v])=>({techniqueID:id,score:v,comment:`${r.atores.filter(x=>x.a.mitre&&x.a.mitre.tecnicas.includes(id)).length} atores`})),gradient:{colors:["#1E2A27","#F4BE3F"],minValue:0,maxValue:max}});
-  const tce=()=>({version:"0.5",provider:"apt4all",review_required:true,auto_accept:false,intelligence_signal_candidates:[{id:"SIG-APT4ALL-"+(pais||"ALL").replace(/\W/g,"").toUpperCase()+"-"+(setor||"ALL").replace(/\W/g,"").toUpperCase(),kind:"apt4all-threat-profile",status:"candidate",scope:setor?"sector":"global",target_ids:[],crown_jewel_ids:[],technique_ids:r.tecnicas.slice(0,60).map(x=>x[0]),adversary_ids:r.atores.slice(0,30).map(x=>x.a.mitre?x.a.mitre.id:"apt4all:"+x.a.id),severity:"medium",confidence:"low",source_reliability:"C",information_credibility:0.5,relevance:0.6,direction:"increase",observed_at:META.gerado_em,half_life_days:90,source_ref:"APT4ALL Atlas (MITRE ATT&CK, MISP Galaxy, APT Groups and Operations)",rationale:`Perfil de ameaça por vitimologia histórica: país=${pais||"qualquer"}, setor=${setor||"qualquer"}. Presença histórica não estabelece direcionamento atual contra a organização.`,review_required:true}]});
-  box.replaceChildren(el("div",{class:"grade2",style:"padding:0 14px 14px"},
+    techniques:r.tecnicas.slice(0,150).map(([id,v])=>({techniqueID:id,score:v,comment:`${r.usam[id]} atores`})),gradient:{colors:["#1E2A27","#F4BE3F"],minValue:0,maxValue:max}});
+  const tce=()=>({version:"0.5",provider:"apt4all",review_required:true,auto_accept:false,intelligence_signal_candidates:[{id:sid,kind:"apt4all-threat-profile",status:"candidate",scope:setor?"sector":"global",target_ids:[],crown_jewel_ids:[],technique_ids:r.tecnicas.slice(0,60).map(x=>x[0]),adversary_ids:r.atores.slice(0,30).map(x=>x.a.mitre?x.a.mitre.id:"apt4all:"+x.a.id),severity:"medium",confidence:"low",source_reliability:"C",information_credibility:0.5,relevance:0.6,direction:"increase",observed_at:META.gerado_em,half_life_days:90,source_ref:"APT4ALL Atlas (MITRE ATT&CK, MISP Galaxy, APT Groups and Operations)",rationale:`Perfil de ameaça por vitimologia histórica: país=${pais||"qualquer"}, setor=${setor||"qualquer"}. Presença histórica não estabelece direcionamento atual contra a organização.`,review_required:true}]});
+  const porque=x=>x.por.map(k=>k==="pais"?t("vitimaPais"):k==="setor"?t("vitimaSetor"):t("temAttack")).join(", ");
+  box.replaceChildren(
+    el("div",{class:"resumo"},el("b",{},`${r.atores.length} ${t("atores")}`),resumo?" · "+resumo:"",el("small",{},t("regraPontos"))),
+    el("div",{class:"grade2",style:"padding:0 14px 14px"},
     el("div",{},el("div",{class:"rot",style:"margin:6px 0"},`${t("resAtores")} (${r.atores.length})`),
-      el("div",{class:"lista",style:"max-height:520px"},r.atores.slice(0,200).map(({a,s,por})=>el("button",{class:"ator",onclick:()=>abreAtor(a.id)},el("span",{},el("b",{},a.nome),el("small",{},`${a.pais?nomePais(a.pais):t("semPais")} · ${t("porque")}: ${por.join(", ")}`)),el("span",{class:"tag at"},String(s)))))),
-    el("div",{},el("div",{class:"rot",style:"margin:6px 0"},t("resTec")),barras(r.tecnicas.slice(0,15),k=>`${k} ${TEC[k]||""}`,max),
-      el("div",{style:"display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"},el("button",{class:"btn",onclick:()=>baixa(`apt4all-navigator-${pais||"all"}-${setor||"all"}.json`,nav())},t("baixarNav")),el("button",{class:"btn fant",onclick:()=>baixa(`apt4all-tce-sinais-${pais||"all"}.json`,tce())},t("baixarTce"))))));
+      el("div",{class:"lista",style:"max-height:520px"},r.atores.slice(0,200).map(x=>el("button",{class:"ator",onclick:()=>abreAtor(x.a.id)},el("span",{},el("b",{},x.a.nome),el("small",{},`${x.a.pais?nomePais(x.a.pais):t("semPais")} · ${t("porque")}: ${porque(x)}`)),el("span",{class:"tag at",title:t("pontos")},String(x.s)))))),
+    el("div",{},el("div",{class:"rot",style:"margin:6px 0"},t("resTec")),
+      el("div",{class:"barras"},r.tecnicas.slice(0,15).map(([k,v])=>el("div",{class:"barra",title:`${k} ${TEC[k]||""}: ${r.usam[k]} ${t("atores")} · ${t("peso")} ${v}`},el("div",{class:"t"},el("i",{style:`width:${(100*v/max).toFixed(0)}%`}),el("span",{},`${k} ${TEC[k]||""}`)),el("span",{class:"v"},el("b",{},String(r.usam[k])),el("small",{},` ${t("atAbrev")}`))))),
+      el("p",{class:"nota"},t("notaTec")),
+      el("div",{style:"display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"},el("button",{class:"btn",onclick:()=>baixa(`apt4all-navigator-${pais||"all"}-${setor||"all"}.json`,nav())},t("baixarNav")),el("button",{class:"btn fant",onclick:()=>baixa(`apt4all-tce-sinais-${pais||"all"}.json`,tce())},t("baixarTce")),el("button",{class:"btn fant",onclick:()=>{fx.fonte="apt";fx.pais="";fx.motivo="todos";fx.setor=setor;fx.vitima=pais;vai("fluxos")}},t("verFluxo"))))));
+}
+
+/* ===== cores ===== */
+const CORES_CAT={rmm:"#6FB2FF",credenciais:"#F4BE3F",evasao:"#FF7A63",descoberta:"#5EE6C4",rede:"#B48CFF",offsec:"#FF6FAE",lolbas:"#A5D86A",exfiltracao:"#F0913C"};
+const CORES_MOT={espionagem:"#6FB2FF",financeiro:"#F4BE3F",sabotagem:"#FF7A63",hacktivismo:"#B48CFF","influência":"#FF6FAE",indefinido:"#7C8A87"};
+function corTatica(id){const i=Math.max(0,TAT.findIndex(x=>x.id===id));const n=Math.max(1,TAT.length-1);const h=188-(183*i/n);return `hsl(${h.toFixed(0)} 72% 62%)`}
+const tatica1=tec=>(TT[tec]||[])[0]||"";
+const nomeTat=id=>{const x=TAT.find(z=>z.id===id);return x?x[L]:id};
+const nomeCat=id=>{const x=(RW&&RW.categorias||[]).find(z=>z.id===id);return x?x[L]:id};
+const curto=(s,n)=>s.length>n?s.slice(0,n-1)+"…":s;
+
+/* ===== estado dos filtros de Fluxos e Rede ===== */
+const fx={fonte:"apt",pais:"",motivo:"todos",setor:"",vitima:"",tipo:"",cat:"",grupo:"",nRede:10};
+function chipsLinha(rotulo,itens,valor,aoEscolher){return el("div",{class:"grupo"},el("div",{class:"rot"},rotulo),el("div",{class:"chips",role:"group","aria-label":rotulo},itens.map(([v,txt,n,cor])=>el("button",{class:"chip","aria-pressed":v===valor?"true":"false",onclick:()=>aoEscolher(v===valor?"":v)},cor?el("i",{class:"bol",style:`background:${cor}`}):null,txt,n!=null?el("b",{}," "+n):null))))}
+function filtrosFluxo(alvo,redesenha){
+  const box=$(alvo);const fonte=chipsLinha(t("fonte"),[["apt",t("fonteApt")],["rw",t("fonteRw")]],fx.fonte,v=>{fx.fonte=v||"apt";redesenha()});
+  if(fx.fonte==="apt"){
+    const c={};A.forEach(a=>{if(a.mitre&&a.mitre.tecnicas.length){const k=a.pais||"??";c[k]=(c[k]||0)+1}});
+    const paises=Object.entries(c).sort((x,y)=>y[1]-x[1]).slice(0,14);
+    box.replaceChildren(...[fonte,
+      chipsLinha(t("origem"),[["",t("todos")],...paises.map(([k,n])=>[k,nomePais(k),n])],fx.pais,v=>{fx.pais=v;redesenha()}),
+      chipsLinha(t("motivos"),["todos","espionagem","financeiro","sabotagem","hacktivismo"].map(m=>[m,m==="todos"?t("todosMot"):t(m),null,m==="todos"?null:CORES_MOT[m]]),fx.motivo,v=>{fx.motivo=v||"todos";redesenha()}),
+      chipsLinha(t("setor"),[["",t("qualquer")],...Object.keys(SET).map(k=>[k,nomeSetor(k)])],fx.setor,v=>{fx.setor=v;redesenha()}),
+      fx.vitima?el("div",{class:"grupo"},el("div",{class:"rot"},t("vitimaFiltro")),el("div",{class:"chips"},el("button",{class:"chip","aria-pressed":"true",onclick:()=>{fx.vitima="";redesenha()}},nomePais(fx.vitima)+" ✕"))):null].filter(Boolean));
+  }else{
+    const tipos=[["",t("todos")],["gangue",t("tGangue")],["afiliado",t("tAfiliado")],["iab",t("tIab")],["estado",t("tEstado")]];
+    const grupos=(RW?RW.grupos:[]).filter(g=>!fx.tipo||g.tipo===fx.tipo).slice(0,18);
+    box.replaceChildren(fonte,
+      chipsLinha(t("tipoGrupo"),tipos,fx.tipo,v=>{fx.tipo=v;fx.grupo="";redesenha()}),
+      chipsLinha(t("categoria"),[["",t("todas")],...(RW?RW.categorias:[]).map(c=>[c.id,c[L],null,CORES_CAT[c.id]])],fx.cat,v=>{fx.cat=v;redesenha()}),
+      chipsLinha(t("grupo"),[["",t("todos")],...grupos.map(g=>[g.nome,g.nome,g.ferramentas.length])],fx.grupo,v=>{fx.grupo=v;redesenha()}));
+  }
+}
+function atoresFiltrados(){return A.filter(a=>a.mitre&&a.mitre.tecnicas.length&&(!fx.pais||(a.pais||"??")===fx.pais)&&(fx.motivo==="todos"||a.motivos.includes(fx.motivo))&&(!fx.setor||a.setores.includes(fx.setor))&&(!fx.vitima||batePais(a,fx.vitima)))}
+function gruposRwFiltrados(){return (RW?RW.grupos:[]).filter(g=>(!fx.tipo||g.tipo===fx.tipo)&&(!fx.grupo||g.nome===fx.grupo))}
+
+/* ===== Sankey (SVG, sem bibliotecas) ===== */
+function topComOutros(cont,n,outros){const ord=Object.entries(cont).sort((a,b)=>b[1]-a[1]);const top=new Set(ord.slice(0,n).map(x=>x[0]));return k=>top.has(k)?k:outros}
+function montaSankey(unidades,colunas){
+  // unidades: arrays [c0,c1,c2,c3] (rótulos por coluna); colunas: [{titulo,cor(k)}]
+  const nos=new Map(),lig=new Map();
+  for(const u of unidades){for(let i=0;i<u.length;i++){const id=i+"|"+u[i];if(!nos.has(id))nos.set(id,{id,col:i,nome:u[i],v:0});nos.get(id).v++;if(i){const k=(i-1)+"|"+u[i-1]+"→"+id;lig.set(k,(lig.get(k)||0)+1)}}}
+  return{nos:[...nos.values()],links:[...lig.entries()].map(([k,v])=>{const[s,tg]=k.split("→");return{s,t:tg,v}}),colunas};
+}
+function desenhaSankey(alvo,dados,{outros=[]}={}){
+  const box=$(alvo);const {nos,links,colunas}=dados;
+  if(!nos.length){box.replaceChildren(el("p",{class:"texto"},t("semRes")));return}
+  const nc=colunas.length,W=1180,nodeW=14,gap=7,top=34;
+  const porCol=[...Array(nc)].map((_,i)=>nos.filter(n=>n.col===i).sort((a,b)=>(outros.includes(a.nome))-(outros.includes(b.nome))||b.v-a.v));
+  const maxN=Math.max(...porCol.map(c=>c.length));const H=Math.max(520,Math.min(1200,maxN*36+top+20));
+  const tot=porCol[0].reduce((s,n)=>s+n.v,0);
+  const k=Math.min(...porCol.map(c=>(H-top-12-gap*(c.length-1))/c.reduce((s,n)=>s+n.v,0)));
+  const xs=i=>12+i*((W-24-nodeW-200)/(nc-1))+(i===nc-1?0:0);
+  const porId={};
+  porCol.forEach((c,i)=>{const alt=c.reduce((s,n)=>s+Math.max(2,n.v*k),0)+gap*(c.length-1);let y=top+(H-top-alt)/2;c.forEach(n=>{n.x=xs(i);n.y=y;n.h=Math.max(2,n.v*k);n.so=0;n.to=0;y+=n.h+gap;porId[n.id]=n})});
+  links.forEach(l=>{l.S=porId[l.s];l.T=porId[l.t]});
+  links.sort((a,b)=>a.S.y-b.S.y||a.T.y-b.T.y);
+  const porAlvo=[...links].sort((a,b)=>a.T.y-b.T.y||a.S.y-b.S.y);
+  links.forEach(l=>{l.h=l.v*k;l.sy=l.S.y+l.S.so;l.S.so+=l.h});
+  porAlvo.forEach(l=>{l.ty=l.T.y+l.T.to;l.T.to+=l.h});
+  const svg=sv("svg",{viewBox:`0 0 ${W+190} ${H}`,class:"sankey",role:"img","aria-label":colunas.map(c=>c.titulo).join(" → ")});
+  const defs=sv("defs");svg.append(defs);
+  colunas.forEach((c,i)=>{const tx=sv("text",{x:xs(i)+(i===nc-1?nodeW+8:0),y:16,class:"coltit"});tx.textContent=c.titulo.toUpperCase();svg.append(tx)});
+  const gl=sv("g",{class:"fluxos"}),gn=sv("g");svg.append(gl,gn);
+  const cor=n=>colunas[n.col].cor(n.nome);
+  links.forEach((l,i)=>{
+    const gid="gr"+alvo.replace(/\W/g,"")+i;const gr=sv("linearGradient",{id:gid,x1:"0",x2:"1",y1:"0",y2:"0"});
+    gr.append(sv("stop",{offset:"0","stop-color":cor(l.S)}),sv("stop",{offset:"1","stop-color":cor(l.T)}));defs.append(gr);
+    const x0=l.S.x+nodeW,x1=l.T.x,xm=(x0+x1)/2,a=l.sy,b=l.sy+l.h,c=l.ty,d=l.ty+l.h;
+    const p=sv("path",{d:`M${x0},${a}C${xm},${a} ${xm},${c} ${x1},${c}L${x1},${d}C${xm},${d} ${xm},${b} ${x0},${b}Z`,fill:`url(#${gid})`,class:"lk","data-s":l.s,"data-t":l.t});
+    const tt=sv("title");tt.textContent=`${l.S.nome} → ${l.T.nome}: ${l.v}`;p.append(tt);gl.append(p);
+  });
+  porCol.flat().forEach(n=>{
+    const g=sv("g",{class:"no","data-id":n.id});
+    g.append(sv("rect",{x:n.x,y:n.y,width:nodeW,height:n.h,fill:cor(n),rx:2}));
+    if(n.h>=9||porCol[n.col].length<=18){const ult=n.col===nc-1;const tx=sv("text",{x:ult?n.x+nodeW+8:n.x+nodeW+7,y:n.y+n.h/2+4,class:"nolab"});
+      const a1=sv("tspan",{});a1.textContent=curto(n.rot||n.nome,ult?34:26)+" ";const a2=sv("tspan",{class:"n"});a2.textContent=n.v.toLocaleString(L==="pt"?"pt-BR":"en-US");tx.append(a1,a2);g.append(tx)}
+    const tt=sv("title");tt.textContent=`${n.rot||n.nome}: ${n.v} (${(100*n.v/tot).toFixed(1)}%)`;g.append(tt);
+    g.addEventListener("mouseenter",()=>{svg.classList.add("foco");gl.querySelectorAll(".lk").forEach(p=>p.classList.toggle("on",p.dataset.s===n.id||p.dataset.t===n.id))});
+    g.addEventListener("mouseleave",()=>{svg.classList.remove("foco");gl.querySelectorAll(".lk.on").forEach(p=>p.classList.remove("on"))});
+    gn.append(g);
+  });
+  box.replaceChildren(el("div",{class:"rolagem"},svg));
+}
+function fluxos(){
+  filtrosFluxo("#fluxoFiltros",fluxos);$("#notaFluxo").textContent=fx.fonte==="apt"?t("notaFluxo"):t("notaFluxoRw");
+  const sub=$("#fluxoSub");
+  if(fx.fonte==="apt"){
+    const at=atoresFiltrados();
+    const porActor=!!fx.pais;const c0={},cT={};
+    at.forEach(a=>{const k=porActor?a.nome:(a.pais||"??");c0[k]=(c0[k]||0)+a.mitre.tecnicas.length;a.mitre.tecnicas.forEach(x=>cT[x]=(cT[x]||0)+1)});
+    const OUT0=porActor?t("outrosAtores"):t("outrosPaises"),OUTT=t("outrasTec");
+    const topT=new Set(Object.entries(cT).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,18).map(x=>x[0]));
+    const c0b={};at.forEach(a=>{const k=porActor?a.nome:(a.pais||"??");c0b[k]=(c0b[k]||0)+a.mitre.tecnicas.filter(x=>topT.has(x)).length});
+    const f0=topComOutros(c0b,porActor?10:9,OUT0);let totalUsos=0;
+    const un=[];at.forEach(a=>{const k0=f0(porActor?a.nome:(a.pais||"??"));const m=fx.motivo!=="todos"?fx.motivo:(a.motivos[0]||"indefinido");a.mitre.tecnicas.forEach(x=>{totalUsos++;if(topT.has(x))un.push([k0,m,tatica1(x)||"?",x])})});
+    const d=montaSankey(un,[{titulo:porActor?t("ator"):t("origem"),cor:k=>k===OUT0?"#55625F":porActor?"#FF8A6B":"#F4BE3F"},{titulo:t("motivos"),cor:k=>CORES_MOT[k]||"#7C8A87"},{titulo:t("tatica"),cor:corTatica},{titulo:t("tecnica"),cor:k=>k===OUTT?"#55625F":corTatica(tatica1(k))}]);
+    d.nos.forEach(n=>{n.rot=n.col===0&&!porActor&&n.nome!==OUT0?nomePais(n.nome):n.col===1?t(n.nome):n.col===2?nomeTat(n.nome):n.col===3&&n.nome!==OUTT?`${n.nome} ${TEC[n.nome]||""}`:n.nome});
+    sub.textContent=t("subApt").replace("{a}",at.length).replace("{u}",un.length.toLocaleString(L==="pt"?"pt-BR":"en-US")).replace("{p}",totalUsos?Math.round(100*un.length/totalUsos):0);
+    desenhaSankey("#sankey",d,{outros:[OUT0,OUTT]});
+  }else{
+    if(!RW){$("#sankey").replaceChildren(el("p",{class:"texto"},t("semRw")));return}
+    const gs=gruposRwFiltrados();const cG={},cF={};const catDe={};RW.ferramentas.forEach(f=>catDe[f.nome]=f.cat);
+    const usos=[];gs.forEach(g=>g.ferramentas.forEach(f=>{if(fx.cat&&catDe[f]!==fx.cat)return;usos.push([g.nome,catDe[f],f]);cG[g.nome]=(cG[g.nome]||0)+1;cF[f]=(cF[f]||0)+1}));
+    const OG=t("outrosGrupos"),OF=t("outrasFerr");
+    const topF=new Set(Object.entries(cF).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,18).map(x=>x[0]));
+    const cG2={};usos.forEach(([g,,f])=>{if(topF.has(f))cG2[g]=(cG2[g]||0)+1});
+    const fG=topComOutros(cG2,12,OG);
+    const un=usos.filter(u=>topF.has(u[2])).map(([g,c,f])=>[fG(g),c,f]);
+    const d=montaSankey(un,[{titulo:t("grupo"),cor:k=>k===OG?"#55625F":"#FF8A6B"},{titulo:t("categoria"),cor:k=>CORES_CAT[k]||"#7C8A87"},{titulo:t("ferramenta"),cor:k=>k===OF?"#55625F":(CORES_CAT[catDe[k]]||"#7C8A87")}]);
+    d.nos.forEach(n=>{n.rot=n.col===1?nomeCat(n.nome):n.nome});
+    sub.textContent=t("subRw").replace("{g}",gs.length).replace("{u}",un.length).replace("{p}",usos.length?Math.round(100*un.length/usos.length):0);
+    desenhaSankey("#sankey",d,{outros:[OG,OF]});
+  }
+}
+
+/* ===== Rede (grafo de força, leve e determinístico) ===== */
+function semente(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+function forca(nos,arestas,W,H){
+  // atores fixos numa elipse; técnicas/ferramentas se acomodam por atração aos atores e repulsão entre si
+  const rnd=semente(7),fixos=nos.filter(x=>x.tipo==="a"),livres=nos.filter(x=>x.tipo!=="a");
+  const rx=W*0.35,ry=H*0.38,cx=W/2,cy=H/2;
+  fixos.forEach((x,i)=>{const ang=-Math.PI/2+2*Math.PI*i/fixos.length;x.x=cx+Math.cos(ang)*rx;x.y=cy+Math.sin(ang)*ry;x.ang=ang});
+  const viz=new Map(livres.map(x=>[x.id,[]]));arestas.forEach(e=>{const a=nos.find(n=>n.id===e.s);if(viz.has(e.t))viz.get(e.t).push(a)});
+  livres.forEach(x=>{const v=viz.get(x.id);x.x=v.reduce((s,a)=>s+a.x,0)/v.length+(rnd()-.5)*40;x.y=v.reduce((s,a)=>s+a.y,0)/v.length+(rnd()-.5)*40});
+  const it=320,kk=Math.sqrt(W*H/Math.max(1,livres.length))*0.30;
+  for(let k=0;k<it;k++){
+    const temp=(W/14)*(1-k/it)+0.5;
+    for(const x of livres){let dx=0,dy=0;
+      for(const y of livres){if(y===x)continue;let vx=x.x-y.x,vy=x.y-y.y;const d=Math.hypot(vx,vy)||0.01;const f=kk*kk/d;dx+=vx/d*f;dy+=vy/d*f}
+      for(const a of fixos){let vx=x.x-a.x,vy=x.y-a.y;const d=Math.hypot(vx,vy)||0.01;if(d<70){dx+=vx/d*(70-d);dy+=vy/d*(70-d)}}
+      const v=viz.get(x.id);const mx=v.reduce((s,a)=>s+a.x,0)/v.length,my=v.reduce((s,a)=>s+a.y,0)/v.length;
+      const pull=0.5*(cx+(mx-cx)*0.78)+0.5*cx-x.x,pully=0.5*(cy+(my-cy)*0.78)+0.5*cy-x.y;dx+=pull*0.9;dy+=pully*0.9;
+      const d=Math.hypot(dx,dy)||1;const m=Math.min(d,temp);x.x=Math.min(W-70,Math.max(70,x.x+dx/d*m));x.y=Math.min(H-40,Math.max(40,x.y+dy/d*m))}
+  }
+}
+function rede(){
+  filtrosFluxo("#redeFiltros",rede);
+  const tam=$("#redeTam");tam.replaceChildren(...[8,12,16].map(n=>el("button",{class:"chip","aria-pressed":fx.nRede===n?"true":"false",onclick:()=>{fx.nRede=n;rede()}},`${n} ${fx.fonte==="apt"?t("atores"):t("grupos")}`)));
+  let nos=[],arestas=[],sub;
+  if(fx.fonte==="apt"){
+    const at=atoresFiltrados().sort((a,b)=>b.mitre.tecnicas.length-a.mitre.tecnicas.length||a.nome.localeCompare(b.nome)).slice(0,fx.nRede);
+    const cnt={};at.forEach(a=>a.mitre.tecnicas.forEach(x=>cnt[x]=(cnt[x]||0)+1));
+    const tecs=Object.entries(cnt).filter(([,n])=>n>=2).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,34).map(x=>x[0]);const ts=new Set(tecs);
+    nos=[...at.map(a=>({id:"a:"+a.id,tipo:"a",nome:a.nome,ref:a.id,cor:"#FF8A6B",grau:0})),...tecs.map(x=>({id:"t:"+x,tipo:"t",nome:x,desc:TEC[x]||"",cor:corTatica(tatica1(x)),grupo:tatica1(x),grau:0}))];
+    at.forEach(a=>a.mitre.tecnicas.forEach(x=>{if(ts.has(x))arestas.push({s:"a:"+a.id,t:"t:"+x})}));
+    sub=t("subRedeApt").replace("{a}",at.length).replace("{t}",tecs.length);
+  }else{
+    if(!RW){$("#grafo").replaceChildren(el("p",{class:"texto"},t("semRw")));return}
+    const catDe={};RW.ferramentas.forEach(f=>catDe[f.nome]=f.cat);
+    const gs=gruposRwFiltrados().slice(0,fx.grupo?1:fx.nRede);
+    const cnt={};gs.forEach(g=>g.ferramentas.forEach(f=>{if(!fx.cat||catDe[f]===fx.cat)cnt[f]=(cnt[f]||0)+1}));
+    const min=gs.length>1?2:1;const fs=Object.entries(cnt).filter(([,n])=>n>=min).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,34).map(x=>x[0]);const fset=new Set(fs);
+    nos=[...gs.map(g=>({id:"g:"+g.nome,tipo:"a",nome:g.nome,ref:g.ator,cor:"#FF8A6B",grau:0})),...fs.map(f=>({id:"f:"+f,tipo:"f",nome:f,desc:nomeCat(catDe[f]),cor:CORES_CAT[catDe[f]]||"#7C8A87",grupo:catDe[f],grau:0}))];
+    gs.forEach(g=>g.ferramentas.forEach(f=>{if(fset.has(f))arestas.push({s:"g:"+g.nome,t:"f:"+f})}));
+    sub=t("subRedeRw").replace("{g}",gs.length).replace("{f}",fs.length);
+  }
+  $("#redeSub").textContent=sub;
+  const box=$("#grafo");
+  if(!nos.length||!arestas.length){box.replaceChildren(el("p",{class:"texto"},t("semRes")));$("#redeLeg").replaceChildren();return}
+  const id2=new Map(nos.map(x=>[x.id,x]));arestas.forEach(e=>{id2.get(e.s).grau++;id2.get(e.t).grau++});
+  const W=1100,H=720;forca(nos,arestas,W,H);
+  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,class:"grafo",role:"img","aria-label":sub});
+  const defs=sv("defs");defs.innerHTML=`<radialGradient id="gAtor" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFC2A8"/><stop offset=".55" stop-color="#FF7A63"/><stop offset="1" stop-color="#B8432F"/></radialGradient><filter id="brilho" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="pontos" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1E2C30"/></pattern>`;
+  svg.append(defs,sv("rect",{width:W,height:H,fill:"url(#pontos)"}));
+  const ga=sv("g",{class:"arestas"}),gn=sv("g");svg.append(ga,gn);
+  const viz=new Map(nos.map(x=>[x.id,new Set([x.id])]));arestas.forEach(e=>{viz.get(e.s).add(e.t);viz.get(e.t).add(e.s)});
+  arestas.forEach(e=>{const a=id2.get(e.s),b=id2.get(e.t);const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y;const cx=mx-dy*0.12,cy=my+dx*0.12;
+    ga.append(sv("path",{d:`M${a.x.toFixed(1)},${a.y.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${b.x.toFixed(1)},${b.y.toFixed(1)}`,stroke:b.cor,class:"ar","data-a":e.s,"data-b":e.t}))});
+  nos.sort((a,b)=>(a.tipo==="a")-(b.tipo==="a")).forEach(x=>{
+    const g=sv("g",{class:"nd "+(x.tipo==="a"?"ator":"tec"),"data-id":x.id,tabindex:"0"});
+    if(x.tipo==="a"){const r=15+Math.sqrt(x.grau)*2.2;g.append(sv("circle",{cx:x.x,cy:x.y,r:r+5,class:"halo"}),sv("circle",{cx:x.x,cy:x.y,r,fill:"url(#gAtor)",class:"bola"}));
+      const cs=Math.cos(x.ang||0),sn=Math.sin(x.ang||0);const lx=x.x+cs*(r+10),ly=x.y+sn*(r+10)+(sn>0.3?12:sn<-0.3?-4:4);
+      const tx=sv("text",{x:lx,y:ly,"text-anchor":cs>0.35?"start":cs<-0.35?"end":"middle",class:"lbA"});tx.textContent=curto(x.nome,22);g.append(tx)}
+    else{const r=4.5+Math.sqrt(x.grau)*1.9;g.append(sv("circle",{cx:x.x,cy:x.y,r,fill:x.cor,class:"bola"}));
+      const tx=sv("text",{x:x.x+r+4,y:x.y+4,class:"lbT"});tx.textContent=curto(x.nome,24);g.append(tx)}
+    const tt=sv("title");tt.textContent=x.tipo==="a"?`${x.nome} · ${x.grau}`:`${x.nome}${x.desc?" · "+x.desc:""} · ${x.grau} ${fx.fonte==="apt"?t("atores"):t("grupos")}`;g.append(tt);
+    const foco=on=>{svg.classList.toggle("foco",on);const vz=viz.get(x.id);gn.querySelectorAll(".nd").forEach(n=>n.classList.toggle("on",on&&vz.has(n.dataset.id)));ga.querySelectorAll(".ar").forEach(p=>p.classList.toggle("on",on&&(p.dataset.a===x.id||p.dataset.b===x.id)))};
+    g.addEventListener("mouseenter",()=>foco(true));g.addEventListener("mouseleave",()=>foco(false));g.addEventListener("focus",()=>foco(true));g.addEventListener("blur",()=>foco(false));
+    g.addEventListener("click",()=>{if(x.tipo==="a"&&x.ref&&porId[x.ref])abreAtor(x.ref);else if(x.tipo==="t")window.open(`https://attack.mitre.org/techniques/${x.nome.replace(".","/")}/`,"_blank","noopener")});
+    gn.append(g);
+  });
+  box.replaceChildren(el("div",{class:"rolagem"},svg));
+  const usados=[...new Set(nos.filter(x=>x.tipo!=="a").map(x=>x.grupo))];
+  $("#redeLeg").replaceChildren(el("span",{class:"lg"},el("i",{class:"bol",style:"background:#FF7A63"}),fx.fonte==="apt"?t("ator"):t("grupo")),
+    ...(fx.fonte==="apt"?TAT.filter(x=>usados.includes(x.id)).map(x=>el("span",{class:"lg"},el("i",{class:"bol",style:`background:${corTatica(x.id)}`}),x[L])):(RW?RW.categorias:[]).filter(c=>usados.includes(c.id)).map(c=>el("span",{class:"lg"},el("i",{class:"bol",style:`background:${CORES_CAT[c.id]}`}),c[L]))));
 }
 
 /* ranking */
@@ -389,13 +719,14 @@ function sobre(){
   const f=META.fontes||{};
   $("#sobre").replaceChildren(
     el("h3",{},pt?"De onde vêm os dados":"Where the data comes from"),
-    el("p",{},pt?`O atlas junta ${META.n_registros} registros de quatro fontes abertas e resolve aliases até chegar a ${META.n_atores} atores. Os relatórios vêm do índice APTnotes.`:`The atlas merges ${META.n_registros} records from four open sources and resolves aliases down to ${META.n_atores} actors. Reports come from the APTnotes index.`),
+    el("p",{},pt?`O atlas junta ${META.n_registros} registros de quatro fontes abertas (mais o índice de relatórios APTnotes) e resolve aliases até chegar a ${META.n_atores} atores. Os relatórios vêm do índice APTnotes.`:`The atlas merges ${META.n_registros} records from four open sources (plus the APTnotes report index) and resolves aliases down to ${META.n_atores} actors. Reports come from the APTnotes index.`),
     el("ul",{},
       el("li",{},el("a",{href:"https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU",target:"_blank"},"APT Groups and Operations")," — CC BY 4.0 · "+(f.planilha||0)),
       el("li",{},el("a",{href:"https://github.com/MISP/misp-galaxy",target:"_blank"},"MISP Galaxy (threat-actor)")," — CC0 1.0 / BSD-2 · "+(f.misp||0)),
       el("li",{},el("a",{href:"https://attack.mitre.org/",target:"_blank"},"MITRE ATT&CK®")," v"+META.attack_versao+" — © The MITRE Corporation · "+(f.mitre||0)),
       el("li",{},el("a",{href:"https://github.com/StrangerealIntel/EternalLiberty",target:"_blank"},"EternalLiberty")," · "+(f.eternalliberty||0)+(pt?" (referência cruzada de nomes)":" (name cross-reference)")),
       el("li",{},el("a",{href:"https://github.com/aptnotes/data",target:"_blank"},"APTnotes"),pt?" (títulos e links de relatórios)":" (report titles and links)"),
+      el("li",{},el("a",{href:"https://github.com/BushidoUK/Ransomware-Tool-Matrix",target:"_blank"},"Ransomware Tool Matrix")," — CC BY 4.0 · "+(RW?RW.meta.n_grupos+(pt?" grupos, ":" groups, ")+RW.meta.n_ferramentas+(pt?" ferramentas":" tools"):"")),
       el("li",{},el("a",{href:"https://www.naturalearthdata.com/",target:"_blank"},"Natural Earth"),pt?" (contornos dos países, domínio público)":" (country shapes, public domain)")),
     el("h3",{},pt?"Como os aliases são resolvidos":"How aliases are resolved"),
     el("p",{},pt?"Cada registro se liga a um ator já existente pelo ID da MITRE, pelo nome principal ou por um alias que aponte para um único ator. Ordem de confiança: ATT&CK, planilha, MISP, EternalLiberty. Aliases disputados por dois atores deixam de ligar registros, para não fundir grupos guarda-chuva (como Lazarus) com seus subgrupos.":"Each record joins an existing actor by MITRE ID, by main name, or by an alias that points to a single actor. Trust order: ATT&CK, spreadsheet, MISP, EternalLiberty. Aliases claimed by two actors stop linking records, so umbrella groups (like Lazarus) are not fused with their subgroups."),
@@ -404,7 +735,9 @@ function sobre(){
     el("p",{},el("a",{href:"https://github.com/Ridd1kulusC0d3r/apt4all"},"github.com/Ridd1kulusC0d3r/apt4all")));
 }
 
-function vai(m){document.querySelectorAll("nav.modos button").forEach(b=>b.setAttribute("aria-selected",b.dataset.m===m));document.querySelectorAll("main>section").forEach(s=>s.hidden=s.id!=="v-"+m)}
+function vai(m){document.querySelectorAll("nav.modos button").forEach(b=>b.setAttribute("aria-selected",b.dataset.m===m));document.querySelectorAll("main>section").forEach(s=>s.hidden=s.id!=="v-"+m);
+  if(A.length){if(m==="fluxos")fluxos();else if(m==="rede")rede();else if(m==="mapa")rotulos()}
+  if(["fluxos","rede","perfil","ranking","sobre"].includes(m))history.replaceState(null,"","#"+m)}
 document.querySelector("nav.modos").addEventListener("click",e=>{const b=e.target.closest("button");if(b)vai(b.dataset.m)});
 $("#soAttack").addEventListener("change",e=>{soAtt=e.target.checked;pintaMapa();if(sel)dossie(sel)});
 function aplicaIdioma(){
@@ -414,7 +747,7 @@ function aplicaIdioma(){
   document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
   if(META.n_atores)$("#meta").textContent=T[L].meta(META);
 }
-document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplicaIdioma();if(A.length){pintaMapa();if(sel)dossie(sel);montaPerfil();ranking();sobre()}});
+document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplicaIdioma();if(A.length){pintaMapa();if(sel)dossie(sel);montaPerfil();ranking();sobre();if(!$("#v-fluxos").hidden)fluxos();if(!$("#v-rede").hidden)rede()}});
 aplicaIdioma();
 carrega().catch(e=>{$("#mapa").replaceChildren(el("div",{class:"carregando"},"Erro ao carregar dados: "+e.message))});
 </script>

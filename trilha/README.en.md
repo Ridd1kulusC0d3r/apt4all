@@ -100,7 +100,7 @@ Templates to copy: [`modelos/`](modelos/) (headings in Portuguese and English).
 - [Tidal: Ultimate Guide to Cyber Threat Profiling](https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling)
 - [CTID: Threat Modeling with ATT&CK](https://center-for-threat-informed-defense.github.io/threat-modeling-with-attack/)
 
-**Do this now.** In the Atlas, **Threat profile** tab, choose your organization's country and sector (or a fictional one). Download the Navigator layer.
+**Do this now.** In the Atlas, **Threat profile** tab, click your organization's country and sector (or a fictional one). Download the Navigator layer. Then click **See in flows** to see which tactics those actors go through.
 
 **Deliverable.** The 10 most relevant actors and the 10 techniques to cover first, plus one sentence on the profile's limits (e.g., "little public victimology for Brazil").
 
@@ -115,6 +115,7 @@ Templates to copy: [`modelos/`](modelos/) (headings in Portuguese and English).
 - [MITRE D3FEND](https://d3fend.mitre.org/) (countermeasures per technique)
 - [Sigma](https://github.com/SigmaHQ/sigma) (open detection format, to learn how rules are structured)
 - [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) (validation tests; authorized environments only)
+- For ransomware: [Atlas → Network → Ransomware](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#rede) shows the tools gangs keep reusing (a hunting and blocking list, from the [Ransomware Tool Matrix](https://github.com/BushidoUK/Ransomware-Tool-Matrix)); the [RansomHub simulation exercise](https://medium.com/@sebastian.kandler/simulating-the-ransomhub-ransomware-a-vital-exercise-for-strengthening-detection-and-response-b8ecdee0f2bc) shows how to validate detection in a lab
 
 **Do this now.** Copy the [coverage table](modelos/cobertura.md) and fill it in for the top 5 techniques in your profile: do I have the telemetry? a mapped control? have I validated it?
 

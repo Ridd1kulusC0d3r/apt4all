@@ -4,7 +4,9 @@ English version: [RESOURCES.md](RESOURCES.md)
 
 Lista curada, bilíngue e verificada automaticamente. ★ = comece por aqui. Gerada de `recursos/recursos.json`; para sugerir um recurso, edite o JSON e abra um PR.
 
-**169 recursos** · [Comece aqui](#comece-aqui) · [Enciclopédias de atores](#enciclopédias-de-atores) · [Nomes, aliases e taxonomias](#nomes-aliases-e-taxonomias) · [Relatórios e acervos](#relatórios-e-acervos) · [Operações estatais e conflitos](#operações-estatais-e-conflitos) · [TTPs, ATT&CK e mapeamento](#ttps-attck-e-mapeamento) · [Perfilamento e modelagem de ameaças](#perfilamento-e-modelagem-de-ameaças) · [Plataformas de CTI](#plataformas-de-cti) · [Feeds e IOCs](#feeds-e-iocs) · [Listas awesome](#listas-awesome) · [Análise de malware](#análise-de-malware) · [Sandboxes](#sandboxes) · [Amostras (cuidado)](#amostras-cuidado) · [DFIR e memória](#dfir-e-memória) · [Detecção e caça](#detecção-e-caça) · [Emulação e validação](#emulação-e-validação) · [Datasets para pesquisa](#datasets-para-pesquisa) · [Pesquisa acadêmica](#pesquisa-acadêmica) · [Aprender: cursos, livros e desafios](#aprender-cursos-livros-e-desafios) · [Canais e pessoas](#canais-e-pessoas)
+**186 recursos** · [Comece aqui](#comece-aqui) · [Enciclopédias de atores](#enciclopédias-de-atores) · [Nomes, aliases e taxonomias](#nomes-aliases-e-taxonomias) · [Relatórios e acervos](#relatórios-e-acervos) · [Operações estatais e conflitos](#operações-estatais-e-conflitos) · [TTPs, ATT&CK e mapeamento](#ttps-attck-e-mapeamento) · [Perfilamento e modelagem de ameaças](#perfilamento-e-modelagem-de-ameaças) · [Plataformas de CTI](#plataformas-de-cti) · [Feeds e IOCs](#feeds-e-iocs) · [Listas awesome](#listas-awesome) · [Análise de malware](#análise-de-malware) · [Ransomware](#ransomware) · [Sandboxes](#sandboxes) · [Amostras (cuidado)](#amostras-cuidado) · [DFIR e memória](#dfir-e-memória) · [Detecção e caça](#detecção-e-caça) · [Emulação e validação](#emulação-e-validação) · [Datasets para pesquisa](#datasets-para-pesquisa) · [Pesquisa acadêmica](#pesquisa-acadêmica) · [Aprender: cursos, livros e desafios](#aprender-cursos-livros-e-desafios) · [Canais e pessoas](#canais-e-pessoas)
+
+★ comece por aqui · 🔹 da lista original do mantenedor
 
 ## Comece aqui
 
@@ -12,12 +14,12 @@ Os poucos recursos que respondem 80% das perguntas sobre um ator.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [APT Groups and Operations](https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU) | A planilha clássica de aliases por país (CC BY 4.0). Base do Atlas deste repositório. | gratuito |
-| ★ [awesome-threat-actor-resources](https://github.com/rstcloud/awesome-threat-actor-resources) | Meta-lista que compara mais de 30 bases de atores e quantos grupos cada uma cobre. | gratuito |
-| ★ [ETDA Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi) | Enciclopédia da ETDA/ThaiCERT: cartões completos por grupo, com datas de atividade. | gratuito |
+| ★ [APT Groups and Operations](https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU) 🔹 | A planilha clássica de aliases por país (CC BY 4.0). Base do Atlas deste repositório. | gratuito |
+| ★ [awesome-threat-actor-resources](https://github.com/rstcloud/awesome-threat-actor-resources) 🔹 | Meta-lista que compara mais de 30 bases de atores e quantos grupos cada uma cobre. | gratuito |
+| ★ [ETDA Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi) 🔹 | Enciclopédia da ETDA/ThaiCERT: cartões completos por grupo, com datas de atividade. | gratuito |
 | ★ [Malpedia (Fraunhofer FKIE)](https://malpedia.caad.fkie.fraunhofer.de/actors) | Atores e famílias de malware com bibliografia organizada. | gratuito |
 | ★ [MITRE ATT&CK Groups](https://attack.mitre.org/groups/) | Referência autoritativa de grupos, com técnicas e softwares mapeados. | gratuito |
-| ★ [mthcht/ThreatIntel-Reports](https://github.com/mthcht/ThreatIntel-Reports) | Milhares de relatórios de CTI extraídos e pesquisáveis por palavra-chave, com site de busca. | gratuito |
+| ★ [mthcht/ThreatIntel-Reports](https://github.com/mthcht/ThreatIntel-Reports) 🔹 | Milhares de relatórios de CTI extraídos e pesquisáveis por palavra-chave, com site de busca. | gratuito |
 
 ## Enciclopédias de atores
 
@@ -26,8 +28,8 @@ Perfis de grupos: nomes, alvos, ferramentas e histórico.
 | Recurso | Para que serve | Acesso |
 |---|---|---|
 | ★ [MISP Galaxy: threat actors](https://misp-galaxy.org/threat-actor/) | Mais de mil atores com sinônimos, país e vítimas; base do MISP (CC0/BSD). | gratuito |
-| [APT Intelligence Dashboard](https://github.com/michaelelizarov/apt-intelligence-dashboard) | Painel que junta MISP, ATT&CK e APTnotes: mapa, linha do tempo e dossiês (MIT). | gratuito |
-| [APTmap](https://andreacristaldi.github.io/APTmap/) | Mapa interativo de grupos com filtros por alvo, motivação e patrocinador; dados em JSON (CC BY 4.0). | gratuito |
+| [APT Intelligence Dashboard](https://github.com/michaelelizarov/apt-intelligence-dashboard) 🔹 | Painel que junta MISP, ATT&CK e APTnotes: mapa, linha do tempo e dossiês (MIT). | gratuito |
+| [APTmap](https://andreacristaldi.github.io/APTmap/) 🔹 | Mapa interativo de grupos com filtros por alvo, motivação e patrocinador; dados em JSON (CC BY 4.0). | gratuito |
 | [BSI: grupos APT ativos na Alemanha](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html) | Visão de um governo sobre os grupos que miram o seu país. | gratuito |
 | [CrowdStrike Adversary Universe](https://www.crowdstrike.com/adversaries/) | Perfis públicos dos adversários da CrowdStrike (Panda, Bear, Kitten, Spider). | gratuito |
 | [Dragos threat groups](https://www.dragos.com/threat-groups/) | Perfis de adversários de ICS/OT. | gratuito |
@@ -38,7 +40,7 @@ Perfis de grupos: nomes, alvos, ferramentas e histórico.
 | [Microsoft: nomenclatura de atores](https://learn.microsoft.com/en-us/unified-secops-platform/microsoft-threat-actor-naming) | Taxonomia de clima da Microsoft (Typhoon, Blizzard, Sandstorm) com mapeamento de nomes. | gratuito |
 | [RedDrip APT_Digital_Weapon](https://github.com/RedDrip7/APT_Digital_Weapon) | Perfis e hashes de armas digitais de APT, visão da comunidade chinesa de CTI. | gratuito |
 | [Secureworks Threat Profiles](https://www.secureworks.com/research/threat-profiles) | Perfis com aliases e notas de pesquisa (BRONZE, IRON, COBALT...). | gratuito |
-| [SOCRadar threat actor profiles](https://socradar.io/category/threat-actor-profiles/) | Perfis comentados de atores e grupos de ransomware. | gratuito |
+| [SOCRadar threat actor profiles](https://socradar.io/category/threat-actor-profiles/) 🔹 | Perfis comentados de atores e grupos de ransomware. | gratuito |
 | [Unit 42 threat actor groups](https://unit42.paloaltonetworks.com/threat-actor-groups-tracked-by-palo-alto-networks-unit-42/) | Grupos rastreados pela Unit 42 (nomenclatura de constelações). | gratuito |
 | [Wiz Cloud Threat Landscape](https://threats.wiz.io/all-actors) | Atores com foco em nuvem. | gratuito |
 
@@ -49,9 +51,9 @@ Cada fornecedor dá um nome diferente ao mesmo grupo. Aqui você traduz.
 | Recurso | Para que serve | Acesso |
 |---|---|---|
 | ★ [EternalLiberty](https://github.com/StrangerealIntel/EternalLiberty) | Tabela de cerca de 850 atores com o nome que cada fornecedor usa. | gratuito |
-| [apt.threattracking.com](https://apt.threattracking.com/) | Endereço curto da planilha APT Groups and Operations: responde 'qual o outro nome deste grupo?'. | gratuito |
+| [apt.threattracking.com](https://apt.threattracking.com/) 🔹 | Endereço curto da planilha APT Groups and Operations: responde 'qual o outro nome deste grupo?'. | gratuito |
 | [Microsoft x CrowdStrike: mapa de nomes](https://www.crowdstrike.com/en-us/blog/crowdstrike-and-microsoft-unite-to-deconflict-cyber-threat-attribution/) | Mapeamento oficial entre as duas nomenclaturas. | gratuito |
-| [Categorized-Adversary-TTPs](https://github.com/tropChaud/Categorized-Adversary-TTPs) | Atores do ATT&CK cruzados com setor, país e motivação; importável no MISP. Desatualizado, mas útil. | gratuito · legado |
+| [Categorized-Adversary-TTPs](https://github.com/tropChaud/Categorized-Adversary-TTPs) 🔹 | Atores do ATT&CK cruzados com setor, país e motivação; importável no MISP. Desatualizado, mas útil. | gratuito · legado |
 
 ## Relatórios e acervos
 
@@ -59,10 +61,10 @@ Onde estão os relatórios públicos de campanhas, indexados.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) | Acervo de relatórios de campanhas organizado por ano. | gratuito |
-| [APTnotes](https://github.com/aptnotes/data) | Índice histórico de relatórios públicos de APT com metadados. | gratuito |
+| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) 🔹 | Acervo de relatórios de campanhas organizado por ano. | gratuito |
+| [APTnotes](https://github.com/aptnotes/data) 🔹 | Índice histórico de relatórios públicos de APT com metadados. | gratuito |
 | [Awesome Threat Intel Blogs](https://github.com/muchdogesec/awesome_threat_intel_blogs) | Blogs de pesquisa de CTI para monitorar via RSS. | gratuito |
-| [ThreatIntel-Reports (site de busca)](https://mthcht.github.io/ThreatIntel-Reports/) | Interface de busca sobre o acervo de relatórios extraídos. | gratuito |
+| [ThreatIntel-Reports (site de busca)](https://mthcht.github.io/ThreatIntel-Reports/) 🔹 | Interface de busca sobre o acervo de relatórios extraídos. | gratuito |
 
 ## Operações estatais e conflitos
 
@@ -70,9 +72,9 @@ Bases de incidentes atribuídos a Estados e mapas de conflito cibernético.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [CFR Cyber Operations Tracker](https://www.cfr.org/cyber-operations/) | Incidentes patrocinados por Estados desde 2005, com patrocinador, vítima e tipo. | gratuito |
+| ★ [CFR Cyber Operations Tracker](https://www.cfr.org/cyber-operations/) 🔹 | Incidentes patrocinados por Estados desde 2005, com patrocinador, vítima e tipo. | gratuito |
 | [CSIS Significant Cyber Incidents](https://www.csis.org/programs/strategic-technologies-program/significant-cyber-incidents) | Lista cronológica de incidentes cibernéticos significativos. | gratuito |
-| [CyberWar Map (National Security Archive)](https://embed.kumu.io/0b023bf1a971ba32510e86e8f1a38c38#apt-index) | Mapa visual de atores e eventos de conflito cibernético entre Estados. | gratuito |
+| [CyberWar Map (National Security Archive)](https://embed.kumu.io/0b023bf1a971ba32510e86e8f1a38c38#apt-index) 🔹 | Mapa visual de atores e eventos de conflito cibernético entre Estados. | gratuito |
 | [EuRepoC](https://eurepoc.eu/) | Base europeia de incidentes cibernéticos com atribuição e impacto. | gratuito |
 | [IISS Cyberspace](https://www.iiss.org/research-paper/) | Pesquisa do IISS sobre poder cibernético e operações estatais. | gratuito |
 
@@ -87,6 +89,7 @@ Vocabulário comum de comportamento e ferramentas para mapear relatórios.
 | [CISA Decider](https://github.com/cisagov/Decider) | Guia por perguntas para mapear comportamento a técnicas ATT&CK. | gratuito |
 | [Malware Behavior Catalog (MBC)](https://github.com/MBCProject/mbc-markdown) | Comportamentos de malware no estilo ATT&CK, usado pelo capa. | gratuito |
 | [Mappings Explorer (CTID)](https://center-for-threat-informed-defense.github.io/mappings-explorer/) | Liga controles de segurança (NIST, nuvem, VERIS) a técnicas ATT&CK. | gratuito |
+| [MITRE ATT&CK no GitHub](https://github.com/mitre-attack) 🔹 | Organização oficial: dados STIX, Navigator, bibliotecas e o próprio site. | gratuito |
 | [MITRE D3FEND](https://d3fend.mitre.org/) | Vocabulário de contramedidas defensivas ligado ao ATT&CK. | gratuito |
 | [mitreattack-python](https://github.com/mitre-attack/mitreattack-python) | Biblioteca oficial para consultar ATT&CK e gerar camadas. | gratuito |
 | [Top ATT&CK Techniques (CTID)](https://top-attack-techniques.mitre-engenuity.org/) | Calculadora para priorizar técnicas por prevalência e contexto. | gratuito |
@@ -98,18 +101,18 @@ Do 'quem pode me atacar' ao 'onde investir primeiro'.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [ControlCompass](https://controlcompass.github.io/) | Liga cerca de 600 técnicas a mais de 10 mil controles públicos e 2.100 testes ofensivos. | gratuito |
+| ★ [ControlCompass](https://controlcompass.github.io/) 🔹 | Liga cerca de 600 técnicas a mais de 10 mil controles públicos e 2.100 testes ofensivos. | gratuito |
 | ★ [Cyber-Threat-Context-Modeling (TCE)](https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling) | Threat Context Engineering: do negócio e das joias da coroa até caminhos, telemetria e detecção, com camada preditiva (Horizon). | gratuito |
-| ★ [Tidal Cyber: Ultimate Guide to Cyber Threat Profiling](https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling) | Guia de perfilamento de ameaças em escala organizacional. | gratuito |
-| [Anvilogic: Threat Prioritization](https://www.anvilogic.com/) | Pontuação de alertas que combina superfície de ataque e modelagem de ameaças. | pago |
+| ★ [Tidal Cyber: Ultimate Guide to Cyber Threat Profiling](https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling) 🔹 | Guia de perfilamento de ameaças em escala organizacional. | gratuito |
+| [Anvilogic: Threat Prioritization](https://www.anvilogic.com/) 🔹 | Pontuação de alertas que combina superfície de ataque e modelagem de ameaças. | pago |
 | [CTID: Threat Modeling with ATT&CK](https://center-for-threat-informed-defense.github.io/threat-modeling-with-attack/) | Metodologia do CTID para modelar ameaças com ATT&CK e evidências. | gratuito |
 | [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling) | Ponto de entrada da OWASP para modelagem de ameaças. | gratuito |
-| [THEORY (threatcraft-co)](https://github.com/threatcraft-co/theory) | Gera dossiê de um ator a partir de mais de 15 fontes, com saída em STIX 2.1 e camada do Navigator (MIT). | gratuito |
+| [THEORY (threatcraft-co)](https://github.com/threatcraft-co/theory) 🔹 | Gera dossiê de um ator a partir de mais de 15 fontes, com saída em STIX 2.1 e camada do Navigator (MIT). | gratuito |
 | [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/) | Os valores e as quatro perguntas da modelagem de ameaças. | gratuito |
-| [ThreatForest (AWS samples)](https://aws-samples.github.io/samples-agentic-attack-tree-generator/) | Agentes de IA que geram árvores de ataque mapeadas ao ATT&CK a partir de um projeto. | gratuito |
-| [Tidal Cyber Community Edition](https://app.tidalcyber.com/) | Plataforma gratuita para montar perfis de ameaça e cobertura sobre o ATT&CK. | com cadastro |
-| [Tidal: perfil de ameaça compartilhado](https://app.tidalcyber.com/share/8bd9e111-0a06-4609-aadb-0b337e4c7c7c) | Exemplo de perfil de ameaça montado no Tidal e compartilhado por link. | com cadastro |
-| [tidalcyber/cyber-threat-profiling](https://github.com/tidalcyber/cyber-threat-profiling) | Biblioteca de frameworks, fontes, quantificação e ferramentas que acompanha o guia. | gratuito |
+| [ThreatForest (AWS samples)](https://aws-samples.github.io/samples-agentic-attack-tree-generator/) 🔹 | Agentes de IA que geram árvores de ataque mapeadas ao ATT&CK a partir de um projeto. | gratuito |
+| [Tidal Cyber Community Edition](https://app.tidalcyber.com/) 🔹 | Plataforma gratuita para montar perfis de ameaça e cobertura sobre o ATT&CK. | com cadastro |
+| [Tidal: perfil de ameaça compartilhado](https://app.tidalcyber.com/share/8bd9e111-0a06-4609-aadb-0b337e4c7c7c) 🔹 | Exemplo de perfil de ameaça montado no Tidal e compartilhado por link. | com cadastro |
+| [tidalcyber/cyber-threat-profiling](https://github.com/tidalcyber/cyber-threat-profiling) 🔹 | Biblioteca de frameworks, fontes, quantificação e ferramentas que acompanha o guia. | gratuito |
 
 ## Plataformas de CTI
 
@@ -118,10 +121,10 @@ Onde guardar, correlacionar e compartilhar inteligência.
 | Recurso | Para que serve | Acesso |
 |---|---|---|
 | ★ [MISP](https://github.com/MISP/MISP) | Plataforma aberta de referência para compartilhar e correlacionar inteligência. | gratuito |
-| [AlienVault OTX](https://otx.alienvault.com/) | Comunidade aberta de troca de indicadores (pulses). | com cadastro |
+| [AlienVault OTX](https://otx.alienvault.com/) 🔹 | Comunidade aberta de troca de indicadores (pulses). | com cadastro |
 | [IntelOwl](https://github.com/intelowlproject/IntelOwl) | Enriquecimento automático de IOCs com dezenas de analisadores. | gratuito |
 | [OpenCTI](https://github.com/OpenCTI-Platform/opencti) | Gestão de conhecimento de CTI em grafo, nativa em STIX 2.1. | gratuito |
-| [SOCRadar](https://socradar.io/) | Plataforma comercial de inteligência com painéis públicos de conflitos e atores. | freemium |
+| [SOCRadar](https://socradar.io/) 🔹 | Plataforma comercial de inteligência com painéis públicos de conflitos e atores. | freemium |
 | [TheHive](https://github.com/TheHive-Project/TheHive) | Gestão de casos de resposta a incidentes, integrável ao MISP. | gratuito |
 | [Yeti](https://github.com/yeti-platform/yeti) | Repositório unificado de observáveis, IOCs e TTPs para CTI e DFIR. | gratuito |
 
@@ -131,12 +134,13 @@ Indicadores e vulnerabilidades exploradas, com fontes vivas.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [abuse.ch](https://abuse.ch/) | MalwareBazaar, URLhaus, ThreatFox, Feodo Tracker e SSLBL: feeds gratuitos essenciais. | gratuito |
-| ★ [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | Vulnerabilidades sabidamente exploradas: a lista que define o que corrigir primeiro. | gratuito |
+| ★ [abuse.ch](https://abuse.ch/) 🔹 | MalwareBazaar, URLhaus, ThreatFox, Feodo Tracker e SSLBL: feeds gratuitos essenciais. | gratuito |
+| ★ [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) 🔹 | Vulnerabilidades sabidamente exploradas: a lista que define o que corrigir primeiro. | gratuito |
 | [FireHOL blocklist-ipsets](https://github.com/firehol/blocklist-ipsets) | Coleção de listas de bloqueio de IP, com histórico. | gratuito |
 | [FIRST EPSS](https://www.first.org/epss/) | Probabilidade de exploração de cada CVE nos próximos 30 dias. | gratuito |
 | [Public-Intelligence-Feeds](https://github.com/CriticalPathSecurity/Public-Intelligence-Feeds) | Feeds públicos consolidados em formatos padronizados. | gratuito |
-| [threat-intelligence-feeds (kraloveckey)](https://github.com/kraloveckey/threat-intelligence-feeds) | Mais de 300 feeds com verificação diária automatizada. | gratuito |
+| [threat-intelligence-feeds (kraloveckey)](https://github.com/kraloveckey/threat-intelligence-feeds) 🔹 | Mais de 300 feeds com verificação diária automatizada. | gratuito |
+| [ThreatFox (abuse.ch)](https://threatfox.abuse.ch/) | IOCs de malware compartilhados pela comunidade, com API gratuita. | gratuito |
 
 ## Listas awesome
 
@@ -144,15 +148,15 @@ Meta-listas mantidas pela comunidade.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [mthcht/awesome-lists](https://github.com/mthcht/awesome-lists) | Listas de caça para SOC/CTI: palavras-chave, pipes, TLDs, ferramentas abusadas, regras. | gratuito |
-| [awesome-incident-response](https://github.com/bryanwills/awesome-incident-response) | Ferramentas de resposta a incidentes e forense. | gratuito |
+| ★ [mthcht/awesome-lists](https://github.com/mthcht/awesome-lists) 🔹 | Listas de caça para SOC/CTI: palavras-chave, pipes, TLDs, ferramentas abusadas, regras. | gratuito |
+| [awesome-incident-response](https://github.com/bryanwills/awesome-incident-response) 🔹 | Ferramentas de resposta a incidentes e forense. | gratuito |
 | [awesome-malware-analysis](https://github.com/rshipp/awesome-malware-analysis) | A referência em ferramentas de análise de malware. | gratuito |
-| [awesome-threat-detection](https://github.com/0x4D31/awesome-threat-detection) | Detecção e caça: ferramentas, dados, artigos. | gratuito |
+| [awesome-threat-detection](https://github.com/0x4D31/awesome-threat-detection) 🔹 | Detecção e caça: ferramentas, dados, artigos. | gratuito |
 | [awesome-threat-intelligence](https://github.com/hslatman/awesome-threat-intelligence) | A lista awesome mais conhecida de CTI. | gratuito |
-| [Malware, IR - Tools & Resources (planilha)](https://docs.google.com/spreadsheets/d/13wBzwmfAoEBPUgcYM4CgSoj--xLicPz777IQ6iSUlNk) | Planilha comunitária de ferramentas de malware, IR e caça. Muitos links antigos foram atualizados neste repositório. | gratuito |
-| [Malware-IR-Tools-Resources](https://github.com/sanjaynitttr/Malware-IR-Tools-Resources) | Recursos de malware, IR, caça e inteligência compilados por planilha. | gratuito |
-| [RazviOverflow/Malware_Resources](https://github.com/RazviOverflow/Malware_Resources) | Coleção pessoal de análise de malware, exploração e engenharia reversa. | gratuito |
-| [Threat Taming Tools Collection (T3C)](https://act.globalcyberalliance.org/index.php?title=Threat_Taming_Tools_Collection_(T3C)) | Cerca de 300 recursos da Global Cyber Alliance: feeds, ferramentas, frameworks. | gratuito |
+| [Malware, IR - Tools & Resources (planilha)](https://docs.google.com/spreadsheets/d/13wBzwmfAoEBPUgcYM4CgSoj--xLicPz777IQ6iSUlNk) 🔹 | Planilha comunitária de ferramentas de malware, IR e caça. Muitos links antigos foram atualizados neste repositório. | gratuito |
+| [Malware-IR-Tools-Resources](https://github.com/sanjaynitttr/Malware-IR-Tools-Resources) 🔹 | Recursos de malware, IR, caça e inteligência compilados por planilha. | gratuito |
+| [RazviOverflow/Malware_Resources](https://github.com/RazviOverflow/Malware_Resources) 🔹 | Coleção pessoal de análise de malware, exploração e engenharia reversa. | gratuito |
+| [Threat Taming Tools Collection (T3C)](https://act.globalcyberalliance.org/index.php?title=Threat_Taming_Tools_Collection_(T3C)) 🔹 | Cerca de 300 recursos da Global Cyber Alliance: feeds, ferramentas, frameworks. | gratuito |
 
 ## Análise de malware
 
@@ -186,6 +190,25 @@ Ferramentas de triagem, engenharia reversa e desofuscação.
 | [de4dot](https://github.com/de4dot/de4dot) | Desofuscador .NET; arquivado, ainda útil em amostras antigas. | gratuito · legado |
 | [OllyDbg](http://www.ollydbg.de/) | Depurador clássico de 32 bits; substituído pelo x64dbg. | gratuito · legado |
 | [PEiD](https://www.aldeid.com/wiki/PEiD) | Identificador de empacotadores histórico; use Detect It Easy. | gratuito · legado |
+
+## Ransomware
+
+Quem extorque quem, com quais ferramentas, e como testar a sua defesa contra isso.
+
+| Recurso | Para que serve | Acesso |
+|---|---|---|
+| ★ [Ransomware Tool Matrix (BushidoUK)](https://github.com/BushidoUK/Ransomware-Tool-Matrix) 🔹 | Quais ferramentas cada gangue de ransomware usa (RMM, exfiltração, credenciais, evasão). Base dos fluxos e da rede de ransomware do Atlas. CC BY 4.0. | gratuito |
+| [BushidoToken: atualizações do Ransomware Tool Matrix (jun/2026)](https://blog.bushidotoken.net/2026/06/ransomware-tool-matrix-project-updates.html) | O que entrou na matriz e três grupos para acompanhar, pelo autor do projeto. | gratuito |
+| [CISA #StopRansomware](https://www.cisa.gov/stopransomware) | Alertas conjuntos com TTPs, indicadores e mitigação por grupo. | gratuito |
+| [eCrime.ch](https://ecrime.ch/) | Monitoramento de ransomware e extorsão, com estatísticas por grupo e setor. | freemium |
+| [ID Ransomware](https://id-ransomware.malwarehunterteam.com/) | Identifica a família pela nota de resgate ou por um arquivo cifrado. | gratuito |
+| [No More Ransom](https://www.nomoreransom.org/) | Decifradores gratuitos de polícias e empresas. Primeira parada de quem foi atingido. | gratuito |
+| [RansomLook](https://www.ransomlook.io/) | Agregador aberto de sites de vazamento de ransomware, com código no GitHub. | gratuito |
+| [Ransomware Vulnerability Matrix](https://github.com/BushidoUK/Ransomware-Vulnerability-Matrix) | Vulnerabilidades exploradas por gangues de ransomware, para priorizar correção. | gratuito |
+| [ransomware.live](https://www.ransomware.live/) | Acompanha em quase tempo real as vítimas publicadas nos sites de vazamento, com API e perfis de grupos. | freemium |
+| [Ransomwhere](https://ransomwhe.re/) | Base aberta de pagamentos de resgate em bitcoin, para pesquisa. | gratuito |
+| [Simulating the RansomHub ransomware (Sebastian Kandler)](https://medium.com/@sebastian.kandler/simulating-the-ransomhub-ransomware-a-vital-exercise-for-strengthening-detection-and-response-b8ecdee0f2bc) 🔹 | Exercício de purple team (set/2024) que reproduz comportamentos do RansomHub com Atomic Red Team para achar lacunas de detecção no SIEM e no EDR. | gratuito |
+| [skandler/ransomhub-simulation](https://github.com/skandler/ransomhub-simulation) | Script do artigo acima. Rode só em laboratório autorizado e isolado. | gratuito |
 
 ## Sandboxes
 
@@ -225,6 +248,7 @@ Resposta a incidentes, forense de disco e memória.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
+| ★ [The DFIR Report](https://thedfirreport.com/) | Intrusões reais do acesso inicial ao ransomware, com linha do tempo e ATT&CK. | gratuito |
 | [Autopsy](https://www.autopsy.com/) | Forense de disco com interface gráfica. | gratuito |
 | [bulk_extractor](https://github.com/simsong/bulk_extractor) | Extração de artefatos de imagens de disco. | gratuito |
 | [Chainsaw](https://github.com/WithSecureLabs/chainsaw) | Busca rápida em logs EVTX com regras Sigma. | gratuito |
@@ -243,6 +267,7 @@ Regras, listas de caça e dados para testar detecções.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
+| [DeTT&CT](https://github.com/rabobank-cdc/DeTTECT) | Mede visibilidade e cobertura de detecção por técnica e cruza com grupos de ameaça. | gratuito |
 | [EVTX-ATTACK-SAMPLES](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES) | Logs de eventos do Windows por técnica de ataque, para testar detecções. | gratuito |
 | [HEARTH](https://github.com/THORCollective/HEARTH) | Repositório comunitário de hipóteses de caça. | gratuito |
 | [osquery](https://osquery.io/) | Endpoint consultável em SQL. | gratuito |
@@ -250,6 +275,7 @@ Regras, listas de caça e dados para testar detecções.
 | [Sigma](https://github.com/SigmaHQ/sigma) | Formato padrão de regras de detecção, convertível para SIEMs. | gratuito |
 | [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) | Telemetria detalhada de processos, rede e arquivos no Windows. | gratuito |
 | [The ThreatHunting Project](https://www.threathunting.net/) | Introdução e catálogo de caças. | gratuito |
+| [YARA](https://github.com/VirusTotal/yara) 🔹 | Ferramenta clássica de padrões para classificar malware. Para regras novas, veja também o YARA-X. | gratuito |
 
 ## Emulação e validação
 
@@ -267,9 +293,9 @@ Dados estruturados para estudos e modelos.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| ★ [Gulbay (2024): DEVIL / APT reports graph dataset (Zenodo)](https://zenodo.org/records/12741055) | Relatórios de APT deduplicados, IOCs extraídos e grafo Neo4j para CTI estratégica (Gulbay, 2024, CC BY 4.0). | gratuito |
-| [APT simulation datasets (skrghosh)](https://github.com/skrghosh/apt-dataset) | Logs de simulações no Caldera de APT29, FIN6, menuPass, OilRig e Wizard Spider, mais famílias como Redline e AsyncRAT. | gratuito |
-| [APTmap JSON](https://github.com/andreacristaldi/APTmap) | Dados de grupos e de 29 GB de amostras atribuídas (CC BY 4.0). | gratuito |
+| ★ [Gulbay (2024): DEVIL / APT reports graph dataset (Zenodo)](https://zenodo.org/records/12741055) 🔹 | Relatórios de APT deduplicados, IOCs extraídos e grafo Neo4j para CTI estratégica (Gulbay, 2024, CC BY 4.0). | gratuito |
+| [APT simulation datasets (skrghosh)](https://github.com/skrghosh/apt-dataset) 🔹 | Logs de simulações no Caldera de APT29, FIN6, menuPass, OilRig e Wizard Spider, mais famílias como Redline e AsyncRAT. | gratuito |
+| [APTmap JSON](https://github.com/andreacristaldi/APTmap) 🔹 | Dados de grupos e de 29 GB de amostras atribuídas (CC BY 4.0). | gratuito |
 
 ## Pesquisa acadêmica
 
@@ -279,7 +305,7 @@ Artigos e ferramentas de pesquisa sobre CTI e modelagem.
 |---|---|---|
 | [Intel TARA / Threat Agent Library](https://www.oasis-open.org/committees/download.php/66239/Intel%20Corp_Threat%20Agent%20Library_07-2202w.pdf) | Biblioteca de agentes de ameaça para avaliação de risco. | gratuito |
 | [MITRE: Cyber Threat Modeling: Survey, Assessment, and Representative Framework](https://www.mitre.org/sites/default/files/2021-11/prs-18-1174-ngci-cyber-threat-modeling.pdf) | Revisão de frameworks de modelagem de ameaças. | gratuito |
-| [ThreatCompass (Univ. Twente)](https://research.utwente.nl/en/publications/threatcompass-a-tool-for-identifying-and-mapping-security-issues/) | Ferramenta de pesquisa que identifica problemas de segurança e os mapeia para TTPs, com grafo de ataque. | gratuito |
+| [ThreatCompass (Univ. Twente)](https://research.utwente.nl/en/publications/threatcompass-a-tool-for-identifying-and-mapping-security-issues/) 🔹 | Ferramenta de pesquisa que identifica problemas de segurança e os mapeia para TTPs, com grafo de ataque. | gratuito |
 
 ## Aprender: cursos, livros e desafios
 

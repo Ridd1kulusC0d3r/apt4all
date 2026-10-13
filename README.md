@@ -29,15 +29,16 @@ Um mesmo grupo tem dez nomes: APT28 é Fancy Bear, Sofacy, Forest Blizzard, STRO
 
 1. **Quem é esse ator?** (todos os nomes, país atribuído, motivação, técnicas, ferramentas, operações, relatórios)
 2. **Quem ataca organizações como a minha?** (perfil por país e setor, com camada do ATT&CK Navigator)
-3. **Por onde eu estudo isso direito?** (169 recursos curados e uma trilha de 9 módulos)
+3. **Por onde eu estudo isso direito?** (186 recursos curados e uma trilha de 9 módulos)
 
 ## O que tem aqui
 
 | Porta | O que faz | Onde |
 |---|---|---|
 | 🗺️ **Atlas de sala de guerra** | Mapa hexagonal por país, dossiê do país, ficha de cada ator, ranking | [`docs/atlas/`](docs/atlas/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/atlas/) |
+| 🌊 **Fluxos e Rede** | Sankey país → motivação → tática → técnica; rede de técnicas compartilhadas; o mesmo para ferramentas de 92 gangues de ransomware | [Atlas → Fluxos](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#fluxos) · [Rede](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#rede) |
 | 🎯 **Perfil de ameaça** | País + setor → atores prováveis, técnicas a cobrir, camada do Navigator, sinal para o TCE | [Atlas → Perfil](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#perfil) · [`ferramentas/tce/`](ferramentas/tce/) |
-| 📚 **Recursos** | 169 links em 20 categorias, bilíngues, com legado marcado e verificação mensal | [RECURSOS.md](RECURSOS.md) · [online](https://ridd1kulusc0d3r.github.io/apt4all/recursos/) |
+| 📚 **Recursos** | 186 links em 21 categorias, bilíngues, com legado marcado, filtro para a sua lista original e verificação mensal | [RECURSOS.md](RECURSOS.md) · [online](https://ridd1kulusc0d3r.github.io/apt4all/recursos/) |
 | 🧭 **Trilha** | 9 módulos, do nome do grupo ao dossiê final, cada um com uma ação "faça agora" | [`trilha/`](trilha/) |
 | 🔗 **Ponte com o TCE** | Leva o perfil de ameaça para a modelagem de ameaças do ambiente inteiro | [`tce/`](tce/) |
 | 📖 **Manual ilustrado** | Passo a passo com telas anotadas, para quem nunca usou | [`docs/manual/`](docs/manual/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/manual/) |
@@ -54,6 +55,7 @@ Rodada de 13/10/2026, gerada por [`construir_dados.py`](ferramentas/atlas/constr
 | Atores com perfil ATT&CK | 184 |
 | Técnicas ATT&CK ligadas | 498 |
 | Relatórios públicos ligados (APTnotes) | 412 |
+| Ransomware Tool Matrix | 92 grupos · 347 ferramentas · 1.060 usos (39 ligados a atores do Atlas) |
 | Países com atores atribuídos | 43, mais o bloco OTAN / Five Eyes |
 | Maiores origens atribuídas | China 289 · Rússia 156 · Irã 82 · Coreia do Norte 25 |
 | Sem país atribuído | 638 (quase todos crime cibernético e hacktivismo) |
@@ -75,15 +77,15 @@ Pela linha de comando:
 ```bash
 git clone https://github.com/Ridd1kulusC0d3r/apt4all && cd apt4all
 python3 -m http.server 8765 --directory docs      # Atlas e recursos
-python3 ferramentas/tce/perfil_ameaca.py --pais Brazil --setor finance --saida saida/br-financas
+python3 ferramentas/tce/perfil_ameaca.py --pais BR --setor finance --saida saida/br-financas
 ```
 
 ## Como os dados se mantêm vivos
 
 | Quando | O quê | Workflow |
 |---|---|---|
-| Toda segunda, 06:00 UTC | Baixa MISP, ATT&CK, planilha, EternalLiberty e APTnotes; reconstrói o Atlas e abre um PR | [`atualizar-dados.yml`](.github/workflows/atualizar-dados.yml) |
-| Todo dia 1º | Verifica os 169 links e abre issue se algum morreu | [`verificar-links.yml`](.github/workflows/verificar-links.yml) |
+| Toda segunda, 06:00 UTC | Baixa MISP, ATT&CK, planilha, EternalLiberty, APTnotes e Ransomware Tool Matrix; reconstrói o Atlas e abre um PR | [`atualizar-dados.yml`](.github/workflows/atualizar-dados.yml) |
+| Todo dia 1º | Verifica os 186 links e abre issue se algum morreu | [`verificar-links.yml`](.github/workflows/verificar-links.yml) |
 | A cada push e PR | Roda os testes | [`testes.yml`](.github/workflows/testes.yml) |
 | A cada push na `main` | Publica `docs/` no GitHub Pages | [`pages.yml`](.github/workflows/pages.yml) |
 
@@ -93,12 +95,13 @@ python3 ferramentas/tce/perfil_ameaca.py --pais Brazil --setor finance --saida s
 apt4all/
 ├── docs/                    site (GitHub Pages)
 │   ├── index.html           página inicial
-│   ├── atlas/               Atlas de sala de guerra + atores.json, paises.json, mapa.json
+│   ├── atlas/               Atlas de sala de guerra + atores.json, paises.json, mapa.json, ransomware.json
 │   ├── recursos/            busca nos recursos
 │   └── manual/              manual ilustrado
 ├── ferramentas/
 │   ├── atlas/               construir_dados.py (fontes → base), mapa_hex.py (mapa)
 │   ├── recursos/            verificar_links.py, gerar_listas.py
+│   ├── ransomware/          construir_matriz.py (Ransomware Tool Matrix → ransomware.json)
 │   ├── tce/                 perfil_ameaca.py (ponte com o TCE)
 │   └── manual/              capturar_telas.py (telas do manual, opcional)
 ├── recursos/recursos.json   fonte única dos recursos (edite aqui)
