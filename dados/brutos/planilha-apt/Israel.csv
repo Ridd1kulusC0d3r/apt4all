@@ -1,0 +1,9 @@
+Israel
+Common Name,Other Name 1,Other Name 2,Other Name 3,NSA,Operation 1,Operation 2,Toolset / Malware,Targets,Modus Operandi,Comment,Link 1,Link 2,Link 3,Link 4,Link 5
+Unit 8200,,,,,Olympic Games / Stuxnet,,Stuxnet,Directed at Iranian nuclear facilities,Stuxnet is typically introduced to the target environment via an infected USB flash drive.,,http://www.langner.com/en/wp-content/uploads/2013/11/To-kill-a-centrifuge.pdf ,https://archive.org/details/Stuxnet
+Unit 8200,Duqu Group,,,SIG35,Duqu 2.0,,Duqu,"A threat actor, using a tool dubbed Duqu 2.0, targeted individuals and companies linked to the P5+1 (the five permanent member states of the UN Security Council, plus Germany), which was conducting negotiations on Iran's nuclear program. ",,,https://securelist.com/blog/research/70504/the-mystery-of-duqu-2-0-a-sophisticated-cyberespionage-actor-returns/,https://securelist.com/files/2015/06/The_Mystery_of_Duqu_2_0_a_sophisticated_cyberespionage_actor_returns.pdf,http://www.wsj.com/articles/spy-virus-linked-to-israel-targeted-hotels-used-for-iran-nuclear-talks-1433937601,https://blog.crysys.hu/2018/03/territorial-dispute-nsas-perspective-on-apt-landscape/
+SunFlower,MoonFlower,Cheshire Cat,Flowershop,SIG17 / SIG18,,,,,,"Might be related to Duqu, Stuxnet
+and might attributed to Israel.",https://blog.crysys.hu/2018/03/territorial-dispute-nsas-perspective-on-apt-landscape/,https://malware-research.org/prepare-father-of-stuxnet-news-are-coming/,https://github.com/Yara-Rules/rules/blob/master/malware/APT_CheshireCat.yar,https://blog.crysys.hu/2018/03/territorial-dispute-nsas-perspective-on-apt-landscape/
+Team Jorge,,,,,,,,,,,https://forbiddenstories.org/story-killers/team-jorge-disinformation/
+WeRedEvils,RedEvils,,,,,,,,,,https://malpedia.caad.fkie.fraunhofer.de/actor/weredevils,https://www.jpost.com/israel-news/article-770599
+

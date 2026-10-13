@@ -1,0 +1,11 @@
+# dados brutos grandes: o CI baixa de novo (ferramentas/atlas/construir_dados.py --baixar)
+dados/brutos/enterprise-attack.json
+# saídas locais
+saida/
+out/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db

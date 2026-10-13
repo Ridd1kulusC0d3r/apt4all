@@ -1,0 +1,49 @@
+"""Páginas estáticas: arquivos referenciados existem e os dicionários PT/EN têm as mesmas chaves."""
+import os, re, unittest
+from _base import RAIZ
+
+DOCS = os.path.join(RAIZ, "docs")
+
+
+def ler(*p):
+    return open(os.path.join(DOCS, *p), encoding="utf-8").read()
+
+
+def chaves(bloco):
+    return set(re.findall(r'(?:^|[,{]\s*)"?([A-Za-zÀ-ú_][\wÀ-ú]*)"?\s*:', bloco))
+
+
+class TestPaginas(unittest.TestCase):
+    def test_existem(self):
+        for p in ("index.html", "atlas/index.html", "recursos/index.html", "manual/index.html"):
+            self.assertTrue(os.path.exists(os.path.join(DOCS, p)), p)
+
+    def test_atlas_busca_arquivos(self):
+        s = ler("atlas", "index.html")
+        for f in ("atores.json", "paises.json", "mapa.json"):
+            self.assertIn(f, s)
+            self.assertTrue(os.path.exists(os.path.join(DOCS, "atlas", f)))
+
+    def test_atlas_bilingue(self):
+        s = ler("atlas", "index.html")
+        pt = s[s.index(" pt:{"):s.index(" en:{")]
+        en = s[s.index(" en:{"):s.index("};", s.index(" en:{"))]
+        self.assertEqual(chaves(pt) - chaves(en), set())
+        self.assertEqual(chaves(en) - chaves(pt), set())
+
+    def test_data_t_tem_traducao(self):
+        s = ler("atlas", "index.html")
+        en = s[s.index(" en:{"):s.index("};", s.index(" en:{"))]
+        for k in set(re.findall(r'data-t="([^"]+)"', s)):
+            self.assertIn(k, chaves(en), k)
+
+    def test_sem_localstorage_sem_try(self):
+        for p in ("index.html", "atlas/index.html", "recursos/index.html"):
+            s = ler(*p.split("/"))
+            for m in re.finditer(r"localStorage\.\w+", s):
+                trecho = s[max(0, m.start() - 120):m.start()]
+                self.assertIn("try", trecho, p)
+
+
+if __name__ == "__main__":
+    unittest.main()

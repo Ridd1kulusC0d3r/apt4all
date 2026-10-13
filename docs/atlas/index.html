@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL Atlas</title>
+<meta name="description" content="Atlas de sala de guerra: atores de ameaça (APT) por país, com aliases, alvos, técnicas ATT&CK e relatórios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Linha visual: carta noturna de sala de guerra. Fundo de mesa de plotagem, grade de meridianos fina,
+   âmbar de radar como cor de dado, menta TOCAIA só para seleção. Um painel de mapa, um de dossiê. */
+:root{
+  color-scheme:dark;
+  --bg:#06090B; --mesa:#0B1114; --painel:#0F171A; --painel2:#142024; --linha:#1E2C30; --grade:#14302C;
+  --tinta:#DCE4E2; --apagado:#869794; --fraco:#55625F;
+  --ambar:#F4BE3F; --ambar-ink:#1C1404; --menta:#5EE6C4; --coral:#FF7A63; --azul:#6FB2FF;
+  --terra:#18221F; --terra2:#1E2A27;
+  --e1:#3A3017; --e2:#6A5220; --e3:#A27A28; --e4:#D7A133; --e5:#F4BE3F;
+  --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif; --corpo:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tinta);font:15px/1.5 var(--corpo)}
+a{color:var(--menta)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--linha)}
+.topo .in{max-width:1440px;margin:0 auto;padding:10px 16px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tinta)}
+.marca b{font:700 24px/1 var(--display);letter-spacing:.08em}
+.marca small{display:block;font:500 11px var(--mono);letter-spacing:.16em;color:var(--ambar);text-transform:uppercase;margin-top:3px}
+.meta{font:12px var(--mono);color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctrl{display:flex;gap:8px;align-items:center}
+.busca{position:relative}
+.busca input{width:min(320px,42vw);background:var(--painel);border:1px solid var(--linha);padding:8px 10px;color:var(--tinta)}
+.sug{position:absolute;right:0;left:0;top:100%;background:var(--painel);border:1px solid var(--linha);max-height:360px;overflow:auto;z-index:40}
+.sug button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--linha);padding:8px 10px;cursor:pointer}
+.sug button:hover,.sug button:focus{background:var(--painel2)}
+.sug small{color:var(--apagado);font:12px var(--mono)}
+.idioma{display:flex;border:1px solid var(--linha)}
+.idioma button{background:none;border:0;padding:7px 10px;font:600 12px var(--mono);color:var(--apagado);cursor:pointer}
+.idioma button[aria-pressed="true"]{background:var(--ambar);color:var(--ambar-ink)}
+nav.modos{max-width:1440px;margin:0 auto;padding:0 16px;display:flex;gap:2px;flex-wrap:wrap}
+nav.modos button{background:none;border:0;border-bottom:3px solid transparent;padding:9px 12px;font:600 15px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);cursor:pointer}
+nav.modos button[aria-selected="true"]{color:var(--tinta);border-bottom-color:var(--ambar)}
+main{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 60px}
+.grade2{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(320px,1fr);gap:16px;align-items:start}
+.painel{background:var(--painel);border:1px solid var(--linha)}
+.cab{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--linha);flex-wrap:wrap}
+.rot{font:600 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--apagado)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--painel2);border:1px solid var(--linha);padding:4px 10px;font:12px var(--mono);cursor:pointer;color:var(--tinta)}
+.chip[aria-pressed="true"]{border-color:var(--ambar);color:var(--ambar)}
+.mapa{position:relative;background:radial-gradient(ellipse at 50% 40%,#0C1619 0%,var(--mesa) 70%);overflow:hidden}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa .varredura{position:absolute;inset:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 52%,rgba(244,190,63,.10),rgba(244,190,63,0) 22%);mix-blend-mode:screen;animation:gira 9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.hex{stroke:var(--mesa);stroke-width:.6;cursor:pointer;transition:fill .25s}
+.pais:hover .hex{filter:brightness(1.35)}
+.pais.sel .hex{stroke:var(--menta);stroke-width:1.4}
+.grat{pointer-events:none}.grat line{stroke:var(--grade);stroke-width:.6}
+.grat text{fill:var(--fraco);font:9px var(--mono)}
+.rotulo{fill:var(--tinta);font:600 11px var(--mono);pointer-events:none;paint-order:stroke;stroke:var(--mesa);stroke-width:3px}
+.legenda{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--linha);flex-wrap:wrap;font:12px var(--mono);color:var(--apagado)}
+.escala{display:flex}
+.escala i{width:28px;height:10px;display:block}
+.regioes{display:flex;gap:8px;flex-wrap:wrap}
+.reg{background:var(--painel2);border:1px dashed var(--linha);padding:6px 10px;cursor:pointer;font:12px var(--mono);color:var(--tinta)}
+.reg b{color:var(--ambar)}
+.dossie{padding:14px;display:grid;gap:14px}
+.dossie h2{font:700 34px/1 var(--display);letter-spacing:.04em;margin:0;text-transform:uppercase}
+.dossie .iso{font:600 13px var(--mono);color:var(--ambar)}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.nums div{background:var(--painel2);padding:8px}
+.nums b{display:block;font:700 22px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.nums span{font-size:11px;color:var(--apagado)}
+.barras{display:grid;gap:5px}
+.barra{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:8px;align-items:center;font-size:13px}
+.barra .t{position:relative;padding:3px 8px;background:var(--painel2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.barra .t i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--ambar) 26%,transparent)}
+.barra .t span{position:relative}
+.barra .v{font:12px var(--mono);color:var(--apagado);text-align:right;font-variant-numeric:tabular-nums}
+.lista{max-height:420px;overflow:auto;border:1px solid var(--linha)}
+.ator{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--linha);padding:8px 10px;cursor:pointer}
+.ator:hover,.ator:focus{background:var(--painel2)}
+.ator b{font-weight:600}
+.ator small{display:block;color:var(--apagado);font:11px var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{font:11px var(--mono);border:1px solid var(--linha);padding:1px 6px;color:var(--apagado);white-space:nowrap;align-self:center}
+.tag.at{border-color:color-mix(in srgb,var(--ambar) 60%,var(--linha));color:var(--ambar)}
+.filtro{width:100%;background:var(--bg);border:1px solid var(--linha);padding:7px 10px;color:var(--tinta)}
+.gaveta{position:fixed;top:0;right:0;bottom:0;width:min(620px,100%);background:var(--painel);border-left:1px solid var(--ambar);z-index:50;overflow:auto;box-shadow:-20px 0 60px #000a;padding:18px 18px calc(30px + env(safe-area-inset-bottom,0px))}
+.gaveta h2{font:700 38px/1 var(--display);letter-spacing:.03em;margin:6px 0 4px;text-transform:uppercase}
+.fecha{position:sticky;top:0;float:right;background:var(--painel2);border:1px solid var(--linha);padding:6px 10px;cursor:pointer;font:600 12px var(--mono)}
+.sec{margin-top:16px}
+.sec h3{font:600 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--apagado);margin:0 0 8px}
+.nuvem{display:flex;flex-wrap:wrap;gap:5px}
+.nuvem span,.nuvem a{font:12px var(--mono);background:var(--painel2);border:1px solid var(--linha);padding:2px 7px;color:var(--tinta);text-decoration:none}
+.nuvem a:hover{border-color:var(--ambar)}
+.aviso{border-left:3px solid var(--ambar);background:var(--painel2);padding:10px 12px;font-size:13px;color:var(--apagado)}
+.rel{display:grid;gap:4px}
+.rel a{display:grid;grid-template-columns:88px minmax(0,1fr);gap:8px;text-decoration:none;color:var(--tinta);font-size:13px;padding:4px 0;border-bottom:1px dashed var(--linha)}
+.rel a span{font:12px var(--mono);color:var(--apagado)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--linha)}
+th{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);cursor:pointer;white-space:nowrap}
+td.n{font:13px var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--painel2)}
+.tab{overflow-x:auto}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding:14px}
+.form label{display:grid;gap:4px;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--apagado)}
+.form select{background:var(--bg);border:1px solid var(--linha);padding:8px;color:var(--tinta);text-transform:none;letter-spacing:0}
+.btn{background:var(--ambar);color:var(--ambar-ink);border:0;padding:9px 14px;font:700 14px var(--display);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.btn.fant{background:none;color:var(--tinta);border:1px solid var(--linha)}
+.texto{max-width:78ch;padding:16px;display:grid;gap:10px}
+.texto h3{font:700 22px var(--display);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 0}
+.carregando{padding:60px;text-align:center;font:13px var(--mono);color:var(--apagado)}
+@media (prefers-reduced-motion:reduce){.mapa .varredura{animation:none;display:none}*{transition:none!important}}
+@media (max-width:980px){.grade2{grid-template-columns:minmax(0,1fr)}.topo .in{grid-template-columns:minmax(0,1fr) auto}.meta{grid-column:1/-1;grid-row:2}}
+@media (max-width:560px){.topo .in{grid-template-columns:minmax(0,1fr) auto}.ctrl{grid-column:1/-1;grid-row:3}.busca{flex:1}.busca input{width:100%}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.marca small{display:none}}
+.forn{border-collapse:collapse;width:100%;font-size:13px}.forn th{text-align:left;font:600 11px var(--mono);color:var(--apagado);padding:4px 10px 4px 0;white-space:nowrap;vertical-align:top;letter-spacing:.04em}.forn td{padding:4px 0;color:var(--tinta)}.forn tr+tr{border-top:1px solid var(--borda)}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="none" stroke="#F4BE3F" stroke-width="1.6"/><circle cx="17" cy="17" r="7" fill="none" stroke="#5EE6C4" stroke-width="1.2"/><line x1="17" y1="5" x2="17" y2="29" stroke="#F4BE3F" stroke-width=".8"/><line x1="5" y1="17" x2="29" y2="17" stroke="#F4BE3F" stroke-width=".8"/><circle cx="17" cy="17" r="1.8" fill="#5EE6C4"/></svg>
+      <span><b>APT4ALL</b><small data-t="sub">Atlas de sala de guerra</small></span>
+    </a>
+    <div class="meta" id="meta">…</div>
+    <div class="ctrl">
+      <div class="busca"><input id="busca" type="search" autocomplete="off" data-tp="buscaPh" aria-label="Buscar ator"><div class="sug" id="sug" hidden></div></div>
+      <div class="idioma" role="group" aria-label="Idioma"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
+    </div>
+  </div>
+  <nav class="modos" role="tablist">
+    <button role="tab" data-m="mapa" aria-selected="true" data-t="mMapa">Mapa</button>
+    <button role="tab" data-m="perfil" aria-selected="false" data-t="mPerfil">Perfil de ameaça</button>
+    <button role="tab" data-m="ranking" aria-selected="false" data-t="mRanking">Ranking</button>
+    <button role="tab" data-m="sobre" aria-selected="false" data-t="mSobre">Sobre os dados</button>
+  </nav>
+</header>
+
+<main>
+  <section id="v-mapa">
+    <div class="grade2">
+      <div class="painel">
+        <div class="cab">
+          <span class="rot" data-t="motivos">Motivação</span>
+          <div class="chips" id="fmot"></div>
+          <label class="chip" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="soAttack"> <span data-t="soAttack">só com ATT&CK</span></label>
+        </div>
+        <div class="mapa" id="mapa"><div class="carregando" data-t="carregando">Carregando o atlas…</div></div>
+        <div class="legenda">
+          <span data-t="atoresPorPais">atores por país</span>
+          <span class="escala"><i style="background:var(--terra2)"></i><i style="background:var(--e1)"></i><i style="background:var(--e2)"></i><i style="background:var(--e3)"></i><i style="background:var(--e4)"></i><i style="background:var(--e5)"></i></span>
+          <span id="escalaTxt"></span>
+          <span style="margin-left:auto" class="regioes" id="regioes"></span>
+        </div>
+      </div>
+      <aside class="painel" id="dossie" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="v-perfil" hidden>
+    <div class="painel">
+      <div class="cab"><span class="rot" data-t="perfilTit">Quem mira gente como você?</span></div>
+      <p class="texto" style="padding-bottom:0" data-t="perfilIntro">Escolha o país e o setor da sua organização. O atlas ranqueia os atores que já tiveram vítimas assim e soma as técnicas ATT&CK que eles usam. O resultado é um ponto de partida para modelagem de ameaças, não uma previsão.</p>
+      <div class="form">
+        <label><span data-t="paisVitima">País da organização</span><select id="pPais"></select></label>
+        <label><span data-t="setor">Setor</span><select id="pSetor"></select></label>
+        <label><span data-t="incluirOrigem">Incluir atores</span><select id="pOrigem"><option value="todos" data-t="todos">todos</option><option value="estado" data-t="estatais">com país atribuído</option></select></label>
+      </div>
+      <div id="perfilRes"></div>
+    </div>
+  </section>
+
+  <section id="v-ranking" hidden>
+    <div class="painel"><div class="cab"><span class="rot" data-t="rankTit">Países por número de atores</span></div><div class="tab" id="rankTab"></div></div>
+  </section>
+
+  <section id="v-sobre" hidden><div class="painel"><div class="texto" id="sobre"></div></div></section>
+</main>
+<div id="gaveta"></div>
+
+<script>
+"use strict";
+const T={
+ pt:{sub:"Atlas de sala de guerra",buscaPh:"Buscar ator ou alias…",mMapa:"Mapa",mPerfil:"Perfil de ameaça",mRanking:"Ranking",mSobre:"Sobre os dados",motivos:"Motivação",soAttack:"só com ATT&CK",carregando:"Carregando o atlas…",atoresPorPais:"atores por país",
+  todosMot:"todos",espionagem:"espionagem",financeiro:"financeiro",sabotagem:"sabotagem",hacktivismo:"hacktivismo","influência":"influência",indefinido:"indefinido",
+  atores:"atores",comAttack:"com ATT&CK",aliases:"aliases",relatorios:"relatórios",topTec:"Técnicas mais usadas",topSet:"Setores-alvo",topVit:"Países vitimados",motTit:"Motivação",listaAt:"Atores",filtrar:"Filtrar atores deste país…",
+  escolha:"Clique num país do mapa ou use a busca.",escolhaPais:"Escolher país",nenhum:"Nenhum dado.",fechar:"Fechar",descricao:"Descrição (fonte original em inglês)",alias:"Nomes conhecidos",forn:"Nomes por fornecedor",tec:"Técnicas ATT&CK",ferr:"Ferramentas e malware",ops:"Operações",alvos:"Alvos (planilha)",vit:"Países vitimados",set:"Setores",rels:"Relatórios (APTnotes)",refs:"Referências",fontes:"Fontes",conf:"Confiança de atribuição",verMitre:"Ver no ATT&CK",
+  avisoAtrib:"Atribuição é hipótese. Os nomes e países vêm de fornecedores diferentes e podem divergir. Use como ponto de partida e confirme nas fontes.",
+  perfilTit:"Quem mira gente como você?",perfilIntro:"Escolha o país e o setor da sua organização. O atlas ranqueia os atores que já tiveram vítimas assim e soma as técnicas ATT&CK que eles usam. O resultado é um ponto de partida para modelagem de ameaças, não uma previsão.",paisVitima:"País da organização",setor:"Setor",incluirOrigem:"Incluir atores",todos:"todos",estatais:"com país atribuído",qualquer:"qualquer",
+  resAtores:"Atores relevantes",resTec:"Técnicas a cobrir primeiro",porque:"por quê",vitimaPais:"vítimas no país",vitimaSetor:"setor-alvo",temAttack:"perfil ATT&CK",baixarNav:"Baixar camada do Navigator",baixarTce:"Baixar sinais para o TCE",semRes:"Nenhum ator com esse recorte. Tente 'qualquer' em um dos campos.",
+  rankTit:"Países por número de atores",pais:"País",
+  meta:(m)=>`${m.n_atores.toLocaleString("pt-BR")} atores · ${Object.keys(m.fontes).length} fontes · ATT&CK v${m.attack_versao} · atualizado ${m.gerado_em}`,
+  semPais:"Sem país atribuído",nato:"OTAN / Five Eyes"},
+ en:{sub:"War room atlas",buscaPh:"Search actor or alias…",mMapa:"Map",mPerfil:"Threat profile",mRanking:"Ranking",mSobre:"About the data",motivos:"Motive",soAttack:"ATT&CK only",carregando:"Loading the atlas…",atoresPorPais:"actors per country",
+  todosMot:"all",espionagem:"espionage",financeiro:"financial",sabotagem:"sabotage",hacktivismo:"hacktivism","influência":"influence",indefinido:"undefined",
+  atores:"actors",comAttack:"with ATT&CK",aliases:"aliases",relatorios:"reports",topTec:"Most used techniques",topSet:"Target sectors",topVit:"Victim countries",motTit:"Motive",listaAt:"Actors",filtrar:"Filter this country's actors…",
+  escolha:"Click a country on the map or use search.",escolhaPais:"Pick a country",nenhum:"No data.",fechar:"Close",descricao:"Description (original source in English)",alias:"Known names",forn:"Names by vendor",tec:"ATT&CK techniques",ferr:"Tools and malware",ops:"Operations",alvos:"Targets (spreadsheet)",vit:"Victim countries",set:"Sectors",rels:"Reports (APTnotes)",refs:"References",fontes:"Sources",conf:"Attribution confidence",verMitre:"View on ATT&CK",
+  avisoAtrib:"Attribution is a hypothesis. Names and countries come from different vendors and may disagree. Use as a starting point and confirm in the sources.",
+  perfilTit:"Who targets organizations like yours?",perfilIntro:"Pick your organization's country and sector. The atlas ranks actors with past victims like that and sums the ATT&CK techniques they use. It is a threat modeling starting point, not a forecast.",paisVitima:"Organization country",setor:"Sector",incluirOrigem:"Include actors",todos:"all",estatais:"with attributed country",qualquer:"any",
+  resAtores:"Relevant actors",resTec:"Techniques to cover first",porque:"why",vitimaPais:"victims in country",vitimaSetor:"target sector",temAttack:"ATT&CK profile",baixarNav:"Download Navigator layer",baixarTce:"Download TCE signals",semRes:"No actor matches. Try 'any' in one field.",
+  rankTit:"Countries by number of actors",pais:"Country",
+  meta:(m)=>`${m.n_atores.toLocaleString("en-US")} actors · ${Object.keys(m.fontes).length} sources · ATT&CK v${m.attack_versao} · updated ${m.gerado_em}`,
+  semPais:"No attributed country",nato:"NATO / Five Eyes"}
+};
+let L=(()=>{try{return localStorage.getItem("apt4all-lang")||(navigator.language||"pt").slice(0,2)}catch(e){return"pt"}})();if(!T[L])L="pt";
+const t=k=>T[L][k]??k;
+let A=[],P={},G={},TEC={},SET={},MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
+const $=s=>document.querySelector(s);
+function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
+const NS="http://www.w3.org/2000/svg";
+function sv(tag,a={}){const e=document.createElementNS(NS,tag);for(const[x,v]of Object.entries(a))e.setAttribute(x,v);return e}
+const nomeSetor=k=>SET[k]?SET[k][L]:k;
+const nomePais=iso=>iso==="??"?t("semPais"):iso==="NATO"?t("nato"):(G[iso]?(L==="pt"?G[iso].nome_pt:G[iso].nome_en):(P[iso]?(L==="pt"?P[iso].nome_pt:P[iso].nome_en):iso));
+
+async function carrega(){
+  const [a,p,m]=await Promise.all(["atores.json","paises.json","mapa.json"].map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.json()})));
+  A=a.atores;META=a.meta;P=p.paises;G=p.geo;TEC=p.tecnicas;SET=p.setores||{};MAPA=m;A.forEach(x=>porId[x.id]=x);
+  aplicaIdioma();desenhaMapa();montaPerfil();ranking();sobre();
+  const h=decodeURIComponent(location.hash.slice(1));
+  const MODOS=["mapa","perfil","ranking","sobre"];
+  if(MODOS.includes(h)){escolhe("CN",true);vai(h)}else if(h&&porId[h])abreAtor(h);else if(h&&P[h.toUpperCase()])escolhe(h.toUpperCase());else escolhe("CN",true);
+}
+
+function contagem(){
+  const c={};
+  for(const a of A){
+    if(soAtt&&!a.mitre)continue;
+    if(motivo!=="todos"&&!a.motivos.includes(motivo))continue;
+    const k=a.pais||"??";c[k]=(c[k]||0)+1;
+  }
+  return c;
+}
+function cor(n,max){if(!n)return"var(--terra2)";const f=Math.log(n+1)/Math.log(max+1);return["var(--e1)","var(--e2)","var(--e3)","var(--e4)","var(--e5)"][Math.min(4,Math.floor(f*5))]}
+
+function desenhaMapa(){
+  const W=10,H=W*Math.sqrt(3)/2,R=W/Math.sqrt(3)*0.94,passo=MAPA.passo;
+  const cols=Math.max(...MAPA.hex.map(h=>h[0]))+1,rows=Math.max(...MAPA.hex.map(h=>h[1]))+1;
+  const largura=cols*W+W,altura=rows*H+W;
+  const svg=sv("svg",{viewBox:`0 0 ${largura} ${altura}`,role:"img","aria-label":"Mapa-múndi de atores de ameaça por país"});
+  const gr=sv("g",{class:"grat"});
+  for(let lon=-150;lon<=150;lon+=30){const x=(lon+180)/passo*W;gr.append(sv("line",{x1:x,y1:0,x2:x,y2:altura}));const tx=sv("text",{x:x+3,y:altura-4});tx.textContent=(lon<0?-lon+"W":lon+"E");gr.append(tx)}
+  for(let lat=60;lat>=-40;lat-=20){const y=(80-lat)/passo*W;gr.append(sv("line",{x1:0,y1:y,x2:largura,y2:y}));const ty=sv("text",{x:3,y:y-3});ty.textContent=(lat<0?-lat+"S":lat+"N");gr.append(ty)}
+  svg.append(gr);
+  const grupos={};
+  for(const[c,r,iso]of MAPA.hex){
+    const cx=c*W+(r%2?W/2:0)+W/2,cy=r*H+W/2;
+    const pts=[[0,-R],[W/2*0.94,-R/2],[W/2*0.94,R/2],[0,R],[-W/2*0.94,R/2],[-W/2*0.94,-R/2]].map(([x,y])=>`${(cx+x).toFixed(1)},${(cy+y).toFixed(1)}`).join(" ");
+    if(!grupos[iso]){grupos[iso]=sv("g",{class:"pais","data-iso":iso,tabindex:"-1"});const tt=sv("title");grupos[iso].append(tt)}
+    grupos[iso].append(sv("polygon",{points:pts,class:"hex"}));
+  }
+  for(const g of Object.values(grupos)){g.addEventListener("click",()=>escolhe(g.dataset.iso));svg.append(g)}
+  const rot=sv("g");
+  for(const iso of Object.keys(P)){if(!G[iso]||P[iso].atores<5)continue;const x=(G[iso].x+180)/passo*W,y=(80-G[iso].y)/passo*W;const tx=sv("text",{x,y,class:"rotulo","text-anchor":"middle","data-iso":iso});tx.textContent=iso;rot.append(tx)}
+  svg.append(rot);
+  const box=$("#mapa");box.replaceChildren(svg,el("div",{class:"varredura"}));
+  pintaMapa();
+}
+function pintaMapa(){
+  const c=contagem(),max=Math.max(1,...Object.entries(c).filter(([k])=>k!=="??"&&k!=="NATO").map(([,v])=>v));
+  document.querySelectorAll("#mapa .pais").forEach(g=>{const iso=g.dataset.iso,n=c[iso]||0,f=cor(n,max);g.querySelectorAll("polygon").forEach(p=>p.setAttribute("fill",f));g.querySelector("title").textContent=`${nomePais(iso)}: ${n} ${t("atores")}`;g.classList.toggle("sel",iso===sel)});
+  $("#escalaTxt").textContent=`0 → ${max}`;
+  $("#regioes").replaceChildren(...["NATO","??"].map(k=>el("button",{class:"reg",onclick:()=>escolhe(k)},nomePais(k)+" ",el("b",{},String(c[k]||0)))));
+  $("#fmot").replaceChildren(...["todos","espionagem","financeiro","sabotagem","hacktivismo"].map(m=>el("button",{class:"chip","aria-pressed":motivo===m?"true":"false",onclick:()=>{motivo=m;pintaMapa();if(sel)dossie(sel)}},m==="todos"?t("todosMot"):t(m))));
+}
+
+function filtraAtores(iso){return A.filter(a=>(a.pais||"??")===iso&&(!soAtt||a.mitre)&&(motivo==="todos"||a.motivos.includes(motivo)))}
+function barras(pares,rotulo,max){max=max||Math.max(1,...pares.map(p=>p[1]));return el("div",{class:"barras"},pares.map(([k,v])=>el("div",{class:"barra"},el("div",{class:"t",title:rotulo(k)},el("i",{style:`width:${(100*v/max).toFixed(0)}%`}),el("span",{},rotulo(k))),el("span",{class:"v"},String(v)))))}
+
+function escolhe(iso,silencioso){
+  sel=iso;pintaMapa();dossie(iso);
+  if(!silencioso)history.replaceState(null,"","#"+iso);
+}
+function dossie(iso){
+  const p=P[iso];const box=$("#dossie");
+  const seletor=el("select",{class:"filtro","aria-label":t("escolhaPais"),onchange:e=>escolhe(e.target.value)},
+    Object.keys(P).sort((a,b)=>nomePais(a).localeCompare(nomePais(b))).map(k=>el("option",{value:k,selected:k===iso},`${nomePais(k)} (${P[k].atores})`)));
+  if(!p){box.replaceChildren(el("div",{class:"dossie"},seletor,el("p",{},t("escolha"))));return}
+  const lista=filtraAtores(iso).sort((a,b)=>(b.mitre?b.mitre.tecnicas.length:0)-(a.mitre?a.mitre.tecnicas.length:0)||a.nome.localeCompare(b.nome));
+  const ul=el("div",{class:"lista",id:"listaAt"});
+  const pinta=f=>{ul.replaceChildren(...lista.filter(a=>!f||(a.nome+" "+a.aliases.join(" ")).toLowerCase().includes(f)).slice(0,400).map(a=>el("button",{class:"ator",onclick:()=>abreAtor(a.id)},el("span",{},el("b",{},a.nome),el("small",{},a.aliases.slice(0,6).join(" · "))),a.mitre?el("span",{class:"tag at"},`${a.mitre.id} · ${a.mitre.tecnicas.length}`):el("span",{class:"tag"},a.motivos.map(t).join(", ")))))};
+  pinta("");
+  box.replaceChildren(el("div",{class:"dossie"},
+    seletor,
+    el("div",{},el("div",{class:"iso"},iso==="??"||iso==="NATO"?"":"ISO "+iso),el("h2",{},nomePais(iso))),
+    el("div",{class:"nums"},[[lista.length,t("atores")],[lista.filter(a=>a.mitre).length,t("comAttack")],[lista.reduce((s,a)=>s+a.n_aliases,0),t("aliases")],[lista.reduce((s,a)=>s+a.relatorios.length,0),t("relatorios")]].map(([v,r])=>el("div",{},el("b",{},String(v)),el("span",{},r)))),
+    p.motivos.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("motTit")),barras(p.motivos,k=>t(k))):null,
+    p.top_tecnicas.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topTec")),barras(p.top_tecnicas.slice(0,8),k=>`${k} ${TEC[k]||""}`)):null,
+    p.top_setores.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topSet")),barras(p.top_setores.slice(0,6),nomeSetor)):null,
+    p.top_vitimas.length?el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},t("topVit")),barras(p.top_vitimas.slice(0,6),k=>k)):null,
+    el("div",{},el("div",{class:"rot",style:"margin-bottom:6px"},`${t("listaAt")} (${lista.length})`),el("input",{class:"filtro",type:"search",placeholder:t("filtrar"),oninput:e=>pinta(e.target.value.toLowerCase())}),ul)));
+}
+
+function abreAtor(id){
+  const a=porId[id];if(!a)return;
+  history.replaceState(null,"","#"+id);
+  const sec=(tit,conteudo)=>conteudo?el("div",{class:"sec"},el("h3",{},tit),conteudo):null;
+  const g=el("div",{class:"gaveta",role:"dialog","aria-modal":"true","aria-label":a.nome},
+    el("button",{class:"fecha",onclick:fechaAtor},t("fechar")+" ✕"),
+    el("div",{class:"iso"},(a.pais?nomePais(a.pais):t("semPais"))+(a.mitre?` · ${a.mitre.id}`:"")),
+    el("h2",{},a.nome),
+    el("div",{class:"nuvem"},a.motivos.map(m=>el("span",{},t(m))),a.confianca?el("span",{},`${t("conf")}: ${a.confianca}`):null),
+    el("div",{class:"sec aviso"},t("avisoAtrib")),
+    sec(t("forn"),a.fornecedores&&Object.keys(a.fornecedores).length?el("table",{class:"forn"},el("tbody",{},Object.entries(a.fornecedores).map(([k,v])=>el("tr",{},el("th",{},k),el("td",{},v.join(" · ")))))):null),
+    sec(t("alias"),a.aliases.length?el("div",{class:"nuvem"},a.aliases.map(x=>el("span",{},x))):null),
+    sec(t("descricao"),a.descricao?el("p",{style:"margin:0"},a.descricao):null),
+    sec(t("tec"),a.mitre&&a.mitre.tecnicas.length?el("div",{},el("div",{class:"nuvem"},a.mitre.tecnicas.map(x=>el("a",{href:`https://attack.mitre.org/techniques/${x.replace(".","/")}/`,target:"_blank",rel:"noopener",title:TEC[x]||x},x))),el("p",{style:"margin:8px 0 0"},el("a",{href:a.mitre.url,target:"_blank",rel:"noopener"},t("verMitre")+" ↗"))):null),
+    sec(t("ferr"),a.ferramentas.length?el("div",{class:"nuvem"},a.ferramentas.map(x=>el("span",{},x))):null),
+    sec(t("ops"),a.operacoes.length?el("div",{class:"nuvem"},a.operacoes.map(x=>el("span",{},x))):null),
+    sec(t("alvos"),a.alvos?el("p",{style:"margin:0;font-size:14px"},a.alvos):null),
+    sec(t("vit"),a.vitimas.length?el("div",{class:"nuvem"},a.vitimas.map(x=>el("span",{},x))):null),
+    sec(t("set"),a.setores.length?el("div",{class:"nuvem"},a.setores.map(x=>el("span",{},nomeSetor(x)))):null),
+    sec(t("rels")+` (${a.relatorios.length})`,a.relatorios.length?el("div",{class:"rel"},a.relatorios.map(r=>el("a",{href:r.link,target:"_blank",rel:"noopener"},el("span",{},r.data||"—"),r.titulo))):null),
+    sec(t("refs"),a.links.length?el("div",{class:"rel"},a.links.map(u=>el("a",{href:u,target:"_blank",rel:"noopener"},el("span",{},"↗"),u.replace(/^https?:\/\//,"").slice(0,90)))):null),
+    sec(t("fontes"),el("div",{class:"nuvem"},a.fontes.map(f=>el("span",{},f)))));
+  $("#gaveta").replaceChildren(g);g.querySelector(".fecha").focus();
+}
+function fechaAtor(){$("#gaveta").replaceChildren();if(sel)history.replaceState(null,"","#"+sel)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")fechaAtor()});
+
+/* busca */
+const busca=$("#busca"),sug=$("#sug");
+busca.addEventListener("input",()=>{
+  const q=busca.value.trim().toLowerCase();if(q.length<2){sug.hidden=true;return}
+  const res=[];for(const a of A){const hit=a.nome.toLowerCase().includes(q)?a.nome:a.aliases.find(x=>x.toLowerCase().includes(q));if(hit)res.push([a,hit]);if(res.length>=25)break}
+  sug.replaceChildren(...res.map(([a,hit])=>el("button",{onclick:()=>{sug.hidden=true;busca.value="";abreAtor(a.id)}},a.nome+" ",el("small",{},(hit!==a.nome?`≈ ${hit} · `:"")+(a.pais?nomePais(a.pais):t("semPais"))))));
+  sug.hidden=!res.length;
+});
+document.addEventListener("click",e=>{if(!e.target.closest(".busca"))sug.hidden=true});
+
+/* perfil de ameaça */
+function montaPerfil(){
+  const vit={},set={};
+  A.forEach(a=>{a.vitimas.forEach(v=>vit[v]=(vit[v]||0)+1);a.setores.forEach(s=>set[s]=(set[s]||0)+1)});
+  const opt=(o,qual,rotulo)=>[el("option",{value:""},t("qualquer")),...Object.entries(o).filter(([,n])=>n>=2).sort((x,y)=>x[0].localeCompare(y[0])).map(([k,n])=>el("option",{value:k,selected:k===qual},`${rotulo?rotulo(k):k} (${n})`))];
+  $("#pPais").replaceChildren(...opt(vit,"Brazil"));$("#pSetor").replaceChildren(...opt(set,"",nomeSetor));
+  ["#pPais","#pSetor","#pOrigem"].forEach(s=>$(s).onchange=perfil);perfil();
+}
+function calculaPerfil(pais,setor,origem){
+  const out=[];
+  for(const a of A){
+    if(origem==="estado"&&!a.pais)continue;
+    let s=0;const por=[];
+    if(pais&&(a.vitimas.includes(pais)||(a.alvos||"").toLowerCase().includes(pais.toLowerCase()))){s+=2;por.push(t("vitimaPais"))}
+    if(setor&&a.setores.includes(setor)){s+=2;por.push(t("vitimaSetor"))}
+    if((pais||setor)&&!s)continue;
+    if(a.mitre&&a.mitre.tecnicas.length){s+=1;por.push(t("temAttack"))}
+    out.push({a,s,por});
+  }
+  out.sort((x,y)=>y.s-x.s||(y.a.mitre?y.a.mitre.tecnicas.length:0)-(x.a.mitre?x.a.mitre.tecnicas.length:0));
+  const tec={};out.forEach(({a,s})=>{if(a.mitre)a.mitre.tecnicas.forEach(x=>tec[x]=(tec[x]||0)+s)});
+  return{atores:out,tecnicas:Object.entries(tec).sort((x,y)=>y[1]-x[1])};
+}
+function baixa(nome,obj){const b=new Blob([JSON.stringify(obj,null,1)],{type:"application/json"});const u=URL.createObjectURL(b);const a=el("a",{href:u,download:nome});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}
+function perfil(){
+  const pais=$("#pPais").value,setor=$("#pSetor").value,origem=$("#pOrigem").value;
+  const r=calculaPerfil(pais,setor,origem);const box=$("#perfilRes");
+  if(!r.atores.length){box.replaceChildren(el("p",{class:"texto"},t("semRes")));return}
+  const max=r.tecnicas.length?r.tecnicas[0][1]:1;
+  const nav=()=>({name:`apt4all · ${pais||"*"} · ${setor||"*"}`,versions:{attack:String(META.attack_versao||"19").split(".")[0],navigator:"5.1.0",layer:"4.5"},domain:"enterprise-attack",description:"Gerado pelo APT4ALL Atlas. Ponto de partida para modelagem de ameaças; revise antes de usar.",
+    techniques:r.tecnicas.slice(0,150).map(([id,v])=>({techniqueID:id,score:v,comment:`${r.atores.filter(x=>x.a.mitre&&x.a.mitre.tecnicas.includes(id)).length} atores`})),gradient:{colors:["#1E2A27","#F4BE3F"],minValue:0,maxValue:max}});
+  const tce=()=>({version:"0.5",provider:"apt4all",review_required:true,auto_accept:false,intelligence_signal_candidates:[{id:"SIG-APT4ALL-"+(pais||"ALL").replace(/\W/g,"").toUpperCase()+"-"+(setor||"ALL").replace(/\W/g,"").toUpperCase(),kind:"apt4all-threat-profile",status:"candidate",scope:setor?"sector":"global",target_ids:[],crown_jewel_ids:[],technique_ids:r.tecnicas.slice(0,60).map(x=>x[0]),adversary_ids:r.atores.slice(0,30).map(x=>x.a.mitre?x.a.mitre.id:"apt4all:"+x.a.id),severity:"medium",confidence:"low",source_reliability:"C",information_credibility:0.5,relevance:0.6,direction:"increase",observed_at:META.gerado_em,half_life_days:90,source_ref:"APT4ALL Atlas (MITRE ATT&CK, MISP Galaxy, APT Groups and Operations)",rationale:`Perfil de ameaça por vitimologia histórica: país=${pais||"qualquer"}, setor=${setor||"qualquer"}. Presença histórica não estabelece direcionamento atual contra a organização.`,review_required:true}]});
+  box.replaceChildren(el("div",{class:"grade2",style:"padding:0 14px 14px"},
+    el("div",{},el("div",{class:"rot",style:"margin:6px 0"},`${t("resAtores")} (${r.atores.length})`),
+      el("div",{class:"lista",style:"max-height:520px"},r.atores.slice(0,200).map(({a,s,por})=>el("button",{class:"ator",onclick:()=>abreAtor(a.id)},el("span",{},el("b",{},a.nome),el("small",{},`${a.pais?nomePais(a.pais):t("semPais")} · ${t("porque")}: ${por.join(", ")}`)),el("span",{class:"tag at"},String(s)))))),
+    el("div",{},el("div",{class:"rot",style:"margin:6px 0"},t("resTec")),barras(r.tecnicas.slice(0,15),k=>`${k} ${TEC[k]||""}`,max),
+      el("div",{style:"display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"},el("button",{class:"btn",onclick:()=>baixa(`apt4all-navigator-${pais||"all"}-${setor||"all"}.json`,nav())},t("baixarNav")),el("button",{class:"btn fant",onclick:()=>baixa(`apt4all-tce-sinais-${pais||"all"}.json`,tce())},t("baixarTce"))))));
+}
+
+/* ranking */
+let ordem=["atores",-1];
+function ranking(){
+  const linhas=Object.values(P).map(p=>({iso:p.iso,nome:nomePais(p.iso),atores:p.atores,com_mitre:p.com_mitre,aliases:p.aliases,relatorios:p.relatorios}));
+  const[k,d]=ordem;linhas.sort((x,y)=>(typeof x[k]==="string"?x[k].localeCompare(y[k]):x[k]-y[k])*d);
+  const cab=[["nome",t("pais")],["atores",t("atores")],["com_mitre",t("comAttack")],["aliases",t("aliases")],["relatorios",t("relatorios")]];
+  $("#rankTab").replaceChildren(el("table",{},el("thead",{},el("tr",{},cab.map(([c,r])=>el("th",{onclick:()=>{ordem=[c,ordem[0]===c?-ordem[1]:-1];ranking()},"aria-sort":ordem[0]===c?(ordem[1]<0?"descending":"ascending"):"none"},r+(ordem[0]===c?(ordem[1]<0?" ▼":" ▲"):""))))),
+    el("tbody",{},linhas.map(l=>el("tr",{onclick:()=>{vai("mapa");escolhe(l.iso)}},el("td",{},l.nome+(l.iso.length===2?` (${l.iso})`:"")),el("td",{class:"n"},String(l.atores)),el("td",{class:"n"},String(l.com_mitre)),el("td",{class:"n"},String(l.aliases)),el("td",{class:"n"},String(l.relatorios)))))));
+}
+
+/* sobre */
+function sobre(){
+  const pt=L==="pt";
+  const f=META.fontes||{};
+  $("#sobre").replaceChildren(
+    el("h3",{},pt?"De onde vêm os dados":"Where the data comes from"),
+    el("p",{},pt?`O atlas junta ${META.n_registros} registros de quatro fontes abertas e resolve aliases até chegar a ${META.n_atores} atores. Os relatórios vêm do índice APTnotes.`:`The atlas merges ${META.n_registros} records from four open sources and resolves aliases down to ${META.n_atores} actors. Reports come from the APTnotes index.`),
+    el("ul",{},
+      el("li",{},el("a",{href:"https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU",target:"_blank"},"APT Groups and Operations")," — CC BY 4.0 · "+(f.planilha||0)),
+      el("li",{},el("a",{href:"https://github.com/MISP/misp-galaxy",target:"_blank"},"MISP Galaxy (threat-actor)")," — CC0 1.0 / BSD-2 · "+(f.misp||0)),
+      el("li",{},el("a",{href:"https://attack.mitre.org/",target:"_blank"},"MITRE ATT&CK®")," v"+META.attack_versao+" — © The MITRE Corporation · "+(f.mitre||0)),
+      el("li",{},el("a",{href:"https://github.com/StrangerealIntel/EternalLiberty",target:"_blank"},"EternalLiberty")," · "+(f.eternalliberty||0)+(pt?" (referência cruzada de nomes)":" (name cross-reference)")),
+      el("li",{},el("a",{href:"https://github.com/aptnotes/data",target:"_blank"},"APTnotes"),pt?" (títulos e links de relatórios)":" (report titles and links)"),
+      el("li",{},el("a",{href:"https://www.naturalearthdata.com/",target:"_blank"},"Natural Earth"),pt?" (contornos dos países, domínio público)":" (country shapes, public domain)")),
+    el("h3",{},pt?"Como os aliases são resolvidos":"How aliases are resolved"),
+    el("p",{},pt?"Cada registro se liga a um ator já existente pelo ID da MITRE, pelo nome principal ou por um alias que aponte para um único ator. Ordem de confiança: ATT&CK, planilha, MISP, EternalLiberty. Aliases disputados por dois atores deixam de ligar registros, para não fundir grupos guarda-chuva (como Lazarus) com seus subgrupos.":"Each record joins an existing actor by MITRE ID, by main name, or by an alias that points to a single actor. Trust order: ATT&CK, spreadsheet, MISP, EternalLiberty. Aliases claimed by two actors stop linking records, so umbrella groups (like Lazarus) are not fused with their subgroups."),
+    el("h3",{},pt?"Limites":"Limits"),
+    el("p",{},pt?"País e motivação são atribuições de terceiros, às vezes de um único incidente. A motivação é inferida por palavras-chave e pode errar. Cerca de metade dos atores não tem país atribuído, o que inclui crime organizado transnacional. Use o atlas para levantar hipóteses e sempre confirme nas fontes.":"Country and motive are third-party attributions, sometimes from a single incident. Motive is inferred from keywords and can be wrong. About half the actors have no attributed country, including transnational organized crime. Use the atlas to raise hypotheses and always confirm in the sources."),
+    el("p",{},el("a",{href:"https://github.com/Ridd1kulusC0d3r/apt4all"},"github.com/Ridd1kulusC0d3r/apt4all")));
+}
+
+function vai(m){document.querySelectorAll("nav.modos button").forEach(b=>b.setAttribute("aria-selected",b.dataset.m===m));document.querySelectorAll("main>section").forEach(s=>s.hidden=s.id!=="v-"+m)}
+document.querySelector("nav.modos").addEventListener("click",e=>{const b=e.target.closest("button");if(b)vai(b.dataset.m)});
+$("#soAttack").addEventListener("change",e=>{soAtt=e.target.checked;pintaMapa();if(sel)dossie(sel)});
+function aplicaIdioma(){
+  document.documentElement.lang=L==="pt"?"pt-BR":"en";
+  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
+  document.querySelectorAll("[data-tp]").forEach(e=>e.placeholder=t(e.dataset.tp));
+  document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  if(META.n_atores)$("#meta").textContent=T[L].meta(META);
+}
+document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplicaIdioma();if(A.length){pintaMapa();if(sel)dossie(sel);montaPerfil();ranking();sobre()}});
+aplicaIdioma();
+carrega().catch(e=>{$("#mapa").replaceChildren(el("div",{class:"carregando"},"Erro ao carregar dados: "+e.message))});
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "Se usar o APT4ALL em pesquisa, cite assim. / If you use APT4ALL in research, please cite it as below."
+title: "APT4ALL: atlas aberto e bilíngue de atores de ameaça, APT e malware para CTI"
+type: dataset
+authors:
+  - alias: "Ridd1kulusC0d3r"
+    name: "DEIVOSINT"
+repository-code: "https://github.com/Ridd1kulusC0d3r/apt4all"
+url: "https://ridd1kulusc0d3r.github.io/apt4all/"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-13"
+keywords:
+  - cyber threat intelligence
+  - APT
+  - threat actor
+  - MITRE ATT&CK
+  - threat modeling
+  - OSINT
+references:
+  - type: dataset
+    title: "APT Groups and Operations"
+    authors:
+      - name: "Florian Roth and contributors"
+    license: CC-BY-4.0
+  - type: dataset
+    title: "MISP Galaxy: Threat Actor"
+    authors:
+      - name: "MISP Project"
+    license: CC0-1.0
+  - type: dataset
+    title: "MITRE ATT&CK"
+    authors:
+      - name: "The MITRE Corporation"

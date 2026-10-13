@@ -1,0 +1,847 @@
+{
+ "http://www.ollydbg.de/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://abuse.ch/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://act.globalcyberalliance.org/index.php?title=Threat_Taming_Tools_Collection_(T3C)": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://andreacristaldi.github.io/APTmap/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://any.run/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://app.tidalcyber.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://app.tidalcyber.com/share/8bd9e111-0a06-4609-aadb-0b337e4c7c7c": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://apt.etda.or.th/cgi-bin/listgroups.cgi": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://apt.securelist.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://apt.threattracking.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://attack.mitre.org/groups/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://aws-samples.github.io/samples-agentic-attack-tree-generator/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://bazaar.abuse.ch/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://beginners.re/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://binary.ninja/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://blog.didierstevens.com/programs/pdf-tools/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://blog.didierstevens.com/programs/xorsearch/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://center-for-threat-informed-defense.github.io/mappings-explorer/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://center-for-threat-informed-defense.github.io/threat-modeling-with-attack/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://challenges.re/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://cloud.google.com/security/resources/insights/apt-groups": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://controlcompass.github.io/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://crackmes.one/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://d3fend.mitre.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://docs.google.com/spreadsheets/d/13wBzwmfAoEBPUgcYM4CgSoj--xLicPz777IQ6iSUlNk": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://docs.google.com/spreadsheets/d/1H9_xaxQHpWaa4O_Son4Gx0YOIzlcBWMsdvePFX68EKU": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://embed.kumu.io/0b023bf1a971ba32510e86e8f1a38c38#apt-index": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://ericzimmerman.github.io/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://eurepoc.eu/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://eurepoc.eu/advanced-persistent-threats-apts/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://flare-on.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://gchq.github.io/CyberChef/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://ghidra-sre.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/0x4D31/awesome-threat-detection": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/504ensicsLabs/LiME": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/CriticalPathSecurity/Public-Intelligence-Feeds": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/CybercentreCanada/assemblyline": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/MBCProject/mbc-markdown": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/MISP/MISP": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/Neo23x0/yarGen": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/OTRF/Security-Datasets": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/OpenCTI-Platform/opencti": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/RPISEC/Malware": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/RazviOverflow/Malware_Resources": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/RedDrip7/APT_Digital_Weapon": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/SigmaHQ/sigma": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/StrangerealIntel/EternalLiberty": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/THORCollective/HEARTH": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/TheHive-Project/TheHive": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/Velocidex/velociraptor": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/VirusTotal/yara-x": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/WithSecureLabs/chainsaw": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/Yamato-Security/hayabusa": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/andreacristaldi/APTmap": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/aptnotes/data": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/bryanwills/awesome-incident-response": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/center-for-threat-informed-defense/adversary_emulation_library": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/center-for-threat-informed-defense/tram": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/cisagov/Decider": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/cuckoosandbox/cuckoo": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/cyber-research/APTMalware": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/de4dot/de4dot": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/decalage2/oletools": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/dnSpyEx/dnSpy": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/firehol/blocklist-ipsets": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/google/rekall": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/hasherezade/pe-bear": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/horsicq/Detect-It-Easy": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/hslatman/awesome-threat-intelligence": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/icsharpcode/ILSpy": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/intelowlproject/IntelOwl": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/kevoreilly/CAPEv2": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/keydet89/RegRipper3.0": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/kraloveckey/threat-intelligence-feeds": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mandiant/capa": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mandiant/flare-floss": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mandiant/flare-vm": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/michaelelizarov/apt-intelligence-dashboard": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mikesiko/PracticalMalwareAnalysis-Labs": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mitre-attack/attack-stix-data": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mitre-attack/mitreattack-python": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mitre/caldera": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mthcht/ThreatIntel-Reports": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/mthcht/awesome-lists": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/muchdogesec/awesome_threat_intel_blogs": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/redcanaryco/atomic-red-team": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/rshipp/awesome-malware-analysis": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/rstcloud/awesome-threat-actor-resources": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/sanjaynitttr/Malware-IR-Tools-Resources": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/simsong/bulk_extractor": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/skrghosh/apt-dataset": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/threatcraft-co/theory": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/tidalcyber/cyber-threat-profiling": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/tropChaud/Categorized-Adversary-TTPs": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/volatilityfoundation/volatility3": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/winsiderss/systeminformer": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/yeti-platform/yeti": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://github.com/ytisf/theZoo": {
+  "codigo": 403,
+  "ok": true,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://hex-rays.com/ida-free/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://learn.microsoft.com/en-us/unified-secops-platform/microsoft-threat-actor-naming": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://malpedia.caad.fkie.fraunhofer.de/actors": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://malshare.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://malwareunicorn.org/workshops/re101.html": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://misp-galaxy.org/threat-actor/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://mitre-attack.github.io/attack-navigator/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://mthcht.github.io/ThreatIntel-Reports/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://nostarch.com/evasive-malware": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://nostarch.com/malware": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://osquery.io/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://ost2.fyi/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://otx.alienvault.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://owasp.org/www-community/Threat_Modeling": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://rada.re/n/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://remnux.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://research.utwente.nl/en/publications/threatcompass-a-tool-for-identifying-and-mapping-security-issues/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://socradar.io/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://socradar.io/category/threat-actor-profiles/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://threats.wiz.io/all-actors": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://top-attack-techniques.mitre-engenuity.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://tria.ge/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://unit42.paloaltonetworks.com/threat-actor-groups-tracked-by-palo-alto-networks-unit-42/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://urlscan.io/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://virusshare.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://vx-underground.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.aldeid.com/wiki/PEiD": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.anvilogic.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.autopsy.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.begin.re/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.cfr.org/cyber-operations/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.cisa.gov/known-exploited-vulnerabilities-catalog": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.crowdstrike.com/adversaries/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.crowdstrike.com/en-us/blog/crowdstrike-and-microsoft-unite-to-deconflict-cyber-threat-attribution/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.csis.org/programs/strategic-technologies-program/significant-cyber-incidents": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.dragos.com/threat-groups/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.first.org/epss/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.hybrid-analysis.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.iiss.org/research-paper/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.joesandbox.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.kroll.com/en/services/cyber/incident-response-recovery/kroll-artifact-parser-and-extractor-kape": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.malware-traffic-analysis.net/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.malwaretech.com/beginner-malware-reversing-challenges": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.mitre.org/sites/default/files/2021-11/prs-18-1174-ngci-cyber-threat-modeling.pdf": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.oasis-open.org/committees/download.php/66239/Intel%20Corp_Threat%20Agent%20Library_07-2202w.pdf": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.procdot.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.sans.org/cyber-security-courses/cyber-threat-intelligence/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.sans.org/cyber-security-courses/reverse-engineering-malware-malware-analysis-tools-techniques/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.secureworks.com/research/threat-profiles": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.threathunting.net/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.threatmodelingmanifesto.org/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.virustotal.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.wiley.com/en-us/The+Art+of+Memory+Forensics-p-9781118825099": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.winitor.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@LiveOverflow": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@MalwareAnalysisForHedgehogs": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@MalwareTechBlog": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@OALABS": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@_JohnHammond": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://www.youtube.com/@hasherezade": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://x64dbg.com/": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ },
+ "https://zenodo.org/records/12741055": {
+  "codigo": 0,
+  "ok": false,
+  "quando": "2026-10-13T05:36:48+00:00"
+ }
+}

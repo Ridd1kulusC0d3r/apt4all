@@ -1,0 +1,37 @@
+name: testes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Testes (só biblioteca padrão)
+        run: python -W error::ResourceWarning -m unittest discover -s testes -v
+
+  integracao-tce:
+    # confere que o sinal gerado continua no formato que o TCE aceita
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar o TCE
+        run: pip install "git+https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling"
+      - name: Teste de integração
+        run: python -m unittest discover -s testes -p "test_ponte_tce.py" -v

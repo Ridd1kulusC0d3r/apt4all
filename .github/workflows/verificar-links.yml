@@ -1,0 +1,31 @@
+name: verificar-links
+
+on:
+  schedule:
+    - cron: "0 7 1 * *"   # todo dia 1º, 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar os links de recursos/recursos.json
+        id: v
+        continue-on-error: true
+        run: python ferramentas/recursos/verificar_links.py | tee relatorio-links.txt
+      - name: Abrir issue se algum link morreu
+        if: steps.v.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Links mortos em recursos.json ($(date +%Y-%m))" \
+            --label links --body-file relatorio-links.txt || \
+          gh issue create --title "Links mortos em recursos.json ($(date +%Y-%m))" --body-file relatorio-links.txt

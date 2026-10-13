@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL Manual</title>
+<meta name="description" content="Manual ilustrado do APT4ALL: instalar, usar o Atlas, montar o perfil de ameaça e levar para o TCE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
+ --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.6 var(--corpo)}
+html[data-lang="pt"] .en,html[data-lang="en"] .pt{display:none!important}
+a{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+code,kbd,pre{font-family:var(--mono);font-size:.88em}
+code{background:var(--sup2);padding:1px 5px;border:1px solid var(--borda)}
+kbd{background:var(--sup2);border:1px solid var(--borda);border-bottom-width:2px;padding:0 5px}
+pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
+pre code{background:none;border:0;padding:0}
+.topo{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
+.topo .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none;white-space:nowrap}
+.lg span{color:var(--menta)}
+.idioma{display:flex;border:1px solid var(--borda)}
+.idioma button{background:none;border:0;color:var(--apagado);padding:6px 10px;font:600 12px var(--mono);cursor:pointer}
+.idioma button[aria-pressed="true"]{background:var(--menta);color:#06201C}
+.layout{max-width:1180px;margin:0 auto;padding:0 16px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.sumario{position:sticky;top:70px;align-self:start;padding-top:34px;font-size:14px}
+nav.sumario b{font:600 11px var(--mono);letter-spacing:.12em;color:var(--apagado);text-transform:uppercase}
+nav.sumario ol{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:2px;counter-reset:s}
+nav.sumario li{counter-increment:s}
+nav.sumario a{display:block;padding:5px 10px;border-left:2px solid var(--borda);color:var(--texto);text-decoration:none}
+nav.sumario a::before{content:counter(s,decimal-leading-zero) "  ";font:12px var(--mono);color:var(--apagado)}
+nav.sumario a:hover,nav.sumario a.ativo{border-left-color:var(--menta);color:var(--menta)}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav.sumario{position:static;padding-top:20px}nav.sumario ol{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+main{min-width:0}
+.hero{padding:44px 0 10px}
+.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
+h1{font:700 clamp(40px,7vw,64px)/.95 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:10px 0 14px}
+h1 em{font-style:normal;color:var(--ambar)}
+.lead{font-size:18px;color:var(--texto);max-width:64ch;margin:0}
+section{padding-top:46px}
+h2{font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--claro);margin:0 0 6px;display:flex;gap:12px;align-items:baseline}
+h2 .num{font:600 14px var(--mono);color:var(--ambar)}
+h3{font:700 21px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
+.sub{color:var(--apagado);margin:0 0 18px;max-width:70ch}
+p,li{max-width:72ch}
+.agora{border:1px solid var(--menta);background:color-mix(in srgb,var(--menta) 7%,var(--fundo));padding:14px 16px;margin:18px 0;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.agora::before{content:"▶";color:var(--menta);font:700 18px var(--mono)}
+.agora b{color:var(--claro)}
+.aviso{border-left:3px solid var(--coral);background:var(--fundo2);padding:10px 14px;color:var(--texto);margin:16px 0}
+.dica{border-left:3px solid var(--ambar);background:var(--fundo2);padding:10px 14px;margin:16px 0}
+.abas{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--borda);margin-top:8px}
+.abas button{background:none;border:0;border-bottom:3px solid transparent;color:var(--apagado);padding:9px 14px;font:600 15px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.abas button[aria-selected="true"]{color:var(--claro);border-bottom-color:var(--ambar)}
+.painel-aba{background:var(--sup);border:1px solid var(--borda);border-top:0;padding:6px 18px 14px}
+.passos{counter-reset:p;list-style:none;padding:0;margin:12px 0}
+.passos>li{counter-increment:p;position:relative;padding:10px 0 10px 46px;border-bottom:1px dashed var(--borda)}
+.passos>li:last-child{border-bottom:0}
+.passos>li::before{content:counter(p);position:absolute;left:0;top:9px;width:30px;height:30px;border:1.5px solid var(--menta);border-radius:50%;display:grid;place-items:center;font:600 13px var(--mono);color:var(--menta)}
+figure.tela{margin:20px 0 28px;background:var(--sup);border:1px solid var(--borda)}
+.quadro{position:relative;line-height:0;overflow:hidden}
+.quadro img{width:100%;height:auto;display:block}
+.mk{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--ambar);color:#1B1300;font:700 14px/28px var(--mono);text-align:center;box-shadow:0 0 0 3px rgba(11,15,16,.85),0 2px 10px rgba(0,0,0,.6);z-index:2}
+.bx{position:absolute;border:2px dashed var(--ambar);border-radius:3px;pointer-events:none;opacity:.8}
+figure.tela figcaption{padding:12px 16px 14px;border-top:1px solid var(--borda)}
+figure.tela figcaption .tit{font:600 12px var(--mono);letter-spacing:.1em;color:var(--apagado);text-transform:uppercase}
+.leg{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.leg li{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;max-width:none}
+.leg li i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ambar);color:#1B1300;font:700 12px/22px var(--mono);text-align:center;margin-top:2px}
+@media (max-width:600px){.mk{width:20px;height:20px;font-size:11px;line-height:20px}.bx{display:none}}
+.tab{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+.tab th,.tab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
+.tab th{font:600 12px var(--mono);letter-spacing:.06em;color:var(--apagado);text-transform:uppercase}
+.tab td code{white-space:nowrap}
+.rolar{overflow-x:auto}
+.ok{color:var(--menta);font-family:var(--mono)}
+.diag{background:var(--fundo2);border:1px solid var(--borda);padding:12px;margin:16px 0}
+.diag svg{width:100%;height:auto;display:block}
+.glos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.glos div{background:var(--sup);border:1px solid var(--borda);padding:12px 14px}
+.glos b{font:600 14px var(--mono);color:var(--menta)}
+.glos p{margin:4px 0 0;font-size:14px;color:var(--texto)}
+.celular{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:24px;align-items:center}
+.celular img{width:100%;border:1px solid var(--borda);border-radius:18px}
+@media (max-width:640px){.celular{grid-template-columns:1fr}.celular img{max-width:240px}}
+footer{margin-top:60px;border-top:1px solid var(--borda);padding-top:18px;font:13px var(--mono);color:var(--apagado)}
+</style>
+</head>
+<body>
+<header class="topo"><div class="in">
+  <a class="lg" href="../">APT4ALL <span>/</span> MANUAL</a>
+  <div class="idioma" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
+</div></header>
+
+<div class="layout">
+<nav class="sumario" aria-label="Sumário">
+  <b class="pt">Sumário</b><b class="en">Contents</b>
+  <ol>
+    <li><a href="#rapido"><span class="pt">Em 30 segundos</span><span class="en">In 30 seconds</span></a></li>
+    <li><a href="#instalar"><span class="pt">Instalar</span><span class="en">Install</span></a></li>
+    <li><a href="#como"><span class="pt">Como funciona</span><span class="en">How it works</span></a></li>
+    <li><a href="#uso"><span class="pt">Uso guiado</span><span class="en">Guided tour</span></a></li>
+    <li><a href="#demo"><span class="pt">Caso demo</span><span class="en">Demo case</span></a></li>
+    <li><a href="#relatorios"><span class="pt">Relatórios</span><span class="en">Reports</span></a></li>
+    <li><a href="#problema"><span class="pt">Deu problema?</span><span class="en">Trouble?</span></a></li>
+    <li><a href="#glossario"><span class="pt">Glossário</span><span class="en">Glossary</span></a></li>
+    <li><a href="#tecnico"><span class="pt">Seção técnica</span><span class="en">Technical section</span></a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="hero">
+  <div class="selo">◆ <span class="pt">Manual ilustrado · versão 1.0</span><span class="en">Illustrated manual · version 1.0</span></div>
+  <h1 class="pt">Do zero ao <em>perfil de ameaça</em></h1>
+  <h1 class="en">From zero to a <em>threat profile</em></h1>
+  <p class="lead pt">Este manual é para quem nunca usou o APT4ALL, inclusive quem não é da área. Cada parte termina com <b>uma</b> ação. Faça, marque e siga.</p>
+  <p class="lead en">This manual is for anyone who has never used APT4ALL, including people outside security. Each part ends with <b>one</b> action. Do it, tick it, move on.</p>
+</div>
+
+<!-- 1 -->
+<section id="rapido">
+  <h2><span class="num">01</span><span class="pt">Em 30 segundos</span><span class="en">In 30 seconds</span></h2>
+  <p class="pt">Grupos de ataque têm vários nomes: cada empresa de segurança batiza do seu jeito. O APT4ALL junta 5 fontes abertas, descobre quais nomes são o mesmo grupo e mostra tudo num mapa. Você clica num país e vê quem é atribuído a ele; clica num grupo e vê todos os nomes, o que ele faz e onde ler mais. Na aba <b>Perfil de ameaça</b>, diz onde e em que setor trabalha, e o Atlas mostra quem costuma atacar organizações assim.</p>
+  <p class="en">Attack groups have many names: each security vendor names them its own way. APT4ALL merges 5 open sources, works out which names are the same group and shows everything on a map. Click a country to see who is attributed to it; click a group to see all its names, what it does and where to read more. In the <b>Threat profile</b> tab, say where and in which sector you work, and the Atlas shows who usually attacks organizations like that.</p>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">abra o <a href="../atlas/">Atlas</a> e clique em qualquer país.</span><span class="en">open the <a href="../atlas/">Atlas</a> and click any country.</span></div></div>
+</section>
+
+<!-- 2 -->
+<section id="instalar">
+  <h2><span class="num">02</span><span class="pt">Instalar</span><span class="en">Install</span></h2>
+  <p class="sub pt">Não precisa instalar nada para usar online. Para usar sem internet, siga a aba do seu sistema.</p>
+  <p class="sub en">Nothing to install to use it online. To use it offline, follow your system's tab.</p>
+  <div class="abas" role="tablist" aria-label="Sistema">
+    <button role="tab" aria-selected="true" data-aba="web">Online</button>
+    <button role="tab" aria-selected="false" data-aba="win">Windows</button>
+    <button role="tab" aria-selected="false" data-aba="mac">macOS</button>
+    <button role="tab" aria-selected="false" data-aba="lin">Linux</button>
+  </div>
+  <div class="painel-aba" data-painel="web">
+    <ol class="passos">
+      <li><span class="pt">Abra <a href="https://ridd1kulusc0d3r.github.io/apt4all/">ridd1kulusc0d3r.github.io/apt4all</a> no navegador (computador ou celular).</span><span class="en">Open <a href="https://ridd1kulusc0d3r.github.io/apt4all/">ridd1kulusc0d3r.github.io/apt4all</a> in your browser (computer or phone).</span></li>
+      <li><span class="pt">Clique em <b>Abrir o Atlas</b>. Pronto.</span><span class="en">Click <b>Open the Atlas</b>. Done.</span></li>
+    </ol>
+  </div>
+  <div class="painel-aba" data-painel="win" hidden>
+    <ol class="passos">
+      <li><span class="pt">Instale o Python em <a href="https://www.python.org/downloads/">python.org/downloads</a>. Na primeira tela do instalador, <b>marque “Add python.exe to PATH”</b>.</span><span class="en">Install Python from <a href="https://www.python.org/downloads/">python.org/downloads</a>. On the installer's first screen, <b>tick “Add python.exe to PATH”</b>.</span></li>
+      <li><span class="pt">No GitHub do projeto, clique em <b>Code → Download ZIP</b>. Clique com o botão direito no ZIP e escolha <b>Extrair tudo</b>.</span><span class="en">On the project's GitHub, click <b>Code → Download ZIP</b>. Right-click the ZIP and choose <b>Extract All</b>.</span></li>
+      <li><span class="pt">Na pasta extraída, dê dois cliques em <code>iniciar-windows.bat</code>. Se o Windows avisar “O Windows protegeu o computador”, clique em <b>Mais informações → Executar assim mesmo</b>.</span><span class="en">In the extracted folder, double-click <code>iniciar-windows.bat</code>. If Windows says “Windows protected your PC”, click <b>More info → Run anyway</b>.</span></li>
+      <li><span class="pt">O navegador abre sozinho. Para fechar, feche a janela preta.</span><span class="en">The browser opens by itself. To stop, close the black window.</span></li>
+    </ol>
+  </div>
+  <div class="painel-aba" data-painel="mac" hidden>
+    <ol class="passos">
+      <li><span class="pt">Instale o Python em <a href="https://www.python.org/downloads/">python.org/downloads</a> (o macOS não traz um atualizado).</span><span class="en">Install Python from <a href="https://www.python.org/downloads/">python.org/downloads</a> (macOS does not ship an up-to-date one).</span></li>
+      <li><span class="pt">Baixe o ZIP do projeto (<b>Code → Download ZIP</b>) e dê dois cliques para descompactar.</span><span class="en">Download the project ZIP (<b>Code → Download ZIP</b>) and double-click it to unzip.</span></li>
+      <li><span class="pt">Na primeira vez: botão direito em <code>iniciar-mac.command</code> → <b>Abrir</b> → <b>Abrir</b>. Das próximas vezes, dois cliques bastam.</span><span class="en">First time: right-click <code>iniciar-mac.command</code> → <b>Open</b> → <b>Open</b>. After that, double-clicking is enough.</span></li>
+      <li><span class="pt">Se aparecer “permissão negada”, abra o Terminal na pasta e rode <code>chmod +x iniciar-mac.command</code>.</span><span class="en">If you see “permission denied”, open Terminal in the folder and run <code>chmod +x iniciar-mac.command</code>.</span></li>
+    </ol>
+  </div>
+  <div class="painel-aba" data-painel="lin" hidden>
+    <ol class="passos">
+      <li><span class="pt">O Python 3 já vem na maioria das distribuições. Confira com <code>python3 --version</code> (precisa ser 3.9 ou mais novo).</span><span class="en">Python 3 ships with most distributions. Check with <code>python3 --version</code> (needs 3.9 or newer).</span></li>
+      <li><pre><code>git clone https://github.com/Ridd1kulusC0d3r/apt4all
+cd apt4all
+./iniciar-linux.sh</code></pre></li>
+      <li><span class="pt">No gerenciador de arquivos, dois cliques em <code>iniciar-linux.sh</code> também funcionam (escolha <b>Executar</b>).</span><span class="en">In your file manager, double-clicking <code>iniciar-linux.sh</code> also works (choose <b>Run</b>).</span></li>
+    </ol>
+  </div>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">abra o APT4ALL do jeito que preferir e confira se a página inicial mostra “1.355 atores”.</span><span class="en">open APT4ALL whichever way you prefer and check that the home page shows “1,355 actors”.</span></div></div>
+</section>
+
+<!-- 3 -->
+<section id="como">
+  <h2><span class="num">03</span><span class="pt">Como funciona</span><span class="en">How it works</span></h2>
+  <p class="sub pt">Fontes abertas entram, um script junta os nomes, as páginas mostram. Toda segunda o GitHub refaz isso sozinho.</p>
+  <p class="sub en">Open sources go in, a script merges the names, the pages show the result. Every Monday GitHub redoes it automatically.</p>
+  <div class="diag">
+  <svg viewBox="0 0 960 330" role="img" aria-labelledby="dgt"><title id="dgt">Fluxo de dados do APT4ALL / APT4ALL data flow</title>
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5EE6C4"/></marker></defs>
+    <g font-family="JetBrains Mono,monospace" font-size="13" fill="#DCE4E2">
+      <g fill="#10181A" stroke="#1F2B29"><rect x="10" y="20" width="200" height="44"/><rect x="10" y="74" width="200" height="44"/><rect x="10" y="128" width="200" height="44"/><rect x="10" y="182" width="200" height="44"/><rect x="10" y="236" width="200" height="44"/></g>
+      <text x="22" y="47">Planilha APT Groups</text><text x="22" y="101">MISP Galaxy</text><text x="22" y="155">MITRE ATT&amp;CK</text><text x="22" y="209">EternalLiberty</text><text x="22" y="263">APTnotes</text>
+      <g stroke="#5EE6C4" stroke-width="1.5" fill="none" marker-end="url(#ar)"><path d="M210 42 C260 42 260 150 300 150"/><path d="M210 96 C255 96 255 150 300 150"/><path d="M210 150 L300 150"/><path d="M210 204 C255 204 255 150 300 150"/><path d="M210 258 C260 258 260 150 300 150"/></g>
+      <rect x="302" y="105" width="210" height="90" fill="#152022" stroke="#F4BE3F"/>
+      <text x="318" y="135" fill="#F4BE3F" font-weight="600">construir_dados.py</text>
+      <text x="318" y="158" font-size="12" fill="#8A9693">2.494 registros</text>
+      <text x="318" y="178" font-size="12" fill="#8A9693">→ 1.355 atores</text>
+      <g stroke="#5EE6C4" stroke-width="1.5" fill="none" marker-end="url(#ar)"><path d="M512 150 L570 150"/></g>
+      <rect x="572" y="105" width="150" height="90" fill="#10181A" stroke="#1F2B29"/>
+      <text x="586" y="135">atores.json</text><text x="586" y="157">paises.json</text><text x="586" y="179">mapa.json</text>
+      <g stroke="#5EE6C4" stroke-width="1.5" fill="none" marker-end="url(#ar)"><path d="M722 130 C760 130 760 60 800 60"/><path d="M722 150 L800 150"/><path d="M722 170 C760 170 760 240 800 240"/></g>
+      <g fill="#10181A" stroke="#5EE6C4"><rect x="802" y="36" width="150" height="48"/><rect x="802" y="126" width="150" height="48"/><rect x="802" y="216" width="150" height="48"/></g>
+      <text x="816" y="65" fill="#5EE6C4">Atlas</text><text x="816" y="148" fill="#5EE6C4">Perfil</text><text x="816" y="166" font-size="11" fill="#8A9693">Navigator · TCE</text><text x="816" y="245" fill="#5EE6C4">Ranking</text>
+      <text x="302" y="232" font-size="12" fill="#8A9693">regra: âncoras ATT&amp;CK → planilha → MISP</text>
+      <text x="302" y="250" font-size="12" fill="#8A9693">alias em 2 atores = ambíguo, não une</text>
+      <text x="302" y="300" font-size="12" fill="#F4BE3F">CI: toda segunda 06:00 UTC → PR com dados novos</text>
+    </g>
+  </svg>
+  </div>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">no Atlas, abra a aba <b>Sobre os dados</b> e veja a data da última atualização.</span><span class="en">in the Atlas, open the <b>About the data</b> tab and check the last update date.</span></div></div>
+</section>
+
+<!-- 4 -->
+<section id="uso">
+  <h2><span class="num">04</span><span class="pt">Uso guiado</span><span class="en">Guided tour</span></h2>
+  <p class="sub pt">Seis telas, na ordem em que você vai usar. Os números em âmbar na imagem batem com a lista embaixo.</p>
+  <p class="sub en">Six screens, in the order you'll use them. The amber numbers on the image match the list below.</p>
+
+  <h3 class="pt">1. Página inicial</h3><h3 class="en">1. Home page</h3>
+  <figure class="tela" data-tela="inicio">
+    <figcaption><div class="tit pt">Página inicial</div><div class="tit en">Home page</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>Abrir o Atlas</b>: a porta principal.</span><span class="en"><b>Open the Atlas</b>: the main door.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>PT / EN</b>: troca o idioma de todas as páginas (fica lembrado).</span><span class="en"><b>PT / EN</b>: switches the language on every page (remembered).</span></span></li>
+      <li><i>3</i><span><span class="pt"><b>Números ao vivo</b>: lidos da base na hora; se aparecer “—”, a base não carregou (veja <a href="#problema">Deu problema?</a>).</span><span class="en"><b>Live numbers</b>: read from the dataset on load; if you see “—”, the dataset didn't load (see <a href="#problema">Trouble?</a>).</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">2. Mapa e dossiê do país</h3><h3 class="en">2. Map and country dossier</h3>
+  <figure class="tela" data-tela="mapa">
+    <figcaption><div class="tit pt">Atlas · aba Mapa, Brasil selecionado</div><div class="tit en">Atlas · Map tab, Brazil selected</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>Busca</b>: digite qualquer nome ou apelido (ex.: <code>Fancy Bear</code>) e escolha na lista.</span><span class="en"><b>Search</b>: type any name or alias (e.g. <code>Fancy Bear</code>) and pick from the list.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>Abas</b>: Mapa, Perfil de ameaça, Ranking e Sobre os dados.</span><span class="en"><b>Tabs</b>: Map, Threat profile, Ranking and About the data.</span></span></li>
+      <li><i>3</i><span><span class="pt"><b>Motivação</b>: filtra o mapa por espionagem, crime financeiro, sabotagem ou hacktivismo. <b>Só com ATT&amp;CK</b> mostra só grupos com técnicas mapeadas.</span><span class="en"><b>Motive</b>: filters the map by espionage, financial crime, sabotage or hacktivism. <b>ATT&amp;CK only</b> shows only groups with mapped techniques.</span></span></li>
+      <li><i>4</i><span><span class="pt"><b>Mapa</b>: quanto mais âmbar, mais atores atribuídos ao país. O país escolhido fica verde-menta. Os botões embaixo abrem OTAN/Five Eyes e “sem país”.</span><span class="en"><b>Map</b>: the more amber, the more actors attributed to the country. The selected country turns mint. The buttons below open NATO/Five Eyes and “no country”.</span></span></li>
+      <li><i>5</i><span><span class="pt"><b>Dossiê do país</b>: números, motivações, técnicas mais usadas, setores e países vitimados, e a lista de atores (com filtro) no fim.</span><span class="en"><b>Country dossier</b>: numbers, motives, top techniques, sectors and victim countries, and the actor list (filterable) at the bottom.</span></span></li>
+      <li><i>6</i><span><span class="pt"><b>Idioma</b> do Atlas.</span><span class="en">Atlas <b>language</b>.</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">3. Ficha do ator</h3><h3 class="en">3. Actor card</h3>
+  <figure class="tela" data-tela="ator">
+    <figcaption><div class="tit pt">Ficha do APT28</div><div class="tit en">APT28 card</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>Nome, país atribuído e ID do ATT&amp;CK</b>.</span><span class="en"><b>Name, attributed country and ATT&amp;CK ID</b>.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>Aviso de atribuição</b>: país e nomes são afirmações de fornecedores; confirme na fonte.</span><span class="en"><b>Attribution warning</b>: country and names are vendor claims; confirm at the source.</span></span></li>
+      <li><i>3</i><span><span class="pt"><b>Nomes por fornecedor</b>: a tabela que responde “como a Microsoft chama esse grupo?”.</span><span class="en"><b>Names by vendor</b>: the table that answers “what does Microsoft call this group?”.</span></span></li>
+      <li><i>4</i><span><span class="pt"><b>Nomes conhecidos</b>: todos os apelidos das cinco fontes. Mais abaixo: descrição, técnicas (clicáveis), ferramentas, operações, vítimas, relatórios e referências.</span><span class="en"><b>Known names</b>: every alias across the five sources. Further down: description, techniques (clickable), tools, operations, victims, reports and references.</span></span></li>
+      <li><i>5</i><span><span class="pt"><b>Fechar</b> (ou tecla <kbd>Esc</kbd>). O endereço da página muda para <code>#apt28</code>: copie e mande para alguém.</span><span class="en"><b>Close</b> (or <kbd>Esc</kbd>). The page address changes to <code>#apt28</code>: copy it and send it to someone.</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">4. Perfil de ameaça</h3><h3 class="en">4. Threat profile</h3>
+  <figure class="tela" data-tela="perfil">
+    <figcaption><div class="tit pt">Perfil: Brasil, setor financeiro</div><div class="tit en">Profile: Brazil, finance sector</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>País da organização</b> (como aparece nas fontes, em inglês). O número entre parênteses é quantos atores têm vítimas lá.</span><span class="en"><b>Organization's country</b> (as it appears in the sources). The number in brackets is how many actors have victims there.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>Setor</b>.</span><span class="en"><b>Sector</b>.</span></span></li>
+      <li><i>3</i><span><span class="pt"><b>Incluir atores</b>: todos, ou só os que têm país atribuído.</span><span class="en"><b>Include actors</b>: all, or only those with an attributed country.</span></span></li>
+      <li><i>4</i><span><span class="pt"><b>Resultado</b>: atores com pontos (país vítima +2, setor +2, perfil ATT&amp;CK +1) e as técnicas a cobrir primeiro, pesadas pelos pontos.</span><span class="en"><b>Result</b>: actors with points (victim country +2, sector +2, ATT&amp;CK profile +1) and the techniques to cover first, weighted by points.</span></span></li>
+      <li><i>5</i><span><span class="pt"><b>Baixar</b> a camada do ATT&amp;CK Navigator ou os sinais para o TCE.</span><span class="en"><b>Download</b> the ATT&amp;CK Navigator layer or the TCE signals.</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">5. Ranking</h3><h3 class="en">5. Ranking</h3>
+  <figure class="tela" data-tela="ranking">
+    <figcaption><div class="tit pt">Ranking de países</div><div class="tit en">Country ranking</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>Cabeçalhos clicáveis</b>: ordenam por atores, com ATT&amp;CK, apelidos ou relatórios.</span><span class="en"><b>Clickable headers</b>: sort by actors, with ATT&amp;CK, aliases or reports.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>Linha</b>: clique para abrir o dossiê do país no mapa.</span><span class="en"><b>Row</b>: click to open the country dossier on the map.</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">6. Recursos</h3><h3 class="en">6. Resources</h3>
+  <figure class="tela" data-tela="recursos">
+    <figcaption><div class="tit pt">Busca nos 169 recursos</div><div class="tit en">Searching the 169 resources</div>
+    <ol class="leg">
+      <li><i>1</i><span><span class="pt"><b>Busca</b> por nome, descrição ou endereço.</span><span class="en"><b>Search</b> by name, description or address.</span></span></li>
+      <li><i>2</i><span><span class="pt"><b>Categorias</b>: 20, de “Comece aqui” a “Canais”.</span><span class="en"><b>Categories</b>: 20, from “Start here” to “Channels”.</span></span></li>
+      <li><i>3</i><span><span class="pt"><b>Filtros</b>: ★ comece por aqui, só ativos, só gratuitos.</span><span class="en"><b>Filters</b>: ★ start here, active only, free only.</span></span></li>
+      <li><i>4</i><span><span class="pt"><b>Cartão</b>: nome, para que serve, tipo (gratuito, pago...), e etiqueta <b>legado</b> quando o projeto parou.</span><span class="en"><b>Card</b>: name, what it is for, type (free, paid...), and a <b>legacy</b> tag when the project stopped.</span></span></li>
+    </ol></figcaption>
+  </figure>
+
+  <h3 class="pt">No celular</h3><h3 class="en">On a phone</h3>
+  <div class="celular">
+    <img src="img/celular.jpg" alt="Atlas no celular / Atlas on a phone" loading="lazy" width="390" height="844">
+    <div><p class="pt">Tudo funciona no celular: o mapa fica em cima, o dossiê embaixo, e a ficha do ator ocupa a tela inteira. Gire o aparelho para ver o mapa maior.</p><p class="en">Everything works on a phone: the map is on top, the dossier below, and the actor card fills the screen. Rotate the device for a bigger map.</p></div>
+  </div>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">busque <code>Fancy Bear</code> e confirme que abre a ficha do APT28.</span><span class="en">search for <code>Fancy Bear</code> and confirm it opens the APT28 card.</span></div></div>
+</section>
+
+<!-- 5 -->
+<section id="demo">
+  <h2><span class="num">05</span><span class="pt">Caso demo: Banco Ipê</span><span class="en">Demo case: Banco Ipê</span></h2>
+  <p class="sub pt">O Banco Ipê é fictício: um banco médio brasileiro que quer saber por onde começar a defesa.</p>
+  <p class="sub en">Banco Ipê is fictional: a mid-sized Brazilian bank that wants to know where to start its defense.</p>
+  <ol class="passos">
+    <li><span class="pt">No Atlas, aba <b>Perfil de ameaça</b>: país <b>Brazil</b>, setor <b>Financeiro</b>, incluir <b>todos</b>.</span><span class="en">In the Atlas, <b>Threat profile</b> tab: country <b>Brazil</b>, sector <b>Finance</b>, include <b>all</b>.</span></li>
+    <li><span class="pt">Resultado (base de 13/10/2026): <b>55 atores</b> e <b>301 técnicas</b>. No topo, APT38 (5 pontos: vítimas no Brasil, setor financeiro e perfil ATT&amp;CK) e Hurricane Panda (4).</span><span class="en">Result (dataset of 2026-10-13): <b>55 actors</b> and <b>301 techniques</b>. At the top, APT38 (5 points: victims in Brazil, finance sector and ATT&amp;CK profile) and Hurricane Panda (4).</span></li>
+    <li><span class="pt">As cinco técnicas a cobrir primeiro: <code>T1204.002</code> arquivo malicioso aberto pelo usuário, <code>T1566.001</code> anexo de spearphishing, <code>T1059.001</code> PowerShell, <code>T1036.005</code> nome de recurso legítimo imitado, <code>T1105</code> transferência de ferramentas.</span><span class="en">The five techniques to cover first: <code>T1204.002</code> malicious file opened by the user, <code>T1566.001</code> spearphishing attachment, <code>T1059.001</code> PowerShell, <code>T1036.005</code> legitimate resource name imitated, <code>T1105</code> ingress tool transfer.</span></li>
+    <li><span class="pt">Leitura para a diretoria: “o caminho mais comum começa no e-mail e num arquivo aberto por alguém; a prioridade é filtro de anexos, conscientização dirigida e visibilidade de PowerShell”.</span><span class="en">For the board: “the most common path starts with email and a file someone opens; the priority is attachment filtering, targeted awareness and PowerShell visibility”.</span></li>
+    <li><span class="pt">Limite: só 7 atores têm vítimas brasileiras registradas nas fontes públicas. Complemente com CERT.br e relatórios de fornecedores com operação no Brasil.</span><span class="en">Limit: only 7 actors have recorded Brazilian victims in public sources. Complement with CERT.br and reports from vendors operating in Brazil.</span></li>
+  </ol>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">refaça o caso com o país e o setor de onde você trabalha.</span><span class="en">redo the case with the country and sector you work in.</span></div></div>
+</section>
+
+<!-- 6 -->
+<section id="relatorios">
+  <h2><span class="num">06</span><span class="pt">Relatórios</span><span class="en">Reports</span></h2>
+  <p class="sub pt">O Atlas baixa dois arquivos. Pela linha de comando, a ferramenta da ponte gera quatro.</p>
+  <p class="sub en">The Atlas downloads two files. From the command line, the bridge tool generates four.</p>
+  <div class="rolar"><table class="tab">
+    <thead><tr><th class="pt">Arquivo</th><th class="en">File</th><th class="pt">O que é</th><th class="en">What it is</th><th class="pt">Abra com</th><th class="en">Open with</th></tr></thead>
+    <tbody>
+      <tr><td><code>navigator.json</code></td><td><span class="pt">Camada com as técnicas do perfil, pintadas pelo peso</span><span class="en">Layer with the profile's techniques, colored by weight</span></td><td><a href="https://mitre-attack.github.io/attack-navigator/">ATT&amp;CK Navigator</a> → Open Existing Layer</td></tr>
+      <tr><td><code>tce-sinais.json</code></td><td><span class="pt">Sinal de inteligência candidato (não pesa até ser aceito)</span><span class="en">Candidate intelligence signal (no weight until accepted)</span></td><td><a href="https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling">TCE</a></td></tr>
+      <tr><td><code>tce-intelligence.csv</code></td><td><span class="pt">O mesmo sinal, em planilha</span><span class="en">The same signal, as a spreadsheet</span></td><td><code>tce environment-import-csv</code></td></tr>
+      <tr><td><code>perfil.md</code></td><td><span class="pt">Relatório legível com atores, motivo de cada um e técnicas</span><span class="en">Readable report with actors, why each was included and techniques</span></td><td><span class="pt">Qualquer editor de texto, ou o GitHub</span><span class="en">Any text editor, or GitHub</span></td></tr>
+    </tbody></table></div>
+  <pre><code>python3 ferramentas/tce/perfil_ameaca.py --pais Brazil --setor finance --saida saida/banco-ipe
+python3 ferramentas/tce/perfil_ameaca.py --listar paises</code></pre>
+  <div class="agora"><div><b class="pt">Faça agora:</b><b class="en">Do this now:</b> <span class="pt">carregue o <code>navigator.json</code> do caso demo no ATT&amp;CK Navigator.</span><span class="en">load the demo case's <code>navigator.json</code> into the ATT&amp;CK Navigator.</span></div></div>
+</section>
+
+<!-- 7 -->
+<section id="problema">
+  <h2><span class="num">07</span><span class="pt">Deu problema?</span><span class="en">Trouble?</span></h2>
+  <div class="rolar"><table class="tab">
+    <thead><tr><th class="pt">O que aparece</th><th class="en">What you see</th><th class="pt">O que fazer</th><th class="en">What to do</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pt">Atlas fica em “Carregando o atlas…”</span><span class="en">Atlas stays on “Loading the atlas…”</span></td><td><span class="pt">Você abriu o arquivo com dois cliques no <code>index.html</code>. O navegador bloqueia a leitura dos dados assim. Use o lançador (<code>iniciar-*</code>) ou a versão online.</span><span class="en">You opened <code>index.html</code> by double-clicking it. Browsers block data loading that way. Use the launcher (<code>iniciar-*</code>) or the online version.</span></td></tr>
+      <tr><td><span class="pt">Windows: “python não é reconhecido”</span><span class="en">Windows: “python is not recognized”</span></td><td><span class="pt">Reinstale o Python marcando <b>Add python.exe to PATH</b>, ou instale pela Microsoft Store.</span><span class="en">Reinstall Python ticking <b>Add python.exe to PATH</b>, or install it from the Microsoft Store.</span></td></tr>
+      <tr><td><span class="pt">macOS: “não pode ser aberto porque é de um desenvolvedor não identificado”</span><span class="en">macOS: “cannot be opened because it is from an unidentified developer”</span></td><td><span class="pt">Botão direito → <b>Abrir</b> → <b>Abrir</b>. Só na primeira vez.</span><span class="en">Right-click → <b>Open</b> → <b>Open</b>. First time only.</span></td></tr>
+      <tr><td><span class="pt">“Nenhuma porta livre”</span><span class="en">“No free port”</span></td><td><span class="pt">Outro programa usa as portas 8765 a 8794. Rode <code>python3 iniciar.py --porta 9000</code>.</span><span class="en">Another program uses ports 8765 to 8794. Run <code>python3 iniciar.py --porta 9000</code>.</span></td></tr>
+      <tr><td><span class="pt">O navegador não abriu sozinho</span><span class="en">The browser didn't open by itself</span></td><td><span class="pt">Copie o endereço mostrado na janela preta (<code>http://localhost:8765/</code>) e cole no navegador.</span><span class="en">Copy the address shown in the black window (<code>http://localhost:8765/</code>) and paste it into your browser.</span></td></tr>
+      <tr><td><span class="pt">Perfil diz “Nenhum ator com esse recorte”</span><span class="en">Profile says “No actor matches”</span></td><td><span class="pt">Troque o país ou o setor para “qualquer”. Países com poucas vítimas públicas aparecem só com 2 ou mais atores.</span><span class="en">Set country or sector to “any”. Countries with few public victims only appear with 2 or more actors.</span></td></tr>
+      <tr><td><span class="pt">Um grupo está com país ou apelido errado</span><span class="en">A group has a wrong country or alias</span></td><td><span class="pt">Abra uma issue “Correção de ator” no GitHub com a fonte pública.</span><span class="en">Open an “Actor fix” issue on GitHub with the public source.</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 8 -->
+<section id="glossario">
+  <h2><span class="num">08</span><span class="pt">Glossário</span><span class="en">Glossary</span></h2>
+  <div class="glos">
+    <div><b>APT</b><p class="pt">Ameaça persistente avançada: grupo com recursos e paciência, geralmente ligado a um Estado.</p><p class="en">Advanced persistent threat: a well-resourced, patient group, usually state-linked.</p></div>
+    <div><b>CTI</b><p class="pt">Inteligência de ameaças cibernéticas: informação sobre adversários, analisada para orientar decisões.</p><p class="en">Cyber threat intelligence: information about adversaries, analyzed to guide decisions.</p></div>
+    <div><b>ATT&amp;CK</b><p class="pt">Catálogo público da MITRE de técnicas de ataque (ex.: T1566 é phishing).</p><p class="en">MITRE's public catalog of attack techniques (e.g. T1566 is phishing).</p></div>
+    <div><b>TTP</b><p class="pt">Táticas, técnicas e procedimentos: o comportamento do adversário, mais difícil de trocar que um endereço IP.</p><p class="en">Tactics, techniques and procedures: adversary behavior, harder to change than an IP address.</p></div>
+    <div><b>Alias</b><p class="pt">Apelido. O mesmo grupo recebe nomes diferentes de cada fornecedor.</p><p class="en">Alternate name. Each vendor gives the same group a different name.</p></div>
+    <div><b class="pt">Atribuição</b><b class="en">Attribution</b><p class="pt">Afirmar quem está por trás de um ataque. É hipótese com grau de confiança, não certeza.</p><p class="en">Claiming who is behind an attack. A hypothesis with a confidence level, not a certainty.</p></div>
+    <div><b class="pt">Vitimologia</b><b class="en">Victimology</b><p class="pt">Quem foi atacado: países, setores, tipos de organização.</p><p class="en">Who was attacked: countries, sectors, organization types.</p></div>
+    <div><b class="pt">Perfil de ameaça</b><b class="en">Threat profile</b><p class="pt">Recorte dos adversários mais relevantes para uma organização e das técnicas que usam.</p><p class="en">The subset of adversaries most relevant to an organization and the techniques they use.</p></div>
+    <div><b>Navigator</b><p class="pt">Ferramenta web da MITRE que pinta a matriz ATT&amp;CK a partir de uma “camada” JSON.</p><p class="en">MITRE's web tool that colors the ATT&amp;CK matrix from a JSON “layer”.</p></div>
+    <div><b>TCE</b><p class="pt">Threat Context Engineering: modelagem de ameaças do ambiente inteiro; recebe o perfil como sinal.</p><p class="en">Threat Context Engineering: whole-environment threat modeling; takes the profile as a signal.</p></div>
+    <div><b>MISP Galaxy</b><p class="pt">Base aberta e comunitária de atores, usada por milhares de times de resposta.</p><p class="en">Open community dataset of actors, used by thousands of response teams.</p></div>
+    <div><b>TLP</b><p class="pt">Traffic Light Protocol: cor que diz com quem a informação pode ser compartilhada.</p><p class="en">Traffic Light Protocol: a color saying who information can be shared with.</p></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="tecnico">
+  <h2><span class="num">09</span><span class="pt">Seção técnica</span><span class="en">Technical section</span></h2>
+  <h3 class="pt">Arquitetura</h3><h3 class="en">Architecture</h3>
+  <p class="pt">Site estático em <code>docs/</code> (HTML, CSS e JavaScript sem dependências; só as fontes tipográficas vêm do Google Fonts, com alternativa do sistema). Dados em JSON gerados por Python só com biblioteca padrão. Nada roda em servidor.</p>
+  <p class="en">Static site in <code>docs/</code> (dependency-free HTML, CSS and JavaScript; only the typefaces come from Google Fonts, with system fallbacks). JSON data generated by standard-library Python. Nothing runs server-side.</p>
+  <div class="rolar"><table class="tab">
+    <thead><tr><th class="pt">Peça</th><th class="en">Piece</th><th class="pt">Papel</th><th class="en">Role</th></tr></thead>
+    <tbody>
+      <tr><td><code>ferramentas/atlas/construir_dados.py</code></td><td><span class="pt">Lê as 5 fontes, normaliza, junta por âncoras, classifica motivação e setor, liga relatórios, gera <code>atores.json</code> e <code>paises.json</code></span><span class="en">Reads the 5 sources, normalizes, merges by anchors, classifies motive and sector, links reports, writes <code>atores.json</code> and <code>paises.json</code></span></td></tr>
+      <tr><td><code>ferramentas/atlas/mapa_hex.py</code></td><td><span class="pt">Gera a grade hexagonal (passo de 2°, 4.472 hexágonos, 173 países) do Natural Earth</span><span class="en">Builds the hex grid (2° step, 4,472 hexes, 173 countries) from Natural Earth</span></td></tr>
+      <tr><td><code>ferramentas/tce/perfil_ameaca.py</code></td><td><span class="pt">Mesma regra de pontos do Atlas; exporta Navigator, sinal TCE, CSV e relatório</span><span class="en">Same scoring rule as the Atlas; exports Navigator, TCE signal, CSV and report</span></td></tr>
+      <tr><td><code>ferramentas/recursos/*.py</code></td><td><span class="pt">Verifica links (HEAD/GET em paralelo) e gera RECURSOS.md e RESOURCES.md</span><span class="en">Checks links (parallel HEAD/GET) and generates RECURSOS.md and RESOURCES.md</span></td></tr>
+      <tr><td><code>iniciar.py</code></td><td><span class="pt">Servidor local em 127.0.0.1, procura porta livre e abre o navegador</span><span class="en">Local server on 127.0.0.1, finds a free port and opens the browser</span></td></tr>
+    </tbody></table></div>
+  <h3 class="pt">Regra de junção dos nomes</h3><h3 class="en">Name merging rule</h3>
+  <p class="pt">Union-find puro junta tudo em cascata (Lazarus virava um bloco de 41 registros). O APT4ALL usa âncoras: primeiro os grupos do ATT&amp;CK, depois planilha, MISP e EternalLiberty. Um registro entra num ator só pelo ID do ATT&amp;CK, pelo nome principal, ou por apelidos que apontem para <b>um único</b> ator. Apelido reivindicado por dois atores vira ambíguo e para de ligar.</p>
+  <p class="en">Plain union-find merges in cascade (Lazarus became a 41-record blob). APT4ALL uses anchors: ATT&amp;CK groups first, then the sheet, MISP and EternalLiberty. A record joins an actor only by ATT&amp;CK ID, by primary name, or by aliases pointing to <b>a single</b> actor. An alias claimed by two actors becomes ambiguous and stops linking.</p>
+  <h3 class="pt">Resultados dos testes</h3><h3 class="en">Test results</h3>
+  <div class="rolar"><table class="tab">
+    <thead><tr><th class="pt">Bateria</th><th class="en">Suite</th><th class="pt">Testes</th><th class="en">Tests</th><th class="pt">Resultado</th><th class="en">Result</th></tr></thead>
+    <tbody id="testes">
+      <tr><td><code>python3 -m unittest discover -s testes</code></td><td>37</td><td class="ok">OK · 36 <span class="pt">passaram</span><span class="en">passed</span>, 1 <span class="pt">pulado (TCE ausente)</span><span class="en">skipped (no TCE)</span></td></tr>
+      <tr><td><span class="pt">Integração com o TCE (ambiente com <code>tce</code>)</span><span class="en">TCE integration (environment with <code>tce</code>)</span></td><td>6</td><td class="ok">OK · <span class="pt">candidato = 0, aceito &gt; 0</span><span class="en">candidate = 0, accepted &gt; 0</span></td></tr>
+      <tr><td><span class="pt">Horizon, caso <code>enterprise-identity</code></span><span class="en">Horizon, <code>enterprise-identity</code> case</span></td><td>3</td><td class="ok">OK · H2 → H1 <span class="pt">com sinal aceito</span><span class="en">with accepted signal</span></td></tr>
+      <tr><td><span class="pt">Navegador (Chromium, 1280×800 e 390×844)</span><span class="en">Browser (Chromium, 1280×800 and 390×844)</span></td><td>12</td><td class="ok">OK · <span class="pt">sem erro de página, sem rolagem lateral</span><span class="en">no page errors, no horizontal scroll</span></td></tr>
+    </tbody></table></div>
+  <p class="pt">Detalhes em <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/RELATORIO-DE-TESTES.md">RELATORIO-DE-TESTES.md</a>.</p>
+  <p class="en">Details in <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/RELATORIO-DE-TESTES.md">RELATORIO-DE-TESTES.md</a> (Portuguese).</p>
+  <h3 class="pt">Limites conhecidos</h3><h3 class="en">Known limits</h3>
+  <ul>
+    <li><span class="pt">638 atores sem país atribuído (crime cibernético e hacktivismo, em sua maioria).</span><span class="en">638 actors with no attributed country (mostly cybercrime and hacktivism).</span></li>
+    <li><span class="pt">Vitimologia pública fraca para América Latina; o perfil para o Brasil é ponto de partida.</span><span class="en">Weak public victimology for Latin America; the Brazil profile is a starting point.</span></li>
+    <li><span class="pt">Descrições vêm em inglês, da fonte original.</span><span class="en">Descriptions are in English, from the original source.</span></li>
+    <li><span class="pt">Nomes de países no perfil seguem as fontes (em inglês).</span><span class="en">Country names in the profile follow the sources (in English).</span></li>
+  </ul>
+  <p class="pt">Para refazer as telas deste manual: <code>python3 ferramentas/manual/capturar_telas.py</code> (precisa do Playwright, opcional).</p>
+  <p class="en">To redo this manual's screenshots: <code>python3 ferramentas/manual/capturar_telas.py</code> (needs Playwright, optional).</p>
+</section>
+
+<footer><a href="../">← APT4ALL</a> · <span class="pt">Código MIT · texto CC BY 4.0</span><span class="en">Code MIT · text CC BY 4.0</span> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all">GitHub</a></footer>
+</main>
+</div>
+
+<script>
+"use strict";
+const MARCAS=/*MARCAS*/{"inicio-pt":[{"n":1,"x":14.8,"y":67.1,"box":[7.5,64.4,14.6,5.5]},{"n":2,"x":89.7,"y":4.1,"box":[87.0,2.4,5.5,3.5]},{"n":3,"x":50.0,"y":82.4,"box":[7.5,75.9,85.0,12.9]}],"mapa-pt":[{"n":1,"x":80.1,"y":3.9,"box":[67.6,1.4,25.0,5.1]},{"n":2,"x":50.0,"y":10.2,"box":[0.0,7.8,100.0,4.9]},{"n":3,"x":30.4,"y":18.0,"box":[12.4,16.5,35.9,3.0]},{"n":4,"x":32.8,"y":24.7,"box":[1.3,21.2,62.9,38.6]},{"n":5,"x":82.2,"y":18.3,"box":[65.6,14.8,33.2,151.8]},{"n":6,"x":96.0,"y":3.9,"box":[93.2,2.0,5.5,3.8]}],"ator-pt":[{"n":1,"x":75.8,"y":8.2,"box":[53.0,5.8,45.5,4.8]},{"n":2,"x":75.8,"y":19.2,"box":[53.0,15.6,45.5,7.4]},{"n":3,"x":75.8,"y":33.2,"box":[53.0,27.8,45.5,10.7]},{"n":4,"x":75.8,"y":54.0,"box":[53.0,43.4,45.5,21.2]},{"n":5,"x":95.5,"y":4.0,"box":[92.4,2.2,6.2,3.5]}],"perfil-pt":[{"n":1,"x":18.0,"y":15.6,"box":[2.4,13.5,31.1,4.2]},{"n":2,"x":50.0,"y":15.6,"box":[34.5,13.5,31.1,4.2]},{"n":3,"x":82.0,"y":15.6,"box":[66.5,13.5,31.1,4.2]},{"n":4,"x":50.0,"y":23.0,"box":[1.3,19.5,97.3,72.8]},{"n":5,"x":77.7,"y":82.9,"box":[65.2,80.8,25.1,4.2]}],"ranking-pt":[{"n":1,"x":19.6,"y":21.1,"box":[1.3,19.3,36.5,3.6]},{"n":2,"x":50.0,"y":25.1,"box":[1.3,22.9,97.3,4.5]}],"recursos-pt":[{"n":1,"x":50.0,"y":30.8,"box":[5.2,28.0,89.7,5.7]},{"n":2,"x":50.0,"y":42.0,"box":[5.2,34.9,89.7,14.2]},{"n":3,"x":50.0,"y":51.9,"box":[5.2,50.4,89.7,3.0]},{"n":4,"x":19.8,"y":73.8,"box":[5.2,65.9,29.4,15.7]}],"inicio-en":[{"n":1,"x":15.5,"y":67.1,"box":[7.5,64.4,15.9,5.5]},{"n":2,"x":89.7,"y":4.1,"box":[87.0,2.4,5.5,3.5]},{"n":3,"x":50.0,"y":82.4,"box":[7.5,75.9,85.0,12.9]}],"mapa-en":[{"n":1,"x":80.1,"y":3.9,"box":[67.6,1.4,25.0,5.1]},{"n":2,"x":50.0,"y":10.2,"box":[0.0,7.8,100.0,4.9]},{"n":3,"x":29.9,"y":18.0,"box":[13.6,16.5,32.5,3.0]},{"n":4,"x":32.8,"y":24.7,"box":[1.3,21.2,62.9,38.6]},{"n":5,"x":82.2,"y":18.3,"box":[65.6,14.8,33.2,151.8]},{"n":6,"x":96.0,"y":3.9,"box":[93.2,2.0,5.5,3.8]}],"ator-en":[{"n":1,"x":75.8,"y":8.2,"box":[53.0,5.8,45.5,4.8]},{"n":2,"x":75.8,"y":19.2,"box":[53.0,15.6,45.5,7.4]},{"n":3,"x":75.8,"y":33.2,"box":[53.0,27.8,45.5,10.7]},{"n":4,"x":75.8,"y":54.0,"box":[53.0,43.4,45.5,21.2]},{"n":5,"x":95.8,"y":4.0,"box":[92.9,2.2,5.7,3.5]}],"perfil-en":[{"n":1,"x":18.0,"y":15.6,"box":[2.4,13.5,31.1,4.2]},{"n":2,"x":50.0,"y":15.6,"box":[34.5,13.5,31.1,4.2]},{"n":3,"x":82.0,"y":15.6,"box":[66.5,13.5,31.1,4.2]},{"n":4,"x":50.0,"y":23.0,"box":[1.3,19.5,97.3,72.8]},{"n":5,"x":77.1,"y":82.9,"box":[65.2,80.8,23.8,4.2]}],"ranking-en":[{"n":1,"x":20.3,"y":21.1,"box":[1.3,19.3,38.0,3.6]},{"n":2,"x":50.0,"y":25.1,"box":[1.3,22.9,97.3,4.5]}],"recursos-en":[{"n":1,"x":50.0,"y":30.8,"box":[5.2,28.0,89.7,5.7]},{"n":2,"x":50.0,"y":42.0,"box":[5.2,34.9,89.7,14.2]},{"n":3,"x":50.0,"y":51.9,"box":[5.2,50.4,89.7,3.0]},{"n":4,"x":19.8,"y":73.8,"box":[5.2,65.9,29.4,15.7]}]};
+let L="pt";try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
+function idioma(l){L=l;const h=document.documentElement;h.dataset.lang=l;h.lang=l==="pt"?"pt-BR":"en";
+  document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+  document.querySelectorAll("figure.tela").forEach(montaTela);try{localStorage.setItem("apt4all-lang",l)}catch(e){}}
+function montaTela(f){
+  const nome=f.dataset.tela+"-"+L;let q=f.querySelector(".quadro");
+  if(!q){q=document.createElement("div");q.className="quadro";f.prepend(q)}
+  q.replaceChildren();
+  const img=new Image();img.src="img/"+nome+".jpg";img.alt=f.querySelector(".tit."+L)?.textContent||"";img.loading="lazy";img.width=1280;img.height=800;q.append(img);
+  for(const m of (MARCAS[nome]||[])){
+    const bx=document.createElement("div");bx.className="bx";const[x,y,w,h]=m.box;
+    Object.assign(bx.style,{left:x+"%",top:Math.max(y,0)+"%",width:w+"%",height:Math.min(h,100-Math.max(y,0))+"%"});q.append(bx);
+    const k=document.createElement("div");k.className="mk";k.textContent=m.n;k.style.left=Math.min(Math.max(m.x,2.5),97.5)+"%";k.style.top=Math.min(Math.max(m.y,3),97)+"%";q.append(k);
+  }
+}
+document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(b)idioma(b.dataset.l)});
+document.querySelectorAll(".abas").forEach(ab=>ab.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  ab.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  ab.parentElement.querySelectorAll("[data-painel]").forEach(p=>p.hidden=p.dataset.painel!==b.dataset.aba)}));
+(function(){const ua=navigator.userAgent;const so=/Windows/.test(ua)?"win":/Mac/.test(ua)&&!/iPhone|iPad/.test(ua)?"mac":/Linux/.test(ua)&&!/Android/.test(ua)?"lin":null;
+  if(so)document.querySelector(`.abas button[data-aba="${so}"]`)?.click()})();
+const links=[...document.querySelectorAll("nav.sumario a")];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("ativo",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-30% 0px -60% 0px"});
+document.querySelectorAll("main section").forEach(s=>obs.observe(s));
+idioma(L);
+</script>
+</body>
+</html>
