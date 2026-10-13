@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL Recursos</title>
+<meta name="description" content="Recursos curados de CTI, APT e malware, bilíngues e verificados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
+ --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fundo);color:var(--texto);font:15px/1.55 var(--corpo)}
+a{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:0 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px;flex-wrap:wrap}
+.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
+.lg span{color:var(--menta)}
+.idioma{display:flex;border:1px solid var(--borda)}
+.idioma button{background:none;border:0;color:var(--apagado);padding:6px 10px;font:600 12px var(--mono);cursor:pointer}
+.idioma button[aria-pressed="true"]{background:var(--menta);color:#06201C}
+h1{font:700 44px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 6px;color:var(--claro)}
+.sub{color:var(--apagado);max-width:72ch;margin:0 0 18px}
+.barra{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(5px);padding-block:10px;display:grid;gap:10px;border-bottom:1px solid var(--borda)}
+.barra input{width:100%;background:var(--sup);border:1px solid var(--borda);padding:10px 12px;color:var(--texto);font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--sup);border:1px solid var(--borda);padding:4px 10px;font:12px var(--mono);color:var(--texto);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--menta);color:var(--menta)}
+.chip b{color:var(--apagado);font-weight:400}
+.grupo{margin-top:26px}
+.grupo h2{font:700 24px var(--display);letter-spacing:.08em;text-transform:uppercase;margin:0;color:var(--claro)}
+.grupo p.d{margin:2px 0 10px;color:var(--apagado)}
+.aviso{border-left:3px solid var(--coral);background:var(--fundo2);padding:10px 12px;color:var(--apagado);margin-bottom:10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.card{background:var(--sup);border:1px solid var(--borda);padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.card.dest{border-left:3px solid var(--menta)}
+.card a.n{font-weight:600;color:var(--claro);text-decoration:none;word-break:break-word}
+.card a.n:hover{color:var(--menta)}
+.card p{margin:0;color:var(--apagado);font-size:14px}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font:11px var(--mono);border:1px solid var(--borda);padding:1px 6px;color:var(--apagado)}
+.tag.leg{border-color:var(--ambar);color:var(--ambar)}
+.tag.usr{border-color:var(--menta);color:var(--menta)}
+.tag.nov{border-color:var(--coral);color:var(--coral)}
+.vazio{padding:40px;text-align:center;color:var(--apagado);font:13px var(--mono)}
+footer{margin-top:40px;border-top:1px solid var(--borda);padding-top:18px;font:13px var(--mono);color:var(--apagado)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="lg" href="../index.html">APT4ALL <span>/</span> <span data-t="rec">RECURSOS</span></a><div class="idioma" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div></header>
+<h1 data-t="tit">Recursos</h1>
+<p class="sub" data-t="sub">Curadoria bilíngue de CTI, APT e malware. Links legados aparecem marcados, com o substituto ao lado. Para sugerir um recurso, edite recursos/recursos.json no GitHub e abra um PR.</p>
+<div class="barra">
+  <input id="q" type="search" autocomplete="off" aria-label="Buscar">
+  <div class="chips" id="cats"></div>
+  <div class="chips" id="extra"></div>
+</div>
+<div id="lista"><div class="vazio">…</div></div>
+<footer><a href="../index.html">← APT4ALL</a> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/RECURSOS.md">RECURSOS.md</a> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/RESOURCES.md">RESOURCES.md</a></footer>
+</div>
+<script>
+"use strict";
+const UI={pt:{rec:"RECURSOS",tit:"Recursos",sub:"Curadoria bilíngue de CTI, APT e malware. Links legados aparecem marcados, com o substituto ao lado. Para sugerir um recurso, edite recursos/recursos.json no GitHub e abra um PR.",ph:"Buscar por nome ou descrição…",todos:"todos",dest:"★ comece por aqui",ativos:"só ativos",gratis:"só gratuitos",usuario:"lista original",fUsuario:"só da lista original",fNovo:"só os novos",novo:"novo",vazio:"Nada encontrado com esses filtros.",tipo:{gratuito:"gratuito",pago:"pago",registro:"com cadastro",freemium:"freemium"},legado:"legado",aviso:"Malware real. Baixe e abra só em laboratório isolado."},
+ en:{rec:"RESOURCES",tit:"Resources",sub:"Bilingual curation of CTI, APT and malware resources. Legacy links are flagged, with the replacement alongside. To suggest a resource, edit recursos/recursos.json on GitHub and open a PR.",ph:"Search by name or description…",todos:"all",dest:"★ start here",ativos:"active only",gratis:"free only",usuario:"original list",fUsuario:"original list only",fNovo:"new only",novo:"new",vazio:"Nothing matches these filters.",tipo:{gratuito:"free",pago:"paid",registro:"sign-up",freemium:"freemium"},legado:"legacy",aviso:"Live malware. Download and open only in an isolated lab."}};
+let L="pt";try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
+let D=null,cat="",fx={dest:false,ativos:false,gratis:false,usuario:false,novo:false};
+const $=s=>document.querySelector(s);
+function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
+function render(){
+  const u=UI[L];document.documentElement.lang=L==="pt"?"pt-BR":"en";
+  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=u[e.dataset.t]);$("#q").placeholder=u.ph;
+  document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  if(!D)return;
+  const cnt={};D.recursos.forEach(r=>cnt[r.cat]=(cnt[r.cat]||0)+1);
+  $("#cats").replaceChildren(el("button",{class:"chip","aria-pressed":cat===""?"true":"false",onclick:()=>{cat="";render()}},u.todos+" ",el("b",{},String(D.recursos.length))),
+    ...Object.entries(D.categorias).map(([k,c])=>el("button",{class:"chip","aria-pressed":cat===k?"true":"false",onclick:()=>{cat=cat===k?"":k;render()}},c[L]+" ",el("b",{},String(cnt[k]||0)))));
+  $("#extra").replaceChildren(...[["dest",u.dest],["ativos",u.ativos],["gratis",u.gratis],["usuario",u.fUsuario,D.recursos.filter(r=>r.origem==="lista do usuário").length],["novo",u.fNovo,D.recursos.filter(r=>r.origem==="pesquisa complementar").length]].map(([k,r,n])=>el("button",{class:"chip","aria-pressed":fx[k]?"true":"false",onclick:()=>{fx[k]=!fx[k];render()}},r,n!=null?el("b",{}," "+n):null)));
+  const q=$("#q").value.trim().toLowerCase();
+  const ok=r=>(!cat||r.cat===cat)&&(!fx.dest||r.destaque)&&(!fx.ativos||r.status==="ativo")&&(!fx.gratis||r.tipo==="gratuito")&&(!fx.usuario||r.origem==="lista do usuário")&&(!fx.novo||r.origem==="pesquisa complementar")&&(!q||(r.nome+" "+r["desc_"+L]+" "+r.url).toLowerCase().includes(q));
+  const blocos=[];
+  for(const[k,c]of Object.entries(D.categorias)){
+    const itens=D.recursos.filter(r=>r.cat===k&&ok(r)).sort((a,b)=>(b.destaque-a.destaque)||((a.status!=="ativo")-(b.status!=="ativo"))||a.nome.localeCompare(b.nome));
+    if(!itens.length)continue;
+    blocos.push(el("section",{class:"grupo"},el("h2",{},c[L]),el("p",{class:"d"},c["desc_"+L]),k==="amostras"?el("div",{class:"aviso"},"⚠️ "+u.aviso):null,
+      el("div",{class:"cards"},itens.map(r=>el("article",{class:"card"+(r.destaque?" dest":"")},el("a",{class:"n",href:r.url,target:"_blank",rel:"noopener"},(r.destaque?"★ ":"")+r.nome),el("p",{},r["desc_"+L]),
+        el("div",{class:"tags"},el("span",{class:"tag"},u.tipo[r.tipo]||r.tipo),r.status!=="ativo"?el("span",{class:"tag leg"},u.legado):null,r.origem==="lista do usuário"?el("span",{class:"tag usr"},u.usuario):null,r.origem==="pesquisa complementar"?el("span",{class:"tag nov"},u.novo):null))))));
+  }
+  $("#lista").replaceChildren(...(blocos.length?blocos:[el("div",{class:"vazio"},u.vazio)]));
+}
+$("#q").addEventListener("input",render);
+document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}render()});
+fetch("../recursos.json").then(r=>r.json()).then(d=>{D=d;render()}).catch(e=>{$("#lista").textContent="Erro: "+e.message});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL · ◆ Trilha APT4ALL: do nome do grupo ao dossiê</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
+ --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.65 var(--corpo)}
+a{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
+.topo .in{max-width:1240px;margin:0 auto;padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
+.lg span{color:var(--menta)}
+.atalhos{display:flex;gap:4px;flex-wrap:wrap}
+.atalhos a{font:600 13px var(--mono);color:var(--apagado);text-decoration:none;padding:5px 9px;border:1px solid transparent}
+.atalhos a:hover,.atalhos a[aria-current]{color:var(--claro);border-color:var(--borda)}
+.grade{max-width:1240px;margin:0 auto;padding:0 16px 70px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px}
+nav.lado{position:sticky;top:70px;align-self:start;padding-top:28px;max-height:calc(100vh - 80px);overflow:auto;font-size:14px}
+nav.lado b{display:block;font:600 11px var(--mono);letter-spacing:.14em;color:var(--apagado);text-transform:uppercase;margin:16px 0 6px}
+nav.lado a{display:block;padding:4px 10px;border-left:2px solid var(--borda);color:var(--texto);text-decoration:none}
+nav.lado a:hover{color:var(--menta)}
+nav.lado a[aria-current]{border-left-color:var(--ambar);color:var(--ambar)}
+nav.lado .sum a{font-size:13px;color:var(--apagado);padding-left:18px}
+main{min-width:0;padding-top:24px;max-width:860px}
+h1{font:700 clamp(32px,5vw,48px)/1.05 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:8px 0 18px;text-wrap:balance}
+h2{font:700 28px/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:42px 0 10px;padding-top:12px;border-top:1px solid var(--borda);text-wrap:balance}
+h3{font:700 20px var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
+h4{font:600 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);margin:22px 0 6px}
+p,li{max-width:72ch}
+strong{color:var(--claro)}
+code{font:.88em var(--mono);background:var(--sup2);border:1px solid var(--borda);padding:1px 5px}
+pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
+pre code{background:none;border:0;padding:0}
+blockquote{margin:16px 0;border-left:3px solid var(--menta);background:var(--sup);padding:10px 16px}
+blockquote p{margin:0}
+.tabela{overflow-x:auto;margin:14px 0;border:1px solid var(--borda)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
+th{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--apagado);background:var(--sup)}
+td{font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--sup)}
+li.cx{list-style:none;margin-left:-22px}
+li.cx input{accent-color:#5EE6C4;width:16px;height:16px;vertical-align:-2px;margin-right:6px}
+hr{border:0;border-top:1px solid var(--borda);margin:28px 0}
+.origem{font:12px var(--mono);color:var(--apagado);margin-top:40px;padding-top:14px;border-top:1px solid var(--borda)}
+.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
+@media (max-width:900px){.grade{grid-template-columns:minmax(0,1fr);gap:0}nav.lado{position:static;max-height:none;padding-top:16px;border-bottom:1px solid var(--borda);padding-bottom:12px}nav.lado .sum{display:none}}
+</style>
+</head>
+<body>
+<header class="topo"><div class="in"><a class="lg" href="../index.html">APT4ALL <span>/</span> LER</a>
+<nav class="atalhos" aria-label="Atalhos"><a href="../atlas/index.html">Atlas</a><a href="../recursos/index.html">Recursos</a><a href="trilha.html" aria-current="page">Trilha</a><a href="../manual/index.html">Manual</a><a href="index.html">Todos os textos</a></nav></div></header>
+<div class="grade">
+<nav class="lado" aria-label="Textos"><b>Começar</b><a href="comece-aqui.html">Comece aqui</a><a href="start-here.html">Start here</a><b>Estudar</b><a href="trilha.html" aria-current="page">Trilha (9 módulos)</a><div class="sum"><a href="#módulo-1--um-grupo-dez-nomes">Módulo 1 · Um grupo, dez nomes</a><a href="#módulo-2--ler-um-relatório-sem-se-perder">Módulo 2 · Ler um relatório sem se perder</a><a href="#módulo-3--pirâmide-da-dor-e-modelo-diamante">Módulo 3 · Pirâmide da Dor e Modelo Diamante</a><a href="#módulo-4--mapear-para-o-attck">Módulo 4 · Mapear para o ATT&amp;CK</a><a href="#módulo-5--atribuição-com-método">Módulo 5 · Atribuição com método</a><a href="#módulo-6--perfil-de-ameaça-da-sua-organização">Módulo 6 · Perfil de ameaça da sua organização</a><a href="#módulo-7--do-perfil-à-defesa">Módulo 7 · Do perfil à defesa</a><a href="#módulo-8--triagem-segura-de-malware-de-apt">Módulo 8 · Triagem segura de malware de APT</a><a href="#módulo-9--projeto-final-dossiê-de-ator">Módulo 9 · Projeto final: dossiê de ator</a></div><a href="trilha-en.html">Learning path</a><b>Modelos</b><a href="modelo-ficha-relatorio.html">Modelo: ficha de relatório</a><a href="modelo-matriz-ach.html">Modelo: matriz ACH</a><a href="modelo-cobertura.html">Modelo: tabela de cobertura</a><a href="modelo-registro-triagem.html">Modelo: registro de triagem</a><a href="modelo-dossie-ator.html">Modelo: dossiê de ator</a><b>TCE</b><a href="tce.html">Ponte com o TCE</a><a href="tce-en.html">TCE bridge</a><a href="analise-tce.html">Análise do TCE</a><a href="tce-analysis.html">TCE analysis</a><b>Sobre</b><a href="fontes.html">Fontes e licenças</a><a href="sources.html">Sources and licenses</a><a href="contribuir.html">Como contribuir</a><a href="contributing.html">How to contribute</a><a href="relatorio-de-testes.html">Relatório de testes</a><a href="resumo-da-base.html">Resumo da base</a></nav>
+<main>
+<h1 id="trilha-apt4all-do-nome-do-grupo-ao-dossiê">◆ Trilha APT4ALL: do nome do grupo ao dossiê</h1>
+<p>English: <a href="trilha-en.html">README.en.md</a></p>
+<p>Nove módulos para quem quer fazer CTI de verdade sobre APT e malware, no lado da defesa. Cada módulo tem <strong>uma</strong> ação "faça agora" com o Atlas, um entregável e uma checagem. Faça um por sessão; não precisa ler tudo antes de começar.</p>
+<div class="tabela"><table><thead><tr><th>#</th><th>Módulo</th><th>Tempo</th><th>Entregável</th></tr></thead><tbody><tr><td>1</td><td><a href="#módulo-1--um-grupo-dez-nomes">Um grupo, dez nomes</a></td><td>45 min</td><td>Tabela de nomes de 3 atores</td></tr><tr><td>2</td><td><a href="#módulo-2--ler-um-relatório-sem-se-perder">Ler um relatório sem se perder</a></td><td>1 h</td><td>Ficha de relatório preenchida</td></tr><tr><td>3</td><td><a href="#módulo-3--pirâmide-da-dor-e-modelo-diamante">Pirâmide da Dor e Modelo Diamante</a></td><td>1 h</td><td>Diamante de um ator</td></tr><tr><td>4</td><td><a href="#módulo-4--mapear-para-o-attck">Mapear para o ATT&amp;CK</a></td><td>1 h 30</td><td>Camada do Navigator com 8 técnicas justificadas</td></tr><tr><td>5</td><td><a href="#módulo-5--atribuição-com-método">Atribuição com método</a></td><td>1 h</td><td>Matriz ACH com 3 hipóteses</td></tr><tr><td>6</td><td><a href="#módulo-6--perfil-de-ameaça-da-sua-organização">Perfil de ameaça da sua organização</a></td><td>1 h</td><td>Perfil país + setor com top 10 técnicas</td></tr><tr><td>7</td><td><a href="#módulo-7--do-perfil-à-defesa">Do perfil à defesa</a></td><td>2 h</td><td>Tabela de cobertura de 5 técnicas</td></tr><tr><td>8</td><td><a href="#módulo-8--triagem-segura-de-malware-de-apt">Triagem segura de malware de APT</a></td><td>1 h</td><td>Registro de triagem de um hash público</td></tr><tr><td>9</td><td><a href="#módulo-9--projeto-final-dossiê-de-ator">Projeto final: dossiê de ator</a></td><td>3 h</td><td>Dossiê no modelo, pronto para publicar</td></tr></tbody></table></div>
+<p>Modelos para copiar: <a href="index.html"><code>modelos/</code></a>.</p>
+<hr>
+<h2 id="módulo-1--um-grupo-dez-nomes">Módulo 1 · Um grupo, dez nomes</h2>
+<p><strong>Por que importa.</strong> Cada fornecedor batiza o mesmo grupo do seu jeito: a Microsoft usa clima (Forest Blizzard), a CrowdStrike usa animais por país (Fancy Bear), a Mandiant usa números (APT28) e prefixos para grupos ainda sem atribuição (UNC, FIN), e o ATT&amp;CK usa IDs (G0007). Quem não domina isso lê dois relatórios sobre o mesmo grupo achando que são dois grupos.</p>
+<p><strong>Leia (escolha um):</strong></p>
+<ul><li><a href="https://attack.mitre.org/groups/" target="_blank" rel="noopener">MITRE ATT&amp;CK Groups</a></li><li><a href="https://www.crowdstrike.com/en-us/blog/crowdstrike-and-microsoft-unite-to-deconflict-cyber-threat-attribution/" target="_blank" rel="noopener">CrowdStrike e Microsoft: mapa de nomes</a></li><li><a href="https://apt.threattracking.com/" target="_blank" rel="noopener">apt.threattracking.com</a></li></ul>
+<p><strong>Faça agora.</strong> No Atlas, abra a ficha de <code>APT28</code>, <code>Lazarus Group</code> e <code>OilRig</code>. Para cada um, use a seção <strong>Nomes por fornecedor</strong> e anote o nome da Microsoft, da CrowdStrike, da Mandiant e o ID do ATT&amp;CK. Faltou algum? Procure em <strong>Nomes conhecidos</strong> ou no apt.threattracking.com.</p>
+<p><strong>Entregável.</strong> Tabela com 3 linhas e 5 colunas (nome comum, Microsoft, CrowdStrike, Mandiant, ATT&amp;CK).</p>
+<p><strong>Checagem.</strong> Você sabe explicar por que "Lazarus" às vezes inclui Andariel e BlueNoroff e às vezes não? (Pista: é um guarda-chuva, e cada fornecedor corta diferente.)</p>
+<h2 id="módulo-2--ler-um-relatório-sem-se-perder">Módulo 2 · Ler um relatório sem se perder</h2>
+<p><strong>Por que importa.</strong> Relatório de ameaça mistura fato observado, inferência e marketing. O analista separa os três e registra a confiança de cada afirmação.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://www.dni.gov/files/documents/ICD/ICD-203.pdf" target="_blank" rel="noopener">ICD 203: padrões analíticos</a> (linguagem de probabilidade e confiança)</li><li><a href="https://github.com/mthcht/ThreatIntel-Reports" target="_blank" rel="noopener">mthcht/ThreatIntel-Reports</a> (acervo para praticar)</li></ul>
+<p><strong>Faça agora.</strong> Na ficha do <code>APT29</code> no Atlas, desça até <strong>Relatórios (APTnotes)</strong> e abra um. Preencha a <a href="modelo-ficha-relatorio.html">ficha de relatório</a>.</p>
+<p><strong>Entregável.</strong> Ficha com: quem publicou, data, vitimologia, comportamentos descritos, indicadores citados, nível de confiança declarado e o que é inferência.</p>
+<p><strong>Checagem.</strong> Você marcou pelo menos uma frase como "inferência do fornecedor" e não como fato?</p>
+<h2 id="módulo-3--pirâmide-da-dor-e-modelo-diamante">Módulo 3 · Pirâmide da Dor e Modelo Diamante</h2>
+<p><strong>Por que importa.</strong> A Pirâmide da Dor mostra que bloquear hash é fácil para você e trivial para o adversário contornar; atacar comportamento (TTP) custa caro para ele. O Modelo Diamante organiza qualquer evento em adversário, capacidade, infraestrutura e vítima.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html" target="_blank" rel="noopener">The Pyramid of Pain (David Bianco)</a></li><li><a href="https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf" target="_blank" rel="noopener">The Diamond Model of Intrusion Analysis</a></li></ul>
+<p><strong>Faça agora.</strong> Com a ficha do relatório do módulo 2, desenhe o diamante: um vértice por quadrante, com o que o relatório diz.</p>
+<p><strong>Entregável.</strong> Diamante preenchido (pode ser à mão, foto vale).</p>
+<p><strong>Checagem.</strong> Algum vértice ficou vazio? Isso é uma lacuna de inteligência: anote como pergunta para o próximo relatório.</p>
+<h2 id="módulo-4--mapear-para-o-attck">Módulo 4 · Mapear para o ATT&amp;CK</h2>
+<p><strong>Por que importa.</strong> O ATT&amp;CK é a língua comum entre CTI, detecção e red team. Mapear bem é descrever o <strong>comportamento</strong> observado com a técnica certa, sem inventar o que o relatório não diz.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://top-attack-techniques.mitre-engenuity.org/" target="_blank" rel="noopener">Top ATT&amp;CK Techniques (CTID)</a></li><li><a href="https://github.com/cisagov/Decider" target="_blank" rel="noopener">CISA Decider</a> (ajuda a escolher a técnica por perguntas)</li><li><a href="https://github.com/center-for-threat-informed-defense/tram" target="_blank" rel="noopener">TRAM (CTID)</a> (mapeamento assistido de texto)</li></ul>
+<p><strong>Faça agora.</strong> Pegue 8 frases de comportamento da sua ficha e mapeie cada uma para uma técnica no <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank" rel="noopener">ATT&amp;CK Navigator</a>. Compare com as técnicas da ficha do ator no Atlas.</p>
+<p><strong>Entregável.</strong> Camada do Navigator exportada, com um comentário em cada técnica citando a frase do relatório.</p>
+<p><strong>Checagem.</strong> Alguma técnica sua não aparece na ficha do Atlas? Ou o relatório é novo, ou o mapeamento forçou a barra. Decida qual.</p>
+<h2 id="módulo-5--atribuição-com-método">Módulo 5 · Atribuição com método</h2>
+<p><strong>Por que importa.</strong> Atribuição errada derruba a credibilidade do time inteiro. A Análise de Hipóteses Concorrentes (ACH), de Richards Heuer, obriga a procurar evidência que <strong>derruba</strong> hipóteses, não só a que confirma a favorita. Falsa bandeira existe e já foi documentada publicamente.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://www.cia.gov/resources/csi/books-monographs/psychology-of-intelligence-analysis-2/" target="_blank" rel="noopener">Psychology of Intelligence Analysis (Heuer), cap. 8</a></li><li>O aviso de atribuição no <a href="fontes.html">FONTES.md</a></li></ul>
+<p><strong>Faça agora.</strong> Monte a <a href="modelo-matriz-ach.html">matriz ACH</a> com três hipóteses para o relatório do módulo 2: o ator citado, outro ator do mesmo país, e "outro ator imitando".</p>
+<p><strong>Entregável.</strong> Matriz com pelo menos 6 evidências marcadas como consistente, inconsistente ou neutra.</p>
+<p><strong>Checagem.</strong> A hipótese vencedora é a que tem <strong>menos inconsistências</strong>, não a que tem mais pontos a favor. Confere?</p>
+<h2 id="módulo-6--perfil-de-ameaça-da-sua-organização">Módulo 6 · Perfil de ameaça da sua organização</h2>
+<p><strong>Por que importa.</strong> Ninguém defende contra 1.355 atores. O perfil de ameaça recorta quem já atacou organizações parecidas com a sua e quais técnicas eles usam. É o primeiro filtro de prioridade.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling" target="_blank" rel="noopener">Tidal: Ultimate Guide to Cyber Threat Profiling</a></li><li><a href="https://center-for-threat-informed-defense.github.io/threat-modeling-with-attack/" target="_blank" rel="noopener">CTID: Threat Modeling with ATT&amp;CK</a></li></ul>
+<p><strong>Faça agora.</strong> No Atlas, aba <strong>Perfil de ameaça</strong>, clique no país e no setor da sua organização (ou de uma organização fictícia). Baixe a camada do Navigator. Depois clique em <strong>Ver em fluxos</strong> para ver por quais táticas esses atores passam.</p>
+<p><strong>Entregável.</strong> Lista dos 10 atores mais relevantes e das 10 técnicas a cobrir primeiro, com uma frase sobre o limite do perfil (ex.: "pouca vitimologia pública para o Brasil").</p>
+<p><strong>Checagem.</strong> Você consegue explicar a um gestor, em duas frases, por que essas 10 técnicas e não outras?</p>
+<h2 id="módulo-7--do-perfil-à-defesa">Módulo 7 · Do perfil à defesa</h2>
+<p><strong>Por que importa.</strong> Perfil sem cobertura é só relatório. Aqui você cruza as técnicas prioritárias com o que o ambiente consegue <strong>ver</strong> (telemetria), <strong>barrar</strong> (controles) e <strong>validar</strong> (testes). Sem biblioteca de regras pronta: o objetivo é saber onde está o buraco.</p>
+<p><strong>Leia:</strong></p>
+<ul><li><a href="https://center-for-threat-informed-defense.github.io/mappings-explorer/" target="_blank" rel="noopener">Mappings Explorer (CTID)</a> e <a href="https://controlcompass.github.io/" target="_blank" rel="noopener">ControlCompass</a> (controle ↔ técnica)</li><li><a href="https://d3fend.mitre.org/" target="_blank" rel="noopener">MITRE D3FEND</a> (contramedidas por técnica)</li><li><a href="https://github.com/SigmaHQ/sigma" target="_blank" rel="noopener">Sigma</a> (formato aberto de detecção, para ler como as regras são estruturadas)</li><li><a href="https://github.com/redcanaryco/atomic-red-team" target="_blank" rel="noopener">Atomic Red Team</a> (testes de validação; só em ambiente autorizado)</li><li>Para ransomware: <a href="../atlas/index.html#rede">Atlas → Rede → Ransomware</a> mostra as ferramentas que as gangues repetem (lista de caça e bloqueio, a partir do <a href="https://github.com/BushidoUK/Ransomware-Tool-Matrix" target="_blank" rel="noopener">Ransomware Tool Matrix</a>); o <a href="https://medium.com/@sebastian.kandler/simulating-the-ransomhub-ransomware-a-vital-exercise-for-strengthening-detection-and-response-b8ecdee0f2bc" target="_blank" rel="noopener">exercício de simulação do RansomHub</a> mostra como validar a detecção em laboratório</li></ul>
+<p><strong>Faça agora.</strong> Copie a <a href="modelo-cobertura.html">tabela de cobertura</a> e preencha para as 5 primeiras técnicas do seu perfil: tenho a telemetria? tenho controle mapeado? já validei?</p>
+<p><strong>Entregável.</strong> Tabela de cobertura com 5 linhas e uma decisão por linha (manter, investigar, comprar, configurar).</p>
+<p><strong>Checagem.</strong> A técnica com mais "não" virou a primeira ação da lista? Se quiser ir além, leve o perfil para o <a href="tce.html">TCE</a>, que faz esse cruzamento para o ambiente inteiro.</p>
+<h2 id="módulo-8--triagem-segura-de-malware-de-apt">Módulo 8 · Triagem segura de malware de APT</h2>
+<p><strong>Por que importa.</strong> CTI de APT encosta em malware real. A triagem segura é nível de processo: consultar, registrar e decidir, sem abrir arquivo fora de laboratório isolado.</p>
+<p><strong>Leia:</strong></p>
+<ul><li>A seção <strong>Amostras</strong> dos <a href="../recursos/index.html">Recursos</a> (com aviso)</li><li><a href="https://malpedia.caad.fkie.fraunhofer.de/actors" target="_blank" rel="noopener">Malpedia</a> (famílias por ator)</li><li><a href="https://www.first.org/tlp/" target="_blank" rel="noopener">FIRST TLP 2.0</a> (como compartilhar)</li></ul>
+<p><strong>Faça agora.</strong> Escolha um hash SHA-256 citado num relatório público do seu ator. Consulte só o hash (sem baixar o arquivo) no VirusTotal ou no MalwareBazaar e preencha o <a href="modelo-registro-triagem.html">registro de triagem</a>.</p>
+<p><strong>Entregável.</strong> Registro com: hash, fonte do hash, família indicada, primeira vez visto, consistência com o relatório, TLP aplicado e decisão (arquivar, escalar para laboratório, descartar).</p>
+<p><strong>Checagem.</strong> Em algum momento o arquivo saiu do serviço para a sua máquina? Se sim, volte e refaça: o exercício é só consulta.</p>
+<h2 id="módulo-9--projeto-final-dossiê-de-ator">Módulo 9 · Projeto final: dossiê de ator</h2>
+<p><strong>Por que importa.</strong> O dossiê junta tudo: nomes, atribuição com confiança, vitimologia, comportamentos, impacto para a sua organização e recomendações. É o que um analista entrega a quem decide.</p>
+<p><strong>Faça agora.</strong> Copie o <a href="modelo-dossie-ator.html">modelo de dossiê</a> e escolha <strong>um</strong> ator do seu perfil (módulo 6). Preencha uma seção por sessão, se preferir.</p>
+<p><strong>Entregável.</strong> Dossiê com BLUF de 3 linhas, tabela de nomes, avaliação de atribuição com nível de confiança, top técnicas com cobertura (módulo 7), recomendações e fontes.</p>
+<p><strong>Checagem.</strong> Um gestor lê só o BLUF e sabe o que fazer? Um analista lê as fontes e consegue refazer suas conclusões?</p>
+<p>Quer publicar? Abra um PR adicionando o dossiê em <code>trilha/dossies/</code> (veja o <a href="contribuir.html">CONTRIBUTING.md</a>).</p>
+<p class="origem">Gerado de <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/trilha/README.md">trilha/README.md</a> · código MIT · texto CC BY 4.0</p>
+</main>
+</div>
+<script>
+// caixas de seleção da trilha e do Comece aqui ficam lembradas neste navegador
+(function(){var k="apt4all-cx-trilha";var cx=[].slice.call(document.querySelectorAll("li.cx input"));var s={};
+try{s=JSON.parse(localStorage.getItem(k)||"{}")}catch(e){}
+cx.forEach(function(c,i){if(s[i])c.checked=true;c.addEventListener("change",function(){s[i]=c.checked;try{localStorage.setItem(k,JSON.stringify(s))}catch(e){}})})})();
+</script>
+</body>
+</html>

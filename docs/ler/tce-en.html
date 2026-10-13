@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL · APT4ALL → TCE Horizon bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
+ --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.65 var(--corpo)}
+a{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
+.topo .in{max-width:1240px;margin:0 auto;padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
+.lg span{color:var(--menta)}
+.atalhos{display:flex;gap:4px;flex-wrap:wrap}
+.atalhos a{font:600 13px var(--mono);color:var(--apagado);text-decoration:none;padding:5px 9px;border:1px solid transparent}
+.atalhos a:hover,.atalhos a[aria-current]{color:var(--claro);border-color:var(--borda)}
+.grade{max-width:1240px;margin:0 auto;padding:0 16px 70px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px}
+nav.lado{position:sticky;top:70px;align-self:start;padding-top:28px;max-height:calc(100vh - 80px);overflow:auto;font-size:14px}
+nav.lado b{display:block;font:600 11px var(--mono);letter-spacing:.14em;color:var(--apagado);text-transform:uppercase;margin:16px 0 6px}
+nav.lado a{display:block;padding:4px 10px;border-left:2px solid var(--borda);color:var(--texto);text-decoration:none}
+nav.lado a:hover{color:var(--menta)}
+nav.lado a[aria-current]{border-left-color:var(--ambar);color:var(--ambar)}
+nav.lado .sum a{font-size:13px;color:var(--apagado);padding-left:18px}
+main{min-width:0;padding-top:24px;max-width:860px}
+h1{font:700 clamp(32px,5vw,48px)/1.05 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:8px 0 18px;text-wrap:balance}
+h2{font:700 28px/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:42px 0 10px;padding-top:12px;border-top:1px solid var(--borda);text-wrap:balance}
+h3{font:700 20px var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
+h4{font:600 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);margin:22px 0 6px}
+p,li{max-width:72ch}
+strong{color:var(--claro)}
+code{font:.88em var(--mono);background:var(--sup2);border:1px solid var(--borda);padding:1px 5px}
+pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
+pre code{background:none;border:0;padding:0}
+blockquote{margin:16px 0;border-left:3px solid var(--menta);background:var(--sup);padding:10px 16px}
+blockquote p{margin:0}
+.tabela{overflow-x:auto;margin:14px 0;border:1px solid var(--borda)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
+th{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--apagado);background:var(--sup)}
+td{font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--sup)}
+li.cx{list-style:none;margin-left:-22px}
+li.cx input{accent-color:#5EE6C4;width:16px;height:16px;vertical-align:-2px;margin-right:6px}
+hr{border:0;border-top:1px solid var(--borda);margin:28px 0}
+.origem{font:12px var(--mono);color:var(--apagado);margin-top:40px;padding-top:14px;border-top:1px solid var(--borda)}
+.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
+@media (max-width:900px){.grade{grid-template-columns:minmax(0,1fr);gap:0}nav.lado{position:static;max-height:none;padding-top:16px;border-bottom:1px solid var(--borda);padding-bottom:12px}nav.lado .sum{display:none}}
+</style>
+</head>
+<body>
+<header class="topo"><div class="in"><a class="lg" href="../index.html">APT4ALL <span>/</span> LER</a>
+<nav class="atalhos" aria-label="Atalhos"><a href="../atlas/index.html">Atlas</a><a href="../recursos/index.html">Recursos</a><a href="trilha.html">Trilha</a><a href="../manual/index.html">Manual</a><a href="index.html">Todos os textos</a></nav></div></header>
+<div class="grade">
+<nav class="lado" aria-label="Textos"><b>Começar</b><a href="comece-aqui.html">Comece aqui</a><a href="start-here.html">Start here</a><b>Estudar</b><a href="trilha.html">Trilha (9 módulos)</a><a href="trilha-en.html">Learning path</a><b>Modelos</b><a href="modelo-ficha-relatorio.html">Modelo: ficha de relatório</a><a href="modelo-matriz-ach.html">Modelo: matriz ACH</a><a href="modelo-cobertura.html">Modelo: tabela de cobertura</a><a href="modelo-registro-triagem.html">Modelo: registro de triagem</a><a href="modelo-dossie-ator.html">Modelo: dossiê de ator</a><b>TCE</b><a href="tce.html">Ponte com o TCE</a><a href="tce-en.html" aria-current="page">TCE bridge</a><div class="sum"><a href="#do-this-now-just-one-thing">Do this now (just one thing)</a><a href="#outputs">Outputs</a><a href="#taking-it-into-tce">Taking it into TCE</a><a href="#accepted-values">Accepted values</a><a href="#a-limit-you-need-to-know">A limit you need to know</a></div><a href="analise-tce.html">Análise do TCE</a><a href="tce-analysis.html">TCE analysis</a><b>Sobre</b><a href="fontes.html">Fontes e licenças</a><a href="sources.html">Sources and licenses</a><a href="contribuir.html">Como contribuir</a><a href="contributing.html">How to contribute</a><a href="relatorio-de-testes.html">Relatório de testes</a><a href="resumo-da-base.html">Resumo da base</a></nav>
+<main>
+<h1 id="apt4all--tce-horizon-bridge">APT4ALL → TCE Horizon bridge</h1>
+<p>Português: <a href="tce.html">README.md</a></p>
+<p><a href="https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling" target="_blank" rel="noopener">TCE</a> models the whole enterprise environment and forecasts where defense needs attention. APT4ALL supplies the missing piece: <strong>who usually attacks organizations like yours, and with which techniques</strong>.</p>
+<ul><li>Full analysis (gaps, tests, academic materials, research proposal): <a href="tce-analysis.html">TCE-ANALYSIS.md</a></li><li>Tool: <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/ferramentas/tce/perfil_ameaca.py"><code>ferramentas/tce/perfil_ameaca.py</code></a> (standard library only)</li><li>In the browser: <a href="../atlas/index.html#perfil">Atlas → Threat profile</a></li></ul>
+<h2 id="do-this-now-just-one-thing">Do this now (just one thing)</h2>
+<pre><code>python3 ferramentas/tce/perfil_ameaca.py --pais BR --setor finance --saida out/br-finance</code></pre>
+<p>Open <code>out/br-finance/perfil.md</code>. You now have the actor list and the techniques to cover first.</p>
+<h2 id="outputs">Outputs</h2>
+<div class="tabela"><table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code>perfil.md</code></td><td>Readable report: actors, why each was included, techniques</td></tr><tr><td><code>navigator.json</code></td><td>Layer for the <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank" rel="noopener">ATT&amp;CK Navigator</a></td></tr><tr><td><code>tce-sinais.json</code></td><td><code>intelligence_signals</code> candidate (always <code>candidate</code>, <code>review_required: true</code>)</td></tr><tr><td><code>tce-intelligence.csv</code></td><td>Same signal in <code>tce environment-import-csv</code> format</td></tr></tbody></table></div>
+<h2 id="taking-it-into-tce">Taking it into TCE</h2>
+<ol><li>Read <code>perfil.md</code> and confirm the actors in the sources.</li><li>In <code>tce-sinais.json</code>, change <code>status</code> to <code>accepted</code> only after that review.</li><li>Add the signal to your case's <code>environment_state.intelligence_signals</code>.</li><li>Run <code>tce horizon-assess &lt;case&gt; --offline</code> and compare with the previous run.</li></ol>
+<p>A <code>candidate</code> signal changes nothing in the calculation. That gate is intentional and was tested (see section 3 of the analysis).</p>
+<h2 id="accepted-values">Accepted values</h2>
+<pre><code>python3 ferramentas/tce/perfil_ameaca.py --listar paises
+python3 ferramentas/tce/perfil_ameaca.py --listar setores</code></pre>
+<p>Sectors: <code>government</code>, <code>military</code>, <code>finance</code>, <code>energy</code>, <code>health</code>, <code>education</code>, <code>telecom</code>, <code>technology</code>, <code>civil</code>, <code>private</code>, <code>manufacturing</code>, <code>transport</code>, <code>retail</code>, <code>infrastructure</code>.</p>
+<h2 id="a-limit-you-need-to-know">A limit you need to know</h2>
+<p>Public victimology covers Brazil poorly. The profile is a starting point, not a forecast: complement it with CERT.br and reports from banks and vendors operating in the country.</p>
+<p class="origem">Gerado de <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/tce/README.en.md">tce/README.en.md</a> · código MIT · texto CC BY 4.0</p>
+</main>
+</div>
+<script>
+// caixas de seleção da trilha e do Comece aqui ficam lembradas neste navegador
+(function(){var k="apt4all-cx-tce-en";var cx=[].slice.call(document.querySelectorAll("li.cx input"));var s={};
+try{s=JSON.parse(localStorage.getItem(k)||"{}")}catch(e){}
+cx.forEach(function(c,i){if(s[i])c.checked=true;c.addEventListener("change",function(){s[i]=c.checked;try{localStorage.setItem(k,JSON.stringify(s))}catch(e){}})})})();
+</script>
+</body>
+</html>
