@@ -29,7 +29,7 @@ def caso(nome, ok, detalhe=""):
 with sync_playwright() as p:
     nav = p.chromium.launch()
     for vw, vh in [(1280, 800), (390, 844)]:
-        for pagina in ["", "atlas/", "atlas/#fluxos", "atlas/#rede", "recursos/", "manual/"]:
+        for pagina in ["", "atlas/", "atlas/#fluxos", "atlas/#rede", "recursos/", "manual/", "ler/index.html", "ler/trilha.html"]:
             ctx = nav.new_context(viewport={"width": vw, "height": vh})
             pg = ctx.new_page()
             erros = []

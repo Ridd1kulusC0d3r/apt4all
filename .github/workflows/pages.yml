@@ -3,7 +3,7 @@ name: pages
 on:
   push:
     branches: [main]
-    paths: ["docs/**", ".github/workflows/pages.yml"]
+    paths: ["docs/**", "**.md", "recursos/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +23,13 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gerar páginas de leitura e listas
+        run: |
+          python ferramentas/recursos/gerar_listas.py
+          python ferramentas/site/gerar_paginas.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,4 +1,4 @@
-# Relatório de testes · APT4ALL 1.1
+# Relatório de testes · APT4ALL 1.2
 
 Executado em 13/10/2026, num ambiente Linux na nuvem (Python 3.10, 3.11, 3.12 e 3.13; Chromium via Playwright).
 
@@ -6,10 +6,10 @@ Executado em 13/10/2026, num ambiente Linux na nuvem (Python 3.10, 3.11, 3.12 e 
 
 | Bateria | Casos | Resultado |
 |---|---|---|
-| Testes de unidade (`python3 -m unittest discover -s testes`) | 47 | **OK** em 3.10, 3.11, 3.12 e 3.13 (1 pulado: TCE ausente) |
-| Mesma bateria com o TCE instalado | 47 | **OK**, nenhum pulado |
+| Testes de unidade (`python3 -m unittest discover -s testes`) | 48 | **OK** em 3.10, 3.11, 3.12 e 3.13 (1 pulado: TCE ausente) |
+| Mesma bateria com o TCE instalado | 48 | **OK**, nenhum pulado |
 | Integração com o Horizon do TCE (caso `enterprise-identity`) | 3 rodadas | **OK**: candidato não pesa, aceito sobe a faixa |
-| Navegador (`python3 testes/navegador.py`) | 27 | **27 OK** |
+| Navegador (`python3 testes/navegador.py`) | 31 | **31 OK** (inclui as páginas de leitura em desktop e celular) |
 | Lançador (`iniciar.py`) | 3 requisições | **OK** (200 em `/`, `/atlas/atores.json`, `/recursos/`) |
 | Reprodutibilidade do pipeline | 2 execuções | **Saída idêntica** em Python 3.10 e 3.11 |
 | Links dos recursos | 186 | 74 OK, **0 mortos**, 112 sem conexão a partir desta nuvem (ver limites) |
@@ -23,7 +23,7 @@ Executado em 13/10/2026, num ambiente Linux na nuvem (Python 3.10, 3.11, 3.12 e 
 | `test_recursos.py` | Esquema do `recursos.json`, URLs únicas, categorias bilíngues, cópia publicada igual, gerador das listas PT/EN | 5 |
 | `test_ponte_tce.py` | Pontuação do perfil, filtro de origem, país por ISO ou por nome dá o mesmo resultado, exportação dos 4 arquivos, trava de revisão (`candidate`, `auto_accept: false`), CSV, camada do Navigator, base real; integração com o Horizon | 7 |
 | `test_ransomware.py` | Ransomware Tool Matrix: volume, licença, categorias, consistência grupo↔ferramenta, ligações com o Atlas (sem capturar gangues pela lista contaminada do BlackByte), tipos de grupo; táticas ATT&CK de toda técnica; vítimas normalizadas em ISO | 9 |
-| `test_paginas.py` | Páginas existem, Atlas aponta para os JSON, dicionários PT/EN com as mesmas chaves, todo `data-t` traduzido, `localStorage` sempre dentro de `try` | 5 |
+| `test_paginas.py` | Páginas existem, Atlas aponta para os JSON, dicionários PT/EN com as mesmas chaves, todo `data-t` traduzido, `localStorage` sempre dentro de `try`; todo link relativo e âncora entre as páginas do site existe | 6 |
 
 O teste `test_urls_unicas` pegou 3 recursos duplicados na primeira rodada (APTnotes, vx-underground, Zenodo 12741055). Foram consolidados: o total caiu de 172 para 169.
 

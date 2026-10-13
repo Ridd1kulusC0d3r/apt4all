@@ -41,6 +41,7 @@ Um mesmo grupo tem dez nomes: APT28 é Fancy Bear, Sofacy, Forest Blizzard, STRO
 | 📚 **Recursos** | 186 links em 21 categorias, bilíngues, com legado marcado, filtro para a sua lista original e verificação mensal | [RECURSOS.md](RECURSOS.md) · [online](https://ridd1kulusc0d3r.github.io/apt4all/recursos/) |
 | 🧭 **Trilha** | 9 módulos, do nome do grupo ao dossiê final, cada um com uma ação "faça agora" | [`trilha/`](trilha/) |
 | 🔗 **Ponte com o TCE** | Leva o perfil de ameaça para a modelagem de ameaças do ambiente inteiro | [`tce/`](tce/) |
+| 📄 **Textos navegáveis** | Trilha, modelos, análise do TCE, fontes e relatório de testes em páginas com menu lateral e sumário | [`docs/ler/`](docs/ler/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/ler/index.html) |
 | 📖 **Manual ilustrado** | Passo a passo com telas anotadas, para quem nunca usou | [`docs/manual/`](docs/manual/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/manual/) |
 
 ## A base em números
@@ -97,12 +98,14 @@ apt4all/
 │   ├── index.html           página inicial
 │   ├── atlas/               Atlas de sala de guerra + atores.json, paises.json, mapa.json, ransomware.json
 │   ├── recursos/            busca nos recursos
+│   ├── ler/                 textos do repositório em HTML (gerados de Markdown)
 │   └── manual/              manual ilustrado
 ├── ferramentas/
 │   ├── atlas/               construir_dados.py (fontes → base), mapa_hex.py (mapa)
 │   ├── recursos/            verificar_links.py, gerar_listas.py
 │   ├── ransomware/          construir_matriz.py (Ransomware Tool Matrix → ransomware.json)
 │   ├── tce/                 perfil_ameaca.py (ponte com o TCE)
+│   ├── site/                gerar_paginas.py (Markdown → docs/ler/)
 │   └── manual/              capturar_telas.py (telas do manual, opcional)
 ├── recursos/recursos.json   fonte única dos recursos (edite aqui)
 ├── trilha/                  trilha de estudo, 9 módulos

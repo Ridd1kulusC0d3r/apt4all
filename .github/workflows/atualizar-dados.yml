@@ -27,6 +27,7 @@ jobs:
           python ferramentas/atlas/mapa_hex.py
           python ferramentas/ransomware/construir_matriz.py --baixar
           python ferramentas/recursos/gerar_listas.py
+          python ferramentas/site/gerar_paginas.py
       - name: Testes
         run: python -m unittest discover -s testes -v
       - name: Resumo

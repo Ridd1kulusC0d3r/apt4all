@@ -48,3 +48,32 @@ class TestPaginas(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestLinksInternos(unittest.TestCase):
+    """Todo link relativo entre as páginas de docs/ aponta para um arquivo (e uma âncora) que existe."""
+
+    def test_links_relativos(self):
+        import glob
+        from urllib.parse import unquote
+        quebrados = []
+        for fn in glob.glob(os.path.join(DOCS, "**", "*.html"), recursive=True):
+            with open(fn, encoding="utf-8") as f:
+                s = f.read()
+            for ref in re.findall(r'(?:href|src)="([^"]+)"', s):
+                if re.match(r"^(https?:|mailto:|data:|javascript:|\$\{)", ref) or "${" in ref:
+                    continue
+                alvo, _, anc = ref.partition("#")
+                destino = os.path.normpath(os.path.join(os.path.dirname(fn), unquote(alvo))) if alvo else fn
+                if os.path.isdir(destino):
+                    if not os.path.exists(os.path.join(destino, "index.html")):
+                        continue  # prefixo de caminho montado em JavaScript (ex.: "img/" + nome)
+                    destino = os.path.join(destino, "index.html")
+                if not os.path.exists(destino):
+                    quebrados.append((os.path.relpath(fn, DOCS), ref))
+                    continue
+                if anc and destino.endswith(".html") and not destino.endswith(os.path.join("atlas", "index.html")):  # o Atlas usa #rota em JS
+                    with open(destino, encoding="utf-8") as f:
+                        if f'id="{unquote(anc)}"' not in f.read():
+                            quebrados.append((os.path.relpath(fn, DOCS), ref))
+        self.assertEqual(quebrados, [])

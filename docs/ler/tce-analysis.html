@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL · TCE analysis and the APT4ALL bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<style>
+:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
+ --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.65 var(--corpo)}
+a{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
+.topo .in{max-width:1240px;margin:0 auto;padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
+.lg span{color:var(--menta)}
+.atalhos{display:flex;gap:4px;flex-wrap:wrap}
+.atalhos a{font:600 13px var(--mono);color:var(--apagado);text-decoration:none;padding:5px 9px;border:1px solid transparent}
+.atalhos a:hover,.atalhos a[aria-current]{color:var(--claro);border-color:var(--borda)}
+.grade{max-width:1240px;margin:0 auto;padding:0 16px 70px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px}
+nav.lado{position:sticky;top:70px;align-self:start;padding-top:28px;max-height:calc(100vh - 80px);overflow:auto;font-size:14px}
+nav.lado b{display:block;font:600 11px var(--mono);letter-spacing:.14em;color:var(--apagado);text-transform:uppercase;margin:16px 0 6px}
+nav.lado a{display:block;padding:4px 10px;border-left:2px solid var(--borda);color:var(--texto);text-decoration:none}
+nav.lado a:hover{color:var(--menta)}
+nav.lado a[aria-current]{border-left-color:var(--ambar);color:var(--ambar)}
+nav.lado .sum a{font-size:13px;color:var(--apagado);padding-left:18px}
+main{min-width:0;padding-top:24px;max-width:860px}
+h1{font:700 clamp(32px,5vw,48px)/1.05 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:8px 0 18px;text-wrap:balance}
+h2{font:700 28px/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:42px 0 10px;padding-top:12px;border-top:1px solid var(--borda);text-wrap:balance}
+h3{font:700 20px var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
+h4{font:600 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);margin:22px 0 6px}
+p,li{max-width:72ch}
+strong{color:var(--claro)}
+code{font:.88em var(--mono);background:var(--sup2);border:1px solid var(--borda);padding:1px 5px}
+pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
+pre code{background:none;border:0;padding:0}
+blockquote{margin:16px 0;border-left:3px solid var(--menta);background:var(--sup);padding:10px 16px}
+blockquote p{margin:0}
+.tabela{overflow-x:auto;margin:14px 0;border:1px solid var(--borda)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
+th{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--apagado);background:var(--sup)}
+td{font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--sup)}
+li.cx{list-style:none;margin-left:-22px}
+li.cx input{accent-color:#5EE6C4;width:16px;height:16px;vertical-align:-2px;margin-right:6px}
+hr{border:0;border-top:1px solid var(--borda);margin:28px 0}
+.origem{font:12px var(--mono);color:var(--apagado);margin-top:40px;padding-top:14px;border-top:1px solid var(--borda)}
+.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
+@media (max-width:900px){.grade{grid-template-columns:minmax(0,1fr);gap:0}nav.lado{position:static;max-height:none;padding-top:16px;border-bottom:1px solid var(--borda);padding-bottom:12px}nav.lado .sum{display:none}}
+</style>
+</head>
+<body>
+<header class="topo"><div class="in"><a class="lg" href="../index.html">APT4ALL <span>/</span> LER</a>
+<nav class="atalhos" aria-label="Atalhos"><a href="../atlas/index.html">Atlas</a><a href="../recursos/index.html">Recursos</a><a href="trilha.html">Trilha</a><a href="../manual/index.html">Manual</a><a href="index.html">Todos os textos</a></nav></div></header>
+<div class="grade">
+<nav class="lado" aria-label="Textos"><b>Começar</b><a href="comece-aqui.html">Comece aqui</a><a href="start-here.html">Start here</a><b>Estudar</b><a href="trilha.html">Trilha (9 módulos)</a><a href="trilha-en.html">Learning path</a><b>Modelos</b><a href="modelo-ficha-relatorio.html">Modelo: ficha de relatório</a><a href="modelo-matriz-ach.html">Modelo: matriz ACH</a><a href="modelo-cobertura.html">Modelo: tabela de cobertura</a><a href="modelo-registro-triagem.html">Modelo: registro de triagem</a><a href="modelo-dossie-ator.html">Modelo: dossiê de ator</a><b>TCE</b><a href="tce.html">Ponte com o TCE</a><a href="tce-en.html">TCE bridge</a><a href="analise-tce.html">Análise do TCE</a><a href="tce-analysis.html" aria-current="page">TCE analysis</a><div class="sum"><a href="#1-what-tce-already-solves">1. What TCE already solves</a><a href="#2-where-the-gap-is">2. Where the gap is</a><a href="#3-the-apt4all--horizon-bridge-ready-and-tested">3. The APT4ALL → Horizon bridge (ready and tested)</a><a href="#4-materials-with-academic-value">4. Materials with academic value</a><a href="#5-research-proposal-does-horizon-predict">5. Research proposal: does Horizon predict?</a><a href="#6-suggested-roadmap-tce-v06-horizon-intel">6. Suggested roadmap (TCE v0.6 &quot;Horizon Intel&quot;)</a><a href="#sources">Sources</a></div><b>Sobre</b><a href="fontes.html">Fontes e licenças</a><a href="sources.html">Sources and licenses</a><a href="contribuir.html">Como contribuir</a><a href="contributing.html">How to contribute</a><a href="relatorio-de-testes.html">Relatório de testes</a><a href="resumo-da-base.html">Resumo da base</a></nav>
+<main>
+<h1 id="tce-analysis-and-the-apt4all-bridge">TCE analysis and the APT4ALL bridge</h1>
+<p>Português: <a href="analise-tce.html">ANALISE-TCE.md</a></p>
+<p>Analysis of <a href="https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling" target="_blank" rel="noopener">Cyber-Threat-Context-Modeling</a> (Threat Context Engineering, v0.5 "Horizon"), done on 2026-10-13 against the public code. Starting question: <strong>what does TCE still need to map the possible attack scenarios across the whole enterprise and prioritize protection predictively and preemptively, based on threat intelligence?</strong></p>
+<h2 id="1-what-tce-already-solves">1. What TCE already solves</h2>
+<p>Short answer: the architecture for this already exists. TCE is not application threat modeling; it starts from mission and crown jewels and ends at telemetry, detection and validation.</p>
+<div class="tabela"><table><thead><tr><th>Capability</th><th>Where</th><th>State</th></tr></thead><tbody><tr><td>13-stage pipeline from mission to traceable decision</td><td><code>docs/methodology.md</code>, <code>src/tce/</code></td><td>Mature</td></tr><tr><td>Whole-enterprise environment (assets, identities, SaaS, cloud, OT, AI agents)</td><td><code>environment-state.schema.json</code>, <code>horizon.py</code></td><td>Mature</td></tr><tr><td>Candidate paths to crown jewels, scored as "forecast pressure"</td><td><code>horizon.py</code></td><td>Mature</td></tr><tr><td>Risk-weighted choke points</td><td><code>weighted_choke_points</code></td><td>Mature</td></tr><tr><td>Detection by absence: what must be observable and is not</td><td><code>detection_by_absence</code>, <code>docs/detection-by-absence.md</code></td><td>Mature</td></tr><tr><td>Proposed preemptive actions, always human-reviewed</td><td><code>propose_preemptive_actions</code></td><td>Mature</td></tr><tr><td>KEV and EPSS as vulnerability pressure</td><td><code>_vulnerability_pressure</code></td><td>Mature</td></tr><tr><td>Intelligence signals with half-life, reliability and credibility</td><td><code>_intelligence_pressure</code></td><td>Mature, but few sources</td></tr><tr><td>STIX 2.1, Attack Flow, Navigator, OpenCTI, TAXII, D3FEND</td><td><code>src/tce/standards/</code></td><td>Mature</td></tr><tr><td>AI with immutable evidence packets and a candidate queue</td><td><code>src/tce/ai/</code></td><td>Mature</td></tr><tr><td>Six executable reference cases</td><td><code>examples/reference-cases/</code></td><td>Mature</td></tr></tbody></table></div>
+<p>What sets TCE apart: <strong>nothing generated becomes fact on its own</strong>. Signals, paths and actions are candidates and only count after an analyst accepts them. The APT4ALL bridge follows that rule.</p>
+<h2 id="2-where-the-gap-is">2. Where the gap is</h2>
+<p>Horizon's forecast pressure has seven dimensions. Six are fed by the environment's own data. The seventh, <strong>intelligence pressure (15%)</strong>, depends on signals that today arrive by hand, by CSV, or from RedFrameworks packs. There is no systematic layer answering <strong>"who usually attacks organizations like mine, and with which techniques?"</strong>. Without it, the "intelligence-based" part of the forecast is weak.</p>
+<div class="tabela"><table><thead><tr><th>Gap</th><th>Effect today</th><th>What fills it</th></tr></thead><tbody><tr><td>Adversary profile by country and sector</td><td>Low or manual intelligence pressure</td><td><strong>APT4ALL bridge</strong> (ready, below)</td></tr><tr><td>Control coverage per technique</td><td>Residual control weakness entered by hand</td><td>ControlCompass and CTID Mappings Explorer</td></tr><tr><td>Weight calibration</td><td>Expert-set weights, no empirical validation</td><td>Back-testing protocol (section 5)</td></tr><tr><td>Validation against emulation</td><td>Manual validation objects</td><td>Atomic Red Team, Adversary Emulation Library, skrghosh simulation dataset</td></tr><tr><td>Actor activity recency</td><td>A 2012 actor weighs the same as one active in 2026</td><td>APT4ALL report dates (APTnotes, ATT&amp;CK)</td></tr><tr><td>Runtime prioritization</td><td>TCE decides what to detect but does not rank alerts</td><td>Anvilogic's idea: export the profile as a triage weight</td></tr><tr><td>Non-CVE issues (configuration, process)</td><td>Left out of vulnerability pressure</td><td>ThreatCompass approach: map security issues to TTPs</td></tr></tbody></table></div>
+<h2 id="3-the-apt4all--horizon-bridge-ready-and-tested">3. The APT4ALL → Horizon bridge (ready and tested)</h2>
+<p><code>ferramentas/tce/perfil_ameaca.py</code> builds a threat profile from historical victimology and exports:</p>
+<ul><li><code>navigator.json</code>: an ATT&amp;CK Navigator layer with weighted techniques;</li><li><code>tce-sinais.json</code>: <code>intelligence_signals</code> candidates in TCE format (<code>status: candidate</code>, <code>review_required: true</code>);</li><li><code>tce-intelligence.csv</code>: the same signal in <code>tce environment-import-csv</code> format;</li><li><code>perfil.md</code>: a readable report with the actors and why each was included.</li></ul>
+<p>The Atlas does the same in the browser, in the <strong>Threat profile</strong> tab, with download buttons.</p>
+<pre><code>python3 ferramentas/tce/perfil_ameaca.py --pais &quot;United States&quot; --setor government --saida out/us-gov
+# in TCE: review the signal, set status to accepted, add it to environment_state.intelligence_signals
+tce horizon-assess examples/cases/enterprise-identity --offline</code></pre>
+<p>**Test result on the <code>enterprise-identity</code> reference case:**</p>
+<div class="tabela"><table><thead><tr><th>Situation</th><th>Top path score</th><th>Intelligence pressure</th><th>Band</th></tr></thead><tbody><tr><td>No APT4ALL signal</td><td>64.7</td><td>0.2455</td><td>H2</td></tr><tr><td>Signal as <code>candidate</code></td><td>64.7</td><td>0.2455</td><td>H2 (ignored, as it should be)</td></tr><tr><td>Signal <code>accepted</code> (US, government, 153 actors, 60 techniques)</td><td>65.4</td><td>0.2874</td><td><strong>H1</strong></td></tr></tbody></table></div>
+<p>The candidate signal changed nothing: the review gate worked. Once accepted, intelligence pressure rose 17% and the path moved from H2 to H1. That is the expected behavior: intelligence adjusts priority without dominating the other six dimensions.</p>
+<p><strong>Bridge limits.</strong> Victimology comes from MISP Galaxy and the spreadsheet, which cover the US, Europe and Asia well and Brazil poorly (only 10 actors with recorded Brazilian victims, counting the sheet's target text). For Brazil, the profile must be complemented with local sources (CERT.br, reports from banks and vendors operating in the country). That is why the signal ships with <code>confidence: low</code> and <code>source_reliability: C</code>.</p>
+<h2 id="4-materials-with-academic-value">4. Materials with academic value</h2>
+<div class="tabela"><table><thead><tr><th>Material</th><th>Academic value</th><th>Use in TCE</th></tr></thead><tbody><tr><td><a href="https://zenodo.org/records/12741055" target="_blank" rel="noopener">Gulbay (2024), Zenodo 12741055</a></td><td><strong>High.</strong> Deduplicated APT reports, extracted IOCs and a Neo4j graph, with code, CC BY 4.0</td><td>Actor→technique prevalence priors; back-testing base</td></tr><tr><td><a href="https://github.com/skrghosh/apt-dataset" target="_blank" rel="noopener">skrghosh/apt-dataset</a></td><td><strong>High.</strong> Labeled Caldera simulation logs (APT29, FIN6, menuPass, OilRig, Wizard Spider)</td><td>Ground truth to test detection by absence</td></tr><tr><td><a href="https://research.utwente.nl/en/publications/threatcompass-a-tool-for-identifying-and-mapping-security-issues/" target="_blank" rel="noopener">ThreatCompass (Univ. of Twente)</a></td><td><strong>High</strong> as related work: maps security issues to TTPs</td><td>Extend vulnerability pressure beyond CVEs</td></tr><tr><td><a href="https://aws-samples.github.io/samples-agentic-attack-tree-generator/" target="_blank" rel="noopener">ThreatForest (AWS)</a></td><td>Medium: baseline for agent-generated attack trees</td><td>Compare with Horizon paths; candidate-only</td></tr><tr><td>MITRE: <em>Cyber Threat Modeling: Survey, Assessment, and Representative Framework</em> and <em>Enterprise Threat Model Technical Report</em> (in the Tidal guide)</td><td>High as foundation</td><td>Base citations for the method chapter</td></tr><tr><td><a href="https://www.tidalcyber.com/ultimate-guide-to-cyber-threat-profiling" target="_blank" rel="noopener">Tidal threat profiling guide</a> and Intel TARA</td><td>Medium: organizational profiling method</td><td>Justifies country and sector profiling</td></tr><tr><td><a href="https://www.cfr.org/cyber-operations/" target="_blank" rel="noopener">CFR Cyber Operations Tracker</a> and EuRepoC</td><td>High as ground truth for dated state incidents with victim and sector</td><td>Temporal back-testing</td></tr><tr><td><a href="https://controlcompass.github.io/" target="_blank" rel="noopener">ControlCompass</a> and CTID Mappings Explorer</td><td>Medium: reproducible control↔technique mapping</td><td>Compute control weakness automatically</td></tr><tr><td><a href="https://github.com/andreacristaldi/APTmap" target="_blank" rel="noopener">APTmap</a> (CC BY 4.0) and Categorized-Adversary-TTPs</td><td>Medium: group and sector attributes; the latter is dated</td><td>Enrichment and comparison</td></tr><tr><td>APTnotes and CyberMonitor</td><td>Medium: raw corpus, needs deduplication (Gulbay did it)</td><td>Activity recency</td></tr><tr><td>SOCRadar, Anvilogic, awesome lists</td><td>Low for research (commercial or secondary)</td><td>Product inspiration</td></tr></tbody></table></div>
+<h2 id="5-research-proposal-does-horizon-predict">5. Research proposal: does Horizon predict?</h2>
+<p>Horizon rightly says it measures "defensive attention", not probability. How often that attention is right can be tested, and it is publishable:</p>
+<ol><li><strong>Freeze time.</strong> For each year <em>t</em>, build the APT4ALL threat profile using only reports and attributions published up to <em>t</em>.</li><li><strong>Predict.</strong> Rank ATT&amp;CK techniques per sector with the year-<em>t</em> profile.</li><li><strong>Compare.</strong> Measure how many techniques seen in that sector's incidents in year <em>t+1</em> (CFR, EuRepoC, dated reports) were at the top of the ranking: precision@k and recall@k.</li><li><strong>Calibrate.</strong> Tune the intelligence pressure weight (15% today) and signal half-life (30 to 90 days today) to maximize hits, and report the gain over a naive baseline (most common ATT&amp;CK techniques, no profile).</li><li><strong>Validate absence.</strong> Use skrghosh's labeled logs to measure how many techniques flagged as "no telemetry" by detection by absence would actually go unnoticed.</li></ol>
+<p>Item 5 maps directly to the "Detection by Absence" theme: an experiment with labeled ground truth, reproducible, on open data.</p>
+<h2 id="6-suggested-roadmap-tce-v06-horizon-intel">6. Suggested roadmap (TCE v0.6 "Horizon Intel")</h2>
+<div class="tabela"><table><thead><tr><th>Order</th><th>Deliverable</th><th>Effort</th></tr></thead><tbody><tr><td>1</td><td>Document the <code>apt4all-threat-profile</code> signal format in <code>horizon-intel-candidates</code> (already compatible)</td><td>Low</td></tr><tr><td>2</td><td>ControlCompass and Mappings Explorer importer for the Horizon control catalog</td><td>Medium</td></tr><tr><td>3</td><td>Per-actor recency weight (last known activity) in the APT4ALL signal</td><td>Low</td></tr><tr><td>4</td><td>Back-testing harness with APT4ALL + CFR/EuRepoC, producing a precision@k report</td><td>Medium</td></tr><tr><td>5</td><td>Validation fixtures from the skrghosh dataset</td><td>Medium</td></tr><tr><td>6</td><td>Export the profile as an alert triage weight (SIEM/SOAR)</td><td>Medium</td></tr></tbody></table></div>
+<h2 id="sources">Sources</h2>
+<p>TCE repository (README, <code>docs/horizon.md</code>, <code>docs/detection-by-absence.md</code>, <code>src/tce/horizon.py</code>, <code>src/tce/horizon_intelligence.py</code>, <code>src/tce/environment_import.py</code>) and the materials in section 4.</p>
+<p class="origem">Gerado de <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/tce/TCE-ANALYSIS.md">tce/TCE-ANALYSIS.md</a> · código MIT · texto CC BY 4.0</p>
+</main>
+</div>
+<script>
+// caixas de seleção da trilha e do Comece aqui ficam lembradas neste navegador
+(function(){var k="apt4all-cx-tce-analysis";var cx=[].slice.call(document.querySelectorAll("li.cx input"));var s={};
+try{s=JSON.parse(localStorage.getItem(k)||"{}")}catch(e){}
+cx.forEach(function(c,i){if(s[i])c.checked=true;c.addEventListener("change",function(){s[i]=c.checked;try{localStorage.setItem(k,JSON.stringify(s))}catch(e){}})})})();
+</script>
+</body>
+</html>
