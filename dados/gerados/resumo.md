@@ -1,16 +1,16 @@
-# Resumo da base (2026-10-13)
+# Resumo da base (2026-10-19)
 
-- Registros lidos: 2494 {'planilha': 411, 'misp': 1060, 'mitre': 176, 'eternalliberty': 847}
-- Atores após resolução de aliases: 1355
-- Versão ATT&CK: 19.2
+- Registros lidos: 2533 {'planilha': 411, 'misp': 1097, 'mitre': 178, 'eternalliberty': 847}
+- Atores após resolução de aliases: 1392
+- Versão ATT&CK: 20.0
 - Relatórios APTnotes ligados: 412
 
 | País | Atores | Com ATT&CK | Aliases |
 |---|---|---|---|
-| Sem país atribuído (??) | 638 | 41 | 364 |
+| Sem país atribuído (??) | 675 | 42 | 366 |
 | China (CN) | 288 | 56 | 775 |
 | Rússia (RU) | 156 | 31 | 583 |
-| Irã (IR) | 82 | 21 | 327 |
+| Irã (IR) | 82 | 22 | 329 |
 | Coreia do Norte (KP) | 25 | 7 | 206 |
 | Turquia (TR) | 11 | 2 | 10 |
 | Ucrânia (UA) | 11 | 1 | 22 |
