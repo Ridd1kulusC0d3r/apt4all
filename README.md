@@ -44,6 +44,8 @@ Um mesmo grupo tem dez nomes: APT28 é Fancy Bear, Sofacy, Forest Blizzard, STRO
 | 📄 **Textos navegáveis** | Trilha, modelos, análise do TCE, fontes e relatório de testes em páginas com menu lateral e sumário | [`docs/ler/`](docs/ler/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/ler/index.html) |
 | 📖 **Manual ilustrado** | Passo a passo com telas anotadas, para quem nunca usou | [`docs/manual/`](docs/manual/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/manual/) |
 
+> **Atualização automática:** toda segunda as fontes são baixadas e um PR é aberto, com portão de qualidade. Veja o [plano](PLANO-DE-ATUALIZACAO.md).
+
 ## A base em números
 
 Rodada de 13/10/2026, gerada por [`construir_dados.py`](ferramentas/atlas/construir_dados.py). O detalhe por país está em [`dados/gerados/resumo.md`](dados/gerados/resumo.md).

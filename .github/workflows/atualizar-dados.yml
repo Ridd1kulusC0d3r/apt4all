@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 concurrency:
   group: atualizar-dados
@@ -30,9 +31,16 @@ jobs:
           python ferramentas/site/gerar_paginas.py
       - name: Testes
         run: python -m unittest discover -s testes -v
+      - name: Portão de qualidade (compara com a base atual)
+        id: portao
+        continue-on-error: true
+        run: python ferramentas/atualizacao/portao.py --saida portao.md
       - name: Resumo
-        run: cat dados/gerados/resumo.md | head -20 >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          cat portao.md >> "$GITHUB_STEP_SUMMARY" || true
+          head -20 dados/gerados/resumo.md >> "$GITHUB_STEP_SUMMARY"
       - name: Abrir PR com a atualização
+        id: pr
         uses: peter-evans/create-pull-request@v6
         with:
           branch: dados/atualizacao-semanal
@@ -40,6 +48,15 @@ jobs:
           title: "Dados: atualização semanal das fontes"
           body: |
             Atualização automática de MISP Galaxy, MITRE ATT&CK, planilha APT Groups and Operations, EternalLiberty, APTnotes e Ransomware Tool Matrix.
-            Os testes passaram. Revise `dados/gerados/resumo.md` (contagem por país) antes de aceitar.
-          labels: dados
+            Os testes passaram. Veja o portão de qualidade no resumo da execução e `dados/gerados/resumo.md` (contagem por país).
+            Rótulo `revisar` = o portão reprovou (queda grande de números ou fonte sumida): confira antes de mesclar.
+            Ao mesclar, o site é republicado automaticamente.
+          labels: ${{ steps.portao.outcome == 'success' && 'dados' || 'dados,revisar' }}
           delete-branch: true
+      - name: Avisar quando algo exige atenção
+        if: failure() || (steps.pr.outputs.pull-request-number && steps.portao.outcome != 'success')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --label dados --title "Atualização semanal precisa de revisão ($(date +%F))" \
+            --body "O portão de qualidade reprovou ou a execução falhou. Veja ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" || true
