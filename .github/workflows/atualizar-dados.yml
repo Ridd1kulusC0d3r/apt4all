@@ -41,7 +41,7 @@ jobs:
           head -20 dados/gerados/resumo.md >> "$GITHUB_STEP_SUMMARY"
       - name: Abrir PR com a atualização
         id: pr
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: dados/atualizacao-semanal
           commit-message: "dados: atualização semanal das fontes"
