@@ -199,6 +199,43 @@ th{color:var(--ink-3)}
 .legenda i,.escala i{outline:1px solid var(--rule);outline-offset:-1px}
 .filtrado{color:var(--signal)}
 @media (max-width:560px){.atool{padding-block:10px}.busca{flex:1}.busca input{width:100%}.ctrl{width:100%}main{padding-inline:16px}}
+
+/* ===== vínculos: força e fatores ===== */
+.vincs{display:grid;gap:0;border-top:1px solid var(--rule)}
+details.vinc{border-bottom:1px solid var(--rule)}
+details.vinc>summary{display:grid;grid-template-columns:minmax(0,1fr) 84px 30px auto;gap:10px;align-items:center;padding:8px 2px;cursor:pointer;list-style:none}
+details.vinc>summary::-webkit-details-marker{display:none}
+details.vinc>summary:hover .vn{color:var(--signal)}
+.vn{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vbar{display:block;height:8px;background:var(--paper-2);position:relative}
+.vbar i{position:absolute;inset:0 auto 0 0;background:var(--signal)}
+.vs{font:600 13px var(--mono);text-align:right}
+.nivel{font:600 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);padding:1px 6px;color:var(--ink-3);white-space:nowrap}
+.nivel.n-forte{background:var(--signal);border-color:var(--signal);color:var(--signal-ink)}
+.nivel.n-medio{border-color:var(--ink-2);color:var(--ink)}
+.vcorpo{padding:4px 0 12px}
+.fatores{display:grid;gap:10px;margin:6px 0}
+.fator .fl{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.fator .fl b{font:600 12px var(--mono)}
+.fator.zero .fl{color:var(--ink-4)}
+.fator .fb{height:5px;background:var(--paper-2);margin:4px 0}
+.fator .fb i{display:block;height:100%;background:var(--signal)}
+.fator.zero .fb i{display:none}
+.fator .ev{margin-top:4px}.fator .ev .mais{border-style:dashed}
+.fator .sem{font:11px var(--mono);color:var(--ink-4)}
+.vincp{border-top:1px solid var(--ink);padding:16px 20px;background:var(--paper-3)}
+.vincp h3{font:700 20px var(--serif);margin:0 0 4px}
+.vincp .vtot{margin:0 0 10px;font-size:14px;display:flex;gap:6px;align-items:baseline}
+.vincp .vtot b{font:600 28px var(--mono)}
+.vincp .vh{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:8px 0}
+.vincp .fatores{max-width:760px}
+.grafo .ar.vl{opacity:.7;cursor:pointer;fill:none;stroke-linecap:round}
+.grafo .ar.vl:hover,.grafo .ar.vl.sel{opacity:1}
+.grafo .ar.vl.sel{filter:drop-shadow(0 0 3px var(--signal))}
+.grafo.foco .ar.vl{opacity:.06}.grafo.foco .ar.vl.on{opacity:.95}
+.grafo .rotv rect{fill:var(--paper);stroke:var(--ink-2);stroke-width:.8}
+.grafo .rotv text{fill:var(--ink);font:600 11px var(--mono)}
+.grafo.foco .rotf{opacity:.15}
 </style>
 </head>
 <body>
@@ -267,10 +304,13 @@ th{color:var(--ink-3)}
     <div class="painel">
       <div class="cab"><span class="rot" data-t="redeTit">Rede de técnicas compartilhadas</span><span class="sub2" id="redeSub"></span></div>
       <div class="filtros" id="redeFiltros"></div>
-      <div class="filtros"><div class="grupo"><div class="rot" data-t="tamanho">Tamanho</div><div class="chips" id="redeTam"></div></div></div>
+      <div class="filtros"><div class="grupo" id="grpVista"><div class="rot" data-t="vista">Vista</div><div class="chips" id="redeVista"></div></div>
+        <div class="grupo" id="grpForca"><div class="rot" data-t="forcaMin">Força mínima do vínculo</div><div class="chips" id="redeForca"></div></div>
+        <div class="grupo"><div class="rot" data-t="tamanho">Tamanho</div><div class="chips" id="redeTam"></div></div></div>
       <div id="grafo"></div>
+      <div id="vincPainel" class="vincp" hidden></div>
       <div class="legrede" id="redeLeg"></div>
-      <p class="nota pad" data-t="notaRede">Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.</p>
+      <p class="nota pad" id="notaRedeEl" data-t="notaRede">Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.</p>
     </div>
   </section>
 
@@ -282,6 +322,7 @@ th{color:var(--ink-3)}
 </main>
 <div id="gaveta"></div>
 
+<script src="vinculos.js"></script>
 <script>
 "use strict";
 const T={
@@ -290,6 +331,12 @@ const T={
   notaTec:"Número = quantos atores do perfil usam a técnica. A barra mostra o peso (soma dos pontos desses atores).",verFluxo:"Ver em fluxos",
   mFluxos:"Fluxos",mRede:"Rede",fluxTit:"Fluxos de técnicas",notaFluxo:"Cada fio é um uso de técnica por um ator. A tática é a primeira listada no ATT&CK para a técnica. Passe o mouse num bloco para destacar os fluxos dele.",
   vulnTit:"Vulnerabilidades exploradas",vulnPor:"Atribuição por",vulnFeed:"Ver o feed completo",
+  vista:"Vista",vistaTec:"Atores e técnicas",vistaVinc:"Vínculos entre atores",forcaMin:"Força mínima do vínculo",
+  vincTit:"Vínculos com outros atores",vincNota:"Mede o que dois perfis têm em comum nas fontes: não prova que sejam o mesmo grupo nem que atuem juntos. Abra cada linha para ver os fatores e a evidência.",vincNenhum:"Sem vínculos suficientes nas fontes para este ator.",
+  nForte:"forte",nMedio:"médio",nFraco:"fraco",pts:"pts",
+  fTecnicas:"Técnicas ATT&CK em comum (as raras pesam mais)",fFerramentas:"Ferramentas e malware em comum",fRelatorios:"Relatórios públicos em comum",fNomes:"Nomes ou aliases em comum",fSetores:"Setores-alvo em comum",fMotivo:"Mesma motivação",fPais:"Mesmo país atribuído",
+  subRedeVinc:"{a} atores · {l} vínculos",semVinc:"Nenhum vínculo nessa força entre esses atores. Reduza a força mínima ou aumente o tamanho.",
+  notaVinc:"A espessura do fio é a força do vínculo (0 a 100): soma de sete fatores com pesos fixos. Fios com número têm força média ou forte. Clique num fio para ver os fatores; clique num ator para abrir a ficha.",vincFatores:"Fatores do vínculo",semEvid:"nenhum",
   notaFluxoRw:"Cada fio é uma ferramenta observada em intrusões de um grupo, pela categoria do Ransomware Tool Matrix. Use como lista de caça e de bloqueio, checando antes o uso legítimo da ferramenta na sua empresa.",rwTit:"Ferramentas em intrusões de ransomware",verRede:"Ver na rede",redeTit:"Rede de técnicas compartilhadas",tamanho:"Tamanho",notaRede:"Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.",
   fonte:"Base",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · ferramentas",origem:"País de origem",vitimaFiltro:"Vítimas em",tGangue:"gangues",tAfiliado:"afiliados",tIab:"brokers de acesso",tEstado:"ligados a Estado",
   tipoGrupo:"Tipo de grupo",categoria:"Categoria",todas:"todas",grupo:"Grupo",grupos:"grupos",outrosAtores:"outros atores",outrosPaises:"outros países",outrasTec:"outras técnicas",ator:"Ator",tatica:"Tática",tecnica:"Técnica",
@@ -310,6 +357,12 @@ const T={
   notaTec:"Number = how many profile actors use the technique. The bar shows the weight (sum of those actors' points).",verFluxo:"See in flows",
   mFluxos:"Flows",mRede:"Network",fluxTit:"Technique flows",notaFluxo:"Each ribbon is one technique use by one actor. The tactic is the first one ATT&CK lists for the technique. Hover a block to highlight its flows.",
   vulnTit:"Exploited vulnerabilities",vulnPor:"Attribution by",vulnFeed:"See the full feed",
+  vista:"View",vistaTec:"Actors and techniques",vistaVinc:"Links between actors",forcaMin:"Minimum link strength",
+  vincTit:"Links to other actors",vincNota:"Measures what two profiles have in common in the sources: it does not prove they are the same group or act together. Open each row to see the factors and the evidence.",vincNenhum:"Not enough links in the sources for this actor.",
+  nForte:"strong",nMedio:"medium",nFraco:"weak",pts:"pts",
+  fTecnicas:"Shared ATT&CK techniques (rare ones weigh more)",fFerramentas:"Shared tools and malware",fRelatorios:"Shared public reports",fNomes:"Shared names or aliases",fSetores:"Shared target sectors",fMotivo:"Same motive",fPais:"Same attributed country",
+  subRedeVinc:"{a} actors · {l} links",semVinc:"No link at this strength among these actors. Lower the minimum strength or raise the size.",
+  notaVinc:"Line thickness is the link strength (0 to 100): the sum of seven factors with fixed weights. Numbered lines are medium or strong. Click a line to see its factors; click an actor to open its dossier.",vincFatores:"Link factors",semEvid:"none",
   notaFluxoRw:"Each ribbon is a tool observed in a group's intrusions, by Ransomware Tool Matrix category. Use it as a hunting and blocking list, checking first for legitimate use of the tool in your organization.",rwTit:"Tools seen in ransomware intrusions",verRede:"See in the network",redeTit:"Shared technique network",tamanho:"Size",notaRede:"Only techniques used by at least two of the actors shown appear. Hover to see the links; click an actor to open its card.",
   fonte:"Dataset",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · tools",origem:"Country of origin",vitimaFiltro:"Victims in",tGangue:"gangs",tAfiliado:"affiliates",tIab:"access brokers",tEstado:"state-linked",
   tipoGrupo:"Group type",categoria:"Category",todas:"all",grupo:"Group",grupos:"groups",outrosAtores:"other actors",outrosPaises:"other countries",outrasTec:"other techniques",ator:"Actor",tatica:"Tactic",tecnica:"Technique",
@@ -328,7 +381,7 @@ const T={
 };
 let L=(()=>{try{return localStorage.getItem("apt4all-lang")||(navigator.language||"pt").slice(0,2)}catch(e){return"pt"}})();if(!T[L])L="pt";
 const t=k=>T[L][k]??k;
-let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,FEED=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
+let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,FEED=null,VC=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
 const $=s=>document.querySelector(s);
 function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
 const NS="http://www.w3.org/2000/svg";
@@ -338,7 +391,7 @@ const nomePais=iso=>{if(iso==="??")return t("semPais");if(iso==="NATO")return t(
 
 async function carrega(){
   const [a,p,m]=await Promise.all(["atores.json","paises.json","mapa.json"].map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.json()})));
-  A=a.atores;META=a.meta;P=p.paises;G=p.geo;NX=p.nomes_extra||{};TEC=p.tecnicas;SET=p.setores||{};TT=p.tecnica_taticas||{};TAT=p.taticas||[];MAPA=m;A.forEach(x=>porId[x.id]=x);
+  A=a.atores;META=a.meta;VC=Vinculos.contexto(A);P=p.paises;G=p.geo;NX=p.nomes_extra||{};TEC=p.tecnicas;SET=p.setores||{};TT=p.tecnica_taticas||{};TAT=p.taticas||[];MAPA=m;A.forEach(x=>porId[x.id]=x);
   try{RW=await fetch("ransomware.json").then(r=>r.ok?r.json():null)}catch(e){RW=null}
   try{FEED=await fetch("../feed/feed.json").then(r=>r.ok?r.json():null)}catch(e){FEED=null}
   aplicaIdioma();desenhaMapa();montaPerfil();ranking();sobre();
@@ -448,6 +501,25 @@ function dossie(iso){
     bloco(`${t("listaAt")} (${lista.length})`,el("div",{},el("input",{class:"filtro",type:"search",placeholder:t("filtrar"),"aria-label":t("filtrar"),oninput:e=>pinta(e.target.value.toLowerCase())}),ul))));
 }
 
+
+/* ===== vínculos entre atores: força (0 a 100) e fatores com evidência ===== */
+const NIVEL_TXT={forte:"nForte",medio:"nMedio",fraco:"nFraco"};
+const FATOR_TXT={tecnicas:"fTecnicas",ferramentas:"fFerramentas",relatorios:"fRelatorios",nomes:"fNomes",setores:"fSetores",motivo:"fMotivo",pais:"fPais"};
+function nivelTag(n){return el("span",{class:"nivel n-"+n},t(NIVEL_TXT[n]||"nFraco"))}
+function fatoresEl(v){
+  return el("div",{class:"fatores"},v.fatores.map(f=>{
+    const ev=f.evidencia||[],mostra=ev.slice(0,8);
+    return el("div",{class:"fator"+(f.pontos>0?"":" zero")},
+      el("div",{class:"fl"},el("span",{},t(FATOR_TXT[f.id])),el("b",{},`${f.pontos.toFixed(0)}/${f.peso}`)),
+      el("div",{class:"fb"},el("i",{style:`width:${Math.round(f.valor*100)}%`})),
+      ev.length?el("div",{class:"nuvem ev"},mostra.map(x=>el("span",{},x)),ev.length>mostra.length?el("span",{class:"mais"},`+${ev.length-mostra.length}`):null):el("div",{class:"sem"},t("semEvid")))}))
+}
+function linhaVinculo(v,outro){
+  return el("details",{class:"vinc"},
+    el("summary",{},el("span",{class:"vn"},outro.nome),el("span",{class:"vbar"},el("i",{style:`width:${v.score}%`})),el("b",{class:"vs"},String(v.score)),nivelTag(v.nivel)),
+    el("div",{class:"vcorpo"},fatoresEl(v),el("p",{class:"nota"},el("a",{href:"#",onclick:e=>{e.preventDefault();abreAtor(outro.id)}},outro.nome+" →"))))
+}
+
 function abreAtor(id){
   const a=porId[id];if(!a)return;
   history.replaceState(null,"","#"+id);
@@ -467,6 +539,8 @@ function abreAtor(id){
       return sec(t("rwTit")+` (${g.ferramentas.length})`,el("div",{},el("div",{class:"nuvem"},g.ferramentas.map(f=>el("span",{title:nomeCat(catDe[f])},el("i",{class:"bol",style:`background:${CORES_CAT[catDe[f]]||CV("--c0")}`}),f))),el("p",{class:"nota"},el("a",{href:"#",onclick:e=>{e.preventDefault();fechaAtor();fx.fonte="rw";fx.tipo="";fx.grupo=g.nome;vai("rede")}},t("verRede")+" →"))))})(),
     (()=>{const vs=FEED?FEED.itens.filter(v=>v.atribuicao&&v.atribuicao.atores.some(x=>x.id===a.id)):[];if(!vs.length)return null;
       return sec(t("vulnTit")+` (${vs.length})`,el("div",{},el("div",{class:"rel"},vs.map(v=>el("a",{href:(v.atribuicao.fontes||[])[0]||"../feed/index.html",target:"_blank",rel:"noopener"},el("span",{},v.dateAdded),`${v.cveID} · ${v.vendorProject} ${v.product}`))),el("p",{class:"nota"},t("vulnPor")+" "+vs[0].atribuicao.atribuido_por+". ",el("a",{href:"../feed/index.html"},t("vulnFeed")))))})(),
+    (()=>{const rel=VC?Vinculos.relacionados(a,A,VC,8):[];
+      return sec(t("vincTit"),el("div",{},rel.length?el("div",{class:"vincs"},rel.map(v=>linhaVinculo(v,porId[v.b]))):el("p",{class:"nota"},t("vincNenhum")),el("p",{class:"nota"},t("vincNota"))))})(),
     sec(t("ops"),a.operacoes.length?el("div",{class:"nuvem"},a.operacoes.map(x=>el("span",{},x))):null),
     sec(t("alvos"),a.alvos?el("p",{style:"margin:0;font-size:14px"},a.alvos):null),
     sec(t("vit"),a.vitimas.length?el("div",{class:"nuvem"},a.vitimas.map(x=>el("span",{},x))):null),
@@ -570,7 +644,7 @@ const nomeCat=id=>{const x=(RW&&RW.categorias||[]).find(z=>z.id===id);return x?x
 const curto=(s,n)=>s.length>n?s.slice(0,n-1)+"…":s;
 
 /* ===== estado dos filtros de Fluxos e Rede ===== */
-const fx={fonte:"apt",pais:"",motivo:"todos",setor:"",vitima:"",tipo:"",cat:"",grupo:"",nRede:10};
+const fx={vista:"tec",vmin:16,fonte:"apt",pais:"",motivo:"todos",setor:"",vitima:"",tipo:"",cat:"",grupo:"",nRede:10};
 function chipsLinha(rotulo,itens,valor,aoEscolher){return el("div",{class:"grupo"},el("div",{class:"rot"},rotulo),el("div",{class:"chips",role:"group","aria-label":rotulo},itens.map(([v,txt,n,cor])=>el("button",{class:"chip","aria-pressed":v===valor?"true":"false",onclick:()=>aoEscolher(v===valor?"":v)},cor?el("i",{class:"bol",style:`background:${cor}`}):null,txt,n!=null?el("b",{}," "+n):null))))}
 function filtrosFluxo(alvo,redesenha){
   const box=$(alvo);const fonte=chipsLinha(t("fonte"),[["apt",t("fonteApt")],["rw",t("fonteRw")]],fx.fonte,v=>{fx.fonte=v||"apt";redesenha()});
@@ -694,8 +768,65 @@ function forca(nos,arestas,W,H){
       const d=Math.hypot(dx,dy)||1;const m=Math.min(d,temp);x.x=Math.min(W-70,Math.max(70,x.x+dx/d*m));x.y=Math.min(H-40,Math.max(40,x.y+dy/d*m))}
   }
 }
+function redeVinculos(){
+  const base=atoresFiltrados(),ids=Vinculos.nucleo(base,VC,fx.nRede,fx.vmin),pid=new Map(base.map(a=>[a.id,a]));
+  const at=ids.map(i=>pid.get(i));
+  const todos=[];for(let i=0;i<at.length;i++)for(let j=i+1;j<at.length;j++){const v=Vinculos.vinculo(at[i],at[j],VC);if(v.nivel!=="nenhum"&&v.score>=fx.vmin)todos.push(v)}
+  const box=$("#grafo"),pn=$("#vincPainel");pn.hidden=true;pn.replaceChildren();
+  $("#redeSub").textContent=t("subRedeVinc").replace("{a}",at.length).replace("{l}",todos.length);
+  if(!todos.length){box.replaceChildren(el("p",{class:"texto"},t("semVinc")));$("#redeLeg").replaceChildren();return}
+  // ordem na elipse: encadeia cada ator ao vizinho mais forte, para vínculos fortes ficarem lado a lado
+  const forca=new Map();todos.forEach(v=>{forca.set(v.a+"|"+v.b,v.score);forca.set(v.b+"|"+v.a,v.score)});
+  const tot=a=>at.reduce((s,b)=>s+(forca.get(a.id+"|"+b.id)||0),0);
+  const resto=[...at].sort((x,y)=>tot(y)-tot(x)),ordem=[resto.shift()];
+  while(resto.length){const u=ordem[ordem.length-1];resto.sort((x,y)=>(forca.get(u.id+"|"+y.id)||0)-(forca.get(u.id+"|"+x.id)||0)||tot(y)-tot(x));ordem.push(resto.shift())}
+  const nos=ordem.map(a=>({id:"a:"+a.id,tipo:"a",nome:a.nome,ref:a.id,grau:todos.filter(v=>v.a===a.id||v.b===a.id).length,x:0,y:0}));
+  const W=1100,H=720,rx=W*0.34,ry=H*0.36;
+  nos.forEach((x,i)=>{const ang=-Math.PI/2+2*Math.PI*i/nos.length;x.x=W/2+Math.cos(ang)*rx;x.y=H/2+Math.sin(ang)*ry;x.ang=ang});
+  const id2=new Map(nos.map(x=>["a:"+x.ref,x]));
+  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,class:"grafo",role:"img","aria-label":$("#redeSub").textContent});
+  const defs=sv("defs");defs.innerHTML=`<radialGradient id="gAtor" cx="35%" cy="30%" r="75%"><stop offset="0" style="stop-color:color-mix(in srgb,var(--signal) 55%,#fff)"/><stop offset=".55" style="stop-color:var(--signal)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--signal) 70%,#000)"/></radialGradient><pattern id="pontos" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" style="fill:var(--rule)"/></pattern>`;
+  svg.append(defs,sv("rect",{width:W,height:H,fill:"url(#pontos)"}));
+  const ga=sv("g",{class:"arestas"}),gl=sv("g",{class:"rotf"}),gn=sv("g");svg.append(ga,gl,gn);
+  const cor={forte:"var(--signal)",medio:"var(--ink-2)",fraco:"var(--ink-4)"};
+  const caminhos=new Map();
+  todos.sort((x,y)=>x.score-y.score).forEach(v=>{
+    const a=id2.get("a:"+v.a),b=id2.get("a:"+v.b);const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,cx=mx+(W/2-mx)*0.35,cy=my+(H/2-my)*0.35;
+    const w=(1.2+v.score/100*9).toFixed(1);
+    const pth=sv("path",{d:`M${a.x.toFixed(1)},${a.y.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${b.x.toFixed(1)},${b.y.toFixed(1)}`,style:`stroke:${cor[v.nivel]};stroke-width:${w}px`,class:"ar vl n-"+v.nivel,"data-a":"a:"+v.a,"data-b":"a:"+v.b,tabindex:"0",role:"button"});
+    const tt=sv("title");tt.textContent=`${a.nome} ↔ ${b.nome} · ${v.score}/100 · ${t(NIVEL_TXT[v.nivel])}`;pth.append(tt);
+    const abre=()=>{ga.querySelectorAll(".vl").forEach(p=>p.classList.toggle("sel",p===pth));
+      pn.hidden=false;pn.replaceChildren(el("h3",{},`${a.nome} ↔ ${b.nome}`),el("p",{class:"vtot"},el("b",{},String(v.score)),"/100 ",nivelTag(v.nivel)),el("div",{class:"vh"},t("vincFatores")),fatoresEl(v),el("p",{class:"nota"},t("vincNota")));pn.scrollIntoView({block:"nearest",behavior:"smooth"})};
+    pth.addEventListener("click",abre);pth.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abre()}});
+    ga.append(pth);caminhos.set(pth,v);
+    if(v.nivel!=="fraco"){const lx=0.25*a.x+0.5*cx+0.25*b.x,ly=0.25*a.y+0.5*cy+0.25*b.y;
+      const g=sv("g",{class:"rotv",transform:`translate(${lx.toFixed(1)},${ly.toFixed(1)})`,"pointer-events":"none"});g.append(sv("rect",{x:-13,y:-9,width:26,height:18,rx:2}));const tx=sv("text",{y:4,"text-anchor":"middle"});tx.textContent=v.score;g.append(tx);gl.append(g)}
+  });
+  nos.forEach(x=>{
+    const g=sv("g",{class:"nd ator","data-id":x.id,tabindex:"0"});const r=15+Math.sqrt(x.grau)*2.4;
+    g.append(sv("circle",{cx:x.x,cy:x.y,r:r+5,class:"halo"}),sv("circle",{cx:x.x,cy:x.y,r,fill:"url(#gAtor)",class:"bola"}));
+    const cs=Math.cos(x.ang),sn=Math.sin(x.ang);const lx=x.x+cs*(r+10),ly=x.y+sn*(r+10)+(sn>0.3?12:sn<-0.3?-4:4);
+    const tx=sv("text",{x:lx,y:ly,"text-anchor":cs>0.35?"start":cs<-0.35?"end":"middle",class:"lbA"});tx.textContent=curto(x.nome,22);g.append(tx);
+    const foco=on=>{svg.classList.toggle("foco",on);ga.querySelectorAll(".ar").forEach(p=>p.classList.toggle("on",on&&(p.dataset.a===x.id||p.dataset.b===x.id)));gn.querySelectorAll(".nd").forEach(n=>{const lig=[...ga.querySelectorAll(".ar")].some(p=>(p.dataset.a===x.id&&p.dataset.b===n.dataset.id)||(p.dataset.b===x.id&&p.dataset.a===n.dataset.id));n.classList.toggle("on",on&&(n===g||lig))})};
+    g.addEventListener("mouseenter",()=>foco(true));g.addEventListener("mouseleave",()=>foco(false));g.addEventListener("focus",()=>foco(true));g.addEventListener("blur",()=>foco(false));
+    g.addEventListener("click",()=>abreAtor(x.ref));gn.append(g)});
+  box.replaceChildren(el("div",{class:"rolagem"},svg));
+  const amostra=(n,w)=>el("span",{class:"lg"},el("svg",{width:34,height:12,"aria-hidden":"true"},(()=>{const l=sv("line",{x1:2,x2:32,y1:6,y2:6,style:`stroke:${cor[n]};stroke-width:${w}px`});return l})()),`${t(NIVEL_TXT[n])} (${n==="forte"?"≥"+Vinculos.LIMIAR.forte:n==="medio"?"≥"+Vinculos.LIMIAR.medio:"≥"+Vinculos.LIMIAR.fraco})`);
+  $("#redeLeg").replaceChildren(amostra("forte",6),amostra("medio",3.5),amostra("fraco",1.6));
+  $("#notaRedeEl").textContent=t("notaVinc");
+}
+
 function rede(){
   filtrosFluxo("#redeFiltros",rede);
+  const apt=fx.fonte==="apt";
+  $("#grpVista").hidden=!apt;$("#grpForca").hidden=!(apt&&fx.vista==="vinc");
+  if(apt){
+    $("#redeVista").replaceChildren(...[["tec","vistaTec"],["vinc","vistaVinc"]].map(([k,tx])=>el("button",{class:"chip","aria-pressed":fx.vista===k?"true":"false",onclick:()=>{fx.vista=k;rede()}},t(tx))));
+    $("#redeForca").replaceChildren(...[[Vinculos.LIMIAR.fraco,"nFraco"],[Vinculos.LIMIAR.medio,"nMedio"],[Vinculos.LIMIAR.forte,"nForte"]].map(([m,tx])=>el("button",{class:"chip","aria-pressed":fx.vmin===m?"true":"false",onclick:()=>{fx.vmin=m;rede()}},`${t(tx)} ≥${m}`)));
+  }
+  const tam0=$("#redeTam");tam0.replaceChildren(...[8,12,16].map(n=>el("button",{class:"chip","aria-pressed":fx.nRede===n?"true":"false",onclick:()=>{fx.nRede=n;rede()}},`${n} ${fx.fonte==="apt"?t("atores"):t("grupos")}`)));
+  if(apt&&fx.vista==="vinc"){redeVinculos();return}
+  $("#vincPainel").hidden=true;$("#notaRedeEl").textContent=t("notaRede");
   const tam=$("#redeTam");tam.replaceChildren(...[8,12,16].map(n=>el("button",{class:"chip","aria-pressed":fx.nRede===n?"true":"false",onclick:()=>{fx.nRede=n;rede()}},`${n} ${fx.fonte==="apt"?t("atores"):t("grupos")}`)));
   let nos=[],arestas=[],sub;
   if(fx.fonte==="apt"){
