@@ -27,9 +27,9 @@ def caso(nome, ok, detalhe=""):
 
 
 with sync_playwright() as p:
-    nav = p.chromium.launch()
+    nav = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
     for vw, vh in [(1280, 800), (390, 844)]:
-        for pagina in ["", "atlas/", "atlas/#fluxos", "atlas/#rede", "recursos/", "manual/", "ler/index.html", "ler/trilha.html"]:
+        for pagina in ["", "atlas/", "atlas/#fluxos", "atlas/#rede", "feed/", "recursos/", "manual/", "ler/index.html", "ler/trilha.html"]:
             ctx = nav.new_context(viewport={"width": vw, "height": vh})
             pg = ctx.new_page()
             erros = []
@@ -39,6 +39,21 @@ with sync_playwright() as p:
             sw = pg.evaluate("document.documentElement.scrollWidth")
             caso(f"{pagina or 'inicio'} {vw}x{vh}", not erros and sw <= vw, f"erros={len(erros)} scrollWidth={sw}")
             ctx.close()
+    # feed: lista renderiza, filtro por atribuição e busca funcionam, o ator liga ao Atlas
+    ctxf = nav.new_context(viewport={"width": 1280, "height": 800})
+    pf = ctxf.new_page()
+    pf.goto(B + "feed/")
+    pf.wait_for_selector(".feed-item")
+    total = pf.locator(".feed-item").count()
+    caso("feed lista itens", total > 0, f"itens={total}")
+    pf.locator('#chips .chip[data-k="atrib"]').click()
+    n_atr = pf.locator(".feed-item").count()
+    caso("feed: filtro de atribuição mostra só atribuídos", 0 < n_atr == pf.locator(".feed-item .attr").count(), f"atribuídos={n_atr}")
+    pf.fill("#q", "BeyondTrust")
+    caso("feed: busca por produto", pf.locator(".feed-item").count() >= 1)
+    href = pf.locator(".feed-item .attr a[href*='atlas']").first.get_attribute("href")
+    caso("feed: ator atribuído liga ao Atlas", href is not None and "#" in href, str(href))
+    ctxf.close()
     ctx = nav.new_context(viewport={"width": 1280, "height": 800}, accept_downloads=True)
     pg = ctx.new_page()
     pg.goto(B + "atlas/")

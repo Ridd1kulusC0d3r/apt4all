@@ -11,10 +11,10 @@ com perfil de ameaça por país e setor, curadoria de recursos e trilha de estud
 
 **leia o padrão · ouça o silêncio · posicione-se e espere**
 
-[![Atlas](https://img.shields.io/badge/Atlas-abrir%20no%20navegador-5EE6C4?style=flat-square)](https://ridd1kulusc0d3r.github.io/apt4all/atlas/)
-[![ATT&CK](https://img.shields.io/badge/ATT%26CK-v19.2-F4BE3F?style=flat-square)](https://attack.mitre.org/)
-[![Código MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-1F2B29?style=flat-square)](LICENSE)
-[![Conteúdo CC BY 4.0](https://img.shields.io/badge/conte%C3%BAdo-CC%20BY%204.0-1F2B29?style=flat-square)](LICENSE-CONTEUDO.md)
+[![Atlas](https://img.shields.io/badge/Atlas-abrir%20no%20navegador-b43c0e?style=flat-square)](https://ridd1kulusc0d3r.github.io/apt4all/atlas/)
+[![ATT&CK](https://img.shields.io/badge/ATT%26CK-v19.2-17150f?style=flat-square)](https://attack.mitre.org/)
+[![Código MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-4a463c?style=flat-square)](LICENSE)
+[![Conteúdo CC BY 4.0](https://img.shields.io/badge/conte%C3%BAdo-CC%20BY%204.0-4a463c?style=flat-square)](LICENSE-CONTEUDO.md)
 
 </div>
 
@@ -38,6 +38,7 @@ Um mesmo grupo tem dez nomes: APT28 é Fancy Bear, Sofacy, Forest Blizzard, STRO
 | 🗺️ **Atlas de sala de guerra** | Mapa hexagonal por país, dossiê do país, ficha de cada ator, ranking | [`docs/atlas/`](docs/atlas/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/atlas/) |
 | 🌊 **Fluxos e Rede** | Sankey país → motivação → tática → técnica; rede de técnicas compartilhadas; o mesmo para ferramentas de 92 gangues de ransomware | [Atlas → Fluxos](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#fluxos) · [Rede](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#rede) |
 | 🎯 **Perfil de ameaça** | País + setor → atores prováveis, técnicas a cobrir, camada do Navigator, sinal para o TCE | [Atlas → Perfil](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#perfil) · [`ferramentas/tce/`](ferramentas/tce/) |
+| 📡 **Feed de vulnerabilidades** | Vulnerabilidades com exploração confirmada (CISA KEV), ligadas aos atores quando há atribuição pública, com Atom e JSON; atualizado toda semana | [`docs/feed/`](docs/feed/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/feed/) |
 | 📚 **Recursos** | 186 links em 21 categorias, bilíngues, com legado marcado, filtro para a sua lista original e verificação mensal | [RECURSOS.md](RECURSOS.md) · [online](https://ridd1kulusc0d3r.github.io/apt4all/recursos/) |
 | 🧭 **Trilha** | 9 módulos, do nome do grupo ao dossiê final, cada um com uma ação "faça agora" | [`trilha/`](trilha/) |
 | 🔗 **Ponte com o TCE** | Leva o perfil de ameaça para a modelagem de ameaças do ambiente inteiro | [`tce/`](tce/) |
@@ -136,6 +137,5 @@ apt4all/
 - Fontes e licenças de cada dado: [FONTES.md](FONTES.md)
 - Como citar: [CITATION.cff](CITATION.cff)
 - Código sob [MIT](LICENSE); textos sob [CC BY 4.0](LICENSE-CONTEUDO.md); dados de terceiros com a licença de origem
-- Relatório de testes: [RELATORIO-DE-TESTES.md](RELATORIO-DE-TESTES.md)
 
 <div align="center"><sub>® MITRE ATT&CK é marca registrada da The MITRE Corporation. O APT4ALL não tem relação com a MITRE nem com os fornecedores citados.</sub></div>

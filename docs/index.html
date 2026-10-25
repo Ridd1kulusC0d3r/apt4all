@@ -3,145 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>APT4ALL</title>
-<meta name="description" content="O atlas aberto de APTs, malware e inteligência de ameaças: atores por país, recursos curados e trilha de estudo. Bilíngue.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
-<style>
-/* Linha TOCAIA: preto profundo, menta de olho na espreita, tipografia de manifesto. */
-:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;
- --menta:#5EE6C4;--menta-viva:#3DF2CC;--menta-funda:#2E7563;--ambar:#F4BE3F;--coral:#FF7A63;
- --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.6 var(--corpo)}
-a{color:var(--menta)}
-:focus-visible{outline:2px solid var(--menta);outline-offset:3px}
-.wrap{max-width:1120px;margin:0 auto;padding-inline:16px}
-header.top{display:flex;justify-content:space-between;align-items:center;padding-block:18px;gap:12px}
-.lg{display:flex;align-items:center;gap:10px;font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
-.idioma{display:flex;border:1px solid var(--borda)}
-.idioma button{background:none;border:0;color:var(--apagado);padding:6px 10px;font:600 12px var(--mono);cursor:pointer}
-.idioma button[aria-pressed="true"]{background:var(--menta);color:#06201C}
-.heroi{padding-block:48px 40px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center}
-.selo{font:600 12px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--menta)}
-h1{font:800 clamp(44px,7vw,84px)/.95 var(--corpo);letter-spacing:-.03em;margin:14px 0 18px;color:var(--claro);text-wrap:balance}
-h1 em{font-style:normal;color:var(--menta)}
-.lema{font:500 14px var(--mono);letter-spacing:.08em;color:var(--apagado);border-left:2px solid var(--menta);padding-left:12px}
-.heroi p.l{font-size:19px;color:var(--texto);max-width:56ch}
-.radar{aspect-ratio:1;max-width:420px;width:100%;justify-self:center}
-.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{display:inline-block;background:var(--menta);color:#06201C;padding:12px 18px;font:700 15px var(--display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
-.btn.f{background:none;color:var(--texto);border:1px solid var(--borda)}
-.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--borda);margin-block:8px 56px}
-.nums div{padding:18px 8px}
-.nums b{display:block;font:700 40px/1 var(--display);color:var(--claro);font-variant-numeric:tabular-nums}
-.nums span{font:12px var(--mono);color:var(--apagado);letter-spacing:.06em}
-h2{font:700 30px var(--display);letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px;color:var(--claro)}
-.sub{color:var(--apagado);margin:0 0 22px;max-width:70ch}
-.portas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:60px}
-.porta{background:var(--sup);border:1px solid var(--borda);padding:22px;display:grid;gap:10px;text-decoration:none;color:var(--texto);position:relative}
-.porta:hover{border-color:var(--menta)}
-.porta .n{font:600 12px var(--mono);color:var(--menta);letter-spacing:.2em}
-.porta h3{margin:0;font:700 26px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--claro)}
-.porta p{margin:0;color:var(--apagado);font-size:15px}
-.porta .ir{font:600 13px var(--mono);color:var(--menta)}
-.passos{counter-reset:p;display:grid;gap:10px;margin:0 0 60px;padding:0;list-style:none}
-.passos li{counter-increment:p;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:start;background:var(--fundo2);border:1px solid var(--borda);padding:14px 16px}
-.passos li::before{content:counter(p,decimal-leading-zero);font:700 26px/1 var(--display);color:var(--menta)}
-.passos b{color:var(--claro)}
-.eco{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:60px}
-.eco a{background:var(--sup);border:1px solid var(--borda);padding:18px;text-decoration:none;color:var(--texto)}
-.eco a:hover{border-color:var(--menta)}
-.eco b{display:block;font:700 22px var(--display);letter-spacing:.06em;color:var(--claro);text-transform:uppercase}
-.eco span{color:var(--apagado);font-size:15px}
-.aviso{border:1px solid var(--borda);border-left:3px solid var(--ambar);background:var(--fundo2);padding:14px 16px;color:var(--apagado);margin-bottom:40px}
-footer{border-top:1px solid var(--borda);padding-block:24px 40px;font:13px var(--mono);color:var(--apagado)}
-@media (max-width:860px){.heroi{grid-template-columns:minmax(0,1fr)}.radar{max-width:280px}.portas,.eco{grid-template-columns:minmax(0,1fr)}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (prefers-reduced-motion:no-preference){.var{transform-origin:200px 200px;animation:gira 7s linear infinite}@keyframes gira{to{transform:rotate(360deg)}}}
-</style>
+<title>APT4ALL · atlas aberto de ameaças</title>
+<meta name="description" content="O atlas aberto de APTs, malware e inteligência de ameaças: atores por país, feed de vulnerabilidades exploradas, recursos curados e trilha de estudo. Bilíngue.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/tema.css">
+<script src="assets/tema.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header class="top">
-  <a class="lg" href="index.html"><svg width="30" height="30" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="none" stroke="#5EE6C4" stroke-width="1.6"/><circle cx="17" cy="17" r="7" fill="none" stroke="#5EE6C4" stroke-width="1.2"/><circle cx="17" cy="17" r="1.8" fill="#F4BE3F"/></svg>APT4ALL</a>
-  <div class="idioma" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
-</header>
-
-<section class="heroi">
-  <div>
-    <div class="selo" data-t="selo">DEIVOSINT · atlas aberto de ameaças</div>
-    <h1 data-th="h1">Todo ator, <em>um lugar só.</em></h1>
-    <p class="l" data-t="lead">APTs, grupos criminosos, malware e as fontes que todo analista de CTI precisa ter à mão: resolvidos, cruzados e mapeados por país. Bilíngue, aberto e atualizado por automação.</p>
-    <div class="lema" data-t="lema">mapeie o adversário · confirme na fonte · defenda o que importa</div>
-    <div class="acoes"><a class="btn" href="atlas/index.html" data-t="abrirAtlas">Abrir o Atlas</a><a class="btn f" href="recursos/index.html" data-t="verRecursos">Ver os recursos</a></div>
+<!--mastro--><header class="mast"><div class="wrap">
+  <div class="mast-bar">
+    <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>atlas aberto de ameaças</small></a>
+    <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
   </div>
-  <svg class="radar" viewBox="0 0 400 400" role="img" aria-label="Radar">
-    <defs><radialGradient id="rg"><stop offset="0" stop-color="#5EE6C4" stop-opacity=".18"/><stop offset="1" stop-color="#5EE6C4" stop-opacity="0"/></radialGradient>
-      <linearGradient id="vg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5EE6C4" stop-opacity="0"/><stop offset="1" stop-color="#5EE6C4" stop-opacity=".45"/></linearGradient></defs>
-    <circle cx="200" cy="200" r="190" fill="url(#rg)" stroke="#1F2B29"/>
-    <g fill="none" stroke="#1F2B29"><circle cx="200" cy="200" r="140"/><circle cx="200" cy="200" r="90"/><circle cx="200" cy="200" r="40"/><line x1="10" y1="200" x2="390" y2="200"/><line x1="200" y1="10" x2="200" y2="390"/></g>
-    <path class="var" d="M200 200 L390 200 A190 190 0 0 0 334 66 Z" fill="url(#vg)"/>
-    <g fill="#F4BE3F"><circle cx="292" cy="118" r="5"/><circle cx="246" cy="150" r="3.5"/><circle cx="120" cy="250" r="4"/><circle cx="300" cy="260" r="3"/></g>
-    <g fill="none" stroke="#F4BE3F" stroke-width="1"><circle cx="292" cy="118" r="12"/></g>
-    <text x="304" y="108" fill="#8A9693" font-family="JetBrains Mono,monospace" font-size="11">G0007</text>
-  </svg>
+  <nav class="nav" aria-label="Seções"><a href="atlas/index.html" data-pt="Atlas" data-en="Atlas">Atlas</a><a href="feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+</div></header><!--/mastro-->
+<div class="wrap">
+<section class="mast-title" style="margin:0">
+  <div>
+    <div class="eyebrow" data-t="selo">DEIVOSINT · atlas aberto de ameaças</div>
+    <h1 data-th="h1">Todo ator, <em>um lugar só.</em></h1>
+  </div>
+  <div>
+    <p class="dek" data-t="lead">APTs, grupos criminosos, malware e as fontes que todo analista de CTI precisa ter à mão: resolvidos, cruzados e mapeados por país. Bilíngue, aberto e atualizado por automação.</p>
+    <div class="links"><a href="atlas/index.html" data-t="abrirAtlas">Abrir o Atlas</a><a href="feed/index.html" data-t="verFeed">Feed de vulnerabilidades</a><a href="recursos/index.html" data-t="verRecursos">Ver os recursos</a><a href="feed/atom.xml">Atom</a></div>
+  </div>
+</section>
+<div class="strip" id="nums"><div class="stat"><b>—</b><span data-t="nAtores">atores</span></div><div class="stat"><b>—</b><span data-t="nPaises">países de origem</span></div><div class="stat"><b>—</b><span data-t="nRec">recursos curados</span></div><div class="stat"><b>—</b><span data-t="nRel">relatórios ligados</span></div></div>
+</div>
+
+<main class="wrap">
+<section>
+  <div class="eyebrow" data-t="tPortas">Quatro portas</div>
+  <h2 data-t="hPortas">Comece pela pergunta que você tem hoje</h2>
+  <p class="sub" data-t="sPortas">Cada porta responde uma coisa. Nenhuma exige ler as outras antes.</p>
+  <div class="ledger">
+    <a class="row" href="atlas/index.html"><span class="k">01</span><div><h3 data-t="p1t">Atlas</h3><p data-t="p1">Atores por país, dossiês com aliases, técnicas ATT&amp;CK, alvos e relatórios; perfil de ameaça por país e setor; fluxos de técnicas e a rede de ferramentas de ransomware.</p></div><span class="go" data-t="ir">entrar →</span></a>
+    <a class="row" href="feed/index.html"><span class="k">02</span><div><h3 data-t="p2t">Feed</h3><p data-t="p2">Vulnerabilidades exploradas (CISA KEV) ligadas aos atores quando há atribuição pública. Atualizado toda semana.</p></div><span class="go" data-t="ir">entrar →</span></a>
+    <a class="row" href="recursos/index.html"><span class="k">03</span><div><h3 data-t="p3t">Recursos</h3><p data-t="p3">Enciclopédias, nomenclaturas, acervos de relatórios, ransomware, feeds, ferramentas, datasets e cursos, com links verificados todo mês.</p></div><span class="go" data-t="ir">entrar →</span></a>
+    <a class="row" href="ler/trilha.html"><span class="k">04</span><div><h3 data-t="p4t">Trilha</h3><p data-t="p4">Nove módulos, uma ação por vez: do problema dos nomes até o dossiê de um ator e o perfil de ameaça da sua empresa.</p></div><span class="go" data-t="ir">entrar →</span></a>
+  </div>
 </section>
 
-<div class="nums" id="nums"><div><b>—</b><span data-t="nAtores">atores</span></div><div><b>—</b><span data-t="nPaises">países de origem</span></div><div><b>—</b><span data-t="nRec">recursos curados</span></div><div><b>—</b><span data-t="nRel">relatórios ligados</span></div></div>
+<section class="cols">
+  <div>
+    <div class="eyebrow" data-t="tNovo">Feed vivo</div>
+    <h2 data-t="hNovo">Entrou agora no catálogo</h2>
+    <p class="sub" data-t="sNovo">Últimas vulnerabilidades com exploração confirmada. Atribuição só quando uma fonte pública a sustenta.</p>
+    <div id="ultimos" class="ledger"><p class="sub" data-t="carregando">Carregando…</p></div>
+    <p style="margin-top:14px"><a href="feed/index.html" data-t="todoFeed">Ver o feed completo</a></p>
+  </div>
+  <div>
+    <div class="eyebrow" data-t="tPassos">Em cinco minutos</div>
+    <h2 data-t="hPassos">Uma ação por vez</h2>
+    <p class="sub" data-t="sPassos">Faça a primeira agora.</p>
+    <ol class="steps">
+      <li><span data-th="s1"><b>Abra o Atlas</b> e clique no país que mais aparece nas suas notícias.</span></li>
+      <li><span data-th="s2"><b>Escolha um ator</b> e leia os nomes conhecidos: é assim que você o reconhece em relatórios de fornecedores diferentes.</span></li>
+      <li><span data-th="s3"><b>Abra um relatório</b> do dossiê e anote três técnicas ATT&amp;CK.</span></li>
+      <li><span data-th="s4"><b>Vá em Perfil de ameaça</b>, escolha país e setor e baixe a camada do Navigator.</span></li>
+      <li><span data-th="s5"><b>Compare</b> com o que sua equipe já detecta. O que sobrar é seu próximo trabalho.</span></li>
+    </ol>
+  </div>
+</section>
 
-<h2 data-t="tPortas">Três portas</h2>
-<p class="sub" data-t="sPortas">Comece por onde fizer sentido para a pergunta que você tem hoje.</p>
-<div class="portas">
-  <a class="porta" href="atlas/index.html"><span class="n">01</span><h3 data-t="p1t">Atlas</h3><p data-t="p1">Mapa de sala de guerra: atores por país, dossiês com aliases, técnicas ATT&CK, alvos e relatórios. Inclui perfil de ameaça por país e setor, fluxos de técnicas (Sankey) e a rede de técnicas e ferramentas de ransomware.</p><span class="ir" data-t="ir">entrar →</span></a>
-  <a class="porta" href="recursos/index.html"><span class="n">02</span><h3 data-t="p2t">Recursos</h3><p data-t="p2">Enciclopédias, nomenclaturas, acervos de relatórios, ransomware, feeds, ferramentas de malware, datasets e cursos, com links verificados.</p><span class="ir" data-t="ir">entrar →</span></a>
-  <a class="porta" href="ler/trilha.html"><span class="n">03</span><h3 data-t="p3t">Trilha</h3><p data-t="p3">Nove módulos, uma ação por vez: do problema dos nomes até o dossiê de um ator e o perfil de ameaça da sua empresa.</p><span class="ir" data-t="ir">entrar →</span></a>
-</div>
-
-<h2 data-t="tPassos">Em cinco minutos</h2>
-<p class="sub" data-t="sPassos">Uma ação por vez. Faça a primeira agora.</p>
-<ol class="passos">
-  <li><span data-th="s1"><b>Abra o Atlas</b> e clique no país que mais aparece nas suas notícias.</span></li>
-  <li><span data-th="s2"><b>Escolha um ator</b> da lista e leia os nomes conhecidos: é assim que você vai reconhecê-lo em relatórios de fornecedores diferentes.</span></li>
-  <li><span data-th="s3"><b>Abra um relatório</b> da seção de relatórios do dossiê e anote três técnicas ATT&CK.</span></li>
-  <li><span data-th="s4"><b>Vá em Perfil de ameaça</b>, escolha o país e o setor da sua empresa e baixe a camada do Navigator.</span></li>
-  <li><span data-th="s5"><b>Compare</b> a camada com o que sua equipe já detecta. O que sobrar é seu próximo trabalho.</span></li>
-</ol>
-
-<h2 data-t="tEco">Ecossistema</h2>
-<p class="sub" data-t="sEco">O APT4ALL alimenta a modelagem de ameaças e conversa com a distribuição de OSINT.</p>
-<div class="eco">
-  <a href="https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling"><b>TCE · Threat Context Engineering</b><span data-t="eco1">Do negócio e das joias da coroa até caminhos de ataque, telemetria e detecção. O perfil de ameaça do Atlas sai pronto como sinal para o Horizon.</span></a>
-  <a href="https://github.com/Ridd1kulusC0d3r/TOCAIALinux"><b>TOCAIA OSINT Linux</b><span data-t="eco2">A distribuição de OSINT organizada pelas fases da investigação, de onde vem esta linha visual.</span></a>
-</div>
+<section>
+  <div class="eyebrow" data-t="tEco">Ecossistema</div>
+  <h2 data-t="hEco">Conversa com os outros projetos</h2>
+  <div class="ledger" style="margin-top:14px">
+    <a class="row" href="https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling"><span class="k">TCE</span><div><h3>Threat Context Engineering</h3><p data-t="eco1">Do negócio e das joias da coroa até caminhos de ataque, telemetria e detecção. O perfil de ameaça do Atlas sai pronto como sinal para o Horizon.</p></div><span class="go">GitHub →</span></a>
+    <a class="row" href="https://github.com/Ridd1kulusC0d3r/LLmInjection"><span class="k">LLM</span><div><h3>LLMInjection</h3><p data-t="eco3">O panorama de ameaças a sistemas LLM e agênticos, com a evidência anexada. Mesma linha visual e mesma regra de fonte e confiança.</p></div><span class="go">GitHub →</span></a>
+    <a class="row" href="https://github.com/Ridd1kulusC0d3r/TOCAIALinux"><span class="k">OSINT</span><div><h3>TOCAIA OSINT Linux</h3><p data-t="eco2">A distribuição de OSINT organizada pelas fases da investigação.</p></div><span class="go">GitHub →</span></a>
+  </div>
+</section>
 
 <div class="aviso" data-t="aviso">Atribuição é hipótese. País, motivação e aliases vêm de fornecedores diferentes e podem divergir. Use o APT4ALL para levantar hipóteses e sempre confirme nas fontes.</div>
+</main>
 
-<footer><span data-t="rodape">Código MIT · conteúdo CC BY 4.0 · dados com as licenças de cada fonte (veja FONTES.md).</span> · <a href="manual/index.html">Manual</a> · <a href="ler/index.html">Textos</a> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all">github.com/Ridd1kulusC0d3r/apt4all</a></footer>
-</div>
+<footer class="foot"><div class="wrap"><span data-t="rodape">Código MIT · conteúdo CC BY 4.0 · dados com as licenças de cada fonte (veja FONTES.md).</span> · <a href="manual/index.html">Manual</a> · <a href="ler/index.html">Textos</a> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all">github.com/Ridd1kulusC0d3r/apt4all</a></div></footer>
+
 <script>
 "use strict";
 const T={pt:{},en:{
  selo:"DEIVOSINT · open threat atlas",h1:"Every actor, <em>one place.</em>",lead:"APTs, criminal groups, malware and the sources every CTI analyst needs at hand: resolved, cross-referenced and mapped by country. Bilingual, open and kept fresh by automation.",
- lema:"map the adversary · confirm at the source · defend what matters",abrirAtlas:"Open the Atlas",verRecursos:"See the resources",nAtores:"actors",nPaises:"countries of origin",nRec:"curated resources",nRel:"linked reports",
- tPortas:"Three doors",sPortas:"Start wherever fits the question you have today.",p1t:"Atlas",p1:"War room map: actors by country, dossiers with aliases, ATT&CK techniques, targets and reports. Includes threat profiles by country and sector, technique flows (Sankey) and the network of shared techniques and ransomware tools.",
- p2t:"Resources",p2:"Encyclopedias, naming schemes, report archives, ransomware, feeds, malware tools, datasets and courses, with checked links.",p3t:"Path",p3:"Nine modules, one action at a time: from the naming problem to an actor dossier and your company's threat profile.",ir:"enter →",
- tPassos:"In five minutes",sPassos:"One action at a time. Do the first one now.",
- s1:"<b>Open the Atlas</b> and click the country that shows up most in your news.",s2:"<b>Pick an actor</b> from the list and read its known names: that is how you will recognize it across vendor reports.",
- s3:"<b>Open a report</b> from the dossier's report section and note three ATT&CK techniques.",s4:"<b>Go to Threat profile</b>, choose your company's country and sector and download the Navigator layer.",s5:"<b>Compare</b> the layer with what your team already detects. What is left is your next job.",
- tEco:"Ecosystem",sEco:"APT4ALL feeds threat modeling and talks to the OSINT distribution.",eco1:"From business and crown jewels to attack paths, telemetry and detection. The Atlas threat profile exports as a ready signal for Horizon.",eco2:"The OSINT distribution organized by investigation phases, where this visual line comes from.",
+ abrirAtlas:"Open the Atlas",verFeed:"Vulnerability feed",verRecursos:"See the resources",nAtores:"actors",nPaises:"countries of origin",nRec:"curated resources",nRel:"linked reports",
+ tPortas:"Four doors",hPortas:"Start with the question you have today",sPortas:"Each door answers one thing. None requires reading the others first.",
+ p1t:"Atlas",p1:"Actors by country, dossiers with aliases, ATT&CK techniques, targets and reports; threat profiles by country and sector; technique flows and the ransomware tool network.",
+ p2t:"Feed",p2:"Exploited vulnerabilities (CISA KEV) linked to actors where public attribution exists. Refreshed weekly.",
+ p3t:"Resources",p3:"Encyclopedias, naming schemes, report archives, ransomware, feeds, tools, datasets and courses, with links checked monthly.",
+ p4t:"Path",p4:"Nine modules, one action at a time: from the naming problem to an actor dossier and your company's threat profile.",ir:"enter →",
+ tNovo:"Living feed",hNovo:"Just added to the catalog",sNovo:"Latest vulnerabilities with confirmed exploitation. Attribution only where a public source backs it.",carregando:"Loading…",todoFeed:"See the full feed",
+ tPassos:"In five minutes",hPassos:"One action at a time",sPassos:"Do the first one now.",
+ s1:"<b>Open the Atlas</b> and click the country that shows up most in your news.",s2:"<b>Pick an actor</b> and read its known names: that is how you recognize it across vendor reports.",
+ s3:"<b>Open a report</b> from the dossier and note three ATT&CK techniques.",s4:"<b>Go to Threat profile</b>, choose country and sector and download the Navigator layer.",s5:"<b>Compare</b> with what your team already detects. What is left is your next job.",
+ tEco:"Ecosystem",hEco:"Talks to the other projects",eco1:"From business and crown jewels to attack paths, telemetry and detection. The Atlas threat profile exports as a ready signal for Horizon.",
+ eco3:"The threat landscape for LLM and agentic systems, with the evidence attached. Same visual line, same source-and-confidence rule.",eco2:"The OSINT distribution organized by investigation phases.",
  aviso:"Attribution is a hypothesis. Country, motive and aliases come from different vendors and may disagree. Use APT4ALL to raise hypotheses and always confirm in the sources.",
  rodape:"Code MIT · content CC BY 4.0 · data under each source's license (see FONTES.md)."}};
 document.querySelectorAll("[data-t]").forEach(e=>T.pt[e.dataset.t]=e.textContent);
 document.querySelectorAll("[data-th]").forEach(e=>T.pt[e.dataset.th]=e.innerHTML);
 let L="pt";try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
-function aplica(){document.documentElement.lang=L==="pt"?"pt-BR":"en";document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]??T.pt[e.dataset.t]);document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=T[L][e.dataset.th]??T.pt[e.dataset.th]);document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L))}
-document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplica()});
+let FEED=null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function ultimos(){
+  const el=document.getElementById("ultimos");if(!FEED)return;
+  el.innerHTML=FEED.itens.slice(0,5).map(v=>{
+    const a=v.atribuicao,nomes=a?a.atores.map(x=>x.id?`<a href="atlas/index.html#${esc(x.id)}">${esc(x.nome)}</a>`:esc(x.nome)).join(", "):"";
+    return `<div class="feed-item"><time>${esc(v.dateAdded)}</time><div><h3>${esc(v.cveID)} · ${esc(v.vendorProject)} ${esc(v.product)}</h3><div class="meta">${v.knownRansomwareCampaignUse==="Known"?'<span class="tag sig">ransomware</span>':""}${a?'<span class="tag">'+(L==="pt"?"atribuído a ":"attributed to ")+nomes+'</span>':""}</div></div></div>`}).join("");
+}
+function aplica(){document.documentElement.lang=L==="pt"?"pt-BR":"en";document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]??T.pt[e.dataset.t]);document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=T[L][e.dataset.th]??T.pt[e.dataset.th]);document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));window.TEMA_LANG&&TEMA_LANG(L);ultimos()}
+document.querySelector(".seg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplica()});
 aplica();
 Promise.all([fetch("atlas/atores.json").then(r=>r.json()),fetch("atlas/paises.json").then(r=>r.json()),fetch("recursos.json").then(r=>r.json())]).then(([a,p,r])=>{
   const v=[a.meta.n_atores,Object.keys(p.paises).filter(k=>k!=="??"&&k!=="NATO").length,r.recursos.length,a.meta.n_relatorios];
   document.querySelectorAll("#nums b").forEach((b,i)=>b.textContent=v[i].toLocaleString(L==="pt"?"pt-BR":"en-US"));
 }).catch(()=>{});
+fetch("feed/feed.json").then(r=>r.json()).then(f=>{FEED=f;ultimos()}).catch(()=>{document.getElementById("ultimos").innerHTML=""});
 </script>
 </body>
 </html>

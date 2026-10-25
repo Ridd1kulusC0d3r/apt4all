@@ -5,31 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>APT4ALL Atlas</title>
 <meta name="description" content="Atlas de sala de guerra: atores de ameaça (APT) por país, com aliases, alvos, técnicas ATT&CK e relatórios.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/tema.css">
+<script src="../assets/tema.js"></script>
 <style>
 /* Linha visual: carta noturna de sala de guerra. Fundo de mesa de plotagem, grade de meridianos fina,
    âmbar de radar como cor de dado, menta TOCAIA só para seleção. Um painel de mapa, um de dossiê. */
-:root{
-  color-scheme:dark;
-  --bg:#06090B; --mesa:#0B1114; --painel:#0F171A; --painel2:#142024; --linha:#1E2C30; --grade:#14302C;
-  --tinta:#DCE4E2; --apagado:#869794; --fraco:#55625F;
-  --ambar:#F4BE3F; --ambar-ink:#1C1404; --menta:#5EE6C4; --coral:#FF7A63; --azul:#6FB2FF;
-  --terra:#18221F; --terra2:#1E2A27;
-  --e1:#3A3017; --e2:#6A5220; --e3:#A27A28; --e4:#D7A133; --e5:#F4BE3F;
-  --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif; --corpo:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--tinta);font:15px/1.5 var(--corpo)}
-a{color:var(--menta)}
-button,input,select{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
-.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--linha)}
-.topo .in{max-width:1440px;margin:0 auto;padding:10px 16px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}
-.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tinta)}
-.marca b{font:700 24px/1 var(--display);letter-spacing:.08em}
-.marca small{display:block;font:500 11px var(--mono);letter-spacing:.16em;color:var(--ambar);text-transform:uppercase;margin-top:3px}
 .meta{font:12px var(--mono);color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ctrl{display:flex;gap:8px;align-items:center}
 .busca{position:relative}
@@ -38,9 +19,6 @@ button,input,select{font:inherit;color:inherit}
 .sug button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--linha);padding:8px 10px;cursor:pointer}
 .sug button:hover,.sug button:focus{background:var(--painel2)}
 .sug small{color:var(--apagado);font:12px var(--mono)}
-.idioma{display:flex;border:1px solid var(--linha)}
-.idioma button{background:none;border:0;padding:7px 10px;font:600 12px var(--mono);color:var(--apagado);cursor:pointer}
-.idioma button[aria-pressed="true"]{background:var(--ambar);color:var(--ambar-ink)}
 nav.modos{max-width:1440px;margin:0 auto;padding:0 16px;display:flex;gap:2px;flex-wrap:wrap}
 nav.modos button{background:none;border:0;border-bottom:3px solid transparent;padding:9px 12px;font:600 15px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);cursor:pointer}
 nav.modos button[aria-selected="true"]{color:var(--tinta);border-bottom-color:var(--ambar)}
@@ -52,7 +30,7 @@ main{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 60px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:var(--painel2);border:1px solid var(--linha);padding:4px 10px;font:12px var(--mono);cursor:pointer;color:var(--tinta)}
 .chip[aria-pressed="true"]{border-color:var(--ambar);color:var(--ambar)}
-.mapa{position:relative;background:radial-gradient(ellipse at 50% 40%,#0C1619 0%,var(--mesa) 70%);overflow:hidden}
+.mapa{position:relative;background:var(--paper-2);overflow:hidden}
 .mapa svg{display:block;width:100%;height:auto}
 .mapa .varredura{position:absolute;inset:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 52%,rgba(244,190,63,.10),rgba(244,190,63,0) 22%);mix-blend-mode:screen;animation:gira 9s linear infinite}
 @keyframes gira{to{transform:rotate(360deg)}}
@@ -116,8 +94,8 @@ tbody tr:hover{background:var(--painel2)}
 .texto h3{font:700 22px var(--display);letter-spacing:.06em;text-transform:uppercase;margin:12px 0 0}
 .carregando{padding:60px;text-align:center;font:13px var(--mono);color:var(--apagado)}
 @media (prefers-reduced-motion:reduce){.mapa .varredura{animation:none;display:none}*{transition:none!important}}
-@media (max-width:980px){.grade2{grid-template-columns:minmax(0,1fr)}.topo .in{grid-template-columns:minmax(0,1fr) auto}.meta{grid-column:1/-1;grid-row:2}}
-@media (max-width:560px){nav.modos{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav.modos button{flex:none;font-size:14px;padding:8px 10px}.topo .in{grid-template-columns:minmax(0,1fr) auto}.ctrl{grid-column:1/-1;grid-row:3}.busca{flex:1}.busca input{width:100%}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.marca small{display:none}}
+@media (max-width:980px){.grade2{grid-template-columns:minmax(0,1fr)}.meta{grid-column:1/-1}}
+@media (max-width:560px){nav.modos{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav.modos button{flex:none;font-size:14px;padding:8px 10px}.ctrl{grid-column:1/-1}.busca{flex:1}.busca input{width:100%}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.marca small{display:none}}
 .forn{border-collapse:collapse;width:100%;font-size:13px}.forn th{text-align:left;font:600 11px var(--mono);color:var(--apagado);padding:4px 10px 4px 0;white-space:nowrap;vertical-align:top;letter-spacing:.04em}.forn td{padding:4px 0;color:var(--tinta)}.forn tr+tr{border-top:1px solid var(--borda)}
 .chip b{color:var(--apagado);font-weight:400}
 .chip[aria-pressed="true"] b{color:inherit}
@@ -139,44 +117,103 @@ tbody tr:hover{background:var(--painel2)}
 .nota{font-size:12.5px;color:var(--apagado);margin:8px 0 0;max-width:80ch}
 .nota.pad{padding:0 14px 14px}
 .sub2{font:12px var(--mono);color:var(--apagado)}
-.rotulo{fill:var(--tinta);font-family:var(--mono);font-weight:600;pointer-events:none;paint-order:stroke;stroke:#06090Bdd;stroke-width:3.5px;stroke-linejoin:round}
-.rotulo .n{fill:var(--ambar)}
-.rotulo.sel{fill:var(--menta)}
+.rotulo{fill:var(--ink);font-family:var(--mono);font-weight:700;pointer-events:none;paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.rotulo .n{fill:var(--ink)}
+.rotulo.sel{fill:var(--signal)}
+.rotulo.sel .n{fill:var(--signal)}
 .rolagem{overflow-x:auto}
 svg.sankey{display:block;width:100%;min-width:860px;height:auto}
 .sankey .coltit{fill:var(--apagado);font:600 11px var(--mono);letter-spacing:.14em}
 .sankey .lk{opacity:.34;transition:opacity .2s}
 .sankey.foco .lk{opacity:.07}.sankey.foco .lk.on{opacity:.72}
-.sankey .nolab{fill:var(--tinta);font:12.5px var(--corpo);paint-order:stroke;stroke:#0F171Acc;stroke-width:3px;stroke-linejoin:round}
+.sankey .nolab{fill:var(--tinta);font:12.5px var(--corpo);paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
 .sankey .nolab .n{fill:var(--apagado);font:11px var(--mono)}
 .sankey .no{cursor:default}
-svg.grafo{display:block;width:100%;min-width:760px;height:auto;background:radial-gradient(ellipse at 50% 45%,#0E1B1E 0%,var(--mesa) 75%)}
+svg.grafo{display:block;width:100%;min-width:760px;height:auto;background:var(--paper-2)}
 .grafo .ar{fill:none;stroke-width:1.1;opacity:.26;transition:opacity .2s}
 .grafo .nd{cursor:pointer;transition:opacity .2s}
-.grafo .halo{fill:none;stroke:#FF7A6355;stroke-width:1}
-.grafo .lbA{fill:var(--claro,#F2F7F6);font:600 12.5px var(--corpo);paint-order:stroke;stroke:#06090B;stroke-width:3px}
-.grafo .lbT{fill:var(--apagado);font:10.5px var(--mono);paint-order:stroke;stroke:#06090B;stroke-width:3px}
-.grafo .tec .bola{stroke:#06090B;stroke-width:1.5}
+.grafo .halo{fill:none;stroke:var(--signal);stroke-opacity:.35;stroke-width:1}
+.grafo .lbA{fill:var(--ink);font:600 12.5px var(--corpo);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.grafo .lbT{fill:var(--apagado);font:10.5px var(--mono);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.grafo .tec .bola{stroke:var(--paper);stroke-width:1.5}
 .grafo.foco .nd{opacity:.14}.grafo.foco .nd.on{opacity:1}.grafo.foco .nd.on .bola{filter:url(#brilho)}.grafo.foco .nd.on .lbT{fill:var(--tinta)}
 .grafo.foco .ar{opacity:.04}.grafo.foco .ar.on{opacity:.9;stroke-width:1.6}
 .legrede{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 14px;font:12px var(--mono);color:var(--apagado);border-top:1px solid var(--linha)}
 .legrede .lg{display:inline-flex;align-items:center}
 @media (prefers-reduced-motion:reduce){.sankey .lk,.grafo .ar,.grafo .nd{transition:none}}
+
+/* ===== tema editorial (substitui o visual escuro de sala de guerra) ===== */
+.wrap{max-width:1360px}
+.atool{display:flex;gap:16px;align-items:center;justify-content:space-between;padding-block:14px;flex-wrap:wrap}
+.meta{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);white-space:normal}
+.ctrl{display:flex;gap:8px;align-items:center}
+.busca input{width:min(360px,70vw);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 2px;border-radius:0;outline:none;color:var(--ink)}
+.busca input:focus{border-bottom-color:var(--signal)}
+.sug{background:var(--paper);border:1px solid var(--ink);box-shadow:0 10px 30px #0002}
+nav.modos{display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--ink);max-width:none;margin:0;padding:0}
+nav.modos button{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:12px 18px 11px;white-space:nowrap;flex:none;margin-bottom:-1px}
+nav.modos button:hover{color:var(--ink)}
+nav.modos button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--signal)}
+main{max-width:1360px;padding:26px 20px 70px}
+.painel{background:var(--paper-3);border:1px solid var(--rule)}
+.cab{border-bottom:1px solid var(--rule)}
+.rot{font:600 11px var(--mono);letter-spacing:.12em;color:var(--ink-3)}
+.chip{background:none;border:1px solid var(--rule);color:var(--ink-2);font:600 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:5px 9px}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip b{color:var(--ink-3)}.chip[aria-pressed="true"] b{color:inherit}
+.mapa{background:var(--paper-2)}
+.mapa .varredura{display:none}
+.hex{stroke:var(--paper-2)}
+.pais.sel .hex{stroke:var(--ink);stroke-width:1.6}
+.pais:hover .hex{filter:none;stroke:var(--ink);stroke-width:1}
+.grat text{fill:var(--ink-4)}
+.reg{background:none;border:1px dashed var(--rule);color:var(--ink-2)}
+.reg b{color:var(--signal)}
+.dossie h2,.gaveta h2{font:700 30px/1.05 var(--serif);letter-spacing:-.01em;text-transform:none}
+.gaveta h2{font-size:34px}
+.dossie .iso{color:var(--signal)}
+.nums{background:var(--rule)}
+.nums div{background:var(--paper-3)}
+.nums b{font:600 22px/1.1 var(--mono);letter-spacing:-.02em}
+.barra .t{background:var(--paper-2)}
+.barra .t i{background:color-mix(in srgb,var(--signal) 28%,transparent)}
+.tag.at{border-color:var(--signal);color:var(--signal)}
+.gaveta{background:var(--paper);border-left:1px solid var(--ink);box-shadow:-20px 0 50px #0003}
+.fecha{background:none;border:1px solid var(--rule);color:var(--ink-2)}
+.fecha:hover{border-color:var(--ink);color:var(--ink)}
+.sec h3{color:var(--ink-3)}
+.nuvem span,.nuvem a{background:none;border:1px solid var(--rule);color:var(--ink-2)}
+.nuvem a:hover{border-color:var(--signal);color:var(--signal)}
+.aviso{background:var(--paper-3);border:1px solid var(--rule);border-left:3px solid var(--signal);color:var(--ink-2)}
+th{color:var(--ink-3)}
+.btn{background:var(--ink);color:var(--paper);font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.btn:hover{background:var(--signal);color:var(--signal-ink)}
+.btn.fant{background:none;color:var(--ink);border:1px solid var(--ink)}
+.btn.fant:hover{background:none;color:var(--signal);border-color:var(--signal)}
+.texto h3{font:700 20px var(--serif);letter-spacing:0;text-transform:none}
+.form label{color:var(--ink-3)}
+.form select,.filtro{background:transparent;border:1px solid var(--rule);color:var(--ink)}
+.form select:focus,.filtro:focus{border-color:var(--signal);outline:0}
+.legrede,.legenda{border-top:1px solid var(--rule)}
+.legenda i,.escala i{outline:1px solid var(--rule);outline-offset:-1px}
+.filtrado{color:var(--signal)}
+@media (max-width:560px){.atool{padding-block:10px}.busca{flex:1}.busca input{width:100%}.ctrl{width:100%}main{padding-inline:16px}}
 </style>
 </head>
 <body>
-<header class="topo">
-  <div class="in">
-    <a class="marca" href="../index.html">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="none" stroke="#F4BE3F" stroke-width="1.6"/><circle cx="17" cy="17" r="7" fill="none" stroke="#5EE6C4" stroke-width="1.2"/><line x1="17" y1="5" x2="17" y2="29" stroke="#F4BE3F" stroke-width=".8"/><line x1="5" y1="17" x2="29" y2="17" stroke="#F4BE3F" stroke-width=".8"/><circle cx="17" cy="17" r="1.8" fill="#5EE6C4"/></svg>
-      <span><b>APT4ALL</b><small data-t="sub">Atlas de sala de guerra</small></span>
-    </a>
-    <div class="meta" id="meta">…</div>
-    <div class="ctrl">
-      <div class="busca"><input id="busca" type="search" autocomplete="off" data-tp="buscaPh" aria-label="Buscar ator"><div class="sug" id="sug" hidden></div></div>
-      <div class="idioma" role="group" aria-label="Idioma"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
-    </div>
+<!--mastro--><header class="mast"><div class="wrap">
+  <div class="mast-bar">
+    <a class="brand" href="../index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>atlas</small></a>
+    <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
   </div>
+  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas" aria-current="page">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+</div></header><!--/mastro-->
+<div class="wrap atool">
+  <div class="meta" id="meta">…</div>
+  <div class="ctrl"><div class="busca"><input id="busca" type="search" autocomplete="off" data-tp="buscaPh" aria-label="Buscar ator"><div class="sug" id="sug" hidden></div></div></div>
+</div>
+<div class="wrap">
   <nav class="modos" role="tablist">
     <button role="tab" data-m="mapa" aria-selected="true" data-t="mMapa">Mapa</button>
     <button role="tab" data-m="perfil" aria-selected="false" data-t="mPerfil">Perfil de ameaça</button>
@@ -185,7 +222,7 @@ svg.grafo{display:block;width:100%;min-width:760px;height:auto;background:radial
     <button role="tab" data-m="ranking" aria-selected="false" data-t="mRanking">Ranking</button>
     <button role="tab" data-m="sobre" aria-selected="false" data-t="mSobre">Sobre os dados</button>
   </nav>
-</header>
+</div>
 
 <main>
   <section id="v-mapa">
@@ -252,6 +289,7 @@ const T={
   rPais:"{n} com vítimas em {p}",rSetor:"{n} miram {s}",rAmbos:"{n} nos dois",regraPontos:"Pontos: vítima no país +2 · setor-alvo +2 · perfil ATT&CK +1",pontos:"pontos",peso:"peso",atAbrev:"at.",
   notaTec:"Número = quantos atores do perfil usam a técnica. A barra mostra o peso (soma dos pontos desses atores).",verFluxo:"Ver em fluxos",
   mFluxos:"Fluxos",mRede:"Rede",fluxTit:"Fluxos de técnicas",notaFluxo:"Cada fio é um uso de técnica por um ator. A tática é a primeira listada no ATT&CK para a técnica. Passe o mouse num bloco para destacar os fluxos dele.",
+  vulnTit:"Vulnerabilidades exploradas",vulnPor:"Atribuição por",vulnFeed:"Ver o feed completo",
   notaFluxoRw:"Cada fio é uma ferramenta observada em intrusões de um grupo, pela categoria do Ransomware Tool Matrix. Use como lista de caça e de bloqueio, checando antes o uso legítimo da ferramenta na sua empresa.",rwTit:"Ferramentas em intrusões de ransomware",verRede:"Ver na rede",redeTit:"Rede de técnicas compartilhadas",tamanho:"Tamanho",notaRede:"Só aparecem técnicas usadas por pelo menos dois dos atores mostrados. Passe o mouse para ver as ligações; clique num ator para abrir a ficha.",
   fonte:"Base",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · ferramentas",origem:"País de origem",vitimaFiltro:"Vítimas em",tGangue:"gangues",tAfiliado:"afiliados",tIab:"brokers de acesso",tEstado:"ligados a Estado",
   tipoGrupo:"Tipo de grupo",categoria:"Categoria",todas:"todas",grupo:"Grupo",grupos:"grupos",outrosAtores:"outros atores",outrosPaises:"outros países",outrasTec:"outras técnicas",ator:"Ator",tatica:"Tática",tecnica:"Técnica",
@@ -271,6 +309,7 @@ const T={
   rPais:"{n} with victims in {p}",rSetor:"{n} target {s}",rAmbos:"{n} both",regraPontos:"Points: victim in country +2 · target sector +2 · ATT&CK profile +1",pontos:"points",peso:"weight",atAbrev:"act.",
   notaTec:"Number = how many profile actors use the technique. The bar shows the weight (sum of those actors' points).",verFluxo:"See in flows",
   mFluxos:"Flows",mRede:"Network",fluxTit:"Technique flows",notaFluxo:"Each ribbon is one technique use by one actor. The tactic is the first one ATT&CK lists for the technique. Hover a block to highlight its flows.",
+  vulnTit:"Exploited vulnerabilities",vulnPor:"Attribution by",vulnFeed:"See the full feed",
   notaFluxoRw:"Each ribbon is a tool observed in a group's intrusions, by Ransomware Tool Matrix category. Use it as a hunting and blocking list, checking first for legitimate use of the tool in your organization.",rwTit:"Tools seen in ransomware intrusions",verRede:"See in the network",redeTit:"Shared technique network",tamanho:"Size",notaRede:"Only techniques used by at least two of the actors shown appear. Hover to see the links; click an actor to open its card.",
   fonte:"Dataset",fonteApt:"APT · ATT&CK",fonteRw:"Ransomware · tools",origem:"Country of origin",vitimaFiltro:"Victims in",tGangue:"gangs",tAfiliado:"affiliates",tIab:"access brokers",tEstado:"state-linked",
   tipoGrupo:"Group type",categoria:"Category",todas:"all",grupo:"Group",grupos:"groups",outrosAtores:"other actors",outrosPaises:"other countries",outrasTec:"other techniques",ator:"Actor",tatica:"Tactic",tecnica:"Technique",
@@ -289,7 +328,7 @@ const T={
 };
 let L=(()=>{try{return localStorage.getItem("apt4all-lang")||(navigator.language||"pt").slice(0,2)}catch(e){return"pt"}})();if(!T[L])L="pt";
 const t=k=>T[L][k]??k;
-let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
+let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,FEED=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
 const $=s=>document.querySelector(s);
 function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
 const NS="http://www.w3.org/2000/svg";
@@ -301,6 +340,7 @@ async function carrega(){
   const [a,p,m]=await Promise.all(["atores.json","paises.json","mapa.json"].map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.json()})));
   A=a.atores;META=a.meta;P=p.paises;G=p.geo;NX=p.nomes_extra||{};TEC=p.tecnicas;SET=p.setores||{};TT=p.tecnica_taticas||{};TAT=p.taticas||[];MAPA=m;A.forEach(x=>porId[x.id]=x);
   try{RW=await fetch("ransomware.json").then(r=>r.ok?r.json():null)}catch(e){RW=null}
+  try{FEED=await fetch("../feed/feed.json").then(r=>r.ok?r.json():null)}catch(e){FEED=null}
   aplicaIdioma();desenhaMapa();montaPerfil();ranking();sobre();
   if(window.ResizeObserver)new ResizeObserver(()=>rotulos()).observe($("#mapa"));
   const h=decodeURIComponent(location.hash.slice(1));
@@ -424,7 +464,9 @@ function abreAtor(id){
     sec(t("tec"),a.mitre&&a.mitre.tecnicas.length?el("div",{},el("div",{class:"nuvem"},a.mitre.tecnicas.map(x=>el("a",{href:`https://attack.mitre.org/techniques/${x.replace(".","/")}/`,target:"_blank",rel:"noopener",title:TEC[x]||x},x))),el("p",{style:"margin:8px 0 0"},el("a",{href:a.mitre.url,target:"_blank",rel:"noopener"},t("verMitre")+" ↗"))):null),
     sec(t("ferr"),a.ferramentas.length?el("div",{class:"nuvem"},a.ferramentas.map(x=>el("span",{},x))):null),
     (()=>{const g=RW&&RW.grupos.find(x=>x.ator===a.id);if(!g)return null;const catDe={};RW.ferramentas.forEach(f=>catDe[f.nome]=f.cat);
-      return sec(t("rwTit")+` (${g.ferramentas.length})`,el("div",{},el("div",{class:"nuvem"},g.ferramentas.map(f=>el("span",{title:nomeCat(catDe[f])},el("i",{class:"bol",style:`background:${CORES_CAT[catDe[f]]||"#7C8A87"}`}),f))),el("p",{class:"nota"},el("a",{href:"#",onclick:e=>{e.preventDefault();fechaAtor();fx.fonte="rw";fx.tipo="";fx.grupo=g.nome;vai("rede")}},t("verRede")+" →"))))})(),
+      return sec(t("rwTit")+` (${g.ferramentas.length})`,el("div",{},el("div",{class:"nuvem"},g.ferramentas.map(f=>el("span",{title:nomeCat(catDe[f])},el("i",{class:"bol",style:`background:${CORES_CAT[catDe[f]]||CV("--c0")}`}),f))),el("p",{class:"nota"},el("a",{href:"#",onclick:e=>{e.preventDefault();fechaAtor();fx.fonte="rw";fx.tipo="";fx.grupo=g.nome;vai("rede")}},t("verRede")+" →"))))})(),
+    (()=>{const vs=FEED?FEED.itens.filter(v=>v.atribuicao&&v.atribuicao.atores.some(x=>x.id===a.id)):[];if(!vs.length)return null;
+      return sec(t("vulnTit")+` (${vs.length})`,el("div",{},el("div",{class:"rel"},vs.map(v=>el("a",{href:(v.atribuicao.fontes||[])[0]||"../feed/index.html",target:"_blank",rel:"noopener"},el("span",{},v.dateAdded),`${v.cveID} · ${v.vendorProject} ${v.product}`))),el("p",{class:"nota"},t("vulnPor")+" "+vs[0].atribuicao.atribuido_por+". ",el("a",{href:"../feed/index.html"},t("vulnFeed")))))})(),
     sec(t("ops"),a.operacoes.length?el("div",{class:"nuvem"},a.operacoes.map(x=>el("span",{},x))):null),
     sec(t("alvos"),a.alvos?el("p",{style:"margin:0;font-size:14px"},a.alvos):null),
     sec(t("vit"),a.vitimas.length?el("div",{class:"nuvem"},a.vitimas.map(x=>el("span",{},x))):null),
@@ -518,8 +560,9 @@ function perfil(){
 }
 
 /* ===== cores ===== */
-const CORES_CAT={rmm:"#6FB2FF",credenciais:"#F4BE3F",evasao:"#FF7A63",descoberta:"#5EE6C4",rede:"#B48CFF",offsec:"#FF6FAE",lolbas:"#A5D86A",exfiltracao:"#F0913C"};
-const CORES_MOT={espionagem:"#6FB2FF",financeiro:"#F4BE3F",sabotagem:"#FF7A63",hacktivismo:"#B48CFF","influência":"#FF6FAE",indefinido:"#7C8A87"};
+const CV=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const CORES_CAT={rmm:CV("--c1"),credenciais:CV("--c3"),evasao:CV("--c2"),descoberta:CV("--c4"),rede:CV("--c5"),offsec:CV("--c6"),lolbas:CV("--c7"),exfiltracao:CV("--c8")};
+const CORES_MOT={espionagem:CV("--c1"),financeiro:CV("--c3"),sabotagem:CV("--c2"),hacktivismo:CV("--c5"),"influência":CV("--c6"),indefinido:CV("--c0")};
 function corTatica(id){const i=Math.max(0,TAT.findIndex(x=>x.id===id));const n=Math.max(1,TAT.length-1);const h=188-(183*i/n);return `hsl(${h.toFixed(0)} 72% 62%)`}
 const tatica1=tec=>(TT[tec]||[])[0]||"";
 const nomeTat=id=>{const x=TAT.find(z=>z.id===id);return x?x[L]:id};
@@ -611,7 +654,7 @@ function fluxos(){
     const c0b={};at.forEach(a=>{const k=porActor?a.nome:(a.pais||"??");c0b[k]=(c0b[k]||0)+a.mitre.tecnicas.filter(x=>topT.has(x)).length});
     const f0=topComOutros(c0b,porActor?10:9,OUT0);let totalUsos=0;
     const un=[];at.forEach(a=>{const k0=f0(porActor?a.nome:(a.pais||"??"));const m=fx.motivo!=="todos"?fx.motivo:(a.motivos[0]||"indefinido");a.mitre.tecnicas.forEach(x=>{totalUsos++;if(topT.has(x))un.push([k0,m,tatica1(x)||"?",x])})});
-    const d=montaSankey(un,[{titulo:porActor?t("ator"):t("origem"),cor:k=>k===OUT0?"#55625F":porActor?"#FF8A6B":"#F4BE3F"},{titulo:t("motivos"),cor:k=>CORES_MOT[k]||"#7C8A87"},{titulo:t("tatica"),cor:corTatica},{titulo:t("tecnica"),cor:k=>k===OUTT?"#55625F":corTatica(tatica1(k))}]);
+    const d=montaSankey(un,[{titulo:porActor?t("ator"):t("origem"),cor:k=>k===OUT0?CV("--ink-4"):porActor?CV("--signal"):CV("--c3")},{titulo:t("motivos"),cor:k=>CORES_MOT[k]||CV("--c0")},{titulo:t("tatica"),cor:corTatica},{titulo:t("tecnica"),cor:k=>k===OUTT?CV("--ink-4"):corTatica(tatica1(k))}]);
     d.nos.forEach(n=>{n.rot=n.col===0&&!porActor&&n.nome!==OUT0?nomePais(n.nome):n.col===1?t(n.nome):n.col===2?nomeTat(n.nome):n.col===3&&n.nome!==OUTT?`${n.nome} ${TEC[n.nome]||""}`:n.nome});
     sub.textContent=t("subApt").replace("{a}",at.length).replace("{u}",un.length.toLocaleString(L==="pt"?"pt-BR":"en-US")).replace("{p}",totalUsos?Math.round(100*un.length/totalUsos):0);
     desenhaSankey("#sankey",d,{outros:[OUT0,OUTT]});
@@ -624,7 +667,7 @@ function fluxos(){
     const cG2={};usos.forEach(([g,,f])=>{if(topF.has(f))cG2[g]=(cG2[g]||0)+1});
     const fG=topComOutros(cG2,12,OG);
     const un=usos.filter(u=>topF.has(u[2])).map(([g,c,f])=>[fG(g),c,f]);
-    const d=montaSankey(un,[{titulo:t("grupo"),cor:k=>k===OG?"#55625F":"#FF8A6B"},{titulo:t("categoria"),cor:k=>CORES_CAT[k]||"#7C8A87"},{titulo:t("ferramenta"),cor:k=>k===OF?"#55625F":(CORES_CAT[catDe[k]]||"#7C8A87")}]);
+    const d=montaSankey(un,[{titulo:t("grupo"),cor:k=>k===OG?CV("--ink-4"):CV("--signal")},{titulo:t("categoria"),cor:k=>CORES_CAT[k]||CV("--c0")},{titulo:t("ferramenta"),cor:k=>k===OF?CV("--ink-4"):(CORES_CAT[catDe[k]]||CV("--c0"))}]);
     d.nos.forEach(n=>{n.rot=n.col===1?nomeCat(n.nome):n.nome});
     sub.textContent=t("subRw").replace("{g}",gs.length).replace("{u}",un.length).replace("{p}",usos.length?Math.round(100*un.length/usos.length):0);
     desenhaSankey("#sankey",d,{outros:[OG,OF]});
@@ -659,7 +702,7 @@ function rede(){
     const at=atoresFiltrados().sort((a,b)=>b.mitre.tecnicas.length-a.mitre.tecnicas.length||a.nome.localeCompare(b.nome)).slice(0,fx.nRede);
     const cnt={};at.forEach(a=>a.mitre.tecnicas.forEach(x=>cnt[x]=(cnt[x]||0)+1));
     const tecs=Object.entries(cnt).filter(([,n])=>n>=2).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,34).map(x=>x[0]);const ts=new Set(tecs);
-    nos=[...at.map(a=>({id:"a:"+a.id,tipo:"a",nome:a.nome,ref:a.id,cor:"#FF8A6B",grau:0})),...tecs.map(x=>({id:"t:"+x,tipo:"t",nome:x,desc:TEC[x]||"",cor:corTatica(tatica1(x)),grupo:tatica1(x),grau:0}))];
+    nos=[...at.map(a=>({id:"a:"+a.id,tipo:"a",nome:a.nome,ref:a.id,cor:CV("--signal"),grau:0})),...tecs.map(x=>({id:"t:"+x,tipo:"t",nome:x,desc:TEC[x]||"",cor:corTatica(tatica1(x)),grupo:tatica1(x),grau:0}))];
     at.forEach(a=>a.mitre.tecnicas.forEach(x=>{if(ts.has(x))arestas.push({s:"a:"+a.id,t:"t:"+x})}));
     sub=t("subRedeApt").replace("{a}",at.length).replace("{t}",tecs.length);
   }else{
@@ -668,7 +711,7 @@ function rede(){
     const gs=gruposRwFiltrados().slice(0,fx.grupo?1:fx.nRede);
     const cnt={};gs.forEach(g=>g.ferramentas.forEach(f=>{if(!fx.cat||catDe[f]===fx.cat)cnt[f]=(cnt[f]||0)+1}));
     const min=gs.length>1?2:1;const fs=Object.entries(cnt).filter(([,n])=>n>=min).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,34).map(x=>x[0]);const fset=new Set(fs);
-    nos=[...gs.map(g=>({id:"g:"+g.nome,tipo:"a",nome:g.nome,ref:g.ator,cor:"#FF8A6B",grau:0})),...fs.map(f=>({id:"f:"+f,tipo:"f",nome:f,desc:nomeCat(catDe[f]),cor:CORES_CAT[catDe[f]]||"#7C8A87",grupo:catDe[f],grau:0}))];
+    nos=[...gs.map(g=>({id:"g:"+g.nome,tipo:"a",nome:g.nome,ref:g.ator,cor:CV("--signal"),grau:0})),...fs.map(f=>({id:"f:"+f,tipo:"f",nome:f,desc:nomeCat(catDe[f]),cor:CORES_CAT[catDe[f]]||CV("--c0"),grupo:catDe[f],grau:0}))];
     gs.forEach(g=>g.ferramentas.forEach(f=>{if(fset.has(f))arestas.push({s:"g:"+g.nome,t:"f:"+f})}));
     sub=t("subRedeRw").replace("{g}",gs.length).replace("{f}",fs.length);
   }
@@ -678,7 +721,7 @@ function rede(){
   const id2=new Map(nos.map(x=>[x.id,x]));arestas.forEach(e=>{id2.get(e.s).grau++;id2.get(e.t).grau++});
   const W=1100,H=720;forca(nos,arestas,W,H);
   const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,class:"grafo",role:"img","aria-label":sub});
-  const defs=sv("defs");defs.innerHTML=`<radialGradient id="gAtor" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFC2A8"/><stop offset=".55" stop-color="#FF7A63"/><stop offset="1" stop-color="#B8432F"/></radialGradient><filter id="brilho" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="pontos" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1E2C30"/></pattern>`;
+  const defs=sv("defs");defs.innerHTML=`<radialGradient id="gAtor" cx="35%" cy="30%" r="75%"><stop offset="0" style="stop-color:color-mix(in srgb,var(--signal) 55%,#fff)"/><stop offset=".55" style="stop-color:var(--signal)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--signal) 70%,#000)"/></radialGradient><filter id="brilho" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="pontos" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" style="fill:var(--rule)"/></pattern>`;
   svg.append(defs,sv("rect",{width:W,height:H,fill:"url(#pontos)"}));
   const ga=sv("g",{class:"arestas"}),gn=sv("g");svg.append(ga,gn);
   const viz=new Map(nos.map(x=>[x.id,new Set([x.id])]));arestas.forEach(e=>{viz.get(e.s).add(e.t);viz.get(e.t).add(e.s)});
@@ -744,11 +787,12 @@ function aplicaIdioma(){
   document.documentElement.lang=L==="pt"?"pt-BR":"en";
   document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
   document.querySelectorAll("[data-tp]").forEach(e=>e.placeholder=t(e.dataset.tp));
-  document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
   if(META.n_atores)$("#meta").textContent=T[L].meta(META);
 }
-document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplicaIdioma();if(A.length){pintaMapa();if(sel)dossie(sel);montaPerfil();ranking();sobre();if(!$("#v-fluxos").hidden)fluxos();if(!$("#v-rede").hidden)rede()}});
+document.querySelector(".seg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplicaIdioma();if(A.length){pintaMapa();if(sel)dossie(sel);montaPerfil();ranking();sobre();if(!$("#v-fluxos").hidden)fluxos();if(!$("#v-rede").hidden)rede()}});
 aplicaIdioma();
+document.addEventListener("apt4all:tema",()=>location.reload());
 carrega().catch(e=>{$("#mapa").replaceChildren(el("div",{class:"carregando"},"Erro ao carregar dados: "+e.message))});
 </script>
 </body>

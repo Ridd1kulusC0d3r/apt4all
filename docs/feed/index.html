@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APT4ALL · Feed de vulnerabilidades</title>
+<meta name="description" content="Vulnerabilidades com exploração confirmada (CISA KEV) ligadas aos atores do Atlas quando há atribuição pública. Atualizado toda semana.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="APT4ALL · vulnerabilidades exploradas" href="atom.xml">
+<link rel="stylesheet" href="../assets/tema.css">
+<script src="../assets/tema.js"></script>
+<style>
+.ctl{display:flex;gap:18px;flex-wrap:wrap;align-items:end;padding:6px 0 18px}
+.ctl input{flex:1;min-width:220px;font:15px var(--sans);color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 2px;border-radius:0;outline:none}
+.ctl input:focus{border-bottom-color:var(--signal)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-2);padding:6px 10px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip b{font-weight:600;color:var(--ink-3)}.chip[aria-pressed="true"] b{color:inherit}
+.vazio{padding:40px 0;color:var(--ink-3);font:14px var(--mono)}
+.mais{margin:18px 0 0}
+</style>
+</head>
+<body>
+<!--mastro--><header class="mast"><div class="wrap">
+  <div class="mast-bar">
+    <a class="brand" href="../index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>feed de vulnerabilidades</small></a>
+    <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
+  </div>
+  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed" aria-current="page">Feed</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+</div></header><!--/mastro-->
+<div class="wrap">
+<section class="mast-title" style="margin:0">
+  <div><div class="eyebrow" data-t="selo">Feed vivo · CISA KEV</div><h1 data-th="h1">Vulnerabilidades <em>exploradas.</em></h1></div>
+  <div><p class="dek" data-t="lead">O que está sendo explorado de fato, ligado ao ator quando existe atribuição pública. A coleta roda toda semana e abre um pull request para revisão.</p>
+  <div class="links"><a href="atom.xml">Atom</a><a href="feed.json">JSON</a><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" data-t="fonte">Fonte: CISA KEV</a></div></div>
+</section>
+<div class="strip" id="nums"><div class="stat"><b>—</b><span data-t="nItens">na janela</span></div><div class="stat"><b>—</b><span data-t="nAtr">com atribuição</span></div><div class="stat"><b>—</b><span data-t="nRw">usadas em ransomware</span></div><div class="stat"><b>—</b><span id="atual" data-t="nData">atualizado em</span></div></div>
+</div>
+<main class="wrap">
+<div class="ctl"><input id="q" type="search" placeholder="Buscar CVE, fabricante, produto, ator" data-ph="busca" aria-label="Buscar">
+  <div class="chips" id="chips" role="group"></div></div>
+<div id="lista" class="ledger"></div>
+<p class="mais"><button class="chip" id="mais" hidden data-t="mais">Mostrar mais</button></p>
+<div class="aviso" style="margin-top:40px" data-t="aviso">Atribuição é hipótese. Cada ligação entre vulnerabilidade e ator cita quem atribuiu e a fonte pública; a confiança mostrada é a do relato, não nossa. Aliases diferentes podem não ser o mesmo ator: o Atlas só funde com evidência.</div>
+</main>
+<footer class="foot"><div class="wrap"><span data-t="rodape">Dados: CISA (domínio público dos EUA). Curadoria de atribuições: dados/feed/atribuicoes.json, com fonte em cada linha.</span> · <a href="https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/dados/feed/atribuicoes.json" data-t="sugerir">Sugerir uma atribuição</a></div></footer>
+<script>
+"use strict";
+const T={pt:{},en:{
+ selo:"Living feed · CISA KEV",h1:"Exploited <em>vulnerabilities.</em>",lead:"What is actually being exploited, linked to the actor where public attribution exists. Collection runs weekly and opens a pull request for review.",fonte:"Source: CISA KEV",
+ nItens:"in the window",nAtr:"with attribution",nRw:"used in ransomware",nData:"updated on",busca:"Search CVE, vendor, product, actor",
+ mais:"Show more",aviso:"Attribution is a hypothesis. Each link between vulnerability and actor names who attributed it and the public source; the confidence shown is the report's, not ours. Different aliases may not be the same actor: the Atlas only merges with evidence.",
+ rodape:"Data: CISA (US public domain). Attribution curation: dados/feed/atribuicoes.json, with a source on every line.",sugerir:"Suggest an attribution",
+ todos:"todos",atrib:"com atribuição",rw:"ransomware",venc:"prazo federal",atribuidoA:"Atribuição",por:"por",conf:"confiança",fontes:"Fontes",nota:"Nota",rotulos:"Também relatado como",vazio:"Nada encontrado."}};
+Object.assign(T.en,{todos:"all",atrib:"attributed",rw:"ransomware",venc:"federal due date",atribuidoA:"Attribution",por:"by",conf:"confidence",fontes:"Sources",nota:"Note",rotulos:"Also reported as",vazio:"Nothing found."});
+document.querySelectorAll("[data-t]").forEach(e=>T.pt[e.dataset.t]=e.textContent);
+document.querySelectorAll("[data-th]").forEach(e=>T.pt[e.dataset.th]=e.innerHTML);
+Object.assign(T.pt,{busca:"Buscar CVE, fabricante, produto, ator",todos:"todos",atrib:"com atribuição",rw:"ransomware",venc:"prazo federal",atribuidoA:"Atribuição",por:"por",conf:"confiança",fontes:"Fontes",nota:"Nota",rotulos:"Também relatado como",vazio:"Nada encontrado."});
+let L="pt";const tt=k=>T[L][k]??T.pt[k];
+try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
+let F=null,filtro="todos",busca="",lim=30;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const seguro=u=>/^https:\/\//.test(u)?u:"#";
+function lista(){
+  if(!F)return;
+  const q=busca.trim().toLowerCase();
+  const itens=F.itens.filter(v=>{
+    if(filtro==="atrib"&&!v.atribuicao)return false;
+    if(filtro==="rw"&&v.knownRansomwareCampaignUse!=="Known")return false;
+    if(!q)return true;
+    const alvo=[v.cveID,v.vendorProject,v.product,v.vulnerabilityName,...(v.atribuicao?v.atribuicao.atores.map(a=>a.nome).concat(v.atribuicao.rotulos||[]):[])].join(" ").toLowerCase();
+    return alvo.includes(q);
+  });
+  const el=document.getElementById("lista");
+  el.innerHTML=itens.slice(0,lim).map(v=>{
+    const a=v.atribuicao,link=seguro((v.notes||[])[0]||"");
+    const nomes=a?a.atores.map(x=>x.id?`<a href="../atlas/index.html#${esc(x.id)}">${esc(x.nome)}</a>`:esc(x.nome)).join(", "):"";
+    return `<article class="feed-item"><time datetime="${esc(v.dateAdded)}">${esc(v.dateAdded)}</time><div>
+      <h3>${esc(v.cveID)} · ${esc(v.vendorProject)} ${esc(v.product)}</h3>
+      <p>${esc(v.vulnerabilityName)}. ${esc(v.shortDescription||"")}</p>
+      <div class="meta">${v.knownRansomwareCampaignUse==="Known"?'<span class="tag sig">ransomware</span>':""}${v.dueDate?`<span class="tag">${tt("venc")} ${esc(v.dueDate)}</span>`:""}${link!=="#"?`<a href="${esc(link)}" rel="noopener">${link.replace(/^https:\/\/(www\.)?/,"").split("/")[0]}</a>`:""}</div>
+      ${a?`<div class="attr"><b>${tt("atribuidoA")}:</b> ${nomes} · ${esc(a.tipo)} · ${tt("por")} ${esc(a.atribuido_por)} · ${tt("conf")} <b>${esc(a.confianca)}</b><br>${esc(a.uso)}${a.rotulos&&a.rotulos.length?`<br><span class="mono" style="font-size:12px;color:var(--ink-3)">${tt("rotulos")}: ${a.rotulos.map(esc).join(", ")}</span>`:""}${a.nota_atlas?`<br><span style="font-size:13px;color:var(--ink-3)">${tt("nota")}: ${esc(a.nota_atlas)}</span>`:""}<br>${tt("fontes")}: ${a.fontes.map((u,i)=>`<a href="${esc(seguro(u))}" rel="noopener">[${i+1}]</a>`).join(" ")}</div>`:""}
+    </div></article>`}).join("")||`<p class="vazio">${tt("vazio")}</p>`;
+  const mais=document.getElementById("mais");mais.hidden=itens.length<=lim;
+}
+function chips(){
+  const n=f=>F.itens.filter(f).length;
+  const def=[["todos",()=>true],["atrib",v=>!!v.atribuicao],["rw",v=>v.knownRansomwareCampaignUse==="Known"]];
+  document.getElementById("chips").innerHTML=def.map(([k,f])=>`<button class="chip" data-k="${k}" aria-pressed="${filtro===k}">${tt(k)} <b>${n(f)}</b></button>`).join("");
+}
+function aplica(){
+  document.documentElement.lang=L==="pt"?"pt-BR":"en";
+  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]??T.pt[e.dataset.t]);
+  document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=T[L][e.dataset.th]??T.pt[e.dataset.th]);
+  document.getElementById("q").placeholder=tt("busca");
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  window.TEMA_LANG&&TEMA_LANG(L);
+  if(F){chips();lista()}
+}
+document.querySelector(".seg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;L=b.dataset.l;try{localStorage.setItem("apt4all-lang",L)}catch(x){}aplica()});
+document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;filtro=b.dataset.k;lim=30;chips();lista()});
+document.getElementById("q").addEventListener("input",e=>{busca=e.target.value;lim=30;lista()});
+document.getElementById("mais").addEventListener("click",()=>{lim+=30;lista()});
+aplica();
+fetch("feed.json").then(r=>r.json()).then(f=>{
+  F=f;const m=f.meta,b=document.querySelectorAll("#nums b");
+  [m.n_itens,m.n_atribuidos,m.n_ransomware,m.gerado_em].forEach((v,i)=>b[i].textContent=typeof v==="number"?v.toLocaleString(L==="pt"?"pt-BR":"en-US"):v);
+  b[3].style.fontSize="20px";chips();lista();
+}).catch(()=>{document.getElementById("lista").innerHTML='<p class="vazio">feed.json</p>'});
+</script>
+</body>
+</html>

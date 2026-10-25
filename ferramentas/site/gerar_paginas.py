@@ -9,6 +9,9 @@ Uso: python3 ferramentas/site/gerar_paginas.py
 """
 import html, os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from mastro import mastro  # noqa: E402
+
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SAIDA = os.path.join(RAIZ, "docs", "ler")
 REPO = "https://github.com/Ridd1kulusC0d3r/apt4all/blob/main/"
@@ -32,7 +35,6 @@ PAGINAS = [
     ("SOURCES.md", "sources", "Sources and licenses", "Sobre"),
     ("CONTRIBUTING.md", "contribuir", "Como contribuir", "Sobre"),
     ("CONTRIBUTING.en.md", "contributing", "How to contribute", "Sobre"),
-    ("RELATORIO-DE-TESTES.md", "relatorio-de-testes", "Relatório de testes", "Sobre"),
     ("dados/gerados/resumo.md", "resumo-da-base", "Resumo da base", "Sobre"),
 ]
 MAPA = {os.path.normpath(o): p for o, p, _, _ in PAGINAS}
@@ -168,55 +170,44 @@ def converte(md, origem):
 
 
 ESTILO = """
-:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
- --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
-*{box-sizing:border-box}
-html{scroll-padding-top:80px}
-body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.65 var(--corpo)}
-a{color:var(--menta)}
-:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
-.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
-.topo .in{max-width:1240px;margin:0 auto;padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none}
-.lg span{color:var(--menta)}
-.atalhos{display:flex;gap:4px;flex-wrap:wrap}
-.atalhos a{font:600 13px var(--mono);color:var(--apagado);text-decoration:none;padding:5px 9px;border:1px solid transparent}
-.atalhos a:hover,.atalhos a[aria-current]{color:var(--claro);border-color:var(--borda)}
-.grade{max-width:1240px;margin:0 auto;padding:0 16px 70px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px}
-nav.lado{position:sticky;top:70px;align-self:start;padding-top:28px;max-height:calc(100vh - 80px);overflow:auto;font-size:14px}
-nav.lado b{display:block;font:600 11px var(--mono);letter-spacing:.14em;color:var(--apagado);text-transform:uppercase;margin:16px 0 6px}
-nav.lado a{display:block;padding:4px 10px;border-left:2px solid var(--borda);color:var(--texto);text-decoration:none}
-nav.lado a:hover{color:var(--menta)}
-nav.lado a[aria-current]{border-left-color:var(--ambar);color:var(--ambar)}
-nav.lado .sum a{font-size:13px;color:var(--apagado);padding-left:18px}
-main{min-width:0;padding-top:24px;max-width:860px}
-h1{font:700 clamp(32px,5vw,48px)/1.05 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:8px 0 18px;text-wrap:balance}
-h2{font:700 28px/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:42px 0 10px;padding-top:12px;border-top:1px solid var(--borda);text-wrap:balance}
-h3{font:700 20px var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
-h4{font:600 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);margin:22px 0 6px}
-p,li{max-width:72ch}
-strong{color:var(--claro)}
-code{font:.88em var(--mono);background:var(--sup2);border:1px solid var(--borda);padding:1px 5px}
-pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
-pre code{background:none;border:0;padding:0}
-blockquote{margin:16px 0;border-left:3px solid var(--menta);background:var(--sup);padding:10px 16px}
-blockquote p{margin:0}
-.tabela{overflow-x:auto;margin:14px 0;border:1px solid var(--borda)}
-table{border-collapse:collapse;width:100%;font-size:14.5px}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
-th{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--apagado);background:var(--sup)}
-td{font-variant-numeric:tabular-nums}
-tbody tr:hover{background:var(--sup)}
+.grade{max-width:1180px;margin:0 auto;padding:0 20px 70px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px}
+nav.lado{position:sticky;top:16px;align-self:start;padding-top:36px;max-height:calc(100vh - 32px);overflow:auto;font-size:14px}
+nav.lado b{display:block;font:600 11px var(--mono);letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin:18px 0 6px}
+nav.lado a{display:block;padding:4px 10px;border-left:2px solid var(--rule);color:var(--ink-2);text-decoration:none}
+nav.lado a:hover{color:var(--signal)}
+nav.lado a[aria-current]{border-left-color:var(--signal);color:var(--ink);font-weight:600}
+nav.lado .sum a{font-size:13px;color:var(--ink-3);padding-left:18px;font-weight:400}
+main.texto{min-width:0;padding-top:36px;max-width:820px}
+main.texto h1{font-size:clamp(30px,4.6vw,46px);margin:8px 0 18px}
+main.texto h2{margin:44px 0 10px;padding-top:14px;border-top:1px solid var(--rule)}
+main.texto h3{font:700 19px var(--serif);margin:28px 0 8px}
+main.texto h4{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin:22px 0 6px}
+main.texto p,main.texto li{max-width:72ch}
+main.texto strong{color:var(--ink)}
+p.trocar{font:600 12px var(--mono);letter-spacing:.06em;margin:0 0 18px}
 li.cx{list-style:none;margin-left:-22px}
-li.cx input{accent-color:#5EE6C4;width:16px;height:16px;vertical-align:-2px;margin-right:6px}
-hr{border:0;border-top:1px solid var(--borda);margin:28px 0}
-.origem{font:12px var(--mono);color:var(--apagado);margin-top:40px;padding-top:14px;border-top:1px solid var(--borda)}
-.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
-@media (max-width:900px){.grade{grid-template-columns:minmax(0,1fr);gap:0}nav.lado{position:static;max-height:none;padding-top:16px;border-bottom:1px solid var(--borda);padding-bottom:12px}nav.lado .sum{display:none}}
+li.cx input{accent-color:var(--signal);width:16px;height:16px;vertical-align:-2px;margin-right:6px}
+hr{border:0;border-top:1px solid var(--rule);margin:28px 0}
+.origem{font:12px var(--mono);color:var(--ink-3);margin-top:40px;padding-top:14px;border-top:1px solid var(--rule)}
+.selo{font:600 11px var(--mono);letter-spacing:.14em;color:var(--signal);text-transform:uppercase}
+.mast{margin-bottom:0}
+@media (max-width:900px){.grade{grid-template-columns:minmax(0,1fr);gap:0}nav.lado{position:static;max-height:none;padding-top:16px;border-bottom:1px solid var(--rule);padding-bottom:12px}nav.lado .sum{display:none}}
 """
 
 
+EN = ('trilha-en', 'tce-en', 'start-here', 'tce-analysis', 'sources', 'contributing')
+
+
+def limpa(corpo):
+    """Tira o losango decorativo do título e troca o rótulo 'README.en.md' por um link de idioma legível."""
+    corpo = re.sub(r'(<h1[^>]*>)\s*◆\s*', r'\1', corpo)
+    corpo = re.sub(r'<p>(English|Português): <a href="([^"]+)">[^<]+\.md</a></p>',
+                   lambda m: '<p class="trocar"><a href="%s">%s</a></p>' % (m.group(2), 'English version' if m.group(1) == 'English' else 'Versão em português'), corpo)
+    return corpo
+
+
 def pagina(titulo, corpo, sumario, atual, origem, grupos):
+    corpo = limpa(corpo)
     lado = []
     for g, itens in grupos.items():
         lado.append(f"<b>{g}</b>")
@@ -226,21 +217,22 @@ def pagina(titulo, corpo, sumario, atual, origem, grupos):
             if p == atual and sumario:
                 lado.append('<div class="sum">' + "".join(f'<a href="#{a}">{html.escape(t2)}</a>' for a, t2 in sumario) + "</div>")
     return f"""<!doctype html>
-<html lang="{'en' if atual.endswith('-en') or atual in ('start-here','tce-analysis','sources','contributing') else 'pt-BR'}">
+<html lang="{'en' if atual in EN else 'pt-BR'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>APT4ALL · {html.escape(titulo)}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/tema.css">
+<script src="../assets/tema.js"></script>
 <style>{ESTILO}</style>
 </head>
 <body>
-<header class="topo"><div class="in"><a class="lg" href="../index.html">APT4ALL <span>/</span> LER</a>
-<nav class="atalhos" aria-label="Atalhos"><a href="../atlas/index.html">Atlas</a><a href="../recursos/index.html">Recursos</a><a href="trilha.html"{' aria-current="page"' if atual == 'trilha' else ''}>Trilha</a><a href="../manual/index.html">Manual</a><a href="index.html"{' aria-current="page"' if atual == 'index' else ''}>Todos os textos</a></nav></div></header>
+{mastro('../', 'trilha' if atual in ('trilha', 'trilha-en') else 'ler', 'textos' if atual not in EN else 'texts', seg=False)}
+<script>document.addEventListener("DOMContentLoaded",function(){{TEMA_LANG("{'en' if atual in EN else 'pt'}")}})</script>
 <div class="grade">
 <nav class="lado" aria-label="Textos">{''.join(lado)}</nav>
-<main>
+<main class="texto">
 {corpo}
 <p class="origem">{'Gerado de ' + f'<a href="{REPO}{origem}">{origem}</a>' if origem else ''} · código MIT · texto CC BY 4.0</p>
 </main>
@@ -278,7 +270,7 @@ def main():
     cartoes = []
     for g, itens in grupos.items():
         cartoes.append(f"<h2>{g}</h2><ul>" + "".join(f'<li><a href="{p}.html">{html.escape(t)}</a></li>' for p, t in itens) + "</ul>")
-    corpo = '<div class="selo">◆ Biblioteca do repositório</div><h1>Todos os textos</h1><p>Cada documento do repositório em página navegável, em português e inglês. Comece pelo <a href="comece-aqui.html">Comece aqui</a>.</p>' + "".join(cartoes)
+    corpo = '<div class="selo">Biblioteca do repositório</div><h1>Todos os textos</h1><p>Cada documento do repositório em página navegável, em português e inglês. Comece pelo <a href="comece-aqui.html">Comece aqui</a>.</p>' + "".join(cartoes)
     with open(os.path.join(SAIDA, "index.html"), "w", encoding="utf-8") as f:
         f.write(pagina("Todos os textos", corpo, [], "index", "", grupos))
     print(f"{feitas} páginas + índice em docs/ler/")

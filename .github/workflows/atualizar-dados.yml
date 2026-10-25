@@ -27,6 +27,7 @@ jobs:
           python ferramentas/atlas/construir_dados.py --baixar
           python ferramentas/atlas/mapa_hex.py
           python ferramentas/ransomware/construir_matriz.py --baixar
+          python ferramentas/feed/ingerir_kev.py --baixar
           python ferramentas/recursos/gerar_listas.py
           python ferramentas/site/gerar_paginas.py
       - name: Testes
@@ -47,7 +48,7 @@ jobs:
           commit-message: "dados: atualização semanal das fontes"
           title: "Dados: atualização semanal das fontes"
           body: |
-            Atualização automática de MISP Galaxy, MITRE ATT&CK, planilha APT Groups and Operations, EternalLiberty, APTnotes e Ransomware Tool Matrix.
+            Atualização automática do feed de vulnerabilidades (CISA KEV, ver `dados/feed/novidades.md`), de MISP Galaxy, MITRE ATT&CK, planilha APT Groups and Operations, EternalLiberty, APTnotes e Ransomware Tool Matrix.
             Os testes passaram. Veja o portão de qualidade no resumo da execução e `dados/gerados/resumo.md` (contagem por país).
             Rótulo `revisar` = o portão reprovou (queda grande de números ou fonte sumida): confira antes de mesclar.
             Ao mesclar, o site é republicado automaticamente.

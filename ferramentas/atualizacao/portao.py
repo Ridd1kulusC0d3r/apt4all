@@ -22,6 +22,7 @@ ALTA_MAX = 0.50       # alta acima disso vira aviso (fonte mudou de formato?)
 INDICADORES = {
     "docs/atlas/atores.json": ["n_atores", "n_registros", "n_relatorios"],
     "docs/atlas/ransomware.json": ["n_grupos", "n_ferramentas", "n_usos"],
+    "docs/feed/feed.json": ["n_kev_total"],
 }
 
 

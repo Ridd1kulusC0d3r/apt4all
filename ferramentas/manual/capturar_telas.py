@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Refaz as telas do manual (docs/manual/img) e os marcadores numerados.
 Opcional: precisa do Playwright (pip install playwright; playwright install chromium).
+Com um Chromium já instalado, aponte CHROMIUM_PATH para o executável.
 
 Uso: python3 ferramentas/manual/capturar_telas.py
 """
@@ -37,18 +38,18 @@ def shot(pg, nome, alvos, lang="pt", full=False):
     pg.screenshot(path=OUT+nome+".jpg", type="jpeg", quality=80)
     marks[nome]=res
 with sync_playwright() as p:
-    b=p.chromium.launch()
+    b=p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
     for lang in ("pt","en"):
         ctx=b.new_context(viewport={"width":1280,"height":800}, locale="pt-BR" if lang=="pt" else "en-US", device_scale_factor=1)
         ctx.add_init_script(f"try{{localStorage.setItem('apt4all-lang','{lang}')}}catch(e){{}}")
         pg=ctx.new_page(); pg.emulate_media(reduced_motion="reduce")
         pg.goto(B); pg.wait_for_timeout(900)
-        shot(pg,f"inicio-{lang}",[("a.btn",0,"c"),(".idioma",0,"c"),("#nums",0,"c")])
+        shot(pg,f"inicio-{lang}",[(".links a",0,"c"),(".seg",0,"c"),("#nums",0,"c")])
         pg.goto(B+"atlas/#BR"); pg.wait_for_timeout(1500)
         # garante o idioma
-        pg.locator(f'.idioma button[data-l="{lang}"]').click(); pg.wait_for_timeout(300)
+        pg.locator(f'.seg button[data-l="{lang}"]').click(); pg.wait_for_timeout(300)
         pg.evaluate("escolhe('BR')"); pg.wait_for_timeout(400)
-        shot(pg,f"mapa-{lang}",[("#busca",0,"c"),("nav.modos",0,"c"),("#fmot",0,"c"),('#mapa',0,"c"),("#dossie",0,"c"),(".idioma",0,"c")])
+        shot(pg,f"mapa-{lang}",[("#busca",0,"c"),("nav.modos",0,"c"),("#fmot",0,"c"),('#mapa',0,"c"),("#dossie",0,"c"),(".seg",0,"c")])
         pg.evaluate("abreAtor('apt28')"); pg.wait_for_timeout(400)
         shot(pg,f"ator-{lang}",[(".gaveta h2",0,"c"),(".gaveta .sec.aviso",0,"c"),(".gaveta table.forn",0,"c"),(".gaveta .nuvem",1,"c"),(".gaveta .fecha",0,"c")])
         pg.evaluate("fechaAtor()")

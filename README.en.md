@@ -11,10 +11,10 @@ with threat profiles by country and sector, curated resources and a learning pat
 
 **read the pattern · listen to the silence · take position and wait**
 
-[![Atlas](https://img.shields.io/badge/Atlas-open%20in%20browser-5EE6C4?style=flat-square)](https://ridd1kulusc0d3r.github.io/apt4all/atlas/)
-[![ATT&CK](https://img.shields.io/badge/ATT%26CK-v19.2-F4BE3F?style=flat-square)](https://attack.mitre.org/)
-[![Code MIT](https://img.shields.io/badge/code-MIT-1F2B29?style=flat-square)](LICENSE)
-[![Content CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-1F2B29?style=flat-square)](LICENSE-CONTEUDO.md)
+[![Atlas](https://img.shields.io/badge/Atlas-open%20in%20browser-b43c0e?style=flat-square)](https://ridd1kulusc0d3r.github.io/apt4all/atlas/)
+[![ATT&CK](https://img.shields.io/badge/ATT%26CK-v19.2-17150f?style=flat-square)](https://attack.mitre.org/)
+[![Code MIT](https://img.shields.io/badge/code-MIT-4a463c?style=flat-square)](LICENSE)
+[![Content CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-4a463c?style=flat-square)](LICENSE-CONTEUDO.md)
 
 </div>
 
@@ -38,6 +38,7 @@ One group has ten names: APT28 is Fancy Bear, Sofacy, Forest Blizzard, STRONTIUM
 | 🗺️ **War-room Atlas** | Hex map by country, country dossier, actor card, ranking | [`docs/atlas/`](docs/atlas/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/atlas/) |
 | 🌊 **Flows and Network** | Sankey country → motive → tactic → technique; network of shared techniques; the same for tools of 92 ransomware gangs | [Atlas → Flows](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#fluxos) · [Network](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#rede) |
 | 🎯 **Threat profile** | Country + sector → likely actors, techniques to cover, Navigator layer, TCE signal | [Atlas → Profile](https://ridd1kulusc0d3r.github.io/apt4all/atlas/#perfil) · [`ferramentas/tce/`](ferramentas/tce/) |
+| 📡 **Vulnerability feed** | Vulnerabilities with confirmed exploitation (CISA KEV), linked to actors where public attribution exists, with Atom and JSON; refreshed weekly | [`docs/feed/`](docs/feed/) · [online](https://ridd1kulusc0d3r.github.io/apt4all/feed/) |
 | 📚 **Resources** | 186 links in 21 categories, bilingual, legacy flagged, a filter for the original list, checked monthly | [RESOURCES.md](RESOURCES.md) · [online](https://ridd1kulusc0d3r.github.io/apt4all/recursos/) |
 | 🧭 **Learning path** | 9 modules, from a group's name to a final dossier, each with one "do this now" action | [`trilha/`](trilha/README.en.md) |
 | 🔗 **TCE bridge** | Takes the threat profile into whole-environment threat modeling | [`tce/`](tce/README.en.md) |
@@ -136,6 +137,5 @@ Folder and tool names are in Portuguese (the project's home language); every pag
 - Sources and licenses for each dataset: [SOURCES.md](SOURCES.md)
 - How to cite: [CITATION.cff](CITATION.cff)
 - Code under [MIT](LICENSE); texts under [CC BY 4.0](LICENSE-CONTEUDO.md); third-party data under its original license
-- Test report: [RELATORIO-DE-TESTES.md](RELATORIO-DE-TESTES.md) (Portuguese)
 
 <div align="center"><sub>® MITRE ATT&CK is a registered trademark of The MITRE Corporation. APT4ALL is not affiliated with MITRE or with any vendor cited.</sub></div>

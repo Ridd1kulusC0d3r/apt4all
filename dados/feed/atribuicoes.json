@@ -1,0 +1,33 @@
+{
+  "_leia": "Curadoria humana. Atribuição é hipótese: cada linha cita quem atribuiu e a fonte pública. Só entra o que tem fonte; confiança é a do relato, não nossa.",
+  "atribuicoes": [
+    {
+      "cve": "CVE-2026-102764",
+      "atores": ["WARP PANDA"],
+      "rotulos": ["Armory Castle", "UNC5221", "Warp Panda"],
+      "tipo": "espionagem",
+      "uso": "Zero-day explorado desde 29/08/2026 em um appliance BeyondTrust Remote Support auto-hospedado (versões 24.3.1 a 26.2.3); correção BT26-05-RS.",
+      "atribuido_por": "relato da imprensa especializada (nexo com a China); a fonte não nomeia quem fez a atribuição",
+      "confianca": "media",
+      "fontes": [
+        "https://thehackernews.com/2026/10/china-linked-hackers-exploited.html",
+        "https://www.securityweek.com/chinese-apt-exploited-beyondtrust-vulnerability-as-zero-day/"
+      ],
+      "nota_atlas": "O Atlas lista WARP PANDA e, em separado, UTA0178 (rótulo ligado ao UNC5221). Os rótulos Armory Castle e UNC5221 vêm do relato citado; sem fonte formal de equivalência, não foram fundidos."
+    },
+    {
+      "cve": "CVE-2026-0257",
+      "atores": ["Qilin", "INC Ransom"],
+      "rotulos": ["Spikey Scorpius", "Tarnished Scorpius", "Settra"],
+      "tipo": "ransomware",
+      "uso": "Bypass de autenticação no GlobalProtect (PAN-OS e Prisma Access) usado como acesso inicial em intrusões de ransomware; exploração desde maio, intrusões investigadas desde junho de 2026.",
+      "atribuido_por": "Unit 42 (Qilin e Inc); ReliaQuest (Qilin e Settra)",
+      "confianca": "alta",
+      "fontes": [
+        "https://www.helpnetsecurity.com/2026/10/21/ransomware-groups-exploit-palo-alto-globalprotect-cve-2026-0257/",
+        "https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/"
+      ],
+      "nota_atlas": "Settra ainda não existe como ator no Atlas."
+    }
+  ]
+}

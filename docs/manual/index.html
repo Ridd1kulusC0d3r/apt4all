@@ -3,34 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>APT4ALL Manual</title>
+<title>APT4ALL · Manual</title>
 <meta name="description" content="Manual ilustrado do APT4ALL: instalar, usar o Atlas, montar o perfil de ameaça e levar para o TCE.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/tema.css">
+<script src="../assets/tema.js"></script>
 <style>
-:root{color-scheme:dark;--fundo:#0B0F10;--fundo2:#0D1213;--sup:#10181A;--sup2:#152022;--borda:#1F2B29;--texto:#DCE4E2;--claro:#F2F7F6;--apagado:#8A9693;--menta:#5EE6C4;--ambar:#F4BE3F;--coral:#FF7A63;
- --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;--corpo:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
-*{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.6 var(--corpo)}
 html[data-lang="pt"] .en,html[data-lang="en"] .pt{display:none!important}
-a{color:var(--menta)}
-:focus-visible{outline:2px solid var(--menta);outline-offset:2px}
 code,kbd,pre{font-family:var(--mono);font-size:.88em}
 code{background:var(--sup2);padding:1px 5px;border:1px solid var(--borda)}
 kbd{background:var(--sup2);border:1px solid var(--borda);border-bottom-width:2px;padding:0 5px}
 pre{background:var(--fundo2);border:1px solid var(--borda);padding:12px 14px;overflow-x:auto;line-height:1.5}
 pre code{background:none;border:0;padding:0}
-.topo{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--fundo) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--borda)}
-.topo .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
-.lg{font:700 20px var(--display);letter-spacing:.14em;color:var(--claro);text-decoration:none;white-space:nowrap}
-.lg span{color:var(--menta)}
-.idioma{display:flex;border:1px solid var(--borda)}
-.idioma button{background:none;border:0;color:var(--apagado);padding:6px 10px;font:600 12px var(--mono);cursor:pointer}
-.idioma button[aria-pressed="true"]{background:var(--menta);color:#06201C}
-.layout{max-width:1180px;margin:0 auto;padding:0 16px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+.layout{max-width:1180px;margin:0 auto;padding:0 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
 nav.sumario{position:sticky;top:70px;align-self:start;padding-top:34px;font-size:14px}
 nav.sumario b{font:600 11px var(--mono);letter-spacing:.12em;color:var(--apagado);text-transform:uppercase}
 nav.sumario ol{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:2px;counter-reset:s}
@@ -41,14 +28,14 @@ nav.sumario a:hover,nav.sumario a.ativo{border-left-color:var(--menta);color:var
 @media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav.sumario{position:static;padding-top:20px}nav.sumario ol{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
 main{min-width:0}
 .hero{padding:44px 0 10px}
-.selo{font:600 12px var(--mono);letter-spacing:.16em;color:var(--menta);text-transform:uppercase}
-h1{font:700 clamp(40px,7vw,64px)/.95 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--claro);margin:10px 0 14px}
+.selo{font:600 11px var(--mono);letter-spacing:.14em;color:var(--signal);text-transform:uppercase}
+h1{margin:10px 0 14px}
 h1 em{font-style:normal;color:var(--ambar)}
 .lead{font-size:18px;color:var(--texto);max-width:64ch;margin:0}
 section{padding-top:46px}
-h2{font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--claro);margin:0 0 6px;display:flex;gap:12px;align-items:baseline}
+h2{margin:0 0 6px;display:flex;gap:12px;align-items:baseline}
 h2 .num{font:600 14px var(--mono);color:var(--ambar)}
-h3{font:700 21px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--claro);margin:28px 0 8px}
+h3{font:700 19px var(--serif);margin:28px 0 8px}
 .sub{color:var(--apagado);margin:0 0 18px;max-width:70ch}
 p,li{max-width:72ch}
 .agora{border:1px solid var(--menta);background:color-mix(in srgb,var(--menta) 7%,var(--fundo));padding:14px 16px;margin:18px 0;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
@@ -57,7 +44,7 @@ p,li{max-width:72ch}
 .aviso{border-left:3px solid var(--coral);background:var(--fundo2);padding:10px 14px;color:var(--texto);margin:16px 0}
 .dica{border-left:3px solid var(--ambar);background:var(--fundo2);padding:10px 14px;margin:16px 0}
 .abas{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--borda);margin-top:8px}
-.abas button{background:none;border:0;border-bottom:3px solid transparent;color:var(--apagado);padding:9px 14px;font:600 15px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.abas button{background:none;border:0;border-bottom:3px solid transparent;color:var(--apagado);padding:9px 14px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .abas button[aria-selected="true"]{color:var(--claro);border-bottom-color:var(--ambar)}
 .painel-aba{background:var(--sup);border:1px solid var(--borda);border-top:0;padding:6px 18px 14px}
 .passos{counter-reset:p;list-style:none;padding:0;margin:12px 0}
@@ -67,13 +54,13 @@ p,li{max-width:72ch}
 figure.tela{margin:20px 0 28px;background:var(--sup);border:1px solid var(--borda)}
 .quadro{position:relative;line-height:0;overflow:hidden}
 .quadro img{width:100%;height:auto;display:block}
-.mk{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--ambar);color:#1B1300;font:700 14px/28px var(--mono);text-align:center;box-shadow:0 0 0 3px rgba(11,15,16,.85),0 2px 10px rgba(0,0,0,.6);z-index:2}
+.mk{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--ambar);color:var(--signal-ink);font:700 14px/28px var(--mono);text-align:center;box-shadow:0 0 0 3px rgba(11,15,16,.85),0 2px 10px rgba(0,0,0,.6);z-index:2}
 .bx{position:absolute;border:2px dashed var(--ambar);border-radius:3px;pointer-events:none;opacity:.8}
 figure.tela figcaption{padding:12px 16px 14px;border-top:1px solid var(--borda)}
 figure.tela figcaption .tit{font:600 12px var(--mono);letter-spacing:.1em;color:var(--apagado);text-transform:uppercase}
 .leg{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
 .leg li{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;max-width:none}
-.leg li i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ambar);color:#1B1300;font:700 12px/22px var(--mono);text-align:center;margin-top:2px}
+.leg li i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ambar);color:var(--signal-ink);font:700 12px/22px var(--mono);text-align:center;margin-top:2px}
 @media (max-width:600px){.mk{width:20px;height:20px;font-size:11px;line-height:20px}.bx{display:none}}
 .tab{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
 .tab th,.tab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--borda);vertical-align:top}
@@ -90,14 +77,17 @@ figure.tela figcaption .tit{font:600 12px var(--mono);letter-spacing:.1em;color:
 .celular{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:24px;align-items:center}
 .celular img{width:100%;border:1px solid var(--borda);border-radius:18px}
 @media (max-width:640px){.celular{grid-template-columns:1fr}.celular img{max-width:240px}}
-footer{margin-top:60px;border-top:1px solid var(--borda);padding-top:18px;font:13px var(--mono);color:var(--apagado)}
+footer{margin-top:60px;border-top:1px solid var(--ink);padding-top:18px;font:12px var(--mono);color:var(--apagado)}
 </style>
 </head>
 <body>
-<header class="topo"><div class="in">
-  <a class="lg" href="../index.html">APT4ALL <span>/</span> MANUAL</a>
-  <div class="idioma" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
-</div></header>
+<!--mastro--><header class="mast"><div class="wrap">
+  <div class="mast-bar">
+    <a class="brand" href="../index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>manual</small></a>
+    <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
+  </div>
+  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual" aria-current="page">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+</div></header><!--/mastro-->
 
 <div class="layout">
 <nav class="sumario" aria-label="Sumário">
@@ -400,17 +390,9 @@ python3 ferramentas/tce/perfil_ameaca.py --listar paises</code></pre>
   <h3 class="pt">Regra de junção dos nomes</h3><h3 class="en">Name merging rule</h3>
   <p class="pt">Union-find puro junta tudo em cascata (Lazarus virava um bloco de 41 registros). O APT4ALL usa âncoras: primeiro os grupos do ATT&amp;CK, depois planilha, MISP e EternalLiberty. Um registro entra num ator só pelo ID do ATT&amp;CK, pelo nome principal, ou por apelidos que apontem para <b>um único</b> ator. Apelido reivindicado por dois atores vira ambíguo e para de ligar.</p>
   <p class="en">Plain union-find merges in cascade (Lazarus became a 41-record blob). APT4ALL uses anchors: ATT&amp;CK groups first, then the sheet, MISP and EternalLiberty. A record joins an actor only by ATT&amp;CK ID, by primary name, or by aliases pointing to <b>a single</b> actor. An alias claimed by two actors becomes ambiguous and stops linking.</p>
-  <h3 class="pt">Resultados dos testes</h3><h3 class="en">Test results</h3>
-  <div class="rolar"><table class="tab">
-    <thead><tr><th class="pt">Bateria</th><th class="en">Suite</th><th class="pt">Testes</th><th class="en">Tests</th><th class="pt">Resultado</th><th class="en">Result</th></tr></thead>
-    <tbody id="testes">
-      <tr><td><code>python3 -m unittest discover -s testes</code></td><td>47</td><td class="ok">OK · 46 <span class="pt">passaram</span><span class="en">passed</span>, 1 <span class="pt">pulado (TCE ausente)</span><span class="en">skipped (no TCE)</span></td></tr>
-      <tr><td><span class="pt">Integração com o TCE (ambiente com <code>tce</code>)</span><span class="en">TCE integration (environment with <code>tce</code>)</span></td><td>7</td><td class="ok">OK · <span class="pt">candidato = 0, aceito &gt; 0</span><span class="en">candidate = 0, accepted &gt; 0</span></td></tr>
-      <tr><td><span class="pt">Horizon, caso <code>enterprise-identity</code></span><span class="en">Horizon, <code>enterprise-identity</code> case</span></td><td>3</td><td class="ok">OK · H2 → H1 <span class="pt">com sinal aceito</span><span class="en">with accepted signal</span></td></tr>
-      <tr><td><span class="pt">Navegador (Chromium, 1280×800 e 390×844)</span><span class="en">Browser (Chromium, 1280×800 and 390×844)</span></td><td>27</td><td class="ok">OK · <span class="pt">sem erro de página, números do dossiê batem, rótulos sem sobreposição</span><span class="en">no page errors, dossier numbers match, no overlapping labels</span></td></tr>
-    </tbody></table></div>
-  <p class="pt">Detalhes em <a href="../ler/relatorio-de-testes.html">RELATORIO-DE-TESTES.md</a>.</p>
-  <p class="en">Details in <a href="../ler/relatorio-de-testes.html">RELATORIO-DE-TESTES.md</a> (Portuguese).</p>
+  <h3 class="pt">Testes</h3><h3 class="en">Tests</h3>
+  <p class="pt">A bateria roda a cada push em Python 3.9 e 3.12, só com a biblioteca padrão (<code>python3 -m unittest discover -s testes</code>). O resultado vivo está em <a href="https://github.com/Ridd1kulusC0d3r/apt4all/actions/workflows/testes.yml">Actions</a>; não há mais contagem fixa aqui, para ela não envelhecer.</p>
+  <p class="en">The suite runs on every push on Python 3.9 and 3.12, standard library only (<code>python3 -m unittest discover -s testes</code>). The live result is on <a href="https://github.com/Ridd1kulusC0d3r/apt4all/actions/workflows/testes.yml">Actions</a>; there is no fixed count here so it cannot go stale.</p>
   <h3 class="pt">Limites conhecidos</h3><h3 class="en">Known limits</h3>
   <ul>
     <li><span class="pt">638 atores sem país atribuído (crime cibernético e hacktivismo, em sua maioria).</span><span class="en">638 actors with no attributed country (mostly cybercrime and hacktivism).</span></li>
@@ -428,10 +410,10 @@ python3 ferramentas/tce/perfil_ameaca.py --listar paises</code></pre>
 
 <script>
 "use strict";
-const MARCAS=/*MARCAS*/{"inicio-pt":[{"n":1,"x":14.8,"y":67.1,"box":[7.5,64.4,14.6,5.5]},{"n":2,"x":89.7,"y":4.1,"box":[87.0,2.4,5.5,3.5]},{"n":3,"x":50.0,"y":82.4,"box":[7.5,75.9,85.0,12.9]}],"mapa-pt":[{"n":1,"x":80.1,"y":3.9,"box":[67.6,1.4,25.0,5.1]},{"n":2,"x":50.0,"y":10.2,"box":[0.0,7.8,100.0,4.9]},{"n":3,"x":30.4,"y":18.0,"box":[12.4,16.5,35.9,3.0]},{"n":4,"x":32.8,"y":24.7,"box":[1.3,21.2,62.9,38.6]},{"n":5,"x":82.2,"y":18.3,"box":[65.6,14.8,33.2,152.8]},{"n":6,"x":96.0,"y":3.9,"box":[93.2,2.0,5.5,3.8]}],"ator-pt":[{"n":1,"x":75.8,"y":8.2,"box":[53.0,5.8,45.5,4.8]},{"n":2,"x":75.8,"y":19.2,"box":[53.0,15.6,45.5,7.4]},{"n":3,"x":75.8,"y":33.2,"box":[53.0,27.8,45.5,10.7]},{"n":4,"x":75.8,"y":54.0,"box":[53.0,43.4,45.5,21.2]},{"n":5,"x":95.5,"y":4.0,"box":[92.4,2.2,6.2,3.5]}],"perfil-pt":[{"n":1,"x":25.0,"y":16.8,"box":[21.6,15.2,6.8,3.0]},{"n":2,"x":20.8,"y":24.2,"box":[14.9,22.8,11.7,3.0]},{"n":3,"x":41.9,"y":32.2,"box":[37.4,30.8,9.1,3.0]},{"n":4,"x":56.2,"y":40.2,"box":[14.9,38.8,82.7,3.0]},{"n":5,"x":1.3,"y":46.9,"box":[1.3,43.4,97.3,7.0]},{"n":6,"x":81.4,"y":57.1,"box":[65.2,53.6,32.4,56.6]}],"fluxos-pt":[{"n":1,"x":14.1,"y":16.4,"box":[2.4,15.2,11.7,2.4]},{"n":2,"x":14.1,"y":20.6,"box":[2.4,19.4,11.7,2.4]},{"n":3,"x":14.1,"y":28.6,"box":[2.4,27.4,11.7,2.4]},{"n":4,"x":2.2,"y":41.4,"box":[2.2,40.6,8.1,1.5]},{"n":5,"x":46.8,"y":41.4,"box":[46.8,40.6,3.5,1.5]},{"n":6,"x":70.7,"y":41.4,"box":[70.7,40.6,4.1,1.5]}],"rede-pt":[{"n":1,"x":71.7,"y":37.2,"box":[67.3,31.7,8.8,11.0]},{"n":2,"x":48.8,"y":86.3,"box":[45.0,84.7,7.6,3.2]},{"n":3,"x":56.2,"y":15.6,"box":[14.9,14.1,82.7,3.0]}],"ranking-pt":[{"n":1,"x":19.6,"y":21.1,"box":[1.3,19.3,36.5,3.6]},{"n":2,"x":50.0,"y":25.1,"box":[1.3,22.9,97.3,4.5]}],"recursos-pt":[{"n":1,"x":50.0,"y":30.8,"box":[5.2,28.0,89.7,5.7]},{"n":2,"x":50.0,"y":42.0,"box":[5.2,34.9,89.7,14.2]},{"n":3,"x":50.0,"y":51.9,"box":[5.2,50.4,89.7,3.0]},{"n":4,"x":19.8,"y":73.8,"box":[5.2,65.9,29.4,15.7]}],"inicio-en":[{"n":1,"x":15.5,"y":67.1,"box":[7.5,64.4,15.9,5.5]},{"n":2,"x":89.7,"y":4.1,"box":[87.0,2.4,5.5,3.5]},{"n":3,"x":50.0,"y":82.4,"box":[7.5,75.9,85.0,12.9]}],"mapa-en":[{"n":1,"x":80.1,"y":3.9,"box":[67.6,1.4,25.0,5.1]},{"n":2,"x":50.0,"y":10.2,"box":[0.0,7.8,100.0,4.9]},{"n":3,"x":29.9,"y":18.0,"box":[13.6,16.5,32.5,3.0]},{"n":4,"x":32.8,"y":24.7,"box":[1.3,21.2,62.9,38.6]},{"n":5,"x":82.2,"y":18.3,"box":[65.6,14.8,33.2,152.8]},{"n":6,"x":96.0,"y":3.9,"box":[93.2,2.0,5.5,3.8]}],"ator-en":[{"n":1,"x":75.8,"y":8.2,"box":[53.0,5.8,45.5,4.8]},{"n":2,"x":75.8,"y":19.2,"box":[53.0,15.6,45.5,7.4]},{"n":3,"x":75.8,"y":33.2,"box":[53.0,27.8,45.5,10.7]},{"n":4,"x":75.8,"y":54.0,"box":[53.0,43.4,45.5,21.2]},{"n":5,"x":95.8,"y":4.0,"box":[92.9,2.2,5.7,3.5]}],"perfil-en":[{"n":1,"x":22.2,"y":16.8,"box":[18.8,15.2,6.8,3.0]},{"n":2,"x":29.7,"y":24.2,"box":[23.9,22.8,11.7,3.0]},{"n":3,"x":53.4,"y":32.2,"box":[49.7,30.8,7.4,3.0]},{"n":4,"x":56.2,"y":40.2,"box":[14.9,38.8,82.7,3.0]},{"n":5,"x":1.3,"y":46.9,"box":[1.3,43.4,97.3,7.0]},{"n":6,"x":81.4,"y":57.1,"box":[65.2,53.6,32.4,56.6]}],"fluxos-en":[{"n":1,"x":14.1,"y":16.4,"box":[2.4,15.2,11.7,2.4]},{"n":2,"x":14.1,"y":21.5,"box":[2.4,19.4,11.7,4.1]},{"n":3,"x":14.1,"y":28.6,"box":[2.4,27.4,11.7,2.4]},{"n":4,"x":2.2,"y":45.2,"box":[2.2,44.5,9.9,1.4]},{"n":5,"x":46.8,"y":45.2,"box":[46.8,44.5,3.5,1.4]},{"n":6,"x":70.7,"y":45.2,"box":[70.7,44.5,5.2,1.4]}],"rede-en":[{"n":1,"x":71.7,"y":37.2,"box":[67.3,31.7,8.8,11.0]},{"n":2,"x":48.8,"y":86.3,"box":[45.0,84.7,7.6,3.2]},{"n":3,"x":56.2,"y":15.6,"box":[14.9,14.1,82.7,3.0]}],"ranking-en":[{"n":1,"x":20.3,"y":21.1,"box":[1.3,19.3,38.0,3.6]},{"n":2,"x":50.0,"y":25.1,"box":[1.3,22.9,97.3,4.5]}],"recursos-en":[{"n":1,"x":50.0,"y":30.8,"box":[5.2,28.0,89.7,5.7]},{"n":2,"x":50.0,"y":42.0,"box":[5.2,34.9,89.7,14.2]},{"n":3,"x":50.0,"y":51.9,"box":[5.2,50.4,89.7,3.0]},{"n":4,"x":19.8,"y":73.8,"box":[5.2,65.9,29.4,15.7]}]};
+const MARCAS=/*MARCAS*/{"inicio-pt":[{"n":1,"x":64.4,"y":33.6,"box":[60.4,32.8,8.0,1.8]},{"n":2,"x":86.7,"y":3.1,"box":[83.7,1.6,5.9,3.1]},{"n":3,"x":50.0,"y":46.5,"box":[5.5,41.2,89.1,10.5]}],"mapa-pt":[{"n":1,"x":84.4,"y":15.8,"box":[70.3,13.1,28.1,5.3]},{"n":2,"x":50.0,"y":22.7,"box":[1.6,20.2,96.9,5.0]},{"n":3,"x":30.2,"y":31.8,"box":[12.8,30.3,34.8,3.0]},{"n":4,"x":32.9,"y":38.6,"box":[1.6,35.1,62.5,38.3]},{"n":5,"x":81.9,"y":31.9,"box":[65.5,28.4,33.0,154.3]},{"n":6,"x":90.6,"y":3.1,"box":[87.6,1.6,5.9,3.1]}],"ator-pt":[{"n":1,"x":75.8,"y":8.4,"box":[53.0,6.2,45.5,4.5]},{"n":2,"x":75.8,"y":19.6,"box":[53.0,15.7,45.5,7.9]},{"n":3,"x":75.8,"y":37.1,"box":[53.0,31.5,45.5,11.2]},{"n":4,"x":75.8,"y":58.2,"box":[53.0,47.5,45.5,21.2]},{"n":5,"x":95.5,"y":4.1,"box":[92.4,2.2,6.2,3.6]}],"perfil-pt":[{"n":1,"x":25.0,"y":16.8,"box":[21.7,15.3,6.6,3.0]},{"n":2,"x":21.1,"y":24.3,"box":[15.2,22.8,11.7,3.0]},{"n":3,"x":41.6,"y":32.3,"box":[37.2,30.8,8.8,3.0]},{"n":4,"x":56.2,"y":40.3,"box":[15.2,38.8,82.0,3.0]},{"n":5,"x":1.6,"y":46.9,"box":[1.6,43.4,96.7,7.0]},{"n":6,"x":81.2,"y":57.0,"box":[65.1,53.5,32.2,59.0]}],"fluxos-pt":[{"n":1,"x":14.5,"y":16.3,"box":[2.7,15.2,11.7,2.1]},{"n":2,"x":14.5,"y":20.5,"box":[2.7,19.4,11.7,2.1]},{"n":3,"x":14.5,"y":28.5,"box":[2.7,27.4,11.7,2.1]},{"n":4,"x":2.5,"y":41.5,"box":[2.5,40.8,8.0,1.5]},{"n":5,"x":46.8,"y":41.5,"box":[46.8,40.8,3.4,1.5]},{"n":6,"x":70.5,"y":41.5,"box":[70.5,40.8,4.0,1.5]}],"rede-pt":[{"n":1,"x":71.4,"y":37.0,"box":[67.2,31.5,8.4,11.1]},{"n":2,"x":48.8,"y":85.9,"box":[45.0,84.3,7.5,3.2]},{"n":3,"x":56.2,"y":15.6,"box":[15.2,14.1,82.0,3.0]}],"ranking-pt":[{"n":1,"x":19.3,"y":34.5,"box":[1.6,32.7,35.3,3.6]},{"n":2,"x":50.0,"y":38.6,"box":[1.6,36.3,96.7,4.7]}],"recursos-pt":[{"n":1,"x":50.0,"y":37.5,"box":[5.5,35.3,89.1,4.5]},{"n":2,"x":50.0,"y":48.1,"box":[5.5,41.0,89.1,14.2]},{"n":3,"x":50.0,"y":58.1,"box":[5.5,56.5,89.1,3.1]},{"n":4,"x":20.4,"y":82.1,"box":[5.5,74.1,29.7,15.9]}],"inicio-en":[{"n":1,"x":64.7,"y":33.6,"box":[60.4,32.8,8.7,1.8]},{"n":2,"x":86.1,"y":3.1,"box":[83.1,1.6,5.9,3.1]},{"n":3,"x":50.0,"y":46.5,"box":[5.5,41.2,89.1,10.5]}],"mapa-en":[{"n":1,"x":84.4,"y":15.8,"box":[70.3,13.1,28.1,5.3]},{"n":2,"x":50.0,"y":22.7,"box":[1.6,20.2,96.9,5.0]},{"n":3,"x":29.9,"y":31.8,"box":[14.1,30.3,31.5,3.0]},{"n":4,"x":32.9,"y":38.6,"box":[1.6,35.1,62.5,38.3]},{"n":5,"x":81.9,"y":31.9,"box":[65.5,28.4,33.0,154.3]},{"n":6,"x":90.0,"y":3.1,"box":[87.0,1.6,5.9,3.1]}],"ator-en":[{"n":1,"x":75.8,"y":8.4,"box":[53.0,6.2,45.5,4.5]},{"n":2,"x":75.8,"y":19.6,"box":[53.0,15.7,45.5,7.9]},{"n":3,"x":75.8,"y":37.1,"box":[53.0,31.5,45.5,11.2]},{"n":4,"x":75.8,"y":58.2,"box":[53.0,47.5,45.5,21.2]},{"n":5,"x":95.8,"y":4.1,"box":[92.9,2.2,5.7,3.6]}],"perfil-en":[{"n":1,"x":22.2,"y":16.7,"box":[18.9,15.2,6.6,3.0]},{"n":2,"x":29.8,"y":24.2,"box":[24.0,22.7,11.7,3.0]},{"n":3,"x":41.9,"y":32.2,"box":[38.3,30.7,7.2,3.0]},{"n":4,"x":56.2,"y":40.2,"box":[15.2,38.7,82.0,3.0]},{"n":5,"x":1.6,"y":46.9,"box":[1.6,43.3,96.7,7.0]},{"n":6,"x":81.2,"y":56.9,"box":[65.1,53.4,32.2,59.0]}],"fluxos-en":[{"n":1,"x":14.5,"y":16.3,"box":[2.7,15.2,11.7,2.1]},{"n":2,"x":14.5,"y":20.5,"box":[2.7,19.4,11.7,2.1]},{"n":3,"x":14.5,"y":28.5,"box":[2.7,27.4,11.7,2.1]},{"n":4,"x":2.5,"y":45.3,"box":[2.5,44.6,9.8,1.4]},{"n":5,"x":46.8,"y":45.3,"box":[46.8,44.6,3.4,1.4]},{"n":6,"x":70.5,"y":45.3,"box":[70.5,44.6,5.2,1.4]}],"rede-en":[{"n":1,"x":71.4,"y":37.0,"box":[67.2,31.5,8.4,11.1]},{"n":2,"x":48.8,"y":85.9,"box":[45.0,84.3,7.5,3.2]},{"n":3,"x":56.2,"y":15.6,"box":[15.2,14.1,82.0,3.0]}],"ranking-en":[{"n":1,"x":20.0,"y":34.5,"box":[1.6,32.7,36.7,3.6]},{"n":2,"x":50.0,"y":38.6,"box":[1.6,36.3,96.7,4.7]}],"recursos-en":[{"n":1,"x":50.0,"y":37.5,"box":[5.5,35.3,89.1,4.5]},{"n":2,"x":50.0,"y":48.1,"box":[5.5,41.0,89.1,14.2]},{"n":3,"x":50.0,"y":58.1,"box":[5.5,56.5,89.1,3.1]},{"n":4,"x":20.4,"y":82.1,"box":[5.5,74.1,29.7,15.9]}]};
 let L="pt";try{L=localStorage.getItem("apt4all-lang")||((navigator.language||"pt").startsWith("pt")?"pt":"en")}catch(e){}
-function idioma(l){L=l;const h=document.documentElement;h.dataset.lang=l;h.lang=l==="pt"?"pt-BR":"en";
-  document.querySelectorAll(".idioma button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+function idioma(l){L=l;const h=document.documentElement;h.dataset.lang=l;h.lang=l==="pt"?"pt-BR":"en";window.TEMA_LANG&&TEMA_LANG(l);
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
   document.querySelectorAll("figure.tela").forEach(montaTela);try{localStorage.setItem("apt4all-lang",l)}catch(e){}}
 function montaTela(f){
   const nome=f.dataset.tela+"-"+L;let q=f.querySelector(".quadro");
@@ -444,7 +426,7 @@ function montaTela(f){
     const k=document.createElement("div");k.className="mk";k.textContent=m.n;k.style.left=Math.min(Math.max(m.x,2.5),97.5)+"%";k.style.top=Math.min(Math.max(m.y,3),97)+"%";q.append(k);
   }
 }
-document.querySelector(".idioma").addEventListener("click",e=>{const b=e.target.closest("button");if(b)idioma(b.dataset.l)});
+document.querySelector(".seg").addEventListener("click",e=>{const b=e.target.closest("button");if(b)idioma(b.dataset.l)});
 document.querySelectorAll(".abas").forEach(ab=>ab.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
   ab.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));
   ab.parentElement.querySelectorAll("[data-painel]").forEach(p=>p.hidden=p.dataset.painel!==b.dataset.aba)}));
