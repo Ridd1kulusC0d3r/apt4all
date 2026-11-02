@@ -1,16 +1,16 @@
-# Resumo da base (2026-10-13)
+# Resumo da base (2026-11-02)
 
-- Registros lidos: 2494 {'planilha': 411, 'misp': 1060, 'mitre': 176, 'eternalliberty': 847}
-- Atores após resolução de aliases: 1355
-- Versão ATT&CK: 19.2
+- Registros lidos: 2551 {'planilha': 411, 'misp': 1115, 'mitre': 178, 'eternalliberty': 847}
+- Atores após resolução de aliases: 1410
+- Versão ATT&CK: 20.0
 - Relatórios APTnotes ligados: 412
 
 | País | Atores | Com ATT&CK | Aliases |
 |---|---|---|---|
-| Sem país atribuído (??) | 638 | 41 | 364 |
-| China (CN) | 288 | 56 | 775 |
-| Rússia (RU) | 156 | 31 | 583 |
-| Irã (IR) | 82 | 21 | 327 |
+| Sem país atribuído (??) | 690 | 42 | 371 |
+| China (CN) | 289 | 56 | 776 |
+| Rússia (RU) | 157 | 31 | 584 |
+| Irã (IR) | 83 | 22 | 329 |
 | Coreia do Norte (KP) | 25 | 7 | 206 |
 | Turquia (TR) | 11 | 2 | 10 |
 | Ucrânia (UA) | 11 | 1 | 22 |
@@ -23,7 +23,7 @@
 | OTAN / Five Eyes (NATO) | 7 | 2 | 25 |
 | Estados Unidos (US) | 7 | 2 | 22 |
 | Paquistão (PK) | 7 | 2 | 18 |
-| Bielorrússia (BY) | 6 | 1 | 16 |
+| Bielorrússia (BY) | 6 | 1 | 17 |
 | Líbano (LB) | 6 | 3 | 11 |
 | Itália (IT) | 5 | 0 | 4 |
 | Cazaquistão (KZ) | 4 | 0 | 13 |
