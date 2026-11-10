@@ -61,7 +61,7 @@ Where public campaign reports live, indexed.
 
 | Resource | What it is for | Access |
 |---|---|---|
-| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) 🔹 | Campaign report archive organized by year. | free |
+| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) 🔹 | Historical report archive. Selected cases integrated in Campaigns: original sources, dates, telemetry and hunting hypotheses. Reviewed snapshot: July 2024; not current activity. | free |
 | [APTnotes](https://github.com/aptnotes/data) 🔹 | Historical index of public APT reports with metadata. | free |
 | [Awesome Threat Intel Blogs](https://github.com/muchdogesec/awesome_threat_intel_blogs) | CTI research blogs to monitor via RSS. | free |
 | [ThreatIntel-Reports (site de busca)](https://mthcht.github.io/ThreatIntel-Reports/) 🔹 | Search interface over the extracted report archive. | free |

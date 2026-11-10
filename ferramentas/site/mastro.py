@@ -22,6 +22,7 @@ MARCA = ('<svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><po
 SECOES = [
     ("atlas/index.html", "Atlas", "Atlas", "atlas"),
     ("feed/index.html", "Feed", "Feed", "feed"),
+    ("campanhas/index.html", "Campanhas", "Campaigns", "campanhas"),
     ("recursos/index.html", "Recursos", "Resources", "recursos"),
     ("ler/trilha.html", "Trilha", "Path", "trilha"),
     ("manual/index.html", "Manual", "Manual", "manual"),
@@ -31,6 +32,7 @@ SECOES = [
 PAGINAS = {
     "index.html": ("", "", "atlas aberto de ameaças"),
     "feed/index.html": ("../", "feed", "feed de vulnerabilidades"),
+    "campanhas/index.html": ("../", "campanhas", "campanhas / campaigns"),
     "recursos/index.html": ("../", "recursos", "recursos"),
     "manual/index.html": ("../", "manual", "manual"),
     "atlas/index.html": ("../", "atlas", "atlas"),

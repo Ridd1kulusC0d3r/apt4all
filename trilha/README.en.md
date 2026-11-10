@@ -149,3 +149,7 @@ Templates to copy: [`modelos/`](modelos/) (headings in Portuguese and English).
 **Check.** Can a manager read only the BLUF and know what to do? Can an analyst read the sources and reproduce your conclusions?
 
 Want to publish it? Open a PR adding the dossier under `trilha/dossies/` (see [CONTRIBUTING.en.md](../CONTRIBUTING.en.md)).
+
+## Reading lab: selected campaigns
+
+Use the [CyberMonitor notebook](../campanhas/README.en.md) alongside report reading, coverage and dossier work. Select one of six cases and deliver a worksheet with evidence, available telemetry, hypothesis, gaps and a validation plan. Machete and Spalax support regional investigation without inferring operator nationality from victims.

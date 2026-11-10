@@ -61,7 +61,7 @@ Onde estão os relatórios públicos de campanhas, indexados.
 
 | Recurso | Para que serve | Acesso |
 |---|---|---|
-| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) 🔹 | Acervo de relatórios de campanhas organizado por ano. | gratuito |
+| [APT & CyberCriminal Campaign Collections](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections) 🔹 | Acervo histórico de relatórios. Seleção integrada em Campanhas: fontes originais, datas, telemetria e hipóteses de hunting. Snapshot consultado: julho/2024; não indica atividade atual. | gratuito |
 | [APTnotes](https://github.com/aptnotes/data) 🔹 | Índice histórico de relatórios públicos de APT com metadados. | gratuito |
 | [Awesome Threat Intel Blogs](https://github.com/muchdogesec/awesome_threat_intel_blogs) | Blogs de pesquisa de CTI para monitorar via RSS. | gratuito |
 | [ThreatIntel-Reports (site de busca)](https://mthcht.github.io/ThreatIntel-Reports/) 🔹 | Interface de busca sobre o acervo de relatórios extraídos. | gratuito |

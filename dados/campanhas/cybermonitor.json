@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0",
+  "fonte": {
+    "id": "cybermonitor",
+    "repositorio": "CyberMonitor/APT_CyberCriminal_Campagin_Collections",
+    "url": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections",
+    "commit": "cbf136e24f5d2a4d89619580455aae8b9b0aeadb",
+    "commit_em": "2024-07-25T14:28:39Z",
+    "consultado_em": "2026-11-09",
+    "licenca_raiz": "nao_declarada",
+    "arquivos_de_indice": [
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2f3dcea5092ff5d57028f10d3ff9be8c03ac4d5a",
+        "size": 357152,
+        "url": "https://api.github.com/repos/CyberMonitor/APT_CyberCriminal_Campagin_Collections/git/blobs/2f3dcea5092ff5d57028f10d3ff9be8c03ac4d5a"
+      },
+      {
+        "path": "index.csv",
+        "mode": "100755",
+        "type": "blob",
+        "sha": "824d6ce5ed754fdf0906392e9d2371dcd76d1c72",
+        "size": 439636,
+        "url": "https://api.github.com/repos/CyberMonitor/APT_CyberCriminal_Campagin_Collections/git/blobs/824d6ce5ed754fdf0906392e9d2371dcd76d1c72"
+      }
+    ]
+  },
+  "anexo_revisado": {
+    "nome": "APT_Intelligence_Hub.html",
+    "sha256": "206fd626b36c984f43fb1a10de9f7c7c908ab6b569d8e75cf088cdb0f6d1f039",
+    "uso": "Ideias de telemetria, hipótese, lacunas e validação; sem importar entidades ou regras como validadas."
+  },
+  "campanhas": [
+    {
+      "id": "apt41-dust-2024",
+      "titulo": "APT41 Has Arisen From the DUST",
+      "publicado_em": "2024-07-18",
+      "publicador": "Mandiant / Google Cloud",
+      "ator_id": "apt41",
+      "mitre_id": "G0096",
+      "ator_na_fonte": "APT41",
+      "recorte": "global",
+      "tecnicas": [
+        "T1505.003",
+        "T1567.002"
+      ],
+      "foco": {
+        "pt": "Servidores e exfiltração",
+        "en": "Servers and exfiltration"
+      },
+      "observacao": {
+        "pt": "A Mandiant relata web shells, DUSTPAN/DUSTTRAP, exportação de bancos Oracle com SQLULDR2 e exfiltração para OneDrive com PINEGROVE.",
+        "en": "Mandiant reports web shells, DUSTPAN/DUSTTRAP, Oracle exports using SQLULDR2 and OneDrive exfiltration using PINEGROVE."
+      },
+      "localizador": "Executive Summary; Overview; SQLULDR2; PINEGROVE",
+      "telemetria": {
+        "pt": "Logs do servidor web, árvore de processos, auditoria de banco e tráfego de saída associado ao processo.",
+        "en": "Web server logs, process trees, database audit and process-linked outbound traffic."
+      },
+      "hipotese": {
+        "pt": "Correlacionar execução inesperada pelo servidor web, exportação de dados e upload por processo incomum.",
+        "en": "Correlate unexpected web server child processes, data exports and uploads by unusual processes."
+      },
+      "lacunas": {
+        "pt": "OneDrive também é legítimo; sem contexto de processo e banco, a correlação é fraca.",
+        "en": "OneDrive is also legitimate; missing process and database context weakens correlation."
+      },
+      "validar": {
+        "pt": "Reproduzir a sequência com eventos sintéticos e comparar com uma rotina autorizada de exportação.",
+        "en": "Replay the sequence with synthetic events and compare with an authorized export workflow."
+      },
+      "nota": {
+        "pt": "O índice CyberMonitor registra 19/07/2024; a página original informa 18/07/2024. Ambas as datas foram preservadas.",
+        "en": "CyberMonitor records 2024-07-19; the original page shows 2024-07-18. Both dates are preserved."
+      },
+      "fonte_primaria": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2024/2024.07.19.APT41_Has_Arisen_From_the_DUST",
+      "caminho_cybermonitor": "2024/2024.07.19.APT41_Has_Arisen_From_the_DUST",
+      "data_diretorio": "2024-07-19",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2024/2024.07.19.APT41_Has_Arisen_From_the_DUST/apt41-arisen-from-dust.pdf",
+          "sha1_declarado": "afd353c869cde483bea099b7e62f5a1ca2d90245",
+          "git_blob_sha": "feb8a2a4e65a2c55055499501835fc18bdd59d48",
+          "publicado_em_indice": "2024-07-19"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": "https://attack.mitre.org/groups/G0096/",
+      "tipo_vinculo_ator": "atribuido_na_fonte"
+    },
+    {
+      "id": "volt-typhoon-2023",
+      "titulo": "Volt Typhoon targets US critical infrastructure with living-off-the-land techniques",
+      "publicado_em": "2023-05-24",
+      "publicador": "Microsoft",
+      "ator_id": "volt-typhoon",
+      "mitre_id": "G1017",
+      "ator_na_fonte": "Volt Typhoon",
+      "recorte": "infraestrutura",
+      "tecnicas": [
+        "T1003.003",
+        "T1090.001"
+      ],
+      "foco": {
+        "pt": "Identidade e infraestrutura crítica",
+        "en": "Identity and critical infrastructure"
+      },
+      "observacao": {
+        "pt": "A Microsoft relata uso de contas válidas, coleta de credenciais com ntdsutil e proxies internos com netsh em intrusões contra infraestrutura dos EUA.",
+        "en": "Microsoft reports valid accounts, credential collection with ntdsutil and internal netsh proxies in intrusions against US infrastructure."
+      },
+      "localizador": "Post-compromise activity → Credential access; Command and control; Hunting queries",
+      "telemetria": {
+        "pt": "Processos com linha de comando, autenticação, inventário de controladores de domínio e mudanças de rede.",
+        "en": "Process command lines, authentication, domain controller inventory and network changes."
+      },
+      "hipotese": {
+        "pt": "Priorizar coleta de credenciais ou criação de proxy fora de mudanças aprovadas, correlacionando conta e host.",
+        "en": "Prioritize credential collection or proxy creation outside approved changes, correlating account and host."
+      },
+      "lacunas": {
+        "pt": "Ferramentas administrativas têm uso legítimo. Um alerta comportamental não identifica Volt Typhoon.",
+        "en": "Administrative tools have legitimate uses. A behavioral alert does not identify Volt Typhoon."
+      },
+      "validar": {
+        "pt": "Testar eventos de manutenção autorizada e eventos sintéticos suspeitos; medir falsos positivos antes de alertar.",
+        "en": "Test authorized maintenance and suspicious synthetic events; measure false positives before alerting."
+      },
+      "nota": {
+        "pt": "Exemplo histórico de 2023; não representa avaliação atual de atividade contra uma organização.",
+        "en": "Historical 2023 example; it is not a current assessment of activity against an organization."
+      },
+      "fonte_primaria": "https://www.microsoft.com/en-us/security/blog/2023/05/24/volt-typhoon-targets-us-critical-infrastructure-with-living-off-the-land-techniques/",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2023/2023.05.24.Volt_Typhoon",
+      "caminho_cybermonitor": "2023/2023.05.24.Volt_Typhoon",
+      "data_diretorio": "2023-05-24",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2023/2023.05.24.Volt_Typhoon/Volt Typhoon targets US critical infrastructure with living-off-the-land techniques _ Microsoft Security Blog.pdf",
+          "sha1_declarado": "58fc13f649bea13d627496f46994ec6cd4248b75",
+          "git_blob_sha": "33e64a25333c3227ba907eb0b23c6f039aa3c323",
+          "publicado_em_indice": "2023-05-24"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": "https://attack.mitre.org/groups/G1017/",
+      "tipo_vinculo_ator": "atribuido_na_fonte"
+    },
+    {
+      "id": "foggyweb-2021",
+      "titulo": "FoggyWeb: Targeted NOBELIUM malware leads to persistent backdoor",
+      "publicado_em": "2021-09-27",
+      "publicador": "Microsoft",
+      "ator_id": "apt29",
+      "mitre_id": "G0016",
+      "ator_na_fonte": "NOBELIUM",
+      "recorte": "identidade",
+      "tecnicas": [
+        "T1574.001"
+      ],
+      "foco": {
+        "pt": "Federação de identidade",
+        "en": "Identity federation"
+      },
+      "observacao": {
+        "pt": "A Microsoft descreve FoggyWeb como backdoor pós-comprometimento de AD FS, com carregamento de DLL e acesso à configuração e a certificados.",
+        "en": "Microsoft describes FoggyWeb as an AD FS post-compromise backdoor involving DLL loading and access to configuration and certificates."
+      },
+      "localizador": "FoggyWeb: Backdoor targeting AD FS; Detection details; Hunting queries",
+      "telemetria": {
+        "pt": "Carregamento de módulos, criação de arquivos, logs do AD FS e inventário de servidores de federação.",
+        "en": "Module loads, file creation, AD FS logs and federation server inventory."
+      },
+      "hipotese": {
+        "pt": "Investigar DLL inesperada no processo do AD FS, considerando assinatura, caminho e mudança autorizada.",
+        "en": "Investigate unexpected DLLs in the AD FS process, considering signature, path and authorized changes."
+      },
+      "lacunas": {
+        "pt": "Logs de login na nuvem, isoladamente, não cobrem o servidor AD FS local.",
+        "en": "Cloud sign-in logs alone do not cover the on-premises AD FS server."
+      },
+      "validar": {
+        "pt": "Usar eventos sintéticos de carregamento e baseline de módulos; revisar diferenças esperadas após atualizações.",
+        "en": "Use synthetic module-load events and a module baseline; review expected changes after updates."
+      },
+      "nota": {
+        "pt": "NOBELIUM é o nome no relato. A ligação ao perfil APT29 usa a associação publicada no ATT&CK, sem fundir novas entidades.",
+        "en": "NOBELIUM is the report label. The APT29 profile link uses the ATT&CK association without merging new entities."
+      },
+      "fonte_primaria": "https://www.microsoft.com/security/blog/2021/09/27/foggyweb-targeted-nobelium-malware-leads-to-persistent-backdoor/",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2021/2021.09.27.FoggyWeb",
+      "caminho_cybermonitor": "2021/2021.09.27.FoggyWeb",
+      "data_diretorio": "2021-09-27",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2021/2021.09.27.FoggyWeb/FoggyWeb_ Targeted NOBELIUM malware leads to persistent backdoor _ Microsoft Security Blog.pdf",
+          "sha1_declarado": "36a2f04f55d02b967222faad2d629f6c1296007a",
+          "git_blob_sha": "ad5f2acfd2d664c66bba33359eb04084864b4d61",
+          "publicado_em_indice": "2021-09-27"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": "https://attack.mitre.org/groups/G0016/",
+      "tipo_vinculo_ator": "nome_associado_attck"
+    },
+    {
+      "id": "turla-crutch-2020",
+      "titulo": "Turla Crutch: Keeping the back door open",
+      "publicado_em": "2020-12-02",
+      "publicador": "ESET",
+      "ator_id": "turla",
+      "mitre_id": "G0010",
+      "ator_na_fonte": "Turla",
+      "recorte": "global",
+      "tecnicas": [
+        "T1567.002"
+      ],
+      "foco": {
+        "pt": "Exfiltração por serviço legítimo",
+        "en": "Exfiltration through legitimate services"
+      },
+      "observacao": {
+        "pt": "A ESET atribui Crutch ao arsenal Turla e descreve coleta de documentos e exfiltração para contas Dropbox controladas pelos operadores.",
+        "en": "ESET attributes Crutch to the Turla arsenal and describes document collection and exfiltration to operator-controlled Dropbox accounts."
+      },
+      "localizador": "Attribution to Turla; Espionage activity; Crutch version 1 to 3",
+      "telemetria": {
+        "pt": "Árvore de processos, criação de arquivos compactados, proxy e acesso a documentos sensíveis.",
+        "en": "Process trees, archive creation, proxy logs and sensitive document access."
+      },
+      "hipotese": {
+        "pt": "Correlacionar compactação incomum de documentos e envio a armazenamento externo por processo fora do padrão.",
+        "en": "Correlate unusual document archiving and external storage uploads by an atypical process."
+      },
+      "lacunas": {
+        "pt": "Acesso a Dropbox é insuficiente para atribuir ou detectar a campanha; considerar sincronização corporativa.",
+        "en": "Dropbox access is insufficient to attribute or detect the campaign; account for corporate synchronization."
+      },
+      "validar": {
+        "pt": "Comparar uma sequência sintética de coleta/upload com backup e sincronização autorizados.",
+        "en": "Compare a synthetic collection/upload sequence with authorized backups and synchronization."
+      },
+      "nota": {
+        "pt": "A convivência de malware de grupos diferentes no mesmo host não comprova cooperação entre eles.",
+        "en": "Malware from different groups on one host does not establish cooperation between them."
+      },
+      "fonte_primaria": "https://www.welivesecurity.com/2020/12/02/turla-crutch-keeping-back-door-open/",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2020/2020.12.02.Turla_Crutch",
+      "caminho_cybermonitor": "2020/2020.12.02.Turla_Crutch",
+      "data_diretorio": "2020-12-02",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2020/2020.12.02.Turla_Crutch/Turla Crutch_ Keeping the “back door” open _ WeLiveSecurity.pdf",
+          "sha1_declarado": "201269ab296c57608c21f5dc2db15738b73409da",
+          "git_blob_sha": "6f5d021146ac726b6fd718802a3cc51fd5b5a63a",
+          "publicado_em_indice": "2020-12-02"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": "https://attack.mitre.org/groups/G0010/",
+      "tipo_vinculo_ator": "atribuido_na_fonte"
+    },
+    {
+      "id": "machete-2019",
+      "titulo": "Sharpening the Machete",
+      "publicado_em": "2019-08-05",
+      "publicador": "ESET",
+      "ator_id": "machete",
+      "mitre_id": "G0095",
+      "ator_na_fonte": "Machete",
+      "recorte": "latam",
+      "tecnicas": [
+        "T1566.001"
+      ],
+      "foco": {
+        "pt": "Espionagem na América Latina",
+        "en": "Espionage in Latin America"
+      },
+      "observacao": {
+        "pt": "A ESET descreve espionagem contra organizações governamentais venezuelanas, com spearphishing e um conjunto de ferramentas baseado em Python.",
+        "en": "ESET describes espionage against Venezuelan government organizations using spearphishing and a Python-based toolset."
+      },
+      "localizador": "Targets; apresentação do toolset e link para o relatório técnico / toolset overview and technical report link",
+      "telemetria": {
+        "pt": "Gateway de e-mail, eventos de anexos, execução no endpoint e conexões de saída.",
+        "en": "Email gateway, attachment events, endpoint execution and outbound connections."
+      },
+      "hipotese": {
+        "pt": "Correlacionar recebimento de anexo, execução subsequente e comunicação incomum no mesmo endpoint.",
+        "en": "Correlate attachment receipt, subsequent execution and unusual communication on the same endpoint."
+      },
+      "lacunas": {
+        "pt": "Idioma e região da vítima não estabelecem nacionalidade do operador; não classificar o grupo como brasileiro.",
+        "en": "Victim language and region do not establish operator nationality; do not classify the group as Brazilian."
+      },
+      "validar": {
+        "pt": "Construir uma linha do tempo com eventos sintéticos de e-mail e endpoint, incluindo um anexo benigno como controle.",
+        "en": "Build a timeline using synthetic email and endpoint events, including a benign attachment as a control."
+      },
+      "nota": {
+        "pt": "O vínculo é com o perfil Machete existente. A campanha e o malware permanecem conceitos distintos do ator.",
+        "en": "The link targets the existing Machete profile. Campaign and malware remain distinct from the actor."
+      },
+      "fonte_primaria": "https://www.welivesecurity.com/2019/08/05/sharpening-machete-cyberespionage/",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2019/2019.08.05.Sharpening_the_Machete",
+      "caminho_cybermonitor": "2019/2019.08.05.Sharpening_the_Machete",
+      "data_diretorio": "2019-08-05",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2019/2019.08.05.Sharpening_the_Machete/MACHETE_JUST_GOT_SHARPER.pdf",
+          "sha1_declarado": "652b8faba79ef2ce0319b32a248f5119df2becea",
+          "git_blob_sha": "6ac88b22c6e1b7e8663ddeea2fde0e5d7d2857cc",
+          "publicado_em_indice": "2019-08-05"
+        },
+        {
+          "caminho": "2019/2019.08.05.Sharpening_the_Machete/blog_Sharpening the Machete.pdf",
+          "sha1_declarado": "c7a8c2597269ab369b4f0527056f9bb13c65a2a6",
+          "git_blob_sha": "669e5476ca5a3eb30c0e2f6676ee016a99393aa4",
+          "publicado_em_indice": "2019-08-05"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": "https://attack.mitre.org/groups/G0095/",
+      "tipo_vinculo_ator": "atribuido_na_fonte"
+    },
+    {
+      "id": "spalax-2021",
+      "titulo": "Operation Spalax: Targeted malware attacks in Colombia",
+      "publicado_em": "2021-01-12",
+      "publicador": "ESET",
+      "ator_id": null,
+      "mitre_id": null,
+      "ator_na_fonte": "Operadores da campanha Spalax / Spalax campaign operators",
+      "recorte": "latam",
+      "tecnicas": [
+        "T1566.001"
+      ],
+      "foco": {
+        "pt": "Campanha regional sem atribuição no Atlas",
+        "en": "Regional campaign without Atlas attribution"
+      },
+      "observacao": {
+        "pt": "A ESET descreve ataques na Colômbia usando e-mails com PDFs que encaminham a downloads de arquivos; os payloads incluem RATs.",
+        "en": "ESET describes attacks in Colombia using emails with PDFs linking to archive downloads; payloads include RATs."
+      },
+      "localizador": "Overview; Phishing emails",
+      "telemetria": {
+        "pt": "E-mail, URLs acessadas, downloads, extração de arquivos e execução no endpoint.",
+        "en": "Email, accessed URLs, downloads, archive extraction and endpoint execution."
+      },
+      "hipotese": {
+        "pt": "Investigar a cadeia PDF → link → arquivo compactado → executável, correlacionando usuário e tempo.",
+        "en": "Investigate the PDF → link → archive → executable chain, correlating user and time."
+      },
+      "lacunas": {
+        "pt": "Uso de um RAT compartilhado não permite atribuir o operador a um grupo APT.",
+        "en": "Use of a shared RAT does not establish attribution to an APT group."
+      },
+      "validar": {
+        "pt": "Simular a cadeia com arquivos inofensivos e verificar se a correlação distingue downloads corporativos usuais.",
+        "en": "Simulate the chain with harmless files and check whether correlation distinguishes routine corporate downloads."
+      },
+      "nota": {
+        "pt": "Spalax foi mantida como campanha sem ator associado. Colômbia indica vitimologia do relato, não origem.",
+        "en": "Spalax remains a campaign without an associated actor. Colombia indicates reported victimology, not origin."
+      },
+      "fonte_primaria": "https://www.welivesecurity.com/2021/01/12/operation-spalax-targeted-malware-attacks-colombia/",
+      "arquivo_cybermonitor": "https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/tree/cbf136e24f5d2a4d89619580455aae8b9b0aeadb/2021/2021.01.12.Operation_Spalax",
+      "caminho_cybermonitor": "2021/2021.01.12.Operation_Spalax",
+      "data_diretorio": "2021-01-12",
+      "referencias_arquivadas": [
+        {
+          "caminho": "2021/2021.01.12.Operation_Spalax/welivesecurity.com-Operation Spalax Targeted malware attacks in Colombia.pdf",
+          "sha1_declarado": "e53b5732b76f4478577c591d9baec717e35adc3b",
+          "git_blob_sha": "f52907917ac1378d113dc43c7041275ea5dee408",
+          "publicado_em_indice": "2021-01-12"
+        }
+      ],
+      "revisado_em": "2026-11-09",
+      "status_fonte": "fonte_primaria_consultada",
+      "status_deteccao": "hipotese_nao_testada",
+      "mapeamento_tecnicas": "curadoria_apt4all",
+      "fonte_vinculo_ator": null,
+      "tipo_vinculo_ator": "nao_atribuido"
+    }
+  ]
+}

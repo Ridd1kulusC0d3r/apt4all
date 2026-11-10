@@ -36,3 +36,7 @@ The 186 links in [RESOURCES.md](RESOURCES.md) point to third-party sites. The de
 ## A note on attribution
 
 Attack attribution is a claim made by vendors and governments, with varying confidence, and it changes over time. APT4ALL **collects** what the sources say; it neither confirms nor disputes it. Before citing "actor X is from country Y", go to the original source linked in the actor's card.
+
+## CyberMonitor campaign selection
+
+[Guide and criteria](campanhas/README.en.md). Six selected reports with original summaries and primary-source links. Reviewed commit: `cbf136e24f5d2a4d89619580455aae8b9b0aeadb` (2024-07-25); editorial review: 2026-11-09. Publisher and index dates remain separate. No repository-wide license is declared at the collection root: PDFs, IOCs, samples and third-party code are not mirrored. Selection and provenance live in `dados/campanhas/cybermonitor.json`; defensive hypotheses are explicitly untested.

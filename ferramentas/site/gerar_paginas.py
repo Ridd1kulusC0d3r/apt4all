@@ -22,6 +22,8 @@ PAGINAS = [
     ("START-HERE.md", "start-here", "Start here", "Começar"),
     ("trilha/README.md", "trilha", "Trilha (9 módulos)", "Estudar"),
     ("trilha/README.en.md", "trilha-en", "Learning path", "Estudar"),
+    ("campanhas/README.md", "campanhas-cybermonitor", "Campanhas: guia e critérios", "Estudar"),
+    ("campanhas/README.en.md", "campaigns-cybermonitor", "Campaigns: guide and criteria", "Estudar"),
     ("trilha/modelos/ficha-relatorio.md", "modelo-ficha-relatorio", "Modelo: ficha de relatório", "Modelos"),
     ("trilha/modelos/matriz-ach.md", "modelo-matriz-ach", "Modelo: matriz ACH", "Modelos"),
     ("trilha/modelos/cobertura.md", "modelo-cobertura", "Modelo: tabela de cobertura", "Modelos"),

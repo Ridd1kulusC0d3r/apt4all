@@ -244,7 +244,7 @@ details.vinc>summary:hover .vn{color:var(--signal)}
     <a class="brand" href="../index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>atlas</small></a>
     <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
   </div>
-  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas" aria-current="page">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas" aria-current="page">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="../campanhas/index.html" data-pt="Campanhas" data-en="Campaigns">Campanhas</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
 </div></header><!--/mastro-->
 <div class="wrap atool">
   <div class="meta" id="meta">…</div>
@@ -381,7 +381,7 @@ const T={
 };
 let L=(()=>{try{return localStorage.getItem("apt4all-lang")||(navigator.language||"pt").slice(0,2)}catch(e){return"pt"}})();if(!T[L])L="pt";
 const t=k=>T[L][k]??k;
-let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,FEED=null,VC=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
+let A=[],P={},G={},NX={},TEC={},SET={},TT={},TAT=[],RW=null,FEED=null,CAMP=null,VC=null,MAPA=null,META={},porId={},sel=null,motivo="todos",soAtt=false;
 const $=s=>document.querySelector(s);
 function el(tag,a={},...k){const e=document.createElement(tag);for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x.startsWith("on"))e.addEventListener(x.slice(2),v);else if(v!=null&&v!==false)e.setAttribute(x,v===true?"":v)}for(const c of k.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(c))}return e}
 const NS="http://www.w3.org/2000/svg";
@@ -394,6 +394,7 @@ async function carrega(){
   A=a.atores;META=a.meta;VC=Vinculos.contexto(A);P=p.paises;G=p.geo;NX=p.nomes_extra||{};TEC=p.tecnicas;SET=p.setores||{};TT=p.tecnica_taticas||{};TAT=p.taticas||[];MAPA=m;A.forEach(x=>porId[x.id]=x);
   try{RW=await fetch("ransomware.json").then(r=>r.ok?r.json():null)}catch(e){RW=null}
   try{FEED=await fetch("../feed/feed.json").then(r=>r.ok?r.json():null)}catch(e){FEED=null}
+  try{CAMP=await fetch("../campanhas/campanhas.json").then(r=>r.ok?r.json():null)}catch(e){CAMP=null}
   aplicaIdioma();desenhaMapa();montaPerfil();ranking();sobre();
   if(window.ResizeObserver)new ResizeObserver(()=>rotulos()).observe($("#mapa"));
   const h=decodeURIComponent(location.hash.slice(1));
@@ -546,6 +547,10 @@ function abreAtor(id){
     sec(t("vit"),a.vitimas.length?el("div",{class:"nuvem"},a.vitimas.map(x=>el("span",{},x))):null),
     sec(t("set"),a.setores.length?el("div",{class:"nuvem"},a.setores.map(x=>el("span",{},nomeSetor(x)))):null),
     sec(t("rels")+` (${a.relatorios.length})`,a.relatorios.length?el("div",{class:"rel"},a.relatorios.map(r=>el("a",{href:r.link,target:"_blank",rel:"noopener"},el("span",{},r.data||"—"),r.titulo))):null),
+    (()=>{const cs=CAMP?CAMP.campanhas.filter(c=>c.ator_id===a.id):[];if(!cs.length)return null;
+      return sec(L==="pt"?"Campanhas: evidência e hunting":"Campaigns: evidence and hunting",el("div",{},
+        el("div",{class:"rel"},cs.map(c=>el("a",{href:`../campanhas/index.html?campanha=${encodeURIComponent(c.id)}`},el("span",{},c.publicado_em),c.titulo))),
+        el("p",{class:"nota"},L==="pt"?"Seleção histórica com fonte primária. Hipóteses defensivas não testadas; não prova autoria de alertas atuais.":"Historical selection with primary sources. Untested defensive hypotheses; does not attribute current alerts.")))})(),
     sec(t("refs"),a.links.length?el("div",{class:"rel"},a.links.map(u=>el("a",{href:u,target:"_blank",rel:"noopener"},el("span",{},"↗"),u.replace(/^https?:\/\//,"").slice(0,90)))):null),
     sec(t("fontes"),el("div",{class:"nuvem"},a.fontes.map(f=>el("span",{},f)))));
   $("#gaveta").replaceChildren(g);g.querySelector(".fecha").focus();

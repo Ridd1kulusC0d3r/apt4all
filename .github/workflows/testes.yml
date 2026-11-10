@@ -22,6 +22,28 @@ jobs:
       - name: Testes (só biblioteca padrão)
         run: python -W error::ResourceWarning -m unittest discover -s testes -v
 
+  campanhas-navegador:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Instalar navegador de testes
+        run: |
+          pip install 'playwright>=1.50,<2'
+          python -m playwright install --with-deps chromium
+      - name: Campanhas no desktop e no celular
+        env:
+          CAMPANHAS_SCREENSHOTS: qa/campanhas
+        run: python testes/campanhas_navegador.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: campanhas-layout
+          path: qa/campanhas
+          if-no-files-found: ignore
+
   integracao-tce:
     # confere que o sinal gerado continua no formato que o TCE aceita
     runs-on: ubuntu-latest

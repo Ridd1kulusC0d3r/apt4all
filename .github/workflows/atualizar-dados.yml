@@ -28,6 +28,7 @@ jobs:
           python ferramentas/atlas/mapa_hex.py
           python ferramentas/ransomware/construir_matriz.py --baixar
           python ferramentas/feed/ingerir_kev.py --baixar
+          python ferramentas/campanhas/gerar_catalogo.py
           python ferramentas/recursos/gerar_listas.py
           python ferramentas/site/gerar_paginas.py
       - name: Testes

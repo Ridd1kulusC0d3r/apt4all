@@ -36,3 +36,7 @@ Os 186 links de [RECURSOS.md](RECURSOS.md) apontam para sites de terceiros. As d
 ## Aviso sobre atribuição
 
 Atribuição de ataques é uma afirmação de fornecedores e governos, com graus de confiança diferentes, e muda com o tempo. O APT4ALL **reúne** o que as fontes dizem; não confirma nem contesta. Antes de citar "o ator X é do país Y", vá à fonte original indicada na ficha.
+
+## Seleção de campanhas CyberMonitor
+
+[Guia e critérios](campanhas/README.md). Seis relatos selecionados, com sínteses próprias e links às fontes primárias. O commit consultado é `cbf136e24f5d2a4d89619580455aae8b9b0aeadb` (25/07/2024); a revisão editorial ocorreu em 09/11/2026. Datas do publicador e do índice são preservadas separadamente. Não há licença geral declarada na raiz da coleção: PDFs, IOCs, amostras e código de terceiros não são espelhados. A seleção e sua proveniência ficam em `dados/campanhas/cybermonitor.json`; hipóteses defensivas são explicitamente não testadas.

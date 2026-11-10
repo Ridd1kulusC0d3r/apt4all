@@ -149,3 +149,7 @@ Modelos para copiar: [`modelos/`](modelos/).
 **Checagem.** Um gestor lê só o BLUF e sabe o que fazer? Um analista lê as fontes e consegue refazer suas conclusões?
 
 Quer publicar? Abra um PR adicionando o dossiê em `trilha/dossies/` (veja o [CONTRIBUTING.md](../CONTRIBUTING.md)).
+
+## Laboratório de leitura: campanhas selecionadas
+
+Use o [caderno CyberMonitor](../campanhas/README.md) nos módulos de leitura, cobertura e dossiê. Escolha um dos seis casos, confirme o relato original e entregue uma ficha com evidência, telemetria disponível, hipótese, lacunas e plano de validação. Machete e Spalax permitem trabalhar o recorte latino-americano sem inferir nacionalidade do operador a partir das vítimas.

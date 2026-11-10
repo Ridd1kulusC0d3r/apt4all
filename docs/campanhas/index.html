@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APT4ALL · Campanhas e evidências</title>
+<meta name="description" content="Campanhas selecionadas do CyberMonitor, com fontes primárias, vínculos revisados ao Atlas e hipóteses defensivas.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/tema.css">
+<script src="../assets/tema.js"></script>
+<style>
+.filters{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0;align-items:end}
+.filters label{display:grid;gap:4px;font:12px var(--mono);color:var(--ink-2)}
+.filters label:first-child{flex:1;min-width:180px}
+.filters input,.filters select{padding:10px;background:var(--paper-3);border:1px solid var(--rule);width:100%;min-width:0}
+.filters button{padding:10px;border:1px solid var(--rule);background:var(--paper-2);cursor:pointer}
+.case{border-top:1px solid var(--ink);padding:24px 0 30px;scroll-margin-top:25px}
+.case h2{font:700 clamp(24px,3vw,34px)/1.15 var(--serif);max-width:40ch;margin:8px 0 14px}
+.case p{max-width:84ch}.case .meta{font:12px/1.8 var(--mono);color:var(--ink-3)}
+.case details{border:1px solid var(--rule);margin-top:18px;padding:16px;background:var(--paper-3)}
+.case summary{cursor:pointer;font-weight:600}.case .evidence{border-left:3px solid var(--signal);padding-left:16px}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.steps h3{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;color:var(--signal)}
+.steps p{margin:0}.case .note{color:var(--ink-2);font-size:14px}
+.case a{overflow-wrap:anywhere}.state{padding:24px 0;color:var(--ink-2)}
+.filters button:hover{border-color:var(--ink)}
+@media(max-width:650px){.steps{grid-template-columns:1fr}.filters label{flex:1;min-width:140px}}
+</style>
+</head>
+<body>
+<!--mastro--><header class="mast"><div class="wrap">
+  <div class="mast-bar">
+    <a class="brand" href="../index.html"><svg width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><polygon points="17,3 29,10 29,24 17,31 5,24 5,10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.8" fill="var(--signal)"/></svg>APT4ALL <small>campanhas / campaigns</small></a>
+    <div class="tools"><div class="seg" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div><button data-tema type="button" data-pt="Tema" data-en="Theme" aria-label="Tema claro/escuro · Light/dark">Tema</button></div>
+  </div>
+  <nav class="nav" aria-label="Seções"><a href="../atlas/index.html" data-pt="Atlas" data-en="Atlas">Atlas</a><a href="../feed/index.html" data-pt="Feed" data-en="Feed">Feed</a><a href="../campanhas/index.html" data-pt="Campanhas" data-en="Campaigns" aria-current="page">Campanhas</a><a href="../recursos/index.html" data-pt="Recursos" data-en="Resources">Recursos</a><a href="../ler/trilha.html" data-pt="Trilha" data-en="Path">Trilha</a><a href="../manual/index.html" data-pt="Manual" data-en="Manual">Manual</a><a href="../ler/index.html" data-pt="Textos" data-en="Texts">Textos</a></nav>
+</div></header><!--/mastro-->
+<div class="wrap">
+<section class="mast-title" style="border-top:0">
+<div><div class="eyebrow" data-pt="Caderno de investigação · CyberMonitor" data-en="Investigation notebook · CyberMonitor">Caderno de investigação · CyberMonitor</div><h1 data-pt="Da campanha à evidência." data-en="From campaign to evidence.">Da campanha à evidência.</h1></div>
+<div><p class="dek" data-pt="Leia o relato original, examine o comportamento e planeje a coleta. Uma seleção histórica com hipóteses defensivas explícitas." data-en="Read the original report, examine behavior and plan collection. A historical selection with explicit defensive hypotheses.">Leia o relato original, examine o comportamento e planeje a coleta. Uma seleção histórica com hipóteses defensivas explícitas.</p>
+<div class="links"><a href="../ler/campanhas-cybermonitor.html" data-pt="Guia e critérios" data-en="Guide and criteria">Guia e critérios</a><a href="campanhas.json" download>JSON</a><a href="https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections" rel="noopener">CyberMonitor ↗</a></div></div>
+</section>
+<div class="strip"><div class="stat"><b id="total">—</b><span data-pt="campanhas selecionadas" data-en="selected campaigns">campanhas selecionadas</span></div><div class="stat"><b id="actors">—</b><span data-pt="com vínculo ao Atlas" data-en="linked to the Atlas">com vínculo ao Atlas</span></div><div class="stat"><b id="latam">—</b><span data-pt="casos latino-americanos" data-en="Latin American cases">casos latino-americanos</span></div><div class="stat"><b id="review" style="font-size:20px">—</b><span data-pt="revisão editorial" data-en="editorial review">revisão editorial</span></div></div>
+</div>
+<main class="wrap">
+<div class="filters">
+<label><span data-pt="Buscar campanha, ator ou técnica" data-en="Search campaign, actor or technique">Buscar campanha, ator ou técnica</span><input id="q" type="search"></label>
+<label><span data-pt="Recorte" data-en="Scope">Recorte</span><select id="scope"><option value="" data-pt="Todos" data-en="All">Todos</option><option value="latam" data-pt="América Latina" data-en="Latin America">América Latina</option><option value="infraestrutura" data-pt="Infraestrutura crítica" data-en="Critical infrastructure">Infraestrutura crítica</option><option value="identidade" data-pt="Federação de identidade" data-en="Identity federation">Federação de identidade</option><option value="global" data-pt="Outros casos" data-en="Other cases">Outros casos</option></select></label>
+<label><span data-pt="Ano de publicação" data-en="Publication year">Ano de publicação</span><select id="year"><option value="" data-pt="Todos" data-en="All">Todos</option></select></label>
+<button id="clear" type="button" data-pt="Limpar filtros" data-en="Clear filters">Limpar filtros</button>
+</div>
+<p id="count" role="status" aria-live="polite"></p>
+<div class="aviso" data-pt="Histórico não é atividade atual. As hipóteses e os mapeamentos ATT&CK são propostas de curadoria: não são regras validadas, nem prova de autoria de um incidente." data-en="Historical reporting is not current activity. Hypotheses and ATT&CK mappings are editorial proposals: they are not validated rules or proof of incident attribution.">Histórico não é atividade atual. As hipóteses e os mapeamentos ATT&CK são propostas de curadoria: não são regras validadas, nem prova de autoria de um incidente.</div>
+<div id="cases"><p class="state" data-pt="Carregando campanhas…" data-en="Loading campaigns…">Carregando campanhas…</p></div>
+<noscript><p>Consulte o <a href="../ler/campanhas-cybermonitor.html">guia de campanhas</a> e o <a href="campanhas.json">catálogo JSON</a>. / Read the guide and JSON catalog.</p></noscript>
+</main>
+<footer class="foot"><div class="wrap"><span data-pt="Fontes originais preservadas. CyberMonitor é o acervo de descoberta; a atribuição pertence ao publicador citado." data-en="Original sources are preserved. CyberMonitor is the discovery archive; attribution belongs to the cited publisher.">Fontes originais preservadas. CyberMonitor é o acervo de descoberta; a atribuição pertence ao publicador citado.</span></div></footer>
+<script src="campanhas.js"></script>
+</body>
+</html>

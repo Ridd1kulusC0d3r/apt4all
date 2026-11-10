@@ -52,3 +52,7 @@ Dado de ameaça entra no Atlas como fato citável. Mesclar sem olhar esconde err
 1. Selo "dados atualizados em AAAA-MM-DD" no README, lido de `docs/atlas/atores.json`.
 2. Feed de novidades: diff semanal (atores novos, aliases novos) no corpo do PR.
 3. Nova fonte por vez, cada uma com portão próprio.
+
+## Campanhas com revisão editorial
+
+O workflow recompila `dados/campanhas/cybermonitor.json` com `ferramentas/campanhas/gerar_catalogo.py`. Não baixa novas campanhas nem renova a data de revisão automaticamente. A inclusão depende de leitura da fonte primária, atribuição explícita (ou ausência dela), checagem de duplicação e datas. O gerador valida os vínculos ao Atlas e mantém a separação entre observação e hipótese defensiva. Veja o [guia](campanhas/README.md).
